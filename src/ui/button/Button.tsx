@@ -5,7 +5,7 @@ import { isString } from "lodash";
 
 import { ButtonProps } from "./Button.types";
 
-import "./Button.scss";
+import "./Button.css";
 
 export const Button: React.FC<ButtonProps> = ({
 	text,
