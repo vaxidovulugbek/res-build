@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "standard",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "quotes": [
+      2,
+      "double",
+      {
+        "avoidEscape": false
+      }
+    ],
+    "camelcase": "off"
+  }
+}
