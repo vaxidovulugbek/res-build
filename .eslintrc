@@ -1,19 +1,39 @@
 {
-  "extends": [
-    "standard",
-    "prettier"
-  ],
-  "plugins": [
-    "prettier"
-  ],
-  "rules": {
-    "quotes": [
-      2,
-      "double",
-      {
-        "avoidEscape": false
-      }
-    ],
-    "camelcase": "off"
-  }
+	"extends": ["react-app", "prettier"],
+	"plugins": ["prettier"],
+	"rules": {
+		// https://eslint.org/docs/rules/no-confusing-arrow
+		"no-console": "off",
+		// https://eslint.org/docs/rules/no-console
+		"no-var": "warn",
+		// https://eslint.org/docs/rules/no-var
+		"object-shorthand": "error",
+		// https://eslint.org/docs/rules/object-shorthand
+		"prefer-const": "warn",
+		// https://eslint.org/docs/rules/prefer-const
+		"prefer-template": "warn",
+		// https://eslint.org/docs/rules/prefer-template
+		"prettier/prettier": ["error", { "endOfLine": "auto" }, { "usePrettierrc": true }],
+		// "prettier/prettier": 2,
+		// https://github.com/prettier/eslint-plugin-prettier#installation
+		"react/react-in-jsx-scope": "off",
+		// https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md
+		"react-hooks/rules-of-hooks": "error",
+		// Checks rules of Hooks - https://fr.reactjs.org/docs/hooks-rules.html#eslint-plugin
+		"react-hooks/exhaustive-deps": "warn",
+		// Checks effect dependencies - https://fr.reactjs.org/docs/hooks-rules.html#eslint-plugin
+		"quotes": ["warn", "double"],
+		// https://eslint.org/docs/rules/quotes
+		"comma-dangle": [
+			// https://eslint.org/docs/rules/comma-dangle
+			"error",
+			{
+				"arrays": "always-multiline",
+				"objects": "always-multiline",
+				"imports": "always-multiline",
+				"exports": "always-multiline",
+				"functions": "ignore"
+			}
+		]
+	}
 }

@@ -1,0 +1,43 @@
+.text {
+	line-height: 120%;
+}
+
+.text-weight {
+	&_bold {
+		font-weight: 700;
+	}
+
+	&_semi-bold {
+		font-weight: 600;
+	}
+
+	&_medium {
+		font-weight: 500;
+	}
+
+	&_regular {
+		font-weight: 400;
+	}
+}
+
+.text-size {
+	&_xlg {
+		@apply text-xlg;
+	}
+
+	&_lg {
+		@apply text-lg;
+	}
+
+	&_md {
+		@apply text-md;
+	}
+
+	&_sm {
+		@apply text-sm;
+	}
+
+	&_xsm {
+		@apply text-xsm;
+	}
+}

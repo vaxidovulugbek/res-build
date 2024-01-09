@@ -1,0 +1,28 @@
+.title {
+	font-weight: 700;
+	line-height: 110%;
+
+	&_1 {
+		@apply text-1;
+	}
+
+	&_2 {
+		@apply text-2;
+	}
+
+	&_3 {
+		@apply text-3;
+	}
+
+	&_4 {
+		@apply text-4;
+	}
+
+	&_5 {
+		@apply text-5;
+	}
+
+	&_6 {
+		@apply text-6;
+	}
+}

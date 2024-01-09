@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import cn from "classnames";
 import { isString } from "lodash";
 
-import { ButtonProps } from "./Button.types";
+import { ButtonProps } from "./Button.trops";
 
 import "./Button.css";
 
