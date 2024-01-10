@@ -1,7 +1,23 @@
 .header {
   padding: 20px 0;
+
+  &__light {
+    color: gold !important;
+  }
+
+  &__dark {
+    color: #0E7490 !important;
+  }
+
+  &__icon {
+    font-size: 30px;
+  }
 }
 
 .navbar__items:not(:last-child) {
   margin-right: 20px;
+}
+
+.navbar__link {
+  color: var(--text-color) !important;
 }

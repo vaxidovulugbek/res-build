@@ -5,13 +5,13 @@ interface ImageProps {
 	rounded?: boolean;
 	bordered?: boolean;
 	className?: string;
-	src: any;
+	src: string;
 	alt: string;
 	href: any;
 	size: string;
 }
 
-const Logo: React.FC<ImageProps> = ({ size, className, src, alt, href }) => {
+const Logo: React.FC<ImageProps> = ({ size = "sm", className, src, alt, href }) => {
 	const imageClasses = cn(
 		"image",
 		{
