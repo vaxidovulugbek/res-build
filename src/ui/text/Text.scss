@@ -20,9 +20,10 @@
 	}
 }
 
+
 .text-size {
 	&_xlg {
-		@apply text-xlg;
+		font-size: 40px;
 	}
 
 	&_lg {
@@ -41,3 +42,25 @@
 		@apply text-xsm;
 	}
 }
+
+// .text-size {
+// 	&_xlg {
+// 		@apply text-xlg;
+// 	}
+
+// 	&_lg {
+// 		@apply text-lg;
+// 	}
+
+// 	&_md {
+// 		@apply text-md;
+// 	}
+
+// 	&_sm {
+// 		@apply text-sm;
+// 	}
+
+// 	&_xsm {
+// 		@apply text-xsm;
+// 	}
+// }

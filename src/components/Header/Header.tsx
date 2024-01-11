@@ -6,7 +6,12 @@ import { IoSunny, IoMoon } from "react-icons/io5";
 import "./Header.scss";
 import Navbar from "./NavBar";
 
-const Header: React.FC = ({ setDarkTheme, darkTheme }) => {
+interface MyComponentProps {
+	setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
+	darkTheme: boolean;
+}
+
+const Header: React.FC<MyComponentProps> = ({ setDarkTheme, darkTheme }) => {
 	return (
 		<>
 			<header className="header">
@@ -16,6 +21,8 @@ const Header: React.FC = ({ setDarkTheme, darkTheme }) => {
 							className="ld h-14 w-26"
 							size="sm"
 							src="https://upload.wikimedia.org/wikipedia/commons/1/13/LOGO_OF_LOGO.svg"
+							alt="logo"
+							href="#"
 						/>
 						<div className="flex items-center">
 							<Navbar />
@@ -26,7 +33,7 @@ const Header: React.FC = ({ setDarkTheme, darkTheme }) => {
 								/>
 								<Button
 									className="ms-5 text-white bg-cyan-700 px-4 py-1.5 rounded-lg shadow-xl"
-									text="Sign In"
+									text="SignUp"
 								/>
 							</div>
 							<div className="flex item-center ms-4">

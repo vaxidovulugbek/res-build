@@ -19,7 +19,7 @@ export const Text: React.FC<TextProps> = ({
 	const classNames = cn(
 		"text",
 		weight && `text-weight_${weight}`,
-		size && ` text-size_${size}`,
+		size && `text-size_${size}`,
 		className
 	);
 

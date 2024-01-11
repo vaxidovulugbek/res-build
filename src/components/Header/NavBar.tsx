@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
 				</li>
 				<li className="navbar__items">
 					<a className="navbar__link" href="#">
-						About
+						Resume Templates
 					</a>
 				</li>
 				<li className="navbar__items">

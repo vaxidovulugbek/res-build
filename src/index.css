@@ -5,8 +5,9 @@
 :root {
   --body-color:#fff;
   --primary-color: #ffffff;
-  --primary-bright: #BBC4EC;
+  --primary-bright: #fff;
   --text-color: #1b1b1b;
+  --title-color:#1b1b1b;
   --white: #fff;
   --black: #000;
 }
@@ -14,8 +15,10 @@
 .dark-theme {
   --body-color: #2B3844;
   --primary-color: #2B3844;
+  --primary-bright: #0E7490;
   --text-color: #fff;
   --placeholder-color: #fff;
+  --title-color:#fff;
 }
 
 body {

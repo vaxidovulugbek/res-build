@@ -1,17 +1,28 @@
 import React from "react";
 import cn from "classnames";
 
+// interface ImageProps {
+// 	rounded?: boolean;
+// 	bordered?: boolean;
+// 	className?: string;
+// 	src: string;
+// 	alt: string;
+// 	href: any;
+// 	size: string;
+// }
+
 interface ImageProps {
-	rounded?: boolean;
-	bordered?: boolean;
-	className?: string;
-	src: string;
 	alt: string;
-	href: any;
-	size: string;
+	href: string;
 }
 
-const Logo: React.FC<ImageProps> = ({ size = "sm", className, src, alt, href }) => {
+interface HeaderProps {
+	className: string;
+	size: string;
+	src: string;
+}
+
+const Logo: React.FC<HeaderProps & ImageProps> = ({ className, size, src, alt, href }) => {
 	const imageClasses = cn(
 		"image",
 		{

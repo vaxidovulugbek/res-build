@@ -23,5 +23,5 @@
   // "include": [
   //   "src"
   // ]
-  "include": ["src/**/*.ts", "src/**/*.d.ts"]
+  "include": ["src","src/**/*.ts", "src/**/*.d.ts"]
 }
