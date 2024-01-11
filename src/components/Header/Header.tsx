@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "../../ui/Button/Button";
-import Logo from "../../ui/Logo/Logo";
+import { Button } from "ui/Button/Button";
+import Logo from "ui/Logo/Logo";
 import { IoSunny, IoMoon } from "react-icons/io5";
 // import logoimg from "../../assets/imgs/icons/logo.svg";
 import "./Header.scss";
