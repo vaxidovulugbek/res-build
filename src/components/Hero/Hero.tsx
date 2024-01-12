@@ -5,9 +5,9 @@ import { Title } from "ui/Title/Title";
 import "./Hero.scss";
 const Hero = React.createFactory(() => {
 	return (
-		<div className="hero">
+		<section className="hero section">
 			<div className="container-box">
-				<div className="flex items-center pt-10 pb-20">
+				<div className="flex items-center pt-10">
 					<div className="w-1/2">
 						<Title
 							className="hero__title text-4xl leading-normal md:text-5xl max-w-xl font-header text-gray-900"
@@ -35,7 +35,7 @@ const Hero = React.createFactory(() => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 });
 

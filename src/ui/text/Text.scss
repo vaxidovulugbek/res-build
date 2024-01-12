@@ -23,7 +23,7 @@
 
 .text-size {
 	&_xlg {
-		font-size: 40px;
+		@apply text-xlg;
 	}
 
 	&_lg {

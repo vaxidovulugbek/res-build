@@ -6,3 +6,7 @@
   min-height: 100svh;
   background-color: var(--body-color);
 }
+
+.section {
+  margin-bottom: 90px;
+}

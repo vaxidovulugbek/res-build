@@ -1,27 +1,46 @@
 .title {
-	font-weight: 700;
 	line-height: 110%;
-	// &_1 {
-	// 	@apply text-1;
-	// }
+	&_1 {
+		@apply text-1;
+	}
 
-	// &_2 {
-	// 	@apply text-2;
-	// }
+	&_2 {
+		@apply text-2;
+	}
 
-	// &_3 {
-	// 	@apply text-3;
-	// }
+	&_3 {
+		@apply text-3;
+	}
 
-	// &_4 {
-	// 	@apply text-4;
-	// }
+	&_4 {
+		@apply text-4;
+	}
 
-	// &_5 {
-	// 	@apply text-5;
-	// }
+	&_5 {
+		@apply text-5;
+	}
 
-	// &_6 {
-	// 	@apply text-6;
-	// }
+	&_6 {
+		@apply text-6;
+	}
 }
+
+
+.title-weight {
+	&_bold {
+		font-weight: 700;
+	}
+
+	&_semi-bold {
+		font-weight: 600;
+	}
+
+	&_medium {
+		font-weight: 500;
+	}
+
+	&_regular {
+		font-weight: 400;
+	}
+}
+

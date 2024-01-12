@@ -1,0 +1,40 @@
+// Faq.scss
+
+.faq-container {
+  width: 100%;
+}
+
+.faq-item {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  overflow: hidden;
+  -webkit-transition: max-height 0.3s ease; /* Safari and Chrome */
+  transition: max-height 0.3s ease;
+  transition: all 0.4s linear;
+}
+
+
+.faq-question {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #f0f0f0;
+  font-weight: bold;
+  transition: all 0.4s linear;
+}
+
+.faq-answer {
+  // padding: 10px;
+  transition: all 0.4s linear;
+  background-color: #fff;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 1000px;
+  transition: all 0.4s linear;
+}
+
+.accardion-svg {
+  fill: #0E7490 !important;
+}

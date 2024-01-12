@@ -40,3 +40,14 @@ code {
   padding: 0 20px;
   margin: 0 auto;
 }
+
+.container {
+  margin: 0 auto;
+}
+
+@media (min-width: 1536px) {
+  .container {
+      max-width: 1240px !important;
+      padding: 0 20px;
+  }
+}

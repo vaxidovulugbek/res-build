@@ -3,6 +3,7 @@ import "App.css";
 import Header from "components/Header/Header";
 import Hero from "components/Hero/Hero";
 import HowItWorks from "components/HowItWorks/HowItWorks";
+import Faq from "components/FAQ/Faq";
 
 function App() {
 	const [darkTheme, setDarkTheme] = useState(false);
@@ -11,6 +12,7 @@ function App() {
 			<Header setDarkTheme={setDarkTheme} darkTheme={darkTheme} />
 			<Hero />
 			<HowItWorks />
+			<Faq />
 			<h1 className="text-6xl text-tahiti bg-midnight font-bold">hello world tt</h1>
 		</div>
 	);
