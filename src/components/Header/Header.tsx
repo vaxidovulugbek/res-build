@@ -5,13 +5,10 @@ import { IoSunny, IoMoon } from "react-icons/io5";
 // import logoimg from "../../assets/imgs/icons/logo.svg";
 import "./Header.scss";
 import Navbar from "./NavBar";
+import useStore from "Store";
 
-interface MyComponentProps {
-	setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
-	darkTheme: boolean;
-}
-
-const Header: React.FC<MyComponentProps> = ({ setDarkTheme, darkTheme }) => {
+const Header: React.FC = () => {
+	const { darkTheme, setDarkTheme } = useStore();
 	return (
 		<>
 			<header className="header">

@@ -47,7 +47,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, answer }) => {
 					accordionOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
 				}`}
 			>
-				<div className="overflow-hidden mt-2 text-base">{answer}</div>
+				<div className={`overflow-hidden text-base`}>{answer}</div>
 			</div>
 		</div>
 	);
