@@ -7,7 +7,7 @@
     text-wrap:balance;
     font-weight: 700;
     margin-bottom: 20px;
-    color: var(--title-color);
+    color: var(--title-color) !important;
   }
 
   &__text {

@@ -10,7 +10,7 @@ const Hero = React.createFactory(() => {
 				<div className="flex items-center pt-10">
 					<div className="w-1/2">
 						<Title
-							className="hero__title text-4xl leading-normal md:text-5xl max-w-xl font-header text-gray-900"
+							className="hero__title mb-3 text-4xl leading-normal md:text-5xl max-w-xl font-header"
 							as="h1"
 							text="Online CV Builder With Creative Templates."
 						/>

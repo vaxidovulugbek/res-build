@@ -10,3 +10,7 @@
 .section {
   margin-bottom: 90px;
 }
+
+.title-color {
+  color: var(--title-color);
+}

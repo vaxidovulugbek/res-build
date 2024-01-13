@@ -25,7 +25,7 @@ const HowItWorks: React.FC = () => {
 			<div className="container">
 				<Title
 					weight="medium"
-					className="text-center text-gray-900 font-header text-3xl md:text-5xl mb-8"
+					className="text-center title-color font-header text-3xl md:text-5xl mb-8"
 					as="h2"
 					text="How it works?"
 				/>
