@@ -29,14 +29,14 @@ const AllRoutes: React.FC = () => {
 				{routes
 					?.filter((routes) => routes.title == "header")
 					.map(({ path, element, title }, i) => {
-						return <div key={i}>{element}</div>;
+						return <React.Fragment key={i}>{element}</React.Fragment>;
 					})}
 			</React.Fragment>
 			<main>
 				{routes
 					?.filter((routes) => routes.title !== "header")
 					.map(({ path, element, title }, i) => {
-						return <div key={i}>{element}</div>;
+						return <React.Fragment key={i}>{element}</React.Fragment>;
 					})}
 			</main>
 		</Suspense>
