@@ -17,7 +17,7 @@ const AllRoutes: React.FC = () => {
 				<Routes>
 					{routes.map(({ path, element }, i) => {
 						return (
-							<Route path={path} element={element}>
+							<Route key={i} path={path} element={element}>
 								{/* <React.Fragment key={i}>{element}</React.Fragment> */}
 							</Route>
 						);

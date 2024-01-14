@@ -16,7 +16,8 @@
 }
 
 .sss {
-  width: 100px !important;
+  width: 400px !important;
   height: 100px !important;
   font-size: 30px;
+  padding: 40px;
 }
