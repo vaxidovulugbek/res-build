@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "App.css";
 import useStore from "Store";
 import { ScrollTop } from "helpers/ScrollToTop";
 import AllRoutes from "Routes";
+import MyComponent from "components/MyComponent";
 
 function App() {
 	const { darkTheme } = useStore();
 	return (
 		<div className={darkTheme ? "App dark-theme" : "App"}>
+			<MyComponent />
 			<AllRoutes />
 			<ScrollTop />
 			<footer></footer>

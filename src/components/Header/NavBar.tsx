@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "ui/Button/Button";
 import "./Header.scss";
 
 const Navbar: React.FC = () => {
@@ -6,9 +7,7 @@ const Navbar: React.FC = () => {
 		<nav className="navbar me-20">
 			<ul className="nav-links flex items-center">
 				<li className="navbar__items">
-					<a className="navbar__link" href="#">
-						Home
-					</a>
+					<Button link="/" className="navbar__link" text="Home" />
 				</li>
 				<li className="navbar__items">
 					<a className="navbar__link" href="#">

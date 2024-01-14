@@ -22,6 +22,7 @@ const Hero = React.createFactory(() => {
 							text="Enter your personal details, choose a template, upload your resume and impress employers."
 						/>
 						<Button
+							link="/resume"
 							className="hero__builder-btn text-white bg-cyan-700 px-5 py-2.5 rounded-lg shadow-xl"
 							text="Build your free resume"
 						/>

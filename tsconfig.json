@@ -1,79 +1,28 @@
 {
-  "compilerOptions": {
-    "baseUrl": "./src",
+	"compilerOptions": {
+		"baseUrl": "./src",
 		"paths": {
 			"components/*": ["./components/*"],
 			"assets/*": ["./assets/*"],
 			"pages/*": ["./pages/*"],
 			"ui/*": ["./ui/*"]
 		},
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
-  },
-  // "include": [
-  //   "src"
-  // ]
-  "include": ["src","src/**/*.ts", "src/**/*.d.ts"]
+		"target": "es5",
+		"lib": ["dom", "dom.iterable", "es2015"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"skipDefaultLibCheck": true,
+		"jsx": "react-jsx"
+	},
+	"include": ["src", "src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts", "src/**/*.d.tsx","modules.d.ts"]
 }
-
-
-// {
-// 	"compilerOptions": {
-// 		"baseUrl": "./src",
-// 		"paths": {
-// 			"application/*": ["./application/*"],
-// 			"assets/*": ["./assets/*"],
-// 			"core/*": ["./core/*"],
-// 			"infrastructure/*": ["./infrastructure/*"],
-// 			"shared/*": ["./shared/*"],
-// 			"ui/*": ["./ui/*"]
-// 		},
-// 		"target": "ES2020",
-// 		"useDefineForClassFields": true,
-// 		"lib": [
-// 			"ES2020",
-// 			"DOM",
-// 			"DOM.Iterable"
-// 		],
-// 		"module": "ESNext",
-// 		"skipLibCheck": true,
-// 		/* Bundler mode */
-// 		"moduleResolution": "bundler",
-// 		"allowImportingTsExtensions": true,
-// 		"resolveJsonModule": true,
-// 		"isolatedModules": true,
-// 		"noEmit": true,
-// 		"jsx": "react-jsx",
-// 		/* Linting */
-// 		"strict": true,
-// 		"noUnusedLocals": false,
-// 		"noUnusedParameters": true,
-// 		"noFallthroughCasesInSwitch": true,
-// 		"allowSyntheticDefaultImports": true
-// 	},
-// 	"include": [
-// 		"src",
-// 	],
-// 	"references": [
-// 		{
-// 			"path": "./tsconfig.node.json"
-// 		}
-// 	]
-// }
