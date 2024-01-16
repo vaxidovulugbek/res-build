@@ -1,0 +1,27 @@
+.filterCards {
+  &__cards-box {
+    width: 100%;
+    // background:red;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px; 
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+      height: 100%;
+      // object-fit: contain;
+    }
+  }
+
+  &__item {
+    background-color: rgba(156,178,220,.1);
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    height: 560px;
+    // border: "1px solid #ccc"
+  }
+}
