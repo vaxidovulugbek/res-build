@@ -12,7 +12,7 @@ interface HeaderProps {
 	src: string;
 }
 
-const Logo: React.FC<HeaderProps & ImageProps> = ({ className, size, src, alt, href }) => {
+export const Logo: React.FC<HeaderProps & ImageProps> = ({ className, size, src, alt, href }) => {
 	const imageClasses = cn(
 		"image",
 		{
@@ -28,5 +28,3 @@ const Logo: React.FC<HeaderProps & ImageProps> = ({ className, size, src, alt, h
 		</a>
 	);
 };
-
-export default Logo;

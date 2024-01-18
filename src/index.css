@@ -8,6 +8,7 @@
   --primary-bright: #fff;
   --text-color: #1b1b1b;
   --title-color:#1b1b1b;
+  --primary-main:#FFB500;
   --white: #fff;
   --black: #000;
 }
@@ -16,6 +17,7 @@
   --body-color: #2B3844;
   --primary-color: #2B3844;
   --primary-bright: #0E7490;
+  --primary-main:#FFB500;
   --text-color: #fff;
   --placeholder-color: #fff;
   --title-color:#fff;

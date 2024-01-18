@@ -4,12 +4,14 @@ import useStore from "Store";
 import { ScrollTop } from "helpers/ScrollToTop";
 import AllRoutes from "Routes";
 import MyComponent from "components/MyComponent";
+import PersonalDetails from "components/PersonalDetails/PersonalDetails";
 
 function App() {
 	const { darkTheme } = useStore();
 	return (
 		<div className={darkTheme ? "App dark-theme" : "App"}>
 			<MyComponent />
+			<PersonalDetails />
 			<AllRoutes />
 			<ScrollTop />
 			<footer></footer>
