@@ -19,7 +19,8 @@ const Header: React.FC = () => {
 							size="sm"
 							src="https://upload.wikimedia.org/wikipedia/commons/1/13/LOGO_OF_LOGO.svg"
 							alt="logo"
-							href="#"
+							href="/"
+							link="/"
 						/>
 						<div className="flex items-center">
 							<Navbar />

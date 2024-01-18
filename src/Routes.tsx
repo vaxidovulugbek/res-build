@@ -4,10 +4,12 @@ import { Route, Routes } from "react-router-dom";
 
 const Home = lazy(() => import("pages/Home/Home"));
 const Resume = lazy(() => import("pages/Resume/Resume"));
+const CreateResume = lazy(() => import("pages/Create-Resume/CreateResume"));
 
 const routes = [
 	{ path: RoutesPath?.home, element: <Home /> },
 	{ path: RoutesPath?.resume, element: <Resume /> },
+	{ path: RoutesPath?.createResume, element: <CreateResume /> },
 ];
 
 const AllRoutes: React.FC = () => {
@@ -24,13 +26,6 @@ const AllRoutes: React.FC = () => {
 					})}
 				</Routes>
 			</React.Fragment>
-			{/* <main>
-				{routes
-					?.filter((routes) => routes.title !== "header")
-					.map(({ path, element, title }, i) => {
-						return <React.Fragment key={i}>{element}</React.Fragment>;
-					})}
-			</main> */}
 		</Suspense>
 	);
 };

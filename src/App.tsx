@@ -11,7 +11,7 @@ function App() {
 	return (
 		<div className={darkTheme ? "App dark-theme" : "App"}>
 			<MyComponent />
-			<PersonalDetails />
+			{/* <PersonalDetails /> */}
 			<AllRoutes />
 			<ScrollTop />
 			<footer></footer>
