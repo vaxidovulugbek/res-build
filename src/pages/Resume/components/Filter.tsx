@@ -48,7 +48,7 @@ const FilteredCards: React.FC = () => {
 					{filteredCards.map((card) => (
 						<div key={card.id} className="filterCards__item">
 							<Button
-								link={RoutesPath?.home}
+								link={RoutesPath?.createResume}
 								children={<img src={card.img} alt="resume template" />}
 							/>
 						</div>

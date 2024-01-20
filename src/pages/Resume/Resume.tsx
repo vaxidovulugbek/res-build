@@ -10,7 +10,6 @@ const Resume: React.FC = () => {
 			<main>
 				<Filter />
 			</main>
-			<p>lorem10000</p>
 		</>
 	);
 };
