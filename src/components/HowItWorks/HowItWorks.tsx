@@ -34,7 +34,7 @@ const HowItWorks: React.FC = () => {
 						return (
 							<li className={`flex p-4 ${el?.id != "1" ? "ms-4" : ""}`} key={el?.id}>
 								<Text
-									className="me-3 text-gray-500 relative border-transparent flex items-center justify-center rounded-full w-12 h-12 flex-grow-0 lg:me-5 "
+									className="me-3 text-gray relative border-transparent flex items-center justify-center rounded-full w-12 h-12 flex-grow-0 lg:me-5 "
 									as="span"
 									text={el?.id}
 									size="xlg"
@@ -42,12 +42,12 @@ const HowItWorks: React.FC = () => {
 								/>
 								<div className="mt-4 lg:mt-0 text-center lg:text-start">
 									<Title
-										className="text-xl mb-3 font-medium text-gray-500 can-hover:group-hover:text-gray-700 transition-colors"
+										className="text-xl text-gray mb-3 font-medium can-hover:group-hover:text-gray-700 transition-colors"
 										as="h4"
 										text={el?.title}
 									/>
 									<Text
-										className="text-lg text-gray-500 can-hover:group-hover:text-gray-700 transition-colors"
+										className="text-lg text-gray can-hover:group-hover:text-gray-700 transition-colors"
 										as="p"
 										text={el?.text}
 									/>

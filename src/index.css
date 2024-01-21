@@ -11,6 +11,7 @@
   --primary-main:#FFB500;
   --white: #fff;
   --black: #000;
+  --text-gray: #828baa;
 }
 
 .dark-theme {
@@ -21,6 +22,7 @@
   --text-color: #fff;
   --placeholder-color: #fff;
   --title-color:#fff;
+  --text-gray:#ffffff;
 }
 
 body {

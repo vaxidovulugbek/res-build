@@ -1,3 +1,21 @@
 .editor {
-  
+  &__title {
+    font-size: 20px !important;
+    line-height: 28px;
+    font-weight: 400;
+  }
+
+  &__title ~ p {
+    font-weight: 400;
+    font-size: 14px !important;
+    line-height: 22px;
+  }
+
+  &__form {
+    border-top: 3px solid #2a64ad;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,.05);
+    padding: 10px 25px;
+  }
 }

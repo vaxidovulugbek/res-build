@@ -1,4 +1,6 @@
-export { Button } from "./Button/Button";
-export { Logo } from "./Logo/Logo";
-export { Text } from "./Text/Text";
-export { Title } from "./Title/Title";
+import { Button } from "./Button/Button";
+import { Logo } from "./Logo/Logo";
+import { Text } from "./Text/Text";
+import { Title } from "./Title/Title";
+
+export { Button, Logo, Text, Title };
