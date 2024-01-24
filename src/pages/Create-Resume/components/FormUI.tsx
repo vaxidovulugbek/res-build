@@ -29,7 +29,7 @@ const FormUI: React.FC = () => {
 							/>
 						</div>
 						<div className="xl:mt-5 md:mt-3 sm:mt-2 min-[320px]:mt-2 editor__form">
-							<div>
+							<div className="min-[320px]:mb-3 xl:mb-5">
 								<Title
 									className="editor__title title-color"
 									as="h1"

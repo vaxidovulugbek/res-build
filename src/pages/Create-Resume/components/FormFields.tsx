@@ -1,39 +1,109 @@
-// import { Button, Col, Row } from "antd";
-// import Fields from "components/Fields";
-// // import { Fields } from "components";
-// import { Field, Formik } from "formik";
-// import { get } from "lodash";
-
-// export default function FormFields({ isUpdate = false }) {
-// 	return (
-// 		<Formik>
-// 			<Row gutter={[16, 16]} className="banner_form">
-// 				<Col span={12}>
-// 					<Field name="url" label="URL" placeholder="URL" component={Fields.InputField} />
-// 				</Col>
-// 			</Row>
-// 		</Formik>
-// 	);
-// }
-
-import { Button, Col, Row } from "antd";
+import { Button, Col, Flex, Row } from "antd";
 import Fields from "components/Fields";
 import { Field, Formik } from "formik";
 import { get } from "lodash";
+import { useEffect, useState } from "react";
+import * as Yup from "yup";
 
-export default function FormFields({ isUpdate = false }) {
+export default function FormFields() {
+	const [name, setName] = useState(null);
+	const [surName, setSurName] = useState(null);
+	// useEffect(() => {
+	// 	console.log(name);
+	// 	console.log(surName);
+	// }, [name, surName]);
+
+	const validationSchema = Yup.object().shape({
+		Email_Address: Yup.string()
+			.email("Invalid email address")
+			.matches(/\b[A-Za-z0-9._%+-]+@gmail\.com\b/, "Please enter a valid Gmail address"),
+		// Boshqa maydonlarga validatsiya qoidalarni ham qo'shishingiz mumkin
+		// Masalan:
+		// First_Name: Yup.string().required('Required'),
+		// Last_Name: Yup.string().required('Required'),
+		// ...
+	});
+
 	return (
 		<Formik
 			initialValues={{ url: "" }}
+			validationSchema={validationSchema}
 			onSubmit={(values, actions) => {
 				// Sizning formangizni yuborish loyixasi
+				console.log(validationSchema);
+				console.log(values);
+				console.log(actions);
 			}}
 		>
-			<Row gutter={[16, 16]} className="banner_form">
-				<Col span={12}>
-					<Field name="url" label="URL" placeholder="URL" component={Fields.InputField} />
-				</Col>
-			</Row>
+			{({ handleSubmit }) => (
+				<form onSubmit={handleSubmit}>
+					<Row gutter={[16, 16]}>
+						<Col span={12}>
+							<Field
+								name="First_Name"
+								label="First Name"
+								placeholder="First Name"
+								component={Fields.InputField}
+								onChange={setName}
+							/>
+						</Col>
+						<Col span={12}>
+							<Field
+								name="Last_Name"
+								label="Last Name"
+								placeholder="Last Name"
+								component={Fields.InputField}
+								onChange={setSurName}
+							/>
+						</Col>
+						<Col span={12}>
+							<Field
+								name="Job_Title"
+								label="Job Title"
+								placeholder="Job Title"
+								component={Fields.InputField}
+							/>
+						</Col>
+						<Col span={12}>
+							<Field
+								name="Phone"
+								label="Phone"
+								placeholder="Phone"
+								component={Fields.InputField}
+							/>
+						</Col>
+						<Col span={12}>
+							<Field
+								name="Email_Address"
+								label="Email Address"
+								placeholder="Email Address"
+								type="email"
+								component={Fields.InputField}
+							/>
+						</Col>
+						<Col span={12}>
+							<Field
+								name="Address"
+								label="Address"
+								placeholder="Address"
+								component={Fields.InputField}
+							/>
+						</Col>
+						<Col span={24} className="modal-footer">
+							<Button
+								style={{ background: "orange", borderColor: "orange" }}
+								loading={false}
+								htmlType="submit"
+								type="primary"
+								formAction="submit"
+								formTarget="category"
+							>
+								Создать
+							</Button>
+						</Col>
+					</Row>
+				</form>
+			)}
 		</Formik>
 	);
 }

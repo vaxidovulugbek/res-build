@@ -1,7 +1,7 @@
-import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 import { get } from "lodash";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import "./styles.scss";
 
 export default function InputField({
 	label,
@@ -21,15 +21,18 @@ export default function InputField({
 }) {
 	const hasError = get(form.touched, field.name) && get(form.errors, field.name);
 	const [inputType, setType] = useState(type);
+	useEffect(() => {
+		console.log(hasError);
+	}, [form]);
 
 	return (
 		<div className={`field_input ${hasError ? "error" : ""}`}>
-			{label ? <label>{label}</label> : null}
+			{label ? <label className="field_label text-xs">{label}</label> : null}
 
 			<div className="field_input--wrapper">
 				<Input
 					type={inputType}
-					defaultValue={get(form.values, field.name)}
+					// defaultValue={get(form.values, field.name)}
 					placeholder={placeholder}
 					onChange={(event) => {
 						form.setFieldValue(field.name, event.target.value);
@@ -37,18 +40,6 @@ export default function InputField({
 					}}
 					{...props}
 				/>
-				<span
-					className="password_view"
-					onClick={() => setType(inputType === "password" ? "text" : "password")}
-				>
-					{type === "password" ? (
-						inputType === "password" ? (
-							<EyeOutlined />
-						) : (
-							<EyeInvisibleOutlined />
-						)
-					) : null}
-				</span>
 			</div>
 
 			{hasError ? (
