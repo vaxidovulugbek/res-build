@@ -10,6 +10,7 @@ export default function InputField({
 	placeholder,
 	type = "text",
 	onChange,
+	touched,
 	...props
 }: {
 	label: string;
@@ -17,12 +18,13 @@ export default function InputField({
 	form: any;
 	field: any;
 	placeholder: string;
+	touched: any;
 	onChange: any;
 }) {
 	const hasError = get(form.touched, field.name) && get(form.errors, field.name);
 	const [inputType, setType] = useState(type);
 	useEffect(() => {
-		console.log(hasError);
+		console.log(form);
 	}, [form]);
 
 	return (

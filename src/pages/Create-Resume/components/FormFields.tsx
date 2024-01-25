@@ -26,20 +26,26 @@ export default function FormFields() {
 
 	return (
 		<Formik
-			initialValues={{ url: "" }}
+			initialValues={{
+				First_Name: "",
+				Last_Name: "",
+				Email_Address: "",
+			}}
 			validationSchema={validationSchema}
 			onSubmit={(values, actions) => {
 				// Sizning formangizni yuborish loyixasi
-				console.log(validationSchema);
-				console.log(values);
-				console.log(actions);
+				// console.log(validationSchema);
+				// console.log(values);
+				// console.log(actions);
 			}}
 		>
-			{({ handleSubmit }) => (
+			{({ handleSubmit, errors, touched }) => (
 				<form onSubmit={handleSubmit}>
 					<Row gutter={[16, 16]}>
 						<Col span={12}>
 							<Field
+								errors={errors}
+								touched={touched}
 								name="First_Name"
 								label="First Name"
 								placeholder="First Name"
@@ -74,6 +80,8 @@ export default function FormFields() {
 						</Col>
 						<Col span={12}>
 							<Field
+								errors={errors}
+								touched={touched}
 								name="Email_Address"
 								label="Email Address"
 								placeholder="Email Address"
