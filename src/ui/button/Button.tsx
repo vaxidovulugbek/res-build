@@ -8,6 +8,7 @@ import { ButtonProps } from "./Button.props";
 import "./Button.css";
 
 export const Button: React.FC<ButtonProps> = ({
+	id,
 	text,
 	isDisabled = false,
 	isLoading = false,
@@ -29,9 +30,8 @@ export const Button: React.FC<ButtonProps> = ({
 		},
 		className
 	);
-
 	return isString(link) ? (
-		<Link to={link} className={classNames}>
+		<Link to={id ? `${link}/${id}` : link} className={classNames}>
 			{text}
 			{children}
 

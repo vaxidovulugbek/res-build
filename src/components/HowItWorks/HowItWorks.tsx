@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Text } from "ui/Text/Text";
 import { Title } from "ui/Title/Title";
+import Card from "./Card";
 
 const HowItWorks: React.FC = () => {
 	const data = [
@@ -20,6 +21,7 @@ const HowItWorks: React.FC = () => {
 			text: "Quickly download your resume and edit it at any time.",
 		},
 	];
+
 	return (
 		<section className="section">
 			<div className="container">
@@ -32,27 +34,30 @@ const HowItWorks: React.FC = () => {
 				<ul className="flex items-center juntify-between">
 					{data.map((el, i) => {
 						return (
-							<li className={`flex p-4 ${el?.id != "1" ? "ms-4" : ""}`} key={el?.id}>
-								<Text
-									className="me-3 text-gray relative border-transparent flex items-center justify-center rounded-full w-12 h-12 flex-grow-0 lg:me-5 "
-									as="span"
-									text={el?.id}
-									size="xlg"
-									weight="medium"
-								/>
-								<div className="mt-4 lg:mt-0 text-center lg:text-start">
-									<Title
-										className="text-xl text-gray mb-3 font-medium can-hover:group-hover:text-gray-700 transition-colors"
-										as="h4"
-										text={el?.title}
-									/>
-									<Text
-										className="text-lg text-gray can-hover:group-hover:text-gray-700 transition-colors"
-										as="p"
-										text={el?.text}
-									/>
-								</div>
-							</li>
+							<div key={el.id}>
+								<Card {...el} />
+							</div>
+							// <li className={`flex p-4 ${el?.id != "1" ? "ms-4" : ""}`} key={el?.id}>
+							// 	<Text
+							// 		className="me-3 text-gray relative border-transparent flex items-center justify-center rounded-full w-12 h-12 flex-grow-0 lg:me-5 "
+							// 		as="span"
+							// 		text={el?.id}
+							// 		size="xlg"
+							// 		weight="medium"
+							// 	/>
+							// 	<div className="mt-4 lg:mt-0 text-center lg:text-start">
+							// 		<Title
+							// 			className="text-xl text-gray mb-3 font-medium can-hover:group-hover:text-gray-700 transition-colors"
+							// 			as="h4"
+							// 			text={el?.title}
+							// 		/>
+							// 		<Text
+							// 			className="text-lg text-gray can-hover:group-hover:text-gray-700 transition-colors"
+							// 			as="p"
+							// 			text={el?.text}
+							// 		/>
+							// 	</div>
+							// </li>
 						);
 					})}
 				</ul>

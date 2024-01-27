@@ -8,4 +8,5 @@ export type ButtonProps = {
 	isLoading?: boolean;
 	roundness?: "half" | "full" | false;
 	link?: string;
+	id?: any;
 } & Omit<React.ComponentPropsWithoutRef<"button">, "disabled">;

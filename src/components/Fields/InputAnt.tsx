@@ -23,9 +23,9 @@ export default function InputField({
 }) {
 	const hasError = get(form.touched, field.name) && get(form.errors, field.name);
 	const [inputType, setType] = useState(type);
-	useEffect(() => {
-		console.log(form);
-	}, [form]);
+	// useEffect(() => {
+	// 	console.log(form);
+	// }, [form]);
 
 	return (
 		<div className={`field_input ${hasError ? "error" : ""}`}>
