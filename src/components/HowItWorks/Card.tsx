@@ -21,7 +21,7 @@ const Card: React.FC<CardProps> = ({ id, title, text }) => {
 				ease: "power3.out",
 			});
 		}
-	}, []);
+	}, [cardRef.current]);
 
 	return (
 		<li key={id} ref={cardRef} className={`flex p-4 ${id !== "1" ? "ms-4" : ""}`}>

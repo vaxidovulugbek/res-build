@@ -70,9 +70,9 @@ const ModalResumes: React.FC<ModalResumesProps> = ({ modal, setModal, placement 
 	const dispatch = useDispatch();
 	const resumeTemplate = useSelector((state: any) => state.resumeTemplate);
 
-	useEffect(() => {
-		console.log(resumeTemplate);
-	}, [resumeTemplate]);
+	// useEffect(() => {
+	// 	console.log(resumeTemplate);
+	// }, [resumeTemplate]);
 
 	if (open !== "resumeTamplates") return <></>;
 
