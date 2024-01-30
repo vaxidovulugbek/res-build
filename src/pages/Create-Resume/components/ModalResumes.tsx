@@ -54,7 +54,7 @@
 // export default ModalResumes;
 
 import DrawerModal from "./Modal";
-import { setResumeTemplate } from "../../../redux/actions";
+import { ResTamplate } from "../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -68,12 +68,11 @@ const ModalResumes: React.FC<ModalResumesProps> = ({ modal, setModal, placement 
 	const { open } = modal;
 
 	const dispatch = useDispatch();
-	const resumeTemplate = useSelector((state: any) => state.resumeTemplate);
 
 	if (open !== "resumeTamplates") return <></>;
 
 	const handleButtonClick = (num: number) => {
-		dispatch(setResumeTemplate(num));
+		dispatch(ResTamplate.setResumeTemplate(num));
 	};
 
 	return (

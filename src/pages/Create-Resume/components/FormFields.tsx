@@ -4,7 +4,7 @@ import { Field, Formik } from "formik";
 import { get } from "lodash";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setResumeName } from "../../../redux/actions";
+import { ResInfo } from "../../../redux/actions";
 import * as Yup from "yup";
 
 export default function FormFields() {
@@ -15,7 +15,7 @@ export default function FormFields() {
 	const resumeName = useSelector((state: any) => state.resumeName);
 	useEffect(() => {
 		if (name !== null) {
-			dispatch(setResumeName(name));
+			dispatch(ResInfo?.setResumeName(name));
 		}
 		console.log(resumeName);
 	}, [name, dispatch]);
