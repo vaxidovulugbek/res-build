@@ -3,15 +3,22 @@ import Fields from "components/Fields";
 import { Field, Formik } from "formik";
 import { get } from "lodash";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setResumeName } from "../../../redux/actions";
 import * as Yup from "yup";
 
 export default function FormFields() {
 	const [name, setName] = useState(null);
 	const [surName, setSurName] = useState(null);
-	// useEffect(() => {
-	// 	console.log(name);
-	// 	console.log(surName);
-	// }, [name, surName]);
+
+	const dispatch = useDispatch();
+	const resumeName = useSelector((state: any) => state.resumeName);
+	useEffect(() => {
+		if (name !== null) {
+			dispatch(setResumeName(name));
+		}
+		console.log(resumeName);
+	}, [name, dispatch]);
 
 	const validationSchema = Yup.object().shape({
 		Email_Address: Yup.string()
@@ -41,6 +48,7 @@ export default function FormFields() {
 		>
 			{({ handleSubmit, errors, touched }) => (
 				<form onSubmit={handleSubmit}>
+					<div>{resumeName} jjjjj</div>
 					<Row gutter={[16, 16]}>
 						<Col span={12}>
 							<Field
@@ -50,6 +58,7 @@ export default function FormFields() {
 								label="First Name"
 								placeholder="First Name"
 								component={Fields.InputField}
+								// onChange={(e: any) => changeName(e.target.value)}
 								onChange={setName}
 							/>
 						</Col>

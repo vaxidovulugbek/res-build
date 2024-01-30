@@ -1,11 +1,23 @@
+import { isString } from "lodash";
 import React from "react";
+import { useSelector } from "react-redux";
 
 export const Res1: React.FC = () => {
+	const resumeName = useSelector((state: any) => state.resumeName);
 	return (
 		<>
 			<div className="main container max-w-[700px] mx-auto">
 				<h1 className="text-center uppercase tracking-[0.25em] text-4xl text-gray-600 font-medium mt-5">
-					jonathan patterson
+					{isString(resumeName)
+						? resumeName.length < 1
+							? "JOHN"
+							: resumeName.trim()
+						: "JOHN"}
+					{isString(resumeName)
+						? resumeName.length < 1
+							? "JOHN"
+							: resumeName.trim()
+						: "JOHN"}
 				</h1>
 				<h5 className="text-center uppercase tracking-[0.25em] text-sm text-gray-600 mt-2">
 					graphic designer
