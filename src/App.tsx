@@ -3,8 +3,9 @@ import "App.css";
 import useStore from "Store";
 import { ScrollTop } from "helpers/ScrollToTop";
 import AllRoutes from "Routes";
-import MyComponent from "components/MyComponent";
-import { DatePicker } from "antd";
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 function App() {
 	const { darkTheme } = useStore();

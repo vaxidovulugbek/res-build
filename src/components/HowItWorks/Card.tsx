@@ -53,17 +53,11 @@ interface CardProps {
 	id: string;
 	title: string;
 	text: string;
-	isVisible: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ id, title, text, isVisible }) => {
-	const animationProps = useSpring({
-		opacity: isVisible ? 1 : 0,
-		transform: isVisible ? "translateY(0)" : "translateY(100%)",
-	});
-
+const Card: React.FC<CardProps> = ({ id, title, text }) => {
 	return (
-		<animated.div style={animationProps} className={`flex p-2 ${id !== "1" ? "ms-2" : ""}`}>
+		<div className={`flex p-2 ${id !== "1" ? "ms-2" : ""}`}>
 			<Text
 				className="me-3 text-gray relative border-transparent flex items-center justify-center rounded-full w-12 h-12 flex-grow-0 lg:me-5 "
 				as="span"
@@ -83,7 +77,7 @@ const Card: React.FC<CardProps> = ({ id, title, text, isVisible }) => {
 					text={text}
 				/>
 			</div>
-		</animated.div>
+		</div>
 	);
 };
 

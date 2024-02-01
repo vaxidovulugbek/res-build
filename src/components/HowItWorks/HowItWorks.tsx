@@ -162,26 +162,6 @@ const HowItWorks: React.FC = () => {
 		},
 	];
 
-	const [isVisible, setIsVisible] = useState<boolean>(false);
-
-	const handleScroll = () => {
-		const scrollPosition = window.scrollY;
-		setIsVisible(scrollPosition > 300);
-	};
-
-	useEffect(() => {
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
-
-	const trail = useTrail(data.length, {
-		opacity: isVisible ? 1 : 0,
-		transform: isVisible ? "translateY(0)" : "translateY(100%)",
-		config: { mass: 1, tension: 400, friction: 50 },
-	});
-
 	return (
 		<section className="section">
 			<div className="container">
@@ -192,15 +172,15 @@ const HowItWorks: React.FC = () => {
 					text="How it works?"
 				/>
 				<ul className="flex items-center juntify-between">
-					{trail.map((props, index) => (
-						<animated.li key={data[index].id} style={props}>
-							<Card
-								id={data[index].id}
-								title={data[index].title}
-								text={data[index].text}
-								isVisible={isVisible}
-							/>
-						</animated.li>
+					{data.map((props, index) => (
+						<li
+							key={props.id}
+							data-aos="fade-up"
+							data-aos-anchor-placement="center-center"
+							data-aos-duration={index * 500}
+						>
+							<Card id={props.id} title={props.title} text={props.text} />
+						</li>
 					))}
 				</ul>
 			</div>
