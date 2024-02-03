@@ -129,9 +129,6 @@ import "./Faq.scss";
 const Faq: React.FC = () => {
 	return (
 		<section className="section">
-			<h1 data-aos="fade-up" data-aos-anchor-placement="center-center">
-				Lorem ipsum dolor sit amet.
-			</h1>
 			<div className="container">
 				<Title
 					className="text-center title-color font-header text-3xl md:text-5xl mb-8"

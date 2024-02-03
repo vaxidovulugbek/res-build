@@ -1,3 +1,4 @@
+import Loading from "components/Loading/Loading";
 import RoutesPath from "helpers/RoutesPath";
 import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -14,7 +15,7 @@ const routes = [
 
 const AllRoutes: React.FC = () => {
 	return (
-		<Suspense fallback={<p>Loading...</p>}>
+		<Suspense fallback={<Loading />}>
 			<React.Fragment>
 				<Routes>
 					{routes.map(({ path, element }, i) => {

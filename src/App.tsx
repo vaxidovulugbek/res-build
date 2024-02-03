@@ -5,6 +5,7 @@ import { ScrollTop } from "helpers/ScrollToTop";
 import AllRoutes from "Routes";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Loading from "components/Loading/Loading";
 AOS.init();
 
 function App() {

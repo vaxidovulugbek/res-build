@@ -47,7 +47,6 @@
 import React from "react";
 import { Text } from "ui/Text/Text";
 import { Title } from "ui/Title/Title";
-import { useSpring, animated } from "react-spring";
 
 interface CardProps {
 	id: string;

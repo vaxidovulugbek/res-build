@@ -139,7 +139,6 @@
 // export default HowItWorks;
 
 import React, { useState, useEffect } from "react";
-import { useTrail, animated } from "react-spring";
 import Card from "./Card";
 import { Title } from "ui/Title/Title";
 
