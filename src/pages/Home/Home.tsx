@@ -40,16 +40,18 @@ import Faq from "components/FAQ/Faq";
 import Header from "components/Header/Header";
 import Hero from "components/Hero/Hero";
 import HowItWorks from "components/HowItWorks/HowItWorks";
+import Animation from "components/Making_Resume/Making_Resume";
 import React from "react";
 
 const Home: React.FC = () => {
 	return (
 		<>
-			<Header />
+			{/* <Header /> */}
 			<main>
-				<Hero />
-				<HowItWorks />
-				<Faq />
+				{/* <Hero />
+				<HowItWorks /> */}
+				<Animation />
+				{/* <Faq /> */}
 			</main>
 		</>
 	);

@@ -135,7 +135,7 @@ const Faq: React.FC = () => {
 					as="h2"
 					text="FAQ"
 				/>
-				<div className="p-4 rounded-lg">
+				<div className="rounded-lg">
 					<Accordion
 						data-aos="fade-up"
 						data-aos-anchor-placement="center-center"
