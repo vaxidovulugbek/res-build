@@ -46,12 +46,12 @@ import React from "react";
 const Home: React.FC = () => {
 	return (
 		<>
-			{/* <Header /> */}
+			<Header />
 			<main>
-				{/* <Hero />
-				<HowItWorks /> */}
+				<Hero />
+				<HowItWorks />
 				<Animation />
-				{/* <Faq /> */}
+				<Faq />
 			</main>
 		</>
 	);
