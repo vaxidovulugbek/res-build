@@ -41,6 +41,7 @@ import Header from "components/Header/Header";
 import Hero from "components/Hero/Hero";
 import HowItWorks from "components/HowItWorks/HowItWorks";
 import Animation from "components/Making_Resume/Making_Resume";
+import PopularProducts from "components/PopularProducts/PopularProducts";
 import React from "react";
 
 const Home: React.FC = () => {
@@ -49,6 +50,7 @@ const Home: React.FC = () => {
 			<Header />
 			<main>
 				<Hero />
+				<PopularProducts />
 				<HowItWorks />
 				<Animation />
 				<Faq />

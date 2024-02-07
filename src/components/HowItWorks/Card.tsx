@@ -47,6 +47,7 @@
 import React from "react";
 import { Text } from "ui/Text/Text";
 import { Title } from "ui/Title/Title";
+import "./HowItWorks.scss";
 
 interface CardProps {
 	id: string;
@@ -56,9 +57,13 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ id, title, text }) => {
 	return (
-		<div className={`flex p-2 ${id !== "1" ? "ms-2" : ""}`}>
+		<div
+			className={`flex p-6 card-shadow rounded-[26px] min-h-[150px] ${
+				id !== "1" ? "ms-7" : ""
+			}`}
+		>
 			<Text
-				className="me-3 text-gray relative border-transparent flex items-center justify-center rounded-full w-12 h-12 flex-grow-0 lg:me-5 "
+				className="text-gray relative border-transparent flex justify-center rounded-full w-12 h-12 flex-grow-0 lg:me-2"
 				as="span"
 				text={id}
 				size="xlg"
@@ -74,6 +79,7 @@ const Card: React.FC<CardProps> = ({ id, title, text }) => {
 					className="text-lg text-gray can-hover:group-hover:text-gray-700 transition-colors"
 					as="p"
 					text={text}
+					size="md"
 				/>
 			</div>
 		</div>

@@ -170,13 +170,14 @@ const HowItWorks: React.FC = () => {
 					as="h2"
 					text="How it works?"
 				/>
-				<ul className="flex items-center juntify-between">
+				<ul className="flex items-center justify-between">
 					{data.map((props, index) => (
 						<li
 							key={props.id}
 							data-aos="fade-up"
 							data-aos-anchor-placement="center-center"
 							data-aos-duration={index * 500}
+							className="w-4/12"
 						>
 							<Card id={props.id} title={props.title} text={props.text} />
 						</li>

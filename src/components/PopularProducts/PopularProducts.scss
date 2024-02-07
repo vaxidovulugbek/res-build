@@ -1,0 +1,52 @@
+.slick-slider {
+  &__card {
+    padding: 4px 14px;
+  }
+
+  &__card-content {
+    background-color: #fff;
+    height: 200px;
+    height: 350px;
+    box-shadow: 0px -1px 7px rgba(0,0,0,.05), 2px 2px 6px rgba(0,0,0,.05);
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.slick-slider button {
+  // background-color: cornflowerblue;
+  width: 50px;
+  height: 50px;
+}
+
+.slick-prev {
+  left: -100px !important;
+}
+
+.slick-next {
+  right: -100px !important;
+}
+
+.slick-prev:before {
+  content: url('../../assets/imgs/icons/arrow-left-3099.svg') !important;
+  display: inline-block !important;
+  preserveAspectRatio: none !important;
+}
+
+.slick-next:before {
+  content: url('../../assets/imgs/icons/arrow-right-3098.svg') !important;
+  display: inline-block !important;
+  preserveAspectRatio: none !important;
+}
+
+
+.slick-slider button:hover {
+  background-color: transparent;
+}
+
+.slick-slider button:focus  {
+  background-color: transparent;
+}
