@@ -67,7 +67,11 @@ const Making_Resume: React.FC = () => {
 								text="Dont let your resume hold you back from getting the job you want. Our builder software helps you create a resume that highlights your qualifications and lands you more interviews"
 							/>
 						</div>
-						<Button link={RoutesPath.resume} text="Try Our Builder" />
+						<Button
+							className="hover:underline decoration-1"
+							link={RoutesPath.resume}
+							text="Try Our Builder"
+						/>
 					</div>
 					<div className="mres__resumes flex overflow-hidden">
 						<ResumesAnimation className="mt-0" num="1" />

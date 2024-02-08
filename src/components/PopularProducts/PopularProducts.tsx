@@ -3,6 +3,7 @@ import "./PopularProducts.scss";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Text, Title } from "ui";
 const PopularProducts: React.FC = () => {
 	const cards = [
 		{
@@ -31,6 +32,25 @@ const PopularProducts: React.FC = () => {
 	return (
 		<section className="section">
 			<div className="container">
+				<Text
+					className="uppercase text-center flex justify-center mb-1 text-gray"
+					as="span"
+					size="sm"
+					text="BUILD YOUR RESUME"
+				/>
+				<Title
+					className="text-weight_medium text-center title-color font-header text-3xl md:text-5xl mb-4"
+					weight="semi-bold"
+					as="h2"
+					text="Popular products"
+				/>
+				<Text
+					className="uppercase text-balance text-center flex justify-center mb-6 text-gray"
+					as="span"
+					size="sm"
+					text="Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalar 
+					elementum tempus hac tellus libero accumsan. "
+				/>
 				<div className="slick-slider">
 					<Slider {...settings}>
 						{cards.map((card, index) => (

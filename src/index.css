@@ -4,8 +4,8 @@
 
 :root {
   --body-color:#fff;
-  --primary-color: #ffffff;
-  --primary-bright: #fff;
+  --primary-color: #164863;
+  --primary-bright: #427D9D;
   --text-color: #1b1b1b;
   --title-color:#1b1b1b;
   --primary-main:#FFB500;
@@ -16,8 +16,8 @@
 
 .dark-theme {
   --body-color: #2B3844;
-  --primary-color: #2B3844;
-  --primary-bright: #0E7490;
+  --primary-color: #164863;
+  --primary-bright: #427D9D;
   --primary-main:#FFB500;
   --text-color: #fff;
   --placeholder-color: #fff;

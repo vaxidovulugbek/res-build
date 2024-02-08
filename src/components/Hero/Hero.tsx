@@ -23,7 +23,7 @@ const Hero = React.createFactory(() => {
 						/>
 						<Button
 							link="/resume"
-							className="hero__builder-btn text-white bg-cyan-700 px-5 py-2.5 rounded-lg shadow-xl"
+							className="hero__builder-btn text-white bg-primary inline-block px-6 py-3 rounded-3xl shadow-xl"
 							text="Build your free resume"
 						/>
 					</div>
