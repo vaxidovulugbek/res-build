@@ -7,9 +7,6 @@ const Navbar: React.FC = () => {
 		<nav className="navbar me-20">
 			<ul className="nav-links flex items-center">
 				<li className="navbar__items">
-					<Button link="/" className="navbar__link" text="Home" />
-				</li>
-				<li className="navbar__items">
 					<a className="navbar__link" href="#">
 						Resume Templates
 					</a>

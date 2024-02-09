@@ -9,6 +9,7 @@ import useStore from "Store";
 import RoutesPath from "helpers/RoutesPath";
 import SigninPage from "components/RegisterPage/SigninPage";
 import LoginPage from "components/RegisterPage/LoginPage";
+import lng from "../../assets/imgs/icons/language.svg";
 import {
 	Modal,
 	ModalBody,
@@ -41,6 +42,11 @@ const Header: React.FC = () => {
 		closeSecondModal();
 	};
 
+	const OverlayOne = () => (
+		<ModalOverlay bg="blackAlpha.100" backdropFilter="blur(5px) hue-rotate(0deg)" />
+	);
+	const [overlay, setOverlay] = React.useState(<OverlayOne />);
+
 	return (
 		<>
 			<header className="header">
@@ -71,6 +77,12 @@ const Header: React.FC = () => {
 									link={RoutesPath?.resume}
 								/>
 							</div>
+							<Button
+								className="flex items-center flex-row-reverse ms-5 capitalize"
+								text="uz"
+								size="lg"
+								children={<img className="me-1" src={lng} alt="" />}
+							/>
 
 							{/* <div className="flex item-center ms-4">
 								{darkTheme ? (
@@ -89,12 +101,13 @@ const Header: React.FC = () => {
 			</header>
 
 			<Modal onClose={closeFirstModal} isOpen={isFirstModalOpen} isCentered>
+				{/* {overlay} */}
 				<ModalOverlay />
 				<ModalContent>
-					<ModalHeader>First Modal Title</ModalHeader>
+					<ModalHeader>Login</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
-						<SigninPage onClose={closeFirstModal} onNext={handleFirstModalNext} />
+						<LoginPage onClose={handleSecondModalClose} onNext={handleFirstModalNext} />
 					</ModalBody>
 				</ModalContent>
 			</Modal>
@@ -102,10 +115,10 @@ const Header: React.FC = () => {
 			<Modal onClose={closeSecondModal} isOpen={isSecondModalOpen} isCentered>
 				<ModalOverlay />
 				<ModalContent>
-					<ModalHeader>Second Modal Title</ModalHeader>
+					<ModalHeader>Signin</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
-						<LoginPage onClose={handleSecondModalClose} />
+						<SigninPage onClose={closeFirstModal} />
 					</ModalBody>
 				</ModalContent>
 			</Modal>
