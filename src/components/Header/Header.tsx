@@ -2,29 +2,45 @@ import React, { useState } from "react";
 import { Button } from "ui/Button/Button";
 import { Logo } from "ui/Logo/Logo";
 import { IoSunny, IoMoon } from "react-icons/io5";
-// import logoimg from "../../assets/imgs/icons/logo.svg";
 import { GoLock } from "react-icons/go";
 import "./Header.scss";
 import Navbar from "./NavBar";
 import useStore from "Store";
 import RoutesPath from "helpers/RoutesPath";
-import { Modal } from "antd";
 import SigninPage from "components/RegisterPage/SigninPage";
 import LoginPage from "components/RegisterPage/LoginPage";
+import {
+	Modal,
+	ModalBody,
+	ModalCloseButton,
+	ModalContent,
+	ModalHeader,
+	ModalOverlay,
+	useDisclosure,
+} from "@chakra-ui/react";
 
 const Header: React.FC = () => {
 	const { darkTheme, setDarkTheme } = useStore();
-	const [firstModalVisible, setFirstModalVisible] = useState(false);
-	const [secondModalVisible, setSecondModalVisible] = useState(false);
+	const {
+		isOpen: isFirstModalOpen,
+		onOpen: openFirstModal,
+		onClose: closeFirstModal,
+	} = useDisclosure();
+	const {
+		isOpen: isSecondModalOpen,
+		onOpen: openSecondModal,
+		onClose: closeSecondModal,
+	} = useDisclosure();
 
 	const handleFirstModalNext = () => {
-		setFirstModalVisible(false);
-		setSecondModalVisible(true);
+		closeFirstModal();
+		openSecondModal();
 	};
 
 	const handleSecondModalClose = () => {
-		setSecondModalVisible(false);
+		closeSecondModal();
 	};
+
 	return (
 		<>
 			<header className="header">
@@ -46,7 +62,7 @@ const Header: React.FC = () => {
 										className="text-gray flex items-center flex-row-reverse ms-2"
 										text="Login"
 										children={<GoLock className="me-2" />}
-										onClick={() => setFirstModalVisible(true)}
+										onClick={openFirstModal}
 									/>
 								</div>
 								<Button
@@ -55,6 +71,7 @@ const Header: React.FC = () => {
 									link={RoutesPath?.resume}
 								/>
 							</div>
+
 							{/* <div className="flex item-center ms-4">
 								{darkTheme ? (
 									<button onClick={() => setDarkTheme(!darkTheme)}>
@@ -71,27 +88,26 @@ const Header: React.FC = () => {
 				</div>
 			</header>
 
-			<Modal
-				visible={firstModalVisible}
-				onCancel={() => setFirstModalVisible(false)}
-				footer={null}
-				centered
-				// transitionName="no-animation" // Agar animatsiya ishlatmaslikni istasangiz, "no-animation" deb nomlang
-				// maskTransitionName="no-animation"
-			>
-				<SigninPage
-					onClose={() => setFirstModalVisible(false)}
-					onNext={handleFirstModalNext}
-				/>
+			<Modal onClose={closeFirstModal} isOpen={isFirstModalOpen} isCentered>
+				<ModalOverlay />
+				<ModalContent>
+					<ModalHeader>First Modal Title</ModalHeader>
+					<ModalCloseButton />
+					<ModalBody>
+						<SigninPage onClose={closeFirstModal} onNext={handleFirstModalNext} />
+					</ModalBody>
+				</ModalContent>
 			</Modal>
 
-			<Modal
-				visible={secondModalVisible}
-				onCancel={() => setSecondModalVisible(false)}
-				footer={null}
-				centered
-			>
-				<LoginPage onClose={handleSecondModalClose} />
+			<Modal onClose={closeSecondModal} isOpen={isSecondModalOpen} isCentered>
+				<ModalOverlay />
+				<ModalContent>
+					<ModalHeader>Second Modal Title</ModalHeader>
+					<ModalCloseButton />
+					<ModalBody>
+						<LoginPage onClose={handleSecondModalClose} />
+					</ModalBody>
+				</ModalContent>
 			</Modal>
 		</>
 	);

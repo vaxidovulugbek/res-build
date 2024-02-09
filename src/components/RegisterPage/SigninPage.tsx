@@ -1,11 +1,10 @@
 import React from "react";
 
-interface SignInPageProps {
+interface SigninPageProps {
 	onClose: () => void;
 	onNext: () => void;
 }
-
-const SigninPage: React.FC<SignInPageProps> = ({ onClose, onNext }) => {
+const SigninPage: React.FC<SigninPageProps> = ({ onClose, onNext }) => {
 	return (
 		<div>
 			SignInPage <button onClick={onNext}>Next</button>
