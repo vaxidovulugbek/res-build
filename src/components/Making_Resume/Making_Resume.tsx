@@ -8,7 +8,12 @@ const Making_Resume: React.FC = () => {
 	return (
 		<section className="section">
 			<div className="container mt-16">
-				<div className="mres h-[400px] flex rounded-[40px] shadow-white">
+				<div
+					data-aos="fade-up"
+					data-aos-anchor-placement="center-center"
+					data-aos-duration={500}
+					className="mres h-[400px] flex rounded-[40px] shadow-white"
+				>
 					<svg
 						className="mres__l-img"
 						width="73"

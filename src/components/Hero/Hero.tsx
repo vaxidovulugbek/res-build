@@ -9,6 +9,13 @@ const Hero = React.createFactory(() => {
 			<div className="container-box">
 				<div className="flex items-center pt-10">
 					<div className="w-1/2">
+						<img
+							className="hero__img"
+							src="https://www.myperfectresume.com/wp-content/uploads/2023/08/category-graphics-3.png"
+							alt=""
+						/>
+					</div>
+					<div className="w-1/2 px-10">
 						<Title
 							className="hero__title mb-3 text-4xl leading-normal md:text-5xl max-w-xl font-header"
 							as="h1"
@@ -25,13 +32,6 @@ const Hero = React.createFactory(() => {
 							link="/resume"
 							className="hero__builder-btn text-white bg-primary inline-block px-6 py-3 rounded-3xl shadow-xl"
 							text="Build your free resume"
-						/>
-					</div>
-					<div className="w-1/2">
-						<img
-							className="hero__img"
-							src="https://www.myperfectresume.com/wp-content/uploads/2023/08/category-graphics-3.png"
-							alt=""
 						/>
 					</div>
 				</div>

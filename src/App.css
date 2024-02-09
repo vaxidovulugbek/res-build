@@ -26,3 +26,8 @@
 .bg-primary {
   background-color: var(--primary-color);
 }
+
+footer {
+  background: #6386ba;
+  height: 400px;
+}
