@@ -5,6 +5,7 @@ import { ScrollTop } from "helpers/ScrollToTop";
 import AllRoutes from "Routes";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Footer from "components/Footer/Footer";
 AOS.init();
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
 			{/* <MyComponent /> */}
 			<AllRoutes />
 			<ScrollTop />
-			<footer></footer>
+			<Footer />
 		</div>
 	);
 }

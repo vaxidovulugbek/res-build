@@ -3,7 +3,7 @@ import { Button } from "ui/Button/Button";
 import { Text } from "ui/Text/Text";
 import { Title } from "ui/Title/Title";
 import "./Hero.scss";
-const Hero = React.createFactory(() => {
+const Hero: React.FC = () => {
 	return (
 		<section className="hero section">
 			<div className="container-box">
@@ -38,6 +38,6 @@ const Hero = React.createFactory(() => {
 			</div>
 		</section>
 	);
-});
+};
 
 export default Hero;

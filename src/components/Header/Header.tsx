@@ -9,7 +9,7 @@ import useStore from "Store";
 import RoutesPath from "helpers/RoutesPath";
 import SigninPage from "components/RegisterPage/SigninPage";
 import LoginPage from "components/RegisterPage/LoginPage";
-import lng from "../../assets/imgs/icons/language.svg";
+
 import {
 	Modal,
 	ModalBody,
@@ -19,6 +19,7 @@ import {
 	ModalOverlay,
 	useDisclosure,
 } from "@chakra-ui/react";
+import Example from "./Language";
 
 const Header: React.FC = () => {
 	const { darkTheme, setDarkTheme } = useStore();
@@ -77,13 +78,7 @@ const Header: React.FC = () => {
 									link={RoutesPath?.resume}
 								/>
 							</div>
-							<Button
-								className="flex items-center flex-row-reverse ms-5 capitalize"
-								text="uz"
-								size="lg"
-								children={<img className="me-1" src={lng} alt="" />}
-							/>
-
+							<Example />
 							{/* <div className="flex item-center ms-4">
 								{darkTheme ? (
 									<button onClick={() => setDarkTheme(!darkTheme)}>
