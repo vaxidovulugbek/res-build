@@ -11,6 +11,7 @@ export default function InputField({
 	type = "text",
 	onChange,
 	touched,
+	id,
 	...props
 }: {
 	label: string;
@@ -20,30 +21,31 @@ export default function InputField({
 	placeholder: string;
 	touched: any;
 	onChange: any;
+	id: any;
 }) {
 	const hasError = get(form.touched, field.name) && get(form.errors, field.name);
+	useEffect(() => {
+		console.log(form.touched, field.name);
+	}, []);
+
 	const [inputType, setType] = useState(type);
-	// useEffect(() => {
-	// 	console.log(form);
-	// }, [form]);
 
 	return (
-		<div className={`field_input ${hasError ? "error" : ""}`}>
-			{label ? <label className="field_label text-xs">{label}</label> : null}
-
-			<div className="field_input--wrapper">
-				<Input
-					type={inputType}
-					// defaultValue={get(form.values, field.name)}
-					placeholder={placeholder}
-					onChange={(event) => {
-						form.setFieldValue(field.name, event.target.value);
-						onChange && onChange(event.target.value);
-					}}
-					{...props}
-				/>
-			</div>
-
+		<div className={`${hasError ? "error" : ""}`}>
+			{label ? <label className="text-xs">{label}</label> : null}
+			<Input
+				type={inputType}
+				defaultValue={get(form.values, field.name)}
+				placeholder={placeholder}
+				id={field.name}
+				onBlur={field.onBlur}
+				onChange={field.onChange}
+				// onChange={(event) => {
+				// 	form.setFieldValue(field.name, event.target.value);
+				// 	onChange && onChange(event.target.value);
+				// }}
+				{...props}
+			/>
 			{hasError ? (
 				<small className="field_error">{get(form.errors, field.name)}</small>
 			) : null}
