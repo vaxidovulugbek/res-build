@@ -1,6 +1,6 @@
 import { Button, Col, Flex, Row } from "antd";
 import Fields from "components/Fields";
-import { Field, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { get } from "lodash";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,114 +13,122 @@ export default function FormFields() {
 
 	const dispatch = useDispatch();
 	const resumeName = useSelector((state: any) => state.resumeName);
+
+	// const validationSchema = Yup.object().shape({
+	// 	Email_Address: Yup.string()
+	// 		.email("Invalid email address")
+	// 		.matches(/\b[A-Za-z0-9._%+-]+@gmail\.com\b/, "Please enter a valid Gmail address"),
+	// 	// Boshqa maydonlarga validatsiya qoidalarni ham qo'shishingiz mumkin
+	// 	// Masalan:
+	// 	// First_Name: Yup.string().required('Required'),
+	// 	// Last_Name: Yup.string().required('Required'),
+	// 	// ...
+	// });
+
+	const validationSchema = Yup.object({
+		name: Yup.string().required("Ism majburiy"),
+		Last_Name: Yup.string().required("Ism majburiy"),
+		Email_Address: Yup.string()
+			.email("To'g'ri email manzili kiriting")
+			.required("Email majburiy"),
+	});
+
+	// Boshlang'ich form qiymatlari
+	const initialValues = {
+		name: "",
+		Last_Name: "",
+		Email_Address: "",
+	};
+
+	// Formni yuborish amaliyoti
+	const onSubmit = (values: any) => {
+		console.log("Form yuborildi:", values.name);
+		dispatch(ResInfo?.setResumeName(values.name));
+	};
 	useEffect(() => {
-		if (name !== null) {
-			dispatch(ResInfo?.setResumeName(name));
-		}
 		console.log(resumeName);
 	}, [name, dispatch]);
 
-	const validationSchema = Yup.object().shape({
-		Email_Address: Yup.string()
-			.email("Invalid email address")
-			.matches(/\b[A-Za-z0-9._%+-]+@gmail\.com\b/, "Please enter a valid Gmail address"),
-		// Boshqa maydonlarga validatsiya qoidalarni ham qo'shishingiz mumkin
-		// Masalan:
-		// First_Name: Yup.string().required('Required'),
-		// Last_Name: Yup.string().required('Required'),
-		// ...
-	});
-
 	return (
 		<Formik
-			initialValues={{
-				First_Name: "",
-				Last_Name: "",
-				Email_Address: "",
-			}}
+			initialValues={initialValues}
 			validationSchema={validationSchema}
-			onSubmit={(values, actions) => {
-				// Sizning formangizni yuborish loyixasi
-				// console.log(validationSchema);
-				// console.log(values);
-				// console.log(actions);
-			}}
+			onSubmit={onSubmit}
 		>
-			{({ handleSubmit, errors, touched }) => (
-				<form onSubmit={handleSubmit}>
-					<div>{resumeName} jjjjj</div>
-					<Row gutter={[16, 16]}>
-						<Col span={12}>
-							<Field
-								errors={errors}
-								touched={touched}
-								name="First_Name"
-								label="First Name"
-								placeholder="First Name"
-								component={Fields.InputField}
-								// onChange={(e: any) => changeName(e.target.value)}
-								onChange={setName}
-							/>
-						</Col>
-						<Col span={12}>
-							<Field
-								name="Last_Name"
-								label="Last Name"
-								placeholder="Last Name"
-								component={Fields.InputField}
-								onChange={setSurName}
-							/>
-						</Col>
-						<Col span={12}>
-							<Field
-								name="Job_Title"
-								label="Job Title"
-								placeholder="Job Title"
-								component={Fields.InputField}
-							/>
-						</Col>
-						<Col span={12}>
-							<Field
-								name="Phone"
-								label="Phone"
-								placeholder="Phone"
-								component={Fields.InputField}
-							/>
-						</Col>
-						<Col span={12}>
-							<Field
-								errors={errors}
-								touched={touched}
-								name="Email_Address"
-								label="Email Address"
-								placeholder="Email Address"
-								type="email"
-								component={Fields.InputField}
-							/>
-						</Col>
-						<Col span={12}>
-							<Field
-								name="Address"
-								label="Address"
-								placeholder="Address"
-								component={Fields.InputField}
-							/>
-						</Col>
-						<Col span={24} className="modal-footer">
-							<Button
-								style={{ background: "orange", borderColor: "orange" }}
-								loading={false}
-								htmlType="submit"
-								type="primary"
-								formAction="submit"
-								formTarget="category"
-							>
-								Создать
-							</Button>
-						</Col>
-					</Row>
-				</form>
-			)}
+			<Form>
+				<Row gutter={[16, 16]}>
+					<Col span={12}>
+						<Field
+							type="text"
+							id="name"
+							name="name"
+							className="w-full"
+							placeholder="component input ssss"
+							label="Ism:"
+							component={Fields.InputField}
+							// onChange={(e: any) => changeName(e.target.value)}
+							// onChange={setName}
+						/>
+					</Col>
+					<Col span={12}>
+						<Field
+							type="text"
+							id="Last_Name"
+							name="Last_Name"
+							label="Last Name"
+							placeholder="Last Name"
+							component={Fields.InputField}
+						/>
+					</Col>
+					<Col span={12}>
+						<Field
+							name="Job_Title"
+							label="Job Title"
+							placeholder="Job Title"
+							component={Fields.InputField}
+						/>
+					</Col>
+					<Col span={12}>
+						<Field
+							name="Phone"
+							label="Phone"
+							placeholder="Phone"
+							component={Fields.InputField}
+						/>
+					</Col>
+					<Col span={12}>
+						<Field
+							id="Email_Address"
+							name="Email_Address"
+							label="Email Address"
+							placeholder="Email Address"
+							type="email"
+							component={Fields.InputField}
+						/>
+					</Col>
+					<Col span={12}>
+						<Field
+							name="Address"
+							label="Address"
+							placeholder="Address"
+							component={Fields.InputField}
+						/>
+					</Col>
+					<Col span={24} className="modal-footer">
+						{/* <Button
+							style={{ background: "orange", borderColor: "orange" }}
+							loading={false}
+							htmlType="submit"
+							type="primary"
+							formAction="submit"
+							formTarget="category"
+						>
+							Создать
+						</Button> */}
+						<button type="submit">ok</button>
+					</Col>
+				</Row>
+			</Form>
 		</Formik>
 	);
 }

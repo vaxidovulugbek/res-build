@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./PopularProducts.scss";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -22,13 +22,29 @@ const PopularProducts: React.FC = () => {
 		{ img: "https://resumegenius.com/wp-content/uploads/clean-resume-skin-orange.png" },
 		{ img: "https://i.pinimg.com/736x/82/e0/92/82e092be16cf77305cbfff242ccdb7e9.jpg" },
 	];
+
+	const [slidesToShowNum, setSlidesToShow] = useState(4);
+
+	useEffect(() => {
+		if (window.innerWidth < 480) {
+			setSlidesToShow(1);
+		} else if (window.innerWidth < 740) {
+			setSlidesToShow(2);
+		} else if (window.innerWidth < 1024) {
+			setSlidesToShow(3);
+		} else {
+			setSlidesToShow(4);
+		}
+	}, []);
+
 	const settings: Settings = {
 		dots: false,
 		infinite: true,
 		speed: 500,
-		slidesToShow: 4,
+		slidesToShow: slidesToShowNum,
 		slidesToScroll: 1,
 	};
+
 	return (
 		<section className="section">
 			<div className="container">
@@ -39,13 +55,13 @@ const PopularProducts: React.FC = () => {
 					text="BUILD YOUR RESUME"
 				/>
 				<Title
-					className="text-weight_medium text-center title-color font-header text-3xl md:text-5xl mb-4"
+					className="text-weight_medium text-center title-color font-header section__title mb-4"
 					weight="semi-bold"
 					as="h2"
 					text="Popular products"
 				/>
 				<Text
-					className="uppercase text-balance text-center flex justify-center mb-6 text-gray"
+					className="max-[640px]:hidden uppercase text-balance text-center flex justify-center mb-6 text-gray"
 					as="span"
 					size="sm"
 					text="Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalar 

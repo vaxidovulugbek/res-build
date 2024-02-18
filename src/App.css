@@ -26,3 +26,30 @@
 .bg-primary {
   background-color: var(--primary-color);
 }
+
+@media (max-width: 640px) {
+  .section {
+    margin-bottom: 90px;
+  }
+
+  .section__title {
+    font-size: 30px !important;
+  }
+}
+
+@media screen and (max-width:540px) {
+  .section {
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .container-box {
+    padding: 0 10px;
+  }
+
+  .container {
+    max-width: 96% !important;
+    padding: 0 10px !important;
+  }
+}

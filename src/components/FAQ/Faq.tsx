@@ -131,7 +131,7 @@ const Faq: React.FC = () => {
 		<section className="section">
 			<div className="container">
 				<Title
-					className="text-center title-color font-header text-3xl md:text-5xl mb-8"
+					className="text-center section__title title-color font-header text-3xl md:text-5xl mb-8 max-[660px]:mb-6"
 					as="h2"
 					text="FAQ"
 				/>

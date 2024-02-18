@@ -7,17 +7,17 @@ const Hero: React.FC = () => {
 	return (
 		<section className="hero section">
 			<div className="container-box">
-				<div className="flex items-center pt-10">
-					<div className="w-1/2">
+				<div className="flex items-center pt-10 max-[640px]:flex-col-reverse">
+					<div className="sm:hidden md:block sm:w-1/2 max-[640px]:w-full max-[640px]:mt-12">
 						<img
 							className="hero__img"
 							src="https://www.myperfectresume.com/wp-content/uploads/2023/08/category-graphics-3.png"
 							alt=""
 						/>
 					</div>
-					<div className="w-1/2 px-10">
+					<div className="md:w-1/2 lg:px-10 md:px-6 sm:w-full">
 						<Title
-							className="hero__title mb-3 text-4xl leading-normal md:text-5xl max-w-xl font-header"
+							className="hero__title mb-3 lg:text-5xl leading-normal md:text-3xl max-w-xl font-header"
 							as="h1"
 							text="Online CV Builder With Creative Templates."
 						/>

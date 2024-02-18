@@ -64,3 +64,27 @@ code {
       padding: 0 20px;
   }
 }
+
+@media (max-width: 1336px) {
+  .container-box {
+    width: 96%;
+    padding: 0 14px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .container-box {
+    padding: 0 10px;
+  }
+
+  .container {
+    max-width: 96% !important;
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width:540px){
+  main {
+    padding-top: 70px;
+  }
+}

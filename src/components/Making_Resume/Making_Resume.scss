@@ -4,9 +4,11 @@
   -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
   position: relative;
-  // &__info-title {
-  //   text-wrap:balance;
-  // }
+  
+  @media screen and (max-width:1020px) {
+      display: flex;
+      flex-direction: column;
+  }
 
   &__l-img {
     position: absolute;
@@ -46,7 +48,6 @@
 
 
 
-
 @mixin white-gradient {
 	background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
 }
@@ -63,6 +64,8 @@ $animationSpeed: 40s;
 		display: flex;
     flex-direction: column;
 		height: calc((360px * 14));
+    // aspect-ratio: 374/484;
+    flex: none;
 	}
 
   .slide-track-Bottom {
@@ -99,4 +102,69 @@ $animationSpeed: 40s;
   // 0% { transform: translateY(calc(-360px * 7) - 175px)}
   0% { transform: translateY(calc(-360px * 7))}
 	100% { transform: translateY(calc(-360px * 7) / 2px)}
+}
+
+@media screen and (max-width:1020px) {
+  .mres {
+    height: auto;
+
+    &__info {
+      width: 100%;
+    }
+
+    &__resumes {
+      flex-direction: column;
+    }
+
+    &__info-title {
+      font-size: 30px;
+    }
+
+    &__info-text {
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+  }
+
+  .slider {
+    overflow: hidden;
+    
+    .slide-track {
+      animation: scroll $animationSpeed linear infinite;
+      display: flex;
+      flex-direction: unset;
+      width: calc((260px * 14));
+      height: 350px;
+    }
+  
+    .slide-track-Bottom {
+      animation: scrollBottom $animationSpeed linear infinite;
+      display: flex;
+      flex-direction: unset;
+      width: calc((260px * 14));
+      height: 350px;
+    }
+    
+    .slide {
+      width: 250px;
+      height: 350px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      padding: 6px;
+      overflow: hidden;
+    }
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0)}
+    100% { transform: translateX(calc(-360px * 7))}
+  }
+  
+  @keyframes scrollBottom {
+    // 0% { transform: translateY(calc(-360px * 7) * 2)}
+    // 100% { transform: translateY(calc(-360px * 7) * 2)}
+    // 0% { transform: translateY(calc(-360px * 7) - 175px)}
+    0% { transform: translateX(calc(-360px * 7))}
+    100% { transform: translateX(calc(-360px * 7) / 2px)}
+  }
 }

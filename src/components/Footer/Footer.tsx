@@ -8,10 +8,10 @@ const Footer: React.FC = () => {
 	return (
 		<footer className="footer">
 			<div className="container">
-				<div className="flex justify-between">
+				<div className="flex justify-between flex-wrap">
 					<FooterList
 						title="Products"
-						className="w-1/4 mt-12 items-center inline-block"
+						className="lg:w-1/4 sx:w-1/4 2xl:w-1/4 md:w-1/4 sm:w-1/4 max-[480px]:w-1/2 items-center mt-12 inline-block"
 						fields={[
 							{
 								name: "Features",
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
 					/>
 					<FooterList
 						title="Company"
-						className="w-1/4 mt-12 items-center inline-block"
+						className="w-1/4 max-[480px]:w-1/2 mt-12 items-center inline-block"
 						fields={[
 							{
 								name: "Features",
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
 					/>
 					<FooterList
 						title="support"
-						className="w-1/4 mt-12 items-center inline-block"
+						className="w-1/4 mt-12 items-center inline-block max-[480px]:hidden"
 						fields={[
 							{
 								name: "Features",
@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
 							},
 						]}
 					/>
-					<div className="mt-12 w-1/4">
+					<div className="mt-12 lg:w-1/4 sx:w-1/4 2xl:w-1/4 md:w-1/2 sm:w-1/2">
 						<Title
 							className="mb-6 capitalize"
 							weight="medium"

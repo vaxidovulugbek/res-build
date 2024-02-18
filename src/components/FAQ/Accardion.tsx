@@ -10,13 +10,17 @@ const Accordion: React.FC<AccordionProps> = ({ title, answer }) => {
 	const [accordionOpen, setAccordionOpen] = useState(false);
 
 	return (
-		<div className="bg-gray-200 p-5 mb-4 rounded-lg">
+		<div className="bg-gray-200 p-5 mb-4 rounded-lg max-[480px]:p-4">
 			<Button
 				onClick={() => setAccordionOpen(!accordionOpen)}
 				className="flex justify-between w-full items-center"
 				children={
 					<>
-						<Text as="span" text={title} className="text-lg text-gray-700" />
+						<Text
+							as="span"
+							text={title}
+							className="text-lg text-gray-700 max-[660px]:text-md"
+						/>
 						<svg
 							className="accardion-svg shrink-0 ml-8"
 							width="16"
@@ -54,7 +58,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, answer }) => {
 					accordionOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
 				}`}
 			>
-				<div className={`overflow-hidden text-base`}>{answer}</div>
+				<div className={`overflow-hidden text-base max-[660px]:text-sm`}>{answer}</div>
 			</div>
 		</div>
 	);

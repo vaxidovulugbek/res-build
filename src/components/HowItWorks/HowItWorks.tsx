@@ -166,18 +166,18 @@ const HowItWorks: React.FC = () => {
 			<div className="container">
 				<Title
 					weight="medium"
-					className="text-center title-color font-header text-3xl md:text-5xl mb-8"
+					className="text-center title-color font-header section__title sm:mb-8 max-[660px]:mb-6 max-[480px]:mt-10 w-full inline-block"
 					as="h2"
 					text="How it works?"
 				/>
-				<ul className="flex items-center justify-between">
+				<ul className="max-[660px]:flex-col md:flex-col sm:flex-col lg:flex-row flex items-center justify-between">
 					{data.map((props, index) => (
 						<li
 							key={props.id}
 							data-aos="fade-up"
 							data-aos-anchor-placement="center-center"
 							data-aos-duration={index * 500}
-							className="w-4/12"
+							className="lg:w-4/12 sm:w-9/12 md:w-9/12 max-[660px]:w-full"
 						>
 							<Card id={props.id} title={props.title} text={props.text} />
 						</li>

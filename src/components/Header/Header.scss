@@ -1,6 +1,10 @@
 .header {
   padding: 20px 0;
 
+  &__only-mobile {
+    display: none;
+  }
+
   &__light {
     color: gold !important;
   }
@@ -43,4 +47,32 @@
 .navbar__items:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+@media screen and (max-width:640px){
+  .nav-links {
+    display: none;
+  }
+}
+
+@media screen and (max-width:540px){
+  .navbar {
+    display: none;
+  }
+
+  .header {
+      &__only-desktop {
+        display: none;
+      }
+
+      &__only-mobile {
+        display: block;
+      }
+      padding: 14px 0;
+      position: fixed;
+      width: 100%;
+      z-index: 999;
+      background: #9191d1;
+      min-height: 70px;
+  }
 }
