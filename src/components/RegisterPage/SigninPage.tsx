@@ -14,8 +14,8 @@ import { Field, Form, Formik } from "formik";
 import React from "react";
 import { Button, Text } from "ui";
 import * as Yup from "yup";
-import google from "../../assets/imgs/icons/modalGoogle.svg";
-import facebook from "../../assets/imgs/icons/modalFacebook.svg";
+import google from "assets/imgs/icons/modalGoogle.svg";
+import facebook from "assets/imgs/icons/modalFacebook.svg";
 
 interface SigninPageProps {
 	onClose: () => void;
