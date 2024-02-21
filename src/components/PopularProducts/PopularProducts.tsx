@@ -4,6 +4,7 @@ import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Text, Title } from "ui";
+import useWindowSize from "hooks/useWindowSize";
 const PopularProducts: React.FC = () => {
 	const cards = [
 		{
@@ -24,18 +25,32 @@ const PopularProducts: React.FC = () => {
 	];
 
 	const [slidesToShowNum, setSlidesToShow] = useState(4);
+	const width = useWindowSize();
+	// console.log(width);
+
+	// useEffect(() => {
+	// 	if (width <= 0) {
+	// 		return;
+	// 	}
+	// 	if (width < 480) {
+	// 		setSlidesToShow(1);
+	// 	} else if (width < 740) {
+	// 		setSlidesToShow(2);
+	// 	} else if (width < 1024) {
+	// 		setSlidesToShow(3);
+	// 	} else {
+	// 		setSlidesToShow(4);
+	// 	}
+	// }, [width]);
 
 	useEffect(() => {
-		if (window.innerWidth < 480) {
-			setSlidesToShow(1);
-		} else if (window.innerWidth < 740) {
-			setSlidesToShow(2);
-		} else if (window.innerWidth < 1024) {
-			setSlidesToShow(3);
-		} else {
-			setSlidesToShow(4);
+		if (width > 0) {
+			const newSlidesToShow = width < 480 ? 1 : width < 740 ? 2 : width < 1024 ? 3 : 4;
+			setSlidesToShow((prevSlides) =>
+				prevSlides === newSlidesToShow ? prevSlides : newSlidesToShow
+			);
 		}
-	}, []);
+	}, [width]);
 
 	const settings: Settings = {
 		dots: false,

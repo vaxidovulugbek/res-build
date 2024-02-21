@@ -8,7 +8,7 @@ export default function InputField({
 	form,
 	field,
 	placeholder,
-	type = "text",
+	type,
 	onChange,
 	touched,
 	id,
@@ -31,9 +31,10 @@ export default function InputField({
 	const [inputType, setType] = useState(type);
 
 	return (
-		<div className={`${hasError ? "error" : ""}`}>
+		<div className={`${hasError ? "error" : "w-full"}`}>
 			{label ? <label className="text-xs">{label}</label> : null}
 			<Input
+				style={hasError && { border: "1px solid #ff4d4f" }}
 				type={inputType}
 				defaultValue={get(form.values, field.name)}
 				placeholder={placeholder}
@@ -47,7 +48,7 @@ export default function InputField({
 				{...props}
 			/>
 			{hasError ? (
-				<small className="field_error">{get(form.errors, field.name)}</small>
+				<small className="error-type text-red-700">{get(form.errors, field.name)}</small>
 			) : null}
 		</div>
 	);

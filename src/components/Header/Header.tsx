@@ -39,6 +39,11 @@ const Header: React.FC = () => {
 		openSecondModal();
 	};
 
+	const handleSecondModalNext = () => {
+		openFirstModal();
+		closeSecondModal();
+	};
+
 	const handleSecondModalClose = () => {
 		closeSecondModal();
 	};
@@ -255,7 +260,7 @@ const Header: React.FC = () => {
 				{/* {overlay} */}
 				<ModalOverlay />
 				<ModalContent>
-					<ModalHeader>Login</ModalHeader>
+					<ModalHeader fontSize="3xl">Вход в аккаунт</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
 						<LoginPage onClose={handleSecondModalClose} onNext={handleFirstModalNext} />
@@ -266,10 +271,10 @@ const Header: React.FC = () => {
 			<Modal onClose={closeSecondModal} isOpen={isSecondModalOpen} isCentered>
 				<ModalOverlay />
 				<ModalContent>
-					<ModalHeader>Signin</ModalHeader>
+					<ModalHeader fontSize="3xl">Регистрация</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
-						<SigninPage onClose={closeFirstModal} />
+						<SigninPage onClose={closeFirstModal} onNext={handleSecondModalNext} />
 					</ModalBody>
 				</ModalContent>
 			</Modal>
