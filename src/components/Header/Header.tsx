@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "ui/Button/Button";
+import { Button } from "ui/Buttonn/Button";
 import { Logo } from "ui/Logo/Logo";
 import { IoSunny, IoMoon } from "react-icons/io5";
 import { GoLock } from "react-icons/go";

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "ui/Button/Button";
+import { Button } from "ui/Buttonn/Button";
 import { Text } from "ui/Text/Text";
 import { Title } from "ui/Title/Title";
 import "./Hero.scss";
