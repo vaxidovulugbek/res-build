@@ -1,6 +1,6 @@
 import { Button } from "./Buttonn/Button";
 import { Logo } from "./Logo/Logo";
-import { Text } from "./Text/Text";
-import { Title } from "./Title/Title";
+import { Text } from "./Textt/Text";
+import { Title } from "./Titlee/Title";
 
 export { Button, Logo, Text, Title };
