@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "ui/Buttonn/Button";
+import { Button } from "ui/Button/Button";
 import "./Header.scss";
 import { Menu, MenuButton, MenuList, MenuItem, Text } from "@chakra-ui/react";
 import { CiMenuFries } from "react-icons/ci";

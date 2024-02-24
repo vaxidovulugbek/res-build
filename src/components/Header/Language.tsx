@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "ui/Buttonn/Button";
+import { Button } from "ui/Button/Button";
 import { Menu, MenuButton, MenuList, MenuItem, Text } from "@chakra-ui/react";
 import lng from "../../assets/imgs/icons/language.svg";
 

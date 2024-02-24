@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import res1 from "assets/imgs/resume_templates/res1.png";
-import { Button } from "ui/Buttonn/Button";
+import { Button } from "ui/Button/Button";
 import RoutesPath from "helpers/RoutesPath";
 interface Card {
 	id: number;
