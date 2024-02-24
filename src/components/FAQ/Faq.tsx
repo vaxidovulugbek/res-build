@@ -122,7 +122,7 @@
 // Faq.tsx
 
 import React, { useState } from "react";
-import { Title } from "ui/Titlee/Title";
+import { Title } from "ui/Title/Title";
 import Accordion from "./Accardion";
 import "./Faq.scss";
 

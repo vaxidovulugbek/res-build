@@ -45,8 +45,8 @@
 // export default Card;
 
 import React from "react";
-import { Text } from "ui/Textt/Text";
-import { Title } from "ui/Titlee/Title";
+import { Text } from "ui/Text/Text";
+import { Title } from "ui/Title/Title";
 import "./HowItWorks.scss";
 
 interface CardProps {

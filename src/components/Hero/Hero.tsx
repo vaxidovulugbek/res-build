@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "ui/Button/Button";
-import { Text } from "ui/Textt/Text";
-import { Title } from "ui/Titlee/Title";
+import { Text } from "ui/Text/Text";
+import { Title } from "ui/Title/Title";
 import "./Hero.scss";
 const Hero: React.FC = () => {
 	return (

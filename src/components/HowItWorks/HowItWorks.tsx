@@ -140,7 +140,7 @@
 
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
-import { Title } from "ui/Titlee/Title";
+import { Title } from "ui/Title/Title";
 
 const HowItWorks: React.FC = () => {
 	const data = [
