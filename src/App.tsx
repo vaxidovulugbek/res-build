@@ -11,7 +11,7 @@ AOS.init();
 
 function App() {
 	const { darkTheme } = useStore();
- 
+
 	return (
 		<div className={darkTheme ? "App dark-theme" : "App"}>
 			{/* <MyComponent /> */}
