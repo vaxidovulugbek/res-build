@@ -10,8 +10,8 @@ import useWindowSize from "hooks/useWindowSize";
 AOS.init();
 
 function App() {
-	const { darkTheme } = useStore()
- 
+	const { darkTheme } = useStore();
+
 	return (
 		<div className={darkTheme ? "App dark-theme" : "App"}>
 			{/* <MyComponent /> */}

@@ -13,6 +13,12 @@ type QueryFnType = (context: any, urlSearchParams: any) => Promise<any>;
 // 	urlSearchParams: any
 // ): CustomQueryFnType =>
 // 	customQueryFn ? customQueryFn : (context) => queryFn(context, urlSearchParams);
+const ultimateQueryFn = async (customQueryFn: Function, params: object) => {
+	// Ma'lumotlarni olish usuli
+	const response = await customQueryFn(params);
+
+	return response;
+};
 
 const dataSelect: DataSelectType = (data = {}, dataKey) =>
 	isFunction(dataKey) ? dataKey(data) : get(data, dataKey);
@@ -20,8 +26,11 @@ const dataSelect: DataSelectType = (data = {}, dataKey) =>
 const metaSelect: MetaSelectType = (data = {}, metaKey) =>
 	isFunction(metaKey) ? metaKey(data) : get(data, metaKey);
 
-const getQueryKey: GetQueryKeyType = (method, url, urlSearchParams) =>
-	urlSearchParams ? [method, url, urlSearchParams] : [method, url];
+// const getQueryKey: GetQueryKeyType = (method, url, urlSearchParams) =>
+// 	urlSearchParams ? [method, url, urlSearchParams] : [method, url];
+const getQueryKey = (method: any, url: any, urlSearchParams: any) => {
+	return urlSearchParams ? [method, url, urlSearchParams] : [method, url];
+};
 
 // const queryFn: QueryFnType = async (context, urlSearchParams = {}) => {
 // 	const { queryKey, signal, pageParam } = context;
@@ -36,7 +45,7 @@ const getQueryKey: GetQueryKeyType = (method, url, urlSearchParams) =>
 // };
 
 export const apiHelpers = {
-	// ultimateQueryFn,
+	ultimateQueryFn,
 	dataSelect,
 	metaSelect,
 	getQueryKey,
