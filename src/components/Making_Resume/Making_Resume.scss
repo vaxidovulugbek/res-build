@@ -168,3 +168,11 @@ $animationSpeed: 40s;
     100% { transform: translateX(calc(-360px * 7) / 2px)}
   }
 }
+
+@media screen and (max-width:480px) {
+  .mres {
+    &__r-img {
+      display: none;
+    }
+  }
+}
