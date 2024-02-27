@@ -88,3 +88,11 @@ code {
     padding-top: 70px;
   }
 }
+
+main {
+  background-color: #427d9d52;
+}
+
+footer {
+  background-color: #0073ff48;
+}
