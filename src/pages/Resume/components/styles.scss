@@ -21,7 +21,58 @@
     color: white;
     padding: 20px;
     text-align: center;
-    height: 560px;
+    // height: 560px;
     // border: "1px solid #ccc"
+  }
+
+  @media screen and (max-width:1024px) {
+    &__cards-box {
+      // grid-gap: 14px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width:768px) {
+    &__cards-box {
+      grid-gap: 14px;
+      // grid-template-columns: repeat(2, 1fr);
+    }
+    &__item {
+      padding: 14px;
+    }
+  }
+
+  @media screen and (max-width:768px) {
+    &__cards-box {
+      grid-gap: 20px;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    &__item {
+      padding: 20px;
+    }
+  }
+
+  @media screen and (max-width:480px) {
+    &__cards-box {
+      grid-gap: 14px;
+    }
+    &__item {
+      padding: 14px;
+      height: 530px;
+    }
+  }
+
+  @media screen and (max-width:420px) {
+    &__item {
+      padding: 12px;
+      height: 480px;
+    }
+  }
+
+  @media screen and (max-width:380px) {
+    &__item {
+      padding: 12px;
+      height: 440px;
+    }
   }
 }

@@ -27,29 +27,64 @@ const FilteredCards: React.FC = () => {
 		filter === "All" ? cards : cards.filter((card) => card.category === filter);
 
 	return (
-		<section className="filterCards">
+		<section className="filterCards xl:py-10 md:py-8 sm:py-6 max-[660px]:pt-8">
 			<div className="container-box">
 				<div className="flex items-center mb-3 justify-center">
-					<button className="text-lg" onClick={() => setFilter("All")}>
+					<Button
+						text="All"
+						className="sm:text-lg max-[640px]:text-base capitalize"
+						onClick={() => setFilter("All")}
+					/>
+					<Button
+						text="About"
+						className="ms-6 sm:text-lg max-[640px]:text-base capitalize"
+						onClick={() => setFilter("About")}
+					/>
+					<Button
+						text="Recommend"
+						className="ms-6 sm:text-lg max-[640px]:text-base capitalize"
+						onClick={() => setFilter("Recommend")}
+					/>
+					<Button
+						text="Test"
+						className="ms-6 sm:text-lg max-[640px]:text-base capitalize"
+						onClick={() => setFilter("Test")}
+					/>
+					{/* <button
+						className="sm:text-lg max-[640px]:text-base capitalize"
+						onClick={() => setFilter("All")}
+					>
 						All
 					</button>
-					<button className="ms-6 text-lg" onClick={() => setFilter("About")}>
+					<button
+						className="ms-6 sm:text-lg max-[640px]:text-base capitalize"
+						onClick={() => setFilter("About")}
+					>
 						About
 					</button>
-					<button className="ms-6 text-lg" onClick={() => setFilter("Recommend")}>
-						Recommend
+					<button
+						className="ms-6 sm:text-lg max-[640px]:text-base capitalize"
+						onClick={() => setFilter("Recommend")}
+					>
+						recommend
 					</button>
-					<button className="ms-6 text-lg" onClick={() => setFilter("Test")}>
+					<button
+						className="ms-6 sm:text-lg max-[640px]:text-base capitalize"
+						onClick={() => setFilter("Test")}
+					>
 						Test
-					</button>
+					</button> */}
 				</div>
 
 				<div className="filterCards__cards-box justify-center">
 					{filteredCards.map((card) => (
-						<div key={card.id} className="filterCards__item">
+						<div
+							key={card.id}
+							className="filterCards__item 2xl:h-[560px] xl:h-[470px] lg:h-[440px]"
+						>
 							<Button
 								id={card?.id ? card.id.toString() : undefined}
-								link={`/create-resume`}
+								link={"/create-resume"}
 								children={<img src={card.img} alt="resume template" />}
 							/>
 						</div>

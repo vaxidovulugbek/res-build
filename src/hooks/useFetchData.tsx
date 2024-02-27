@@ -1,10 +1,10 @@
-// import React from "react";
+import React from "react";
 
-// function useFetchData() {
-// 	return <div>useFetchData</div>;
-// }
+function useFetchData() {
+	return <div>useFetchData</div>;
+}
 
-// export default useFetchData;
+export default useFetchData;
 
 // import { useQuery, UseQueryOptions, UseQueryResult } from "@tanstack/react-query";
 // import { apiHelpers } from "../utils/apiHelpers";
@@ -52,52 +52,52 @@
 // 	};
 // }
 
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { apiHelpers } from "../utils/apiHelpers";
+// import { useState } from "react";
+// import { useQuery } from "@tanstack/react-query";
+// import { apiHelpers } from "../utils/apiHelpers";
 
-type propTypes = {
-	url: string;
-	dataKey?: string;
-	metaKey?: string;
-	customQueryFn?: Function;
-	queryOptions?: object;
-	urlSearchParams?: object;
-};
+// type propTypes = {
+// 	url: string;
+// 	dataKey?: string;
+// 	metaKey?: string;
+// 	customQueryFn?: Function;
+// 	queryOptions?: object;
+// 	urlSearchParams?: object;
+// };
 
-type FetchListFunction = (prop: propTypes) => object;
+// type FetchListFunction = (prop: propTypes) => object;
 
-export const useFetchList: FetchListFunction = ({
-	url,
-	dataKey = "data",
-	metaKey = "meta",
-	customQueryFn,
-	queryOptions = {},
-	urlSearchParams = {},
-}) => {
-	const [page, setPage] = useState(1);
-	// const params = { page, ...urlSearchParams };
+// export const useFetchList: FetchListFunction = ({
+// 	url,
+// 	dataKey = "data",
+// 	metaKey = "meta",
+// 	customQueryFn,
+// 	queryOptions = {},
+// 	urlSearchParams = {},
+// }) => {
+// 	const [page, setPage] = useState(1);
+// 	// const params = { page, ...urlSearchParams };
 
-	let meta: any;
-	const query = useQuery(
-		apiHelpers.getQueryKey("GET", url, "params"),
-		apiHelpers.ultimateQueryFn(customQueryFn, "params")
+// 	let meta: any;
+// 	const query = useQuery(
+// 		apiHelpers.getQueryKey("GET", url, "params"),
+// 		apiHelpers.ultimateQueryFn(customQueryFn, "params")
 
-		// {
-		// 	select: (responseData: any) => {
-		// 		meta = utils.apiHelpers.metaSelect(responseData, metaKey);
-		// 		return utils.apiHelpers.dataSelect(responseData, dataKey);
-		// 	},
+// 		// {
+// 		// 	select: (responseData: any) => {
+// 		// 		meta = utils.apiHelpers.metaSelect(responseData, metaKey);
+// 		// 		return utils.apiHelpers.dataSelect(responseData, dataKey);
+// 		// 	},
 
-		// 	refetchOnWindowFocus: false,
-		// 	...queryOptions,
-		// 	retry: 0,
-		// 	cacheTime: 0,
-		// }
-	);
+// 		// 	refetchOnWindowFocus: false,
+// 		// 	...queryOptions,
+// 		// 	retry: 0,
+// 		// 	cacheTime: 0,
+// 		// }
+// 	);
 
-	return {
-		...query,
-		meta,
-	};
-};
+// 	return {
+// 		...query,
+// 		meta,
+// 	};
+// };

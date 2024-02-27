@@ -6,7 +6,7 @@ import { FaFacebookF, FaTelegramPlane, FaInstagram, FaLinkedinIn } from "react-i
 
 const Footer: React.FC = () => {
 	return (
-		<footer className="footer">
+		<footer className="footer mt-auto">
 			<div className="container">
 				<div className="flex justify-between flex-wrap">
 					<FooterList

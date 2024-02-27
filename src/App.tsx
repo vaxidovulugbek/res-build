@@ -13,7 +13,13 @@ function App() {
 	const { darkTheme } = useStore();
 
 	return (
-		<div className={darkTheme ? "App dark-theme" : "App"}>
+		<div
+			className={
+				darkTheme
+					? "App dark-theme flex flex-col justify-between"
+					: "App flex flex-col justify-between"
+			}
+		>
 			{/* <MyComponent /> */}
 			<AllRoutes />
 			<ScrollTop />
