@@ -29,16 +29,16 @@ const FormUI: React.FC = () => {
 		<section>
 			<ModalResumes modal={modal} setModal={setModal} placement={placement} />
 			<div className="container-box">
-				<div className="flex editor">
-					<div className="flex flex-col w-1/2 pe-16">
+				<div className="flex editor sm:items-center max-[540px]:pt-20 max-[640px]:flex-col sm:flex-col xl:flex-row xl:items-start">
+					<div className="flex flex-col sm:w-full md:w-9/12 lg:w-1/2 max-[640px]:mb-6 max-[480px]:mb-4 sm:mb-6 xl:mb-0 2xl:pe-16 xl:pe-10">
 						<div className="flex justify-between">
 							<Button
-								className="radius_half text-cyan-700 border-solid border-1 border-cyan-700 hover:bg-cyan-700 delay-100 hover:text-white px-4 py-1.5 rounded-lg shadow-xl"
+								className="radius_half max-[480px]:text-sm text-cyan-700 border-solid border-1 border-cyan-700 hover:bg-cyan-700 delay-100 hover:text-white px-4 py-1.5 rounded-lg shadow-xl"
 								text="Templates"
 								onClick={() => setModal({ open: "resumeTamplates" })}
 							/>
 							<Button
-								className="flex items-center text-white bg-cyan-700 px-4 py-1.5 rounded-lg shadow-xl"
+								className="flex items-center text-white bg-cyan-700 px-4 py-1.5 rounded-lg shadow-xl max-[480px]:text-sm"
 								text="Next"
 								link="/"
 								children={<GrLinkNext className="ms-2" />}
@@ -61,7 +61,7 @@ const FormUI: React.FC = () => {
 						</div>
 					</div>
 					<div
-						className="w-1/2"
+						className="lg:w-1/2 md:w-9/12 sm:w-full"
 						style={{ boxShadow: "0px 0px 7.41692px rgba(0,0,0,.15)" }}
 					>
 						<div>{componentToRender}</div>

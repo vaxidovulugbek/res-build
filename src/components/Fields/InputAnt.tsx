@@ -48,7 +48,9 @@ export default function InputField({
 				{...props}
 			/>
 			{hasError ? (
-				<small className="error-type text-red-700">{get(form.errors, field.name)}</small>
+				<small style={hasError && { color: "#ff4d4f" }} className="error-type">
+					{get(form.errors, field.name)}
+				</small>
 			) : null}
 		</div>
 	);

@@ -6,10 +6,12 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ResInfo } from "../../../redux/actions";
 import * as Yup from "yup";
+import useWindowSize from "hooks/useWindowSize";
 
 export default function FormFields() {
 	const [name, setName] = useState(null);
 	const [surName, setSurName] = useState(null);
+	const width = useWindowSize();
 
 	const dispatch = useDispatch();
 	const resumeName = useSelector((state: any) => state.resumeName);
@@ -57,7 +59,7 @@ export default function FormFields() {
 		>
 			<Form>
 				<Row gutter={[16, 16]}>
-					<Col span={12}>
+					<Col span={width < 480 ? 24 : 12}>
 						<Field
 							type="text"
 							id="name"
@@ -70,7 +72,7 @@ export default function FormFields() {
 							// onChange={setName}
 						/>
 					</Col>
-					<Col span={12}>
+					<Col span={width < 480 ? 24 : 12}>
 						<Field
 							type="text"
 							id="Last_Name"
@@ -80,7 +82,7 @@ export default function FormFields() {
 							component={Fields.InputField}
 						/>
 					</Col>
-					<Col span={12}>
+					<Col span={width < 480 ? 24 : 12}>
 						<Field
 							name="Job_Title"
 							label="Job Title"
@@ -88,7 +90,7 @@ export default function FormFields() {
 							component={Fields.InputField}
 						/>
 					</Col>
-					<Col span={12}>
+					<Col span={width < 480 ? 24 : 12}>
 						<Field
 							name="Phone"
 							label="Phone"
@@ -96,7 +98,7 @@ export default function FormFields() {
 							component={Fields.InputField}
 						/>
 					</Col>
-					<Col span={12}>
+					<Col span={width < 480 ? 24 : 12}>
 						<Field
 							id="Email_Address"
 							name="Email_Address"
@@ -106,7 +108,7 @@ export default function FormFields() {
 							component={Fields.InputField}
 						/>
 					</Col>
-					<Col span={12}>
+					<Col span={width < 480 ? 24 : 12}>
 						<Field
 							name="Address"
 							label="Address"
