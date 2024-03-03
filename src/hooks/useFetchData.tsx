@@ -1,103 +1,101 @@
-import React from "react";
-
-function useFetchData() {
-	return <div>useFetchData</div>;
-}
-
-export default useFetchData;
-
-// import { useQuery, UseQueryOptions, UseQueryResult } from "@tanstack/react-query";
+// import { useQuery, UseQueryOptions } from "@tanstack/react-query";
+// import axios from "axios";
+// import React from "react";
+// import { isQueryKey } from "react-query/types/core/utils";
 // import { apiHelpers } from "../utils/apiHelpers";
 
-// // Bu turli kodlar turi ma'lum emas, faqat misol uchun.
-// interface ApiResponse<T> {
-// 	// Bu joyda boshqa turlar ham bo'lishi mumkin
-// 	// Masalan, error, meta, va h.k.
-// 	data: T;
-// }
-
-// interface FetchDataOptions<T> {
-// 	url: string;
-// 	dataKey?: string;
-// 	metaKey?: string;
-// 	customQueryFn?: any; // Bu joyda tanlangan funksiya turi ham bo'lishi mumkin
-// 	queryOptions?: UseQueryOptions<ApiResponse<T>>;
-// 	urlSearchParams?: URLSearchParams;
-// }
-
-// // TypeScriptga o'zgartirilgan funksiya
-// export function useFetchData<T>({
-// 	url,
-// 	dataKey = "data",
-// 	metaKey = "meta",
-// 	customQueryFn,
-// 	urlSearchParams,
-// }: FetchDataOptions<T>): UseQueryResult<T> & { meta: any } {
-// 	let meta: any;
-
-// 	const query = useQuery<ApiResponse<T>>();
-// 	// apiHelpers?.getQueryKey("GET", url, urlSearchParams),
-// 	// // apiHelpers?.ultimateQueryFn(customQueryFn, urlSearchParams),
-// 	// {
-// 	// 	retry: false,
-// 	// 	select: (responseData: any) => {
-// 	// 		meta = apiHelpers?.metaSelect(responseData, metaKey);
-// 	// 		return apiHelpers?.dataSelect(responseData, dataKey);
-// 	// 	},
-// 	// }
-
-// 	return {
-// 		...query,
-// 		meta,
-// 	};
-// }
-
-// import { useState } from "react";
-// import { useQuery } from "@tanstack/react-query";
-// import { apiHelpers } from "../utils/apiHelpers";
-
-// type propTypes = {
-// 	url: string;
-// 	dataKey?: string;
-// 	metaKey?: string;
-// 	customQueryFn?: Function;
-// 	queryOptions?: object;
-// 	urlSearchParams?: object;
+// const fetchData = async () => {
+// 	const response = await axios.get("https://jsonplaceholder.typicode.com/todos");
+// 	return response.data;
 // };
 
-// type FetchListFunction = (prop: propTypes) => object;
+// interface FetchDataConfig {
+// 	url?: any;
+// 	base?: any;
+// 	customQueryFn?: any;
+// 	queryOptions?: any;
+// 	dataKey?: any;
+// 	metaKey?: any;
+// }
 
-// export const useFetchList: FetchListFunction = ({
-// 	url,
-// 	dataKey = "data",
-// 	metaKey = "meta",
+// const useFetchData = ({
+// 	url = "defaultUrl",
+// 	base = "defaultBase",
 // 	customQueryFn,
 // 	queryOptions = {},
-// 	urlSearchParams = {},
-// }) => {
-// 	const [page, setPage] = useState(1);
-// 	// const params = { page, ...urlSearchParams };
-
+// 	dataKey = "data",
+// 	metaKey = "meta",
+// }: FetchDataConfig = {}) => {
 // 	let meta: any;
-// 	const query = useQuery(
-// 		apiHelpers.getQueryKey("GET", url, "params"),
-// 		apiHelpers.ultimateQueryFn(customQueryFn, "params")
+// 	let params: any; // params o'zgaruvchisini bu funksiya ichida yaratib olish
 
-// 		// {
-// 		// 	select: (responseData: any) => {
-// 		// 		meta = utils.apiHelpers.metaSelect(responseData, metaKey);
-// 		// 		return utils.apiHelpers.dataSelect(responseData, dataKey);
-// 		// 	},
+// 	const queryKey = apiHelpers?.getQueryKey("GET", url, null);
+// 	const queryFn = apiHelpers?.ultimateQueryFn(customQueryFn, params);
 
-// 		// 	refetchOnWindowFocus: false,
-// 		// 	...queryOptions,
-// 		// 	retry: 0,
-// 		// 	cacheTime: 0,
-// 		// }
-// 	);
+// 	// const query = useQuery({
+// 	// 	queryKey: apiHelpers?.getQueryKey("GET", url, null),
+// 	// 	queryFn: () => apiHelpers?.ultimateQueryFn(customQueryFn, params),
+// 	// 	select: (responseData: any) => {
+// 	// 		meta = apiHelpers.metaSelect(responseData, metaKey);
+// 	// 		return apiHelpers.dataSelect(responseData, dataKey);
+// 	// 	},
 
+// 	// 	refetchOnWindowFocus: false,
+// 	// 	...queryOptions,
+// 	// 	retry: 0,
+// 	// 	cacheTime: 0,
+// 	// });
+
+// 	// const query = useQuery(apiHelpers?.getQueryKey("GET", url), apiHelpers.ultimateQueryFn(fetchData));
+// 	// const { data, error, isLoading } = useQuery(queryKey, queryFn);
+
+// 	// console.log(query);
 // 	return {
-// 		...query,
+// 		// ...query,
 // 		meta,
 // 	};
 // };
+
+// export default useFetchData;
+
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { apiHelpers } from "../utils/apiHelpers";
+import axios from "axios";
+
+type propTypes = {
+	url: string;
+	dataKey?: string;
+	metaKey?: string;
+	customQueryFn?: Function;
+	queryOptions?: object;
+	urlSearchParams?: object;
+};
+
+type FetchListFunction = (prop: propTypes) => object;
+
+export const useFetchData: FetchListFunction = ({
+	url,
+	dataKey = "data",
+	metaKey = "meta",
+	customQueryFn,
+	queryOptions = {},
+	urlSearchParams = {},
+}) => {
+	const [page, setPage] = useState(1);
+	const params = { page, ...urlSearchParams };
+
+	let meta: any;
+	const query = useQuery({
+		queryKey: ["GET", url, urlSearchParams],
+		// queryFn: () => {
+		// 	return axios.get(`https://jsonplaceholder.typicode.com/todos`);
+		// },
+		queryFn: apiHelpers.ultimateQueryFn(customQueryFn, params),
+	});
+
+	return {
+		...query,
+		meta,
+	};
+};

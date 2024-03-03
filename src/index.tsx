@@ -17,15 +17,15 @@ const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<QueryClientProvider client={queryClient}>
+		<QueryClientProvider client={queryClient}>
+			<Provider store={store}>
 				<BrowserRouter>
 					<ChakraProvider>
 						<App />
 					</ChakraProvider>
 				</BrowserRouter>
-			</QueryClientProvider>
-		</Provider>
+			</Provider>
+		</QueryClientProvider>
 	</React.StrictMode>
 );
 
