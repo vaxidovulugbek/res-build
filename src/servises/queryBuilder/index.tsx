@@ -45,5 +45,6 @@ export const queryBuilder = (url: string, config: Config = {}): string => {
 
 	if (page && page !== 1) queryObj.set("page", page.toString());
 
-	return `${url}?${decodeURIComponent(queryObj.toString())}`;
+	// return `${url}?${decodeURIComponent(queryObj.toString())}`;
+	return `${url}`;
 };

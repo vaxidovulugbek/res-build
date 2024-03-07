@@ -59,7 +59,7 @@ const Header: React.FC = () => {
 				<div className="container-box">
 					<div className="flex items-center justify-between">
 						<Logo
-							className="ld h-14 w-26"
+							className="ld h-12 w-26"
 							size="sm"
 							src="https://upload.wikimedia.org/wikipedia/commons/1/13/LOGO_OF_LOGO.svg"
 							alt="logo"

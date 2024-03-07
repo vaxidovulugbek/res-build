@@ -88,10 +88,10 @@ export const useFetchData: FetchListFunction = ({
 	let meta: any;
 	const query = useQuery({
 		queryKey: ["GET", url, urlSearchParams],
-		// queryFn: () => {
-		// 	return axios.get(`https://jsonplaceholder.typicode.com/todos`);
-		// },
-		queryFn: apiHelpers.ultimateQueryFn(customQueryFn, params),
+		queryFn: () => {
+			return axios.get("https://jsonplaceholder.typicode.com/todos");
+		},
+		// queryFn: apiHelpers.ultimateQueryFn(customQueryFn, params),
 	});
 
 	return {

@@ -35,7 +35,7 @@ const getQueryKey = (method?: any, url?: any, urlSearchParams?: any) => {
 // 	return data;
 // };
 const queryFn = async (context: any, urlSearchParams = {}) => {
-	const { queryKey, signal, pageParam } = context;
+	const { queryKey, signal } = context;
 	// if (pageParam) urlSearchParams.page = pageParam;
 	const url = queryBuilder(queryKey[1], urlSearchParams);
 	const { data } = await httpCLient.request({
