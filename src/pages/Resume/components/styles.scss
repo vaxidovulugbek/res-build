@@ -1,7 +1,6 @@
 .filterCards {
   &__cards-box {
     width: 100%;
-    // background:red;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px; 
@@ -23,6 +22,19 @@
     text-align: center;
     // height: 560px;
     // border: "1px solid #ccc"
+  }
+
+  &__scale {
+    animation: scaleAnimation 0.3s ease-in-out;
+  }
+
+  @keyframes scaleAnimation {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 
   @media screen and (max-width:1024px) {

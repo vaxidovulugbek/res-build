@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import res1 from "assets/imgs/resume_templates/res1.png";
 import { Button } from "ui/Button/Button";
 import RoutesPath from "helpers/RoutesPath";
+import cn from "classnames";
+
 interface Card {
 	id: number;
 	title: string;
@@ -29,66 +31,66 @@ const FilteredCards: React.FC = () => {
 	return (
 		<section className="filterCards xl:py-10 md:py-8 sm:py-6 max-[660px]:pt-8">
 			<div className="container-box">
-				<div className="flex items-center mb-3 justify-center">
+				<div className="flex items-center mb-4 justify-center">
 					<Button
 						text="All"
-						className="sm:text-lg max-[640px]:text-base capitalize"
+						className={cn(
+							"px-8 py-1 max-[480px]:px-5 rounded-3xl sm:text-lg max-[640px]:text-base capitalize",
+							{
+								"bg-slate-200": filter === "All",
+							}
+						)}
 						onClick={() => setFilter("All")}
 					/>
 					<Button
 						text="About"
-						className="ms-6 sm:text-lg max-[640px]:text-base capitalize"
+						className={cn(
+							"px-8 py-1 max-[480px]:px-5 rounded-3xl sm:text-lg max-[640px]:text-base capitalize",
+							{
+								"bg-slate-200": filter === "About",
+							}
+						)}
 						onClick={() => setFilter("About")}
 					/>
 					<Button
 						text="Recommend"
-						className="ms-6 sm:text-lg max-[640px]:text-base capitalize"
+						className={cn(
+							"px-8 py-1 max-[480px]:px-5 rounded-3xl sm:text-lg max-[640px]:text-base capitalize",
+							{
+								"bg-slate-200": filter === "Recommend",
+							}
+						)}
 						onClick={() => setFilter("Recommend")}
 					/>
 					<Button
 						text="Test"
-						className="ms-6 sm:text-lg max-[640px]:text-base capitalize"
+						className={cn(
+							"px-8 py-1 max-[480px]:px-5 rounded-3xl sm:text-lg max-[640px]:text-base capitalize",
+							{
+								"bg-slate-200": filter === "Test",
+							}
+						)}
 						onClick={() => setFilter("Test")}
 					/>
-					{/* <button
-						className="sm:text-lg max-[640px]:text-base capitalize"
-						onClick={() => setFilter("All")}
-					>
-						All
-					</button>
-					<button
-						className="ms-6 sm:text-lg max-[640px]:text-base capitalize"
-						onClick={() => setFilter("About")}
-					>
-						About
-					</button>
-					<button
-						className="ms-6 sm:text-lg max-[640px]:text-base capitalize"
-						onClick={() => setFilter("Recommend")}
-					>
-						recommend
-					</button>
-					<button
-						className="ms-6 sm:text-lg max-[640px]:text-base capitalize"
-						onClick={() => setFilter("Test")}
-					>
-						Test
-					</button> */}
 				</div>
 
 				<div className="filterCards__cards-box justify-center">
-					{filteredCards.map((card) => (
-						<div
-							key={card.id}
-							className="filterCards__item 2xl:h-[560px] xl:h-[470px] lg:h-[440px]"
-						>
-							<Button
-								id={card?.id ? card.id.toString() : undefined}
-								link={"/create-resume"}
-								children={<img src={card.img} alt="resume template" />}
-							/>
-						</div>
-					))}
+					{filteredCards &&
+						filteredCards.map((card) => (
+							<div
+								key={card.id}
+								className={cn(
+									"filterCards__item 2xl:h-[560px] xl:h-[470px] lg:h-[440px]",
+									{ filterCards__scale: filter }
+								)}
+							>
+								<Button
+									id={card?.id ? card.id.toString() : undefined}
+									link={"/create-resume"}
+									children={<img src={card.img} alt="resume template" />}
+								/>
+							</div>
+						))}
 				</div>
 			</div>
 		</section>
