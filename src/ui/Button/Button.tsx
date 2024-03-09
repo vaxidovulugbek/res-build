@@ -31,7 +31,7 @@ export const Button: React.FC<ButtonProps> = ({
 		className
 	);
 	return isString(link) ? (
-		<Link to={id ? `${link}/${id}` : link} className={classNames}>
+		<Link to={link} className={classNames}>
 			{text}
 			{children}
 

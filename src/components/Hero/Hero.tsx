@@ -1,9 +1,11 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "ui/Button/Button";
 import { Text } from "ui/Text/Text";
 import { Title } from "ui/Title/Title";
 import "./Hero.scss";
 const Hero: React.FC = () => {
+	const { t } = useTranslation();
 	return (
 		<section className="hero section">
 			<div className="container-box">
@@ -19,7 +21,8 @@ const Hero: React.FC = () => {
 						<Title
 							className="hero__title mb-3 lg:text-5xl leading-normal md:text-3xl max-w-xl font-header"
 							as="h1"
-							text="Online CV Builder With Creative Templates."
+							text={t("hero_title")}
+							// text="Online CV Builder With Creative Templates."
 						/>
 						<Text
 							className="hero__text max-w-xl text-lg leading-8 text-gray-500 mb-3"

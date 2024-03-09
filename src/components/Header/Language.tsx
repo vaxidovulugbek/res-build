@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "ui/Button/Button";
 import { Menu, MenuButton, MenuList, MenuItem, Text } from "@chakra-ui/react";
-import lng from "../../assets/imgs/icons/language.svg";
+import lng from "assets/imgs/icons/language.svg";
+import cn from "classnames";
+import { useTranslation } from "react-i18next";
+import i18n from "servises/i18n";
 
 const Language = () => {
 	const [selectedOption, setSelectedOption] = useState("uz");
@@ -9,6 +12,18 @@ const Language = () => {
 	const handleSelect = (option: string) => {
 		setSelectedOption(option);
 	};
+
+	const { t } = useTranslation();
+	useEffect(() => {
+		switch (selectedOption) {
+			case "ru":
+				i18n.changeLanguage(selectedOption);
+				break;
+			case "uz":
+				i18n.changeLanguage(selectedOption);
+				break;
+		}
+	}, [selectedOption]);
 
 	return (
 		<Menu>
@@ -21,10 +36,20 @@ const Language = () => {
 				/>
 			</MenuButton>
 			<MenuList minWidth="100px">
-				<MenuItem className="capitalize" onClick={() => handleSelect("uz")}>
-					uz
+				<MenuItem
+					className={cn("capitalize bg-inherit", {
+						"header__lang-bg": selectedOption === "uz",
+					})}
+					onClick={() => handleSelect("uz")}
+				>
+					{t("uz")}
 				</MenuItem>
-				<MenuItem className="capitalize" onClick={() => handleSelect("ru")}>
+				<MenuItem
+					className={cn("capitalize bg-inherit", {
+						"header__lang-bg": selectedOption === "ru",
+					})}
+					onClick={() => handleSelect("ru")}
+				>
 					ru
 				</MenuItem>
 			</MenuList>

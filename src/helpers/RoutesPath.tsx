@@ -1,7 +1,7 @@
 const RoutesPath = {
 	home: "/",
 	resume: "/resume",
-	createResume: "/create-resume/:id",
+	createResume: "/create-resume",
 };
 
 export default RoutesPath;

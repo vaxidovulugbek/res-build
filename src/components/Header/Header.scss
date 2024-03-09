@@ -19,6 +19,10 @@
   &__icon {
     font-size: 30px;
   }
+
+  &__lang-bg {
+    background-color: #E2E8F0 !important;
+  }
 }
 
 .navbar__items:not(:last-child) {
