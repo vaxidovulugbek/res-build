@@ -44,12 +44,12 @@ export default function FormFields() {
 
 	// Formni yuborish amaliyoti
 	const onSubmit = (values: any) => {
-		console.log("Form yuborildi:", values.name);
+		// console.log("Form yuborildi:", values.name);
 		dispatch(ResInfo?.setResumeName(values.name));
 	};
-	useEffect(() => {
-		console.log(resumeName);
-	}, [name, dispatch]);
+	// useEffect(() => {
+	// 	console.log(resumeName);
+	// }, [name, dispatch]);
 
 	return (
 		<Formik

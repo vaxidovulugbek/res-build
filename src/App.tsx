@@ -27,6 +27,7 @@ function App() {
 	useEffect(() => {
 		notifications.success("Успех");
 		console.log(query);
+		console.log("ok");
 
 		// const { data } = useFetchData();
 		// console.log(apiHelpers.getQueryKey("GET", "url", ["params"]));

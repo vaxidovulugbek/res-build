@@ -1,4 +1,4 @@
-.slick-slider {
+.slick-slider-container {
   &__card {
     padding: 4px 14px;
   }
@@ -32,67 +32,66 @@
 
 }
 
-.slick-slider button {
+.slick-slider-container button {
   // background-color: cornflowerblue;
   width: 50px;
   height: 50px;
 }
 
-.slick-prev {
+.slick-slider-container .slick-prev {
   left: -100px !important;
 }
 
-.slick-next {
+.slick-slider-container .slick-next {
   right: -100px !important;
 }
 
-.slick-prev:before {
+.slick-slider-container .slick-prev:before {
   content: url('../../assets/imgs/icons/arrow-left-3099.svg') !important;
   display: inline-block !important;
   preserveAspectRatio: none !important;
 }
 
-.slick-next:before {
+.slick-slider-container .slick-next:before {
   content: url('../../assets/imgs/icons/arrow-right-3098.svg') !important;
   display: inline-block !important;
   preserveAspectRatio: none !important;
 }
 
 
-.slick-slider button:hover {
+.slick-slider-container button:hover {
   background-color: transparent;
 }
 
-.slick-slider button:focus  {
+.slick-slider-container button:focus  {
   background-color: transparent;
 }
 
 @media screen and (max-width:480px){
-  .slick-slider button {
+  .slick-slider-container button {
     width: 30px;
     height: 30px;
   }
   
-  .slick-prev {
+  .slick-slider-container .slick-prev {
     top: unset !important;
     left: 120px !important;
     bottom: -60px !important;
   }
   
-  .slick-next {
+  .slick-slider-container .slick-next {
     top: unset !important;
     right: 120px !important;
     bottom: -60px !important;
   }
-  
 }
 
 @media screen and (max-width:380px){
-  .slick-prev {
+  .slick-slider-container .slick-prev {
     left: 100px !important;
   }
   
-  .slick-next {
+  .slick-slider-container .slick-next {
     right:100px !important;
   }
   

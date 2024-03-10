@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Text, Title } from "ui";
 import useWindowSize from "hooks/useWindowSize";
+import { isArray } from "lodash";
 const PopularProducts: React.FC = () => {
 	const cards = [
 		{
@@ -26,22 +27,6 @@ const PopularProducts: React.FC = () => {
 
 	const [slidesToShowNum, setSlidesToShow] = useState(4);
 	const width = useWindowSize();
-	// console.log(width);
-
-	// useEffect(() => {
-	// 	if (width <= 0) {
-	// 		return;
-	// 	}
-	// 	if (width < 480) {
-	// 		setSlidesToShow(1);
-	// 	} else if (width < 740) {
-	// 		setSlidesToShow(2);
-	// 	} else if (width < 1024) {
-	// 		setSlidesToShow(3);
-	// 	} else {
-	// 		setSlidesToShow(4);
-	// 	}
-	// }, [width]);
 
 	useEffect(() => {
 		if (width > 0) {
@@ -82,15 +67,16 @@ const PopularProducts: React.FC = () => {
 					text="Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalar 
 					elementum tempus hac tellus libero accumsan. "
 				/>
-				<div className="slick-slider">
+				<div className="slick-slider-container">
 					<Slider {...settings}>
-						{cards.map((card, index) => (
-							<div className="slick-slider__card" key={index}>
-								<div className="slick-slider__card-content overflow-hidden rounded-xl">
-									<img src={card?.img} alt="resume tamplate" />
+						{isArray(cards) &&
+							cards.map((card, index) => (
+								<div className="slick-slider-container__card" key={index}>
+									<div className="slick-slider-container__card-content overflow-hidden rounded-xl">
+										<img src={card?.img} alt="resume tamplate" />
+									</div>
 								</div>
-							</div>
-						))}
+							))}
 					</Slider>
 				</div>
 			</div>

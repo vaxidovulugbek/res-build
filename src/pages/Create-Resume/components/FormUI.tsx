@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { GrLinkNext } from "react-icons/gr";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import "./styles.scss";
 import ModalResumes from "./ModalResumes";
 import { DrawerProps } from "antd";
@@ -7,7 +7,12 @@ import { Title, Text, Button } from "ui";
 import FormFields from "./FormFields";
 import useStore from "Store";
 import { useSelector } from "react-redux";
+import Slider, { Settings } from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { Res1, Res2, Res3 } from "components/ResumeTamplates";
+import { isArray } from "lodash";
+import cn from "classnames";
 
 const FormUI: React.FC = () => {
 	const [modal, setModal] = useState({ open: "" });
@@ -25,6 +30,40 @@ const FormUI: React.FC = () => {
 			<Res1 /> // default return component
 		);
 
+	interface CustomSlider extends Slider {
+		slickNext(): void;
+		slickPrev(): void;
+	}
+
+	const sliderRef = useRef<CustomSlider>(null);
+
+	const { setChangeStatusSlider, changeStatusSlider } = useStore();
+
+	const handleNextSlide = () => {
+		sliderRef?.current?.slickNext();
+	};
+
+	const handlePrevSlide = () => {
+		sliderRef?.current?.slickPrev();
+	};
+
+	const settings: Settings = {
+		dots: false,
+		infinite: false,
+		speed: 100,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		afterChange: (currentSlide) => {
+			if (currentSlide === 0) {
+				setChangeStatusSlider(true);
+			} else {
+				setChangeStatusSlider(false);
+			}
+		},
+	};
+
+	const data = [<FormFields />, <FormFields />];
+
 	return (
 		<section>
 			<ModalResumes modal={modal} setModal={setModal} placement={placement} />
@@ -33,16 +72,28 @@ const FormUI: React.FC = () => {
 					<div className="flex flex-col sm:w-full md:w-9/12 lg:w-1/2 max-[640px]:mb-6 max-[480px]:mb-4 sm:mb-6 xl:mb-0 2xl:pe-16 xl:pe-10">
 						<div className="flex justify-between">
 							<Button
-								className="radius_half max-[480px]:text-sm text-cyan-700 border-solid border-1 border-cyan-700 hover:bg-cyan-700 delay-100 hover:text-white px-4 py-1.5 rounded-lg shadow-xl"
+								className="radius_half h-10 max-[480px]:text-sm text-cyan-700 border-solid border-1 border-cyan-700 hover:bg-cyan-700 delay-100 hover:text-white px-4 py-1.5 rounded-3xl editor__btn-shadow"
 								text="Templates"
 								onClick={() => setModal({ open: "resumeTamplates" })}
 							/>
-							<Button
-								className="flex items-center text-white bg-cyan-700 px-4 py-1.5 rounded-lg shadow-xl max-[480px]:text-sm"
-								text="Next"
-								link="/"
-								children={<GrLinkNext className="ms-2" />}
-							/>
+							<div className="flex items-center">
+								<Button
+									className={cn(
+										"ms-3 editor__btn-shadow flex items-center shadow-xl p-3 w-10 h-10 rounded-full",
+										{
+											hidden: changeStatusSlider === true,
+										}
+									)}
+									onClick={handlePrevSlide}
+									children={<GrLinkPrevious />}
+								/>
+								<Button
+									className="ms-3 flex items-center h-10 text-white bg-cyan-700 px-4 py-1.5 rounded-3xl editor__btn-shadow max-[480px]:text-sm"
+									text="Next"
+									onClick={handleNextSlide}
+									children={<GrLinkNext className="ms-2" />}
+								/>
+							</div>
 						</div>
 						<div className="xl:mt-5 md:mt-3 sm:mt-2 min-[320px]:mt-2 editor__form">
 							<div className="min-[320px]:mb-3 xl:mb-5">
@@ -57,7 +108,12 @@ const FormUI: React.FC = () => {
 									text="Get started with the basics: your name and contact information."
 								/>
 							</div>
-							<FormFields />
+							<Slider {...settings} ref={sliderRef}>
+								{isArray(data) &&
+									data.map((component, index) => {
+										return <div key={index}>{component}</div>;
+									})}
+							</Slider>
 						</div>
 					</div>
 					<div

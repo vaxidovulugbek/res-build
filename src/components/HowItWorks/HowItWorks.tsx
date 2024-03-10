@@ -171,17 +171,18 @@ const HowItWorks: React.FC = () => {
 					text="How it works?"
 				/>
 				<ul className="max-[660px]:flex-col md:flex-col sm:flex-col lg:flex-row flex items-center justify-between">
-					{data.map((props, index) => (
-						<li
-							key={props.id}
-							data-aos="fade-up"
-							data-aos-anchor-placement="center-center"
-							data-aos-duration={index * 500}
-							className="lg:w-4/12 sm:w-9/12 md:w-9/12 max-[660px]:w-full"
-						>
-							<Card id={props.id} title={props.title} text={props.text} />
-						</li>
-					))}
+					{data &&
+						data.map((props, index) => (
+							<li
+								key={props.id}
+								data-aos="fade-up"
+								data-aos-anchor-placement="center-center"
+								data-aos-duration={index * 500}
+								className="lg:w-4/12 sm:w-9/12 md:w-9/12 max-[660px]:w-full"
+							>
+								<Card id={props.id} title={props.title} text={props.text} />
+							</li>
+						))}
 				</ul>
 			</div>
 		</section>
