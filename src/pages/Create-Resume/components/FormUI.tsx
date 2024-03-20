@@ -5,7 +5,7 @@ import ModalResumes from "./ModalResumes";
 import { DrawerProps } from "antd";
 import { Title, Text, Button } from "ui";
 import FormFields from "./FormFields";
-import useStore from "Store";
+import useStore from "../../../zustand/store";
 import { useSelector } from "react-redux";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -37,7 +37,8 @@ const FormUI: React.FC = () => {
 
 	const sliderRef = useRef<CustomSlider>(null);
 
-	const { setChangeStatusSlider, changeStatusSlider } = useStore();
+	const changeStatusSlider = useStore((state) => state.changeStatusSlider);
+	const setChangeStatusSlider = useStore((state) => state.setChangeStatusSlider);
 
 	const handleNextSlide = () => {
 		sliderRef?.current?.slickNext();

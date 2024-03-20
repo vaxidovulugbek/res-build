@@ -5,7 +5,8 @@
 			"components/*": ["./components/*"],
 			"assets/*": ["./assets/*"],
 			"pages/*": ["./pages/*"],
-			"ui/*": ["./ui/*"]
+			"ui/*": ["./ui/*"],
+			"zustand/*": ["./zustand/*"],
 		},
 		"target": "es5",
 		"lib": ["dom", "dom.iterable", "es2015"],
