@@ -6,7 +6,7 @@ const CreateResume: React.FC = () => {
 	return (
 		<>
 			<Header />
-			<main className="pt-6">
+			<main className="py-6">
 				<FormUI />
 			</main>
 		</>

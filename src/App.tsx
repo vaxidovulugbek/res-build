@@ -11,6 +11,7 @@ import { notifications } from "helpers/Notifications";
 import { apiHelpers } from "utils/apiHelpers";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import cn from "classnames";
 import { useFetchData } from "hooks/useFetchData";
 // import useFetchData from "hooks/useFetchData";
 AOS.init();
@@ -39,11 +40,9 @@ function App() {
 
 	return (
 		<div
-			className={
-				darkTheme
-					? "App dark-theme flex flex-col justify-between"
-					: "App flex flex-col justify-between"
-			}
+			className={cn("App flex flex-col justify-between", {
+				"dark-theme": darkTheme,
+			})}
 		>
 			{/* <MyComponent /> */}
 			<AllRoutes />

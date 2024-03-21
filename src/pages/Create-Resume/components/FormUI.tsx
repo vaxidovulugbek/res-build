@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Res1, Res2, Res3 } from "components/ResumeTamplates";
+import { Res1, Res2, Res3, Res4 } from "components/ResumeTamplates";
 import { isArray } from "lodash";
 import cn from "classnames";
 
@@ -26,6 +26,8 @@ const FormUI: React.FC = () => {
 			<Res2 />
 		) : resumeTemplate === +"3" ? (
 			<Res3 />
+		) : resumeTemplate === +"4" ? (
+			<Res4 />
 		) : (
 			<Res1 /> // default return component
 		);

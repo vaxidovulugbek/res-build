@@ -102,6 +102,12 @@ const ModalResumes: React.FC<ModalResumesProps> = ({ modal, setModal, placement 
 				>
 					3
 				</button>
+				<button
+					onClick={() => handleButtonClick(4)}
+					className="py-2 ms-2 me-4 border-solid border-2 w-[100px]"
+				>
+					4
+				</button>
 			</div>
 		</DrawerModal>
 	);

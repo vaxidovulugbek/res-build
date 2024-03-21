@@ -18,7 +18,7 @@ const FilteredCards: React.FC = () => {
 		{ id: 3, title: "Card 3", category: "Recommend", img: res1 },
 		{ id: 4, title: "Card 3wefwe", category: "Recommend", img: res1 },
 		{ id: 5, title: "Card 3wkjenrkwejrnw", category: "Recommend", img: res1 },
-		{ id: 6, title: "Card 4", category: "Test", img: res1 },
+		{ id: 6, title: "Card 4", category: "About", img: res1 },
 		// Boshqa cardlar...
 	];
 
@@ -61,16 +61,6 @@ const FilteredCards: React.FC = () => {
 							}
 						)}
 						onClick={() => setFilter("Recommend")}
-					/>
-					<Button
-						text="Test"
-						className={cn(
-							"px-8 py-1 max-[480px]:px-5 rounded-3xl sm:text-lg max-[640px]:text-base capitalize",
-							{
-								"bg-slate-200": filter === "Test",
-							}
-						)}
-						onClick={() => setFilter("Test")}
 					/>
 				</div>
 
