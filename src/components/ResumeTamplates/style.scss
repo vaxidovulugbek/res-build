@@ -25,3 +25,12 @@
 	width: 1em;
 	list-style: none;
 }
+
+.custom-bullet-res5::before {
+	content: "• ";
+	color: #000000;
+	font-weight: bold;
+	display: inline-block;
+	width: 1.2em;
+	list-style: none;
+}
