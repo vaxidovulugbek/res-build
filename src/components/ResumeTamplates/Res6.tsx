@@ -8,11 +8,9 @@ export const Res6: React.FC = () => {
 			className="border-y-[18px] border-slate-400"
 			style={{ maxWidth: "700px", minHeight: "800px" }}
 		>
-			<div className="w-full py-10">
-				<h2 className="text-center text-amber-200 text-[36px] tracking-[9px] font-serif">
-					EMMA WATSON
-				</h2>
-				<p className="text-center text-amber-200 text-[10px] font-medium tracking-[2px] font-mono">
+			<div className="w-full pt-10 pb-2">
+				<h2 className="text-center text-[38px] tracking-[9px] font-serif">EMMA WATSON</h2>
+				<p className="text-center text-[12px] font-medium tracking-[2px] font-mono">
 					YOUR PROFESSIONAL TITLE
 				</p>
 			</div>
@@ -74,7 +72,6 @@ export const Res6: React.FC = () => {
 						</ul>
 					</div>
 				</div>
-				<div className="my-10 border border-amber-300 w-[1px] h-auto" />
 				<div className="ps-6 pe-9 py-9">
 					<h2 className="font-semibold tracking-widest text-[14px]">PROFILE</h2>
 					<p className="mt-4 mb-4 text-[11px] font-medium">

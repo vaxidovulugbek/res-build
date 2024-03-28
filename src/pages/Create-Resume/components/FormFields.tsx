@@ -16,17 +16,6 @@ export default function FormFields() {
 	const dispatch = useDispatch();
 	const resumeName = useSelector((state: any) => state.resumeName);
 
-	// const validationSchema = Yup.object().shape({
-	// 	Email_Address: Yup.string()
-	// 		.email("Invalid email address")
-	// 		.matches(/\b[A-Za-z0-9._%+-]+@gmail\.com\b/, "Please enter a valid Gmail address"),
-	// 	// Boshqa maydonlarga validatsiya qoidalarni ham qo'shishingiz mumkin
-	// 	// Masalan:
-	// 	// First_Name: Yup.string().required('Required'),
-	// 	// Last_Name: Yup.string().required('Required'),
-	// 	// ...
-	// });
-
 	const validationSchema = Yup.object({
 		name: Yup.string().required("Ism majburiy"),
 		Last_Name: Yup.string().required("Ism majburiy"),
