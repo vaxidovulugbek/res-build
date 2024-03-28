@@ -1,4 +1,4 @@
-import Header from "components/Header/Header";
+import { Header } from "components";
 import React from "react";
 import { FormUI } from "./components";
 

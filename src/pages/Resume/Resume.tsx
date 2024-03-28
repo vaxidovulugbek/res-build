@@ -1,4 +1,5 @@
-import Header from "components/Header/Header";
+// import Header from "components/Header/Header";
+import { Header } from "components";
 import React from "react";
 import Filter from "./components/Filter";
 import "./components/styles.scss";

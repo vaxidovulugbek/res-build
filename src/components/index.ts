@@ -10,4 +10,20 @@ import Hero from "./Hero/Hero";
 import HowItWorks from "./HowItWorks/HowItWorks";
 import Faq from "./FAQ/Faq";
 import PersonalDetails from "./PersonalDetails/PersonalDetails";
-export { Fields, Hero, Header, HowItWorks, Faq, PersonalDetails };
+import Footer from "./Footer/Footer";
+import { Loading } from "./Loading/Loading";
+import Making_Resume from "./Making_Resume/Making_Resume";
+import PopularProducts from "./PopularProducts/PopularProducts";
+
+export {
+	Fields,
+	Hero,
+	Header,
+	HowItWorks,
+	Faq,
+	PersonalDetails,
+	Footer,
+	Loading,
+	Making_Resume,
+	PopularProducts,
+};

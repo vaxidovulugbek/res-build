@@ -1,6 +1,6 @@
 import React from "react";
 import "./Loading.scss";
-function Loading() {
+export function Loading() {
 	return (
 		<div className="lds-content">
 			<div className="lds-ring">
@@ -12,5 +12,3 @@ function Loading() {
 		</div>
 	);
 }
-
-export default Loading;

@@ -22,7 +22,7 @@ const FilteredCards: React.FC = () => {
 		// Boshqa cardlar...
 	];
 
-	const [cards, setCards] = useState<Card[]>(initialCards);
+	const [cards] = useState<Card[]>(initialCards);
 	const [filter, setFilter] = useState<string>("All");
 
 	const filteredCards =
@@ -32,55 +32,37 @@ const FilteredCards: React.FC = () => {
 		<section className="filterCards xl:py-10 md:py-8 sm:py-6 max-[660px]:pt-8">
 			<div className="container-box">
 				<div className="flex items-center mb-4 justify-center">
-					<Button
-						text="All"
-						className={cn(
-							"px-8 py-1 max-[480px]:px-5 rounded-3xl sm:text-lg max-[640px]:text-base capitalize",
-							{
-								"bg-slate-200": filter === "All",
-							}
-						)}
-						onClick={() => setFilter("All")}
-					/>
-					<Button
-						text="About"
-						className={cn(
-							"px-8 py-1 max-[480px]:px-5 rounded-3xl sm:text-lg max-[640px]:text-base capitalize",
-							{
-								"bg-slate-200": filter === "About",
-							}
-						)}
-						onClick={() => setFilter("About")}
-					/>
-					<Button
-						text="Recommend"
-						className={cn(
-							"px-8 py-1 max-[480px]:px-5 rounded-3xl sm:text-lg max-[640px]:text-base capitalize",
-							{
-								"bg-slate-200": filter === "Recommend",
-							}
-						)}
-						onClick={() => setFilter("Recommend")}
-					/>
+					{["All", "About", "Recommend"].map((category) => (
+						<Button
+							key={category}
+							text={category}
+							className={cn(
+								"px-8 py-1 max-[480px]:px-5 rounded-3xl sm:text-lg max-[640px]:text-base capitalize",
+								{ "bg-slate-200": filter === category }
+							)}
+							onClick={() => setFilter(category)}
+						/>
+					))}
 				</div>
 
 				<div className="filterCards__cards-box justify-center">
-					{filteredCards &&
-						filteredCards.map((card) => (
-							<div
-								key={card.id}
-								className={cn(
-									"filterCards__item 2xl:h-[560px] xl:h-[470px] lg:h-[440px]",
-									{ filterCards__scale: filter }
-								)}
+					{filteredCards.map((card) => (
+						<div
+							key={card.id}
+							// className="filterCards__item h-[440px] lg:h-[470px] xl:h-[560px]"
+							className={cn(
+								"filterCards__item 2xl:h-[560px] xl:h-[470px] lg:h-[440px]",
+								{ filterCards__scale: filter }
+							)}
+						>
+							<Button
+								id={card?.id ? card.id.toString() : undefined}
+								link={RoutesPath.createResume}
 							>
-								<Button
-									id={card?.id ? card.id.toString() : undefined}
-									link={"/create-resume"}
-									children={<img src={card.img} alt="resume template" />}
-								/>
-							</div>
-						))}
+								<img src={card.img} alt="resume template" />
+							</Button>
+						</div>
+					))}
 				</div>
 			</div>
 		</section>
@@ -88,67 +70,3 @@ const FilteredCards: React.FC = () => {
 };
 
 export default FilteredCards;
-
-// import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
-// import gsap from "gsap";
-
-// interface Card {
-// 	id: number;
-// 	title: string;
-// 	category: string;
-// }
-
-// const FilteredCards: React.FC = () => {
-// 	const initialCards: Card[] = [
-// 		{ id: 1, title: "Card 1", category: "All" },
-// 		{ id: 2, title: "Card 2", category: "About" },
-// 		{ id: 3, title: "Card 3", category: "Recommend" },
-// 		{ id: 3, title: "kjhkjhkj 3", category: "Recommend" },
-// 		// Boshqa cardlar...
-// 	];
-
-// 	const [cards, setCards] = useState<Card[]>(initialCards);
-// 	const [filter, setFilter] = useState<string>("All");
-
-// 	const filteredCards =
-// 		filter === "All" ? cards : cards.filter((card) => card.category === filter);
-
-// 	const elementsRef = useRef<HTMLDivElement[]>([]);
-
-// 	// useEffect(() => {
-// 	// 	console.log("boshlandi");
-// 	// 	gsap.from(elementsRef.current, {
-// 	// 		opacity: 0,
-// 	// 		y: 20,
-// 	// 		ease: "power3.inOut",
-// 	// 		stagger: 0.2,
-// 	// 		duration: 0.5,
-// 	// 	});
-// 	// }, [filteredCards]);
-
-// 	return (
-// 		<div>
-// 			<div>
-// 				<button onClick={() => setFilter("All")}>All</button>
-// 				<button onClick={() => setFilter("About")}>About</button>
-// 				<button onClick={() => setFilter("Recommend")}>Recommend</button>
-// 			</div>
-
-// 			<div>
-// 				{filteredCards.map((card, index) => (
-// 					<div
-// 						key={card.id}
-// 						className="filtered-card"
-// 						style={{ border: "1px solid #ccc", padding: "10px", margin: "10px" }}
-// 						ref={(el) => (elementsRef.current[index] = el as HTMLDivElement)}
-// 					>
-// 						<h3>{card.title}</h3>
-// 						<p>{card.category}</p>
-// 					</div>
-// 				))}
-// 			</div>
-// 		</div>
-// 	);
-// };
-
-// export default FilteredCards;

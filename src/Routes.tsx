@@ -1,7 +1,7 @@
-import Loading from "components/Loading/Loading";
 import RoutesPath from "helpers/RoutesPath";
 import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import { Loading } from "./components";
 
 const Home = lazy(() => import("pages/Home/Home"));
 const Resume = lazy(() => import("pages/Resume/Resume"));

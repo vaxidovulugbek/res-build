@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "App.css";
 import useStore from "./zustand/store";
 import { ScrollTop } from "helpers/ScrollToTop";
 import AllRoutes from "Routes";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Footer from "components/Footer/Footer";
-import useWindowSize from "hooks/useWindowSize";
+// import Footer from "components/Footer/Footer";
 import { notifications } from "helpers/Notifications";
 import { apiHelpers } from "utils/apiHelpers";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import cn from "classnames";
 import { useFetchData } from "hooks/useFetchData";
+import { Footer } from "./components";
 // import useFetchData from "hooks/useFetchData";
 AOS.init();
 
