@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "ui/Button/Button";
 import "./Header.scss";
 import { Menu, MenuButton, MenuList, MenuItem, Text } from "@chakra-ui/react";
-import { CiMenuFries } from "react-icons/ci";
+// import { CiMenuFries } from "react-icons/ci";
 
 const Navbar: React.FC = () => {
 	return (
@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
 			</nav>
 			<Button
 				className="header__only-mobile"
-				children={<CiMenuFries className="text-3xl" />}
+				children={'<CiMenuFries className="text-3xl" />'}
 			/>
 		</>
 	);

@@ -3,7 +3,7 @@ import cn from "classnames";
 import { Res1, Res2, Res3, Res4, Res5, Res6 } from "components/ResumeTamplates";
 import { isArray } from "lodash";
 import React, { useRef, useState } from "react";
-import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
+// import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { useSelector } from "react-redux";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -13,28 +13,40 @@ import useStore from "../../../zustand/store";
 import FormFields from "./FormFields";
 import ModalResumes from "./ModalResumes";
 import "./styles.scss";
+import TextEditor from "./TextEditor";
 
 const FormUI: React.FC = () => {
 	const [modal, setModal] = useState({ open: "" });
 	const [placement, setPlacement] = useState<DrawerProps["placement"]>("left");
 	const resumeTemplate = useSelector((state: any) => state.resumeTemplate);
 
-	const componentToRender =
-		resumeTemplate === +"1" ? (
-			<Res1 />
-		) : resumeTemplate === +"2" ? (
-			<Res2 />
-		) : resumeTemplate === +"3" ? (
-			<Res3 />
-		) : resumeTemplate === +"4" ? (
-			<Res4 />
-		) : resumeTemplate === +"5" ? (
-			<Res5 />
-		) : resumeTemplate === +"6" ? (
-			<Res6 />
-		) : (
-			<Res1 /> // default return component
-		);
+	// const componentToRender =
+	// 	resumeTemplate === +"1" ? (
+	// 		<Res1 />
+	// 	) : resumeTemplate === +"2" ? (
+	// 		<Res2 />
+	// 	) : resumeTemplate === +"3" ? (
+	// 		<Res3 />
+	// 	) : resumeTemplate === +"4" ? (
+	// 		<Res4 />
+	// 	) : resumeTemplate === +"5" ? (
+	// 		<Res5 />
+	// 	) : resumeTemplate === +"6" ? (
+	// 		<Res6 />
+	// 	) : (
+	// 		<Res1 /> // default return component
+	// 	);
+
+	const resumeComponents: { [key: number]: JSX.Element } = {
+		1: <Res1 />,
+		2: <Res2 />,
+		3: <Res3 />,
+		4: <Res4 />,
+		5: <Res5 />,
+		6: <Res6 />,
+	};
+
+	const componentToRender = resumeComponents[resumeTemplate] || <Res1 />;
 
 	interface CustomSlider extends Slider {
 		slickNext(): void;
@@ -92,13 +104,13 @@ const FormUI: React.FC = () => {
 										}
 									)}
 									onClick={handlePrevSlide}
-									children={<GrLinkPrevious />}
+									children={"<GrLinkPrevious />"}
 								/>
 								<Button
 									className="ms-3 flex items-center h-10 text-white bg-cyan-700 px-4 py-1.5 rounded-3xl editor__btn-shadow max-[480px]:text-sm"
 									text="Next"
 									onClick={handleNextSlide}
-									children={<GrLinkNext className="ms-2" />}
+									children={'<GrLinkNext className="ms-2" />'}
 								/>
 							</div>
 						</div>
@@ -121,6 +133,7 @@ const FormUI: React.FC = () => {
 										return <div key={index}>{component}</div>;
 									})}
 							</Slider>
+							<TextEditor />
 						</div>
 					</div>
 					<div

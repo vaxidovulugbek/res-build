@@ -1,11 +1,14 @@
 import { isString } from "lodash";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { ImMobile, ImLocation } from "react-icons/im";
-import { BsEnvelope, BsGlobe } from "react-icons/bs";
+// import { ImMobile, ImLocation } from "react-icons/im";
+// import { BsEnvelope, BsGlobe } from "react-icons/bs";
 
 export const Res1: React.FC = () => {
 	const resumeName = useSelector((state: any) => state.resumeName);
+	useEffect(() => {
+		console.log(resumeName);
+	}, [resumeName]);
 	return (
 		<>
 			<div className="main max-w-[700px] mx-auto pt-12 pb-6">
@@ -32,22 +35,22 @@ export const Res1: React.FC = () => {
 						</h3>
 						<div className="flex flex-col gap-3">
 							<p className="flex items-center">
-								<ImMobile className="me-2" />
+								{/* <ImMobile className="me-2" /> */}
 								{/* <i className="fa-solid fa-mobile-screen fa-xl w-6 text-center" /> */}
 								123-456-7890
 							</p>
 							<p className="flex items-center">
-								<BsEnvelope className="me-2" />
+								{/* <BsEnvelope className="me-2" /> */}
 								{/* <i className="fa-regular fa-envelope fa-xl w-6 text-center" /> */}
 								hello@reallygreatsite.com
 							</p>
 							<p className="flex items-center">
-								<BsGlobe className="me-2" />
+								{/* <BsGlobe className="me-2" /> */}
 								{/* <i className="fa-solid fa-globe fa-xl w-6 text-center" /> */}
 								www.reallygreatsite.com
 							</p>
 							<p className="flex items-center">
-								<ImLocation className="me-2" />
+								{/* <ImLocation className="me-2" /> */}
 								{/* <i className="fa-solid fa-location-dot fa-xl w-6 text-center" /> */}
 								123 Aynwhere St, Any City
 							</p>

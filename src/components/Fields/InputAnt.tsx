@@ -1,7 +1,10 @@
 import { Input } from "antd";
 import { get } from "lodash";
 import { useEffect, useState } from "react";
+import cn from "classnames";
 import "./styles.scss";
+import { useDispatch } from "react-redux";
+import { ResInfo } from "../../redux/actions";
 
 export default function InputField({
 	label,
@@ -24,14 +27,16 @@ export default function InputField({
 	id: any;
 }) {
 	const hasError = get(form.touched, field.name) && get(form.errors, field.name);
-	// useEffect(() => {
-	// 	console.log(field.name);
-	// }, []);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		// console.log(field, form.values.name);
+		dispatch(ResInfo?.setResumeName(form.values.name));
+	}, [form.values]);
 
 	const [inputType, setType] = useState(type);
 
 	return (
-		<div className={`${hasError ? "error" : "w-full"}`}>
+		<div className={cn({ error: hasError, "w-full": !hasError })}>
 			{label ? <label className="text-xs">{label}</label> : null}
 			<Input
 				style={hasError && { border: "1px solid #ff4d4f" }}
@@ -41,10 +46,7 @@ export default function InputField({
 				id={field.name}
 				onBlur={field.onBlur}
 				onChange={field.onChange}
-				// onChange={(event) => {
-				// 	form.setFieldValue(field.name, event.target.value);
-				// 	onChange && onChange(event.target.value);
-				// }}
+				value={get(form.values.name, field.name)}
 				{...props}
 			/>
 			{hasError ? (

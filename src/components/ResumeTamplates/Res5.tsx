@@ -1,6 +1,6 @@
 import React from "react";
-import { FaPhoneAlt, FaEnvelope, FaLinkedin } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
+// import { FaPhoneAlt, FaEnvelope, FaLinkedin } from "react-icons/fa";
+// import { FaLocationDot } from "react-icons/fa6";
 
 export const Res5: React.FC = () => {
 	return (
@@ -13,19 +13,19 @@ export const Res5: React.FC = () => {
 						contact
 					</p>
 					<div className="flex items-center text-xs mt-4 font-medium">
-						<FaPhoneAlt className="me-3" />
+						{/* <FaPhoneAlt className="me-3" /> */}
 						(90) 053 11 02
 					</div>
 					<div className="flex items-center text-xs mt-4 font-medium">
-						<FaLocationDot className="me-3" />
+						{/* <FaLocationDot className="me-3" /> */}
 						43w 13 street Tashkent
 					</div>
 					<div className="flex items-center text-xs mt-4 font-medium">
-						<FaEnvelope className="me-3" />
+						{/* <FaEnvelope className="me-3" /> */}
 						lauren.chen@mail.com
 					</div>
 					<div className="flex items-center text-xs mt-4 font-medium">
-						<FaLinkedin className="me-3" />
+						{/* <FaLinkedin className="me-3" /> */}
 						linkedin.com/lauren.chen
 					</div>
 				</div>

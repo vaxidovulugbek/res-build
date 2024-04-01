@@ -1,6 +1,6 @@
 import React from "react";
-import { FaPhoneAlt, FaEnvelope, FaLinkedinIn } from "react-icons/fa";
-import { ImLocation } from "react-icons/im";
+// import { FaPhoneAlt, FaEnvelope, FaLinkedinIn } from "react-icons/fa";
+// import { ImLocation } from "react-icons/im";
 
 export const Res6: React.FC = () => {
 	return (
@@ -22,19 +22,19 @@ export const Res6: React.FC = () => {
 						</p>
 						<ul className="grid gap-3 text-[11px] font-medium">
 							<li className="flex gap-3 items-center">
-								<FaPhoneAlt />
+								{/* <FaPhoneAlt /> */}
 								<span>123-3940-399</span>
 							</li>
 							<li className="flex gap-3 items-center">
-								<FaEnvelope />
+								{/* <FaEnvelope /> */}
 								<span>youremail@gmail.com</span>
 							</li>
 							<li className="flex gap-3 items-center">
-								<ImLocation />
+								{/* <ImLocation /> */}
 								<span>City,State</span>
 							</li>
 							<li className="flex gap-3 items-center">
-								<FaLinkedinIn />
+								{/* <FaLinkedinIn /> */}
 								<span>Linkedin.com/username</span>
 							</li>
 						</ul>

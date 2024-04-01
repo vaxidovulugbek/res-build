@@ -5,7 +5,7 @@ import { Loading } from "./components";
 
 const Home = lazy(() => import("pages/Home/Home"));
 const Resume = lazy(() => import("pages/Resume/Resume"));
-const CreateResume = lazy(() => import("pages/Create-Resume/CreateResume"));
+const CreateResume = lazy(() => import("pages/CreateResume/CreateResume"));
 
 const routes = [
 	{ path: RoutesPath?.home, element: <Home /> },

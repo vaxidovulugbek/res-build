@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "ui/Button/Button";
 import { Logo } from "ui/Logo/Logo";
-import { IoSunny, IoMoon } from "react-icons/io5";
-import { GoLock } from "react-icons/go";
+// import { IoSunny, IoMoon } from "react-icons/io5";
+// import { GoLock } from "react-icons/go";
 import "./Header.scss";
 import Navbar from "./NavBar";
 import useStore from "../../zustand/store";
@@ -73,7 +73,8 @@ const Header: React.FC = () => {
 									<Button
 										className="text-gray flex items-center flex-row-reverse ms-2"
 										text="Login"
-										children={<GoLock className="me-2" />}
+										// children={<GoLock className="me-2" />}
+										children={"<GoLock />"}
 										onClick={openFirstModal}
 									/>
 								</div>

@@ -2,7 +2,7 @@ import React from "react";
 import { Title, Text } from "ui";
 import FooterList from "./FooterList";
 import "./Footer.scss";
-import { FaFacebookF, FaTelegramPlane, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+// import { FaFacebookF, FaTelegramPlane, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const Footer: React.FC = () => {
 	return (
@@ -89,7 +89,7 @@ const Footer: React.FC = () => {
 									href="#"
 									target="_blank"
 								>
-									<FaFacebookF className="text-gray" />
+									{/* <FaFacebookF className="text-gray" /> */}
 								</a>
 							</li>
 							<li>
@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
 									href="#"
 									target="_blank"
 								>
-									<FaTelegramPlane className="text-gray" />
+									{/* <FaTelegramPlane className="text-gray" /> */}
 								</a>
 							</li>
 							<li>
@@ -107,7 +107,7 @@ const Footer: React.FC = () => {
 									href="#"
 									target="_blank"
 								>
-									<FaInstagram className="text-gray" />
+									{/* <FaInstagram className="text-gray" /> */}
 								</a>
 							</li>
 							<li>
@@ -116,7 +116,7 @@ const Footer: React.FC = () => {
 									href="#"
 									target="_blank"
 								>
-									<FaLinkedinIn className="text-gray" />
+									{/* <FaLinkedinIn className="text-gray" /> */}
 								</a>
 							</li>
 						</ul>
