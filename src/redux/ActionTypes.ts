@@ -1,3 +1,5 @@
 // ActionTypes.ts
 export const SET_RESUME_TEMPLATE = "SET_RESUME_TEMPLATE";
 export const SET_RESUME_NAME = "SET_RESUME_NAME";
+export const SET_RESUME_LASTNAME = "SET_RESUME_LASTNAME";
+export const SET_RESUME_EMAIL = "SET_RESUME_EMAIL";

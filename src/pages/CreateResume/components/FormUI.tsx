@@ -11,6 +11,7 @@ import "slick-carousel/slick/slick.css";
 import { Button, Text, Title } from "ui";
 import useStore from "../../../zustand/store";
 import FormFields from "./FormFields";
+import FormFields2 from "./FormFields2";
 import ModalResumes from "./ModalResumes";
 import "./styles.scss";
 import TextEditor from "./TextEditor";
@@ -19,23 +20,6 @@ const FormUI: React.FC = () => {
 	const [modal, setModal] = useState({ open: "" });
 	const [placement, setPlacement] = useState<DrawerProps["placement"]>("left");
 	const resumeTemplate = useSelector((state: any) => state.resumeTemplate);
-
-	// const componentToRender =
-	// 	resumeTemplate === +"1" ? (
-	// 		<Res1 />
-	// 	) : resumeTemplate === +"2" ? (
-	// 		<Res2 />
-	// 	) : resumeTemplate === +"3" ? (
-	// 		<Res3 />
-	// 	) : resumeTemplate === +"4" ? (
-	// 		<Res4 />
-	// 	) : resumeTemplate === +"5" ? (
-	// 		<Res5 />
-	// 	) : resumeTemplate === +"6" ? (
-	// 		<Res6 />
-	// 	) : (
-	// 		<Res1 /> // default return component
-	// 	);
 
 	const resumeComponents: { [key: number]: JSX.Element } = {
 		1: <Res1 />,
@@ -72,6 +56,7 @@ const FormUI: React.FC = () => {
 		speed: 100,
 		slidesToShow: 1,
 		slidesToScroll: 1,
+		draggable: false,
 		afterChange: (currentSlide) => {
 			if (currentSlide === 0) {
 				setChangeStatusSlider(true);
@@ -81,21 +66,24 @@ const FormUI: React.FC = () => {
 		},
 	};
 
-	const data = [<FormFields />, <FormFields />];
+	const data = [
+		<FormFields handleNextSlide={handleNextSlide} />,
+		<FormFields2 handlePrevSlide={handlePrevSlide} />,
+	];
 
 	return (
 		<section>
 			<ModalResumes modal={modal} setModal={setModal} placement={placement} />
 			<div className="container-box">
 				<div className="flex editor sm:items-center max-[540px]:pt-20 max-[640px]:flex-col sm:flex-col xl:flex-row xl:items-start">
-					<div className="flex flex-col sm:w-full md:w-9/12 lg:w-1/2 max-[640px]:mb-6 max-[480px]:mb-4 sm:mb-6 xl:mb-0 2xl:pe-16 xl:pe-10">
+					<div className="flex flex-col relative sm:w-full md:w-9/12 lg:w-1/2 max-[640px]:mb-6 max-[480px]:mb-4 sm:mb-6 xl:mb-0 2xl:pe-16 xl:pe-10">
 						<div className="flex justify-between">
 							<Button
 								className="radius_half h-10 max-[480px]:text-sm text-cyan-700 border-solid border-1 border-cyan-700 hover:bg-cyan-700 delay-100 hover:text-white px-4 py-1.5 rounded-3xl editor__btn-shadow"
 								text="Templates"
 								onClick={() => setModal({ open: "resumeTamplates" })}
 							/>
-							<div className="flex items-center">
+							{/* <div className="flex items-center">
 								<Button
 									className={cn(
 										"ms-3 editor__btn-shadow flex items-center shadow-xl p-3 w-10 h-10 rounded-full",
@@ -112,7 +100,7 @@ const FormUI: React.FC = () => {
 									onClick={handleNextSlide}
 									children={'<GrLinkNext className="ms-2" />'}
 								/>
-							</div>
+							</div> */}
 						</div>
 						<div className="xl:mt-5 md:mt-3 sm:mt-2 min-[320px]:mt-2 editor__form">
 							<div className="min-[320px]:mb-3 xl:mb-5">
@@ -133,7 +121,6 @@ const FormUI: React.FC = () => {
 										return <div key={index}>{component}</div>;
 									})}
 							</Slider>
-							<TextEditor />
 						</div>
 					</div>
 					<div

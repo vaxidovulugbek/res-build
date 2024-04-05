@@ -17,10 +17,18 @@
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0,0,0,.05);
     padding: 10px 25px;
+
+    .slick-list {
+      overflow-x: hidden !important;
+    }
   }
 
   &__btn-shadow {
     box-shadow: 0px 0px 15px rgba(0,0,0,.15);
+  }
+
+  &__btn-hover:hover {
+    background-color: #0E7490 !important;
   }
 
   @media screen and (max-width:480px) {

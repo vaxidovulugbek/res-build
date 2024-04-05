@@ -9,16 +9,15 @@ import * as Yup from "yup";
 import useWindowSize from "hooks/useWindowSize";
 import TextEditor from "./TextEditor";
 import useStore from "../../../zustand/store";
-import SocialLinks from "./SocialLinks";
+import cn from "classnames";
 
-export default function FormFields({ handleNextSlide }: { handleNextSlide: any }) {
-	const { hasError, changeStatusSlider } = useStore();
+export default function FormFields2({ handlePrevSlide }: { handlePrevSlide: any }) {
+	const { changeStatusSlider } = useStore();
+
 	const width = useWindowSize();
 
 	const dispatch = useDispatch();
 	const resumeName = useSelector((state: any) => state.resumeName);
-	const resumeLastName = useSelector((state: any) => state.resumeLastName);
-	const resumeEmail = useSelector((state: any) => state.resumeEmail);
 
 	const validationSchema = Yup.object({
 		name: Yup.string().required("Ism majburiy"),
@@ -40,16 +39,9 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 		// console.log("Form yuborildi:", values.name);
 		dispatch(ResInfo?.setResumeName(values.name));
 	};
-
-	const re = /^[^@]+@[^@]+$/;
-
-	// const re =
-	// 	/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	// useEffect(() => {
-	// 	console.log([resumeName, resumeLastName, resumeEmail]);
-	// 	// console.log(re.test("jkj@gmail.com"));
-	// 	console.log([resumeName, resumeLastName, resumeEmail].every((item) => item !== ""));
-	// }, [resumeName, resumeLastName, resumeEmail]);
+	// 	console.log(resumeName);
+	// }, [name, dispatch]);
 
 	return (
 		<>
@@ -69,6 +61,7 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 								placeholder="component input ssss"
 								label="Ism:"
 								component={Fields.InputField}
+								// onChange={setName}
 							/>
 						</Col>
 						<Col span={width < 480 ? 24 : 12}>
@@ -115,33 +108,31 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 								component={Fields.InputField}
 							/>
 						</Col>
-						<SocialLinks />
-						{/* <Col span={width < 480 ? 24 : 12}>
-							<Field
-								name="Address"
-								label="Address"
-								placeholder="Address"
-								component={Fields.InputField}
-							/>
-						</Col> */}
-						<Col span={24} className="modal-footer flex items-center">
+						<Col span={24} className="pb-16">
+							<TextEditor />
+						</Col>
+						<Col span={24} className="modal-footer">
+							{/* <Button
+							style={{ background: "orange", borderColor: "orange" }}
+							loading={false}
+							htmlType="submit"
+							type="primary"
+							formAction="submit"
+							formTarget="category"
+						>
+							Создать
+						</Button> */}
 							<Button
-								className="flex items-center h-10 text-white hover:bg-cyan-700 bg-cyan-700 px-4 py-1.5 rounded-3xl editor__btn-hover editor__btn-shadow max-[480px]:text-sm"
-								loading={false}
-								htmlType="submit"
-								type="primary"
-								formAction="submit"
-								formTarget="category"
-								onClick={
-									[resumeName, resumeLastName, resumeEmail].every(
-										(item) => item !== ""
-									) && re.test(resumeEmail)
-										? handleNextSlide
-										: null
-								}
-							>
-								Создать
-							</Button>
+								className={cn(
+									"ms-3 editor__btn-shadow flex items-center shadow-xl p-3 w-10 h-10 rounded-full",
+									{
+										hidden: changeStatusSlider === true,
+									}
+								)}
+								onClick={handlePrevSlide}
+								children={"<GrLinkPrevious />"}
+							/>
+							<button type="submit">ok</button>
 						</Col>
 					</Row>
 				</Form>

@@ -6,9 +6,6 @@ import { useSelector } from "react-redux";
 
 export const Res1: React.FC = () => {
 	const resumeName = useSelector((state: any) => state.resumeName);
-	useEffect(() => {
-		console.log(resumeName);
-	}, [resumeName]);
 	return (
 		<>
 			<div className="main max-w-[700px] mx-auto pt-12 pb-6">

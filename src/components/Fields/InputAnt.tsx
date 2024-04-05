@@ -5,6 +5,7 @@ import cn from "classnames";
 import "./styles.scss";
 import { useDispatch } from "react-redux";
 import { ResInfo } from "../../redux/actions";
+import useStore from "../../zustand/store";
 
 export default function InputField({
 	label,
@@ -28,10 +29,18 @@ export default function InputField({
 }) {
 	const hasError = get(form.touched, field.name) && get(form.errors, field.name);
 	const dispatch = useDispatch();
+	const { setHasError } = useStore();
 	useEffect(() => {
-		// console.log(field, form.values.name);
 		dispatch(ResInfo?.setResumeName(form.values.name));
+		dispatch(ResInfo?.setResumeLastName(form.values.Last_Name));
+		dispatch(ResInfo?.setResumeEmail(form.values.Email_Address));
+		setHasError(hasError);
 	}, [form.values]);
+
+	useEffect(() => {
+		setHasError(form.errors);
+		// console.log([form]);
+	}, [form.errors, field.name]);
 
 	const [inputType, setType] = useState(type);
 
