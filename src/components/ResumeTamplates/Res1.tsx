@@ -1,11 +1,13 @@
-import { isString } from "lodash";
+import { useSelectorRedux } from "hooks";
+import { isBoolean, isString } from "lodash";
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import cn from "classnames";
 // import { ImMobile, ImLocation } from "react-icons/im";
 // import { BsEnvelope, BsGlobe } from "react-icons/bs";
 
 export const Res1: React.FC = () => {
-	const resumeName = useSelector((state: any) => state.resumeName);
+	const { resumeName, resumeLastName, resumeEmail, resumePhone, resumeAdress, resumeJobTitle } =
+		useSelectorRedux();
 	return (
 		<>
 			<div className="main max-w-[700px] mx-auto pt-12 pb-6">
@@ -15,14 +17,15 @@ export const Res1: React.FC = () => {
 							? "JONATHAN"
 							: resumeName.trim()
 						: "JONATHAN "}
-					{isString(resumeName)
-						? resumeName.length < 1
+					<span> </span>
+					{isString(resumeLastName)
+						? resumeLastName.length < 1
 							? "PATTERSON"
-							: resumeName.trim()
+							: resumeLastName.trim()
 						: "PATTERSON"}
 				</h1>
 				<h5 className="text-center uppercase tracking-[0.25em] text-sm text-gray-600 mt-2">
-					graphic designer
+					{resumeJobTitle ? resumeJobTitle : "graphic designer"}
 				</h5>
 				<div className="border-solid border-[1px] border-gray-400 rounded-full mx-10 mt-5" />
 				<div className="main-info flex">
@@ -31,25 +34,25 @@ export const Res1: React.FC = () => {
 							contact
 						</h3>
 						<div className="flex flex-col gap-3">
-							<p className="flex items-center">
+							<p className={cn("flex items-center", { hidden: !resumePhone })}>
 								{/* <ImMobile className="me-2" /> */}
 								{/* <i className="fa-solid fa-mobile-screen fa-xl w-6 text-center" /> */}
-								123-456-7890
+								{resumePhone}
 							</p>
 							<p className="flex items-center">
 								{/* <BsEnvelope className="me-2" /> */}
 								{/* <i className="fa-regular fa-envelope fa-xl w-6 text-center" /> */}
-								hello@reallygreatsite.com
+								{resumeEmail ? resumeEmail : "example@gmail.com"}
 							</p>
 							<p className="flex items-center">
 								{/* <BsGlobe className="me-2" /> */}
 								{/* <i className="fa-solid fa-globe fa-xl w-6 text-center" /> */}
 								www.reallygreatsite.com
 							</p>
-							<p className="flex items-center">
+							<p className={cn("flex items-center", { hidden: !resumeAdress })}>
 								{/* <ImLocation className="me-2" /> */}
 								{/* <i className="fa-solid fa-location-dot fa-xl w-6 text-center" /> */}
-								123 Aynwhere St, Any City
+								{resumeAdress}
 							</p>
 						</div>
 						<div className="border-dashed border-[1px] border-gray-400 rounded-full my-6" />

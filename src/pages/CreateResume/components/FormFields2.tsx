@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ResInfo } from "../../../redux/actions";
 import * as Yup from "yup";
-import useWindowSize from "hooks/useWindowSize";
+import { useWindowSize } from "hooks";
 import TextEditor from "./TextEditor";
 import useStore from "../../../zustand/store";
 import cn from "classnames";

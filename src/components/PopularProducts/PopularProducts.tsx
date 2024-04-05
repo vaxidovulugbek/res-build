@@ -4,7 +4,7 @@ import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Text, Title } from "ui";
-import useWindowSize from "hooks/useWindowSize";
+import { useWindowSize } from "hooks";
 import { isArray } from "lodash";
 const PopularProducts: React.FC = () => {
 	const cards = [

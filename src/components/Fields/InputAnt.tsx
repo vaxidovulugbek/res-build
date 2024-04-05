@@ -31,10 +31,14 @@ export default function InputField({
 	const dispatch = useDispatch();
 	const { setHasError } = useStore();
 	useEffect(() => {
-		dispatch(ResInfo?.setResumeName(form.values.name));
-		dispatch(ResInfo?.setResumeLastName(form.values.Last_Name));
-		dispatch(ResInfo?.setResumeEmail(form.values.Email_Address));
+		dispatch(ResInfo?.setResumeName(form?.values?.name));
+		dispatch(ResInfo?.setResumeLastName(form?.values?.Last_Name));
+		dispatch(ResInfo?.setResumeEmail(form?.values?.Email_Address));
+		dispatch(ResInfo?.setResumeJobTitle(form?.values?.Job_Title));
+		dispatch(ResInfo?.setResumePhone(form?.values?.Phone));
+		dispatch(ResInfo?.setResumeAdress(form?.values?.Address));
 		setHasError(hasError);
+		// console.log(form.values);
 	}, [form.values]);
 
 	useEffect(() => {

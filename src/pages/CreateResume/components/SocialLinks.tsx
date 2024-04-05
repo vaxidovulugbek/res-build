@@ -3,8 +3,8 @@ import { Button } from "ui";
 import { Field, Form, Formik } from "formik";
 import { Col, Input } from "antd";
 import Fields from "components/Fields";
-import useWindowSize from "hooks/useWindowSize";
-
+import { useWindowSize } from "hooks";
+// SOCIAL LINKSNI  FIELD QILIB YOZIB KOR, COMPONENTSGA FUNCSION YARATIB RETURN QILIB KOR, FUNCTIONS DEGAN BO'LIM OCH
 const SocialLinks: React.FC = () => {
 	const width = useWindowSize();
 
@@ -27,10 +27,6 @@ const SocialLinks: React.FC = () => {
 		const newInputs = inputs.filter((_, i) => i !== index);
 		setInputs(newInputs);
 	};
-
-	useEffect(() => {
-		console.log(inputs);
-	}, [inputs]);
 
 	return (
 		<>
@@ -67,46 +63,45 @@ const SocialLinks: React.FC = () => {
 					}
 				/>
 			</Col>
-			{inputs.map((input, index) => (
-				<Col span={24} key={index}>
-					<div className="w-full flex items-center gap-5">
-						<div className="flex-auto">
-							<label className="text-xs">Description (optional)</label>
-							<Input
-								placeholder="Input 1"
-								value={input.value1}
-								onChange={(e) => handleChange(index, e.target.value, 1)}
-								// style={{ marginBottom: "10px", border: "1px solid red" }}
+			{inputs &&
+				inputs.map((input, index) => (
+					<Col span={24} key={index}>
+						<div className="w-full flex items-center gap-5">
+							<div className="flex-auto">
+								<label className="text-xs">Description (optional)</label>
+								<Input
+									placeholder="Input 1"
+									value={input.value1}
+									onChange={(e) => handleChange(index, e.target.value, 1)}
+								/>
+							</div>
+							<div className="flex-auto">
+								<label className="text-xs">Link/Text/Etc.</label>
+								<Input
+									placeholder="Input 1"
+									value={input.value1}
+									onChange={(e) => handleChange(index, e.target.value, 1)}
+								/>
+							</div>
+							<Button
+								className="flex-none py-3 px-1 mt-4 z-50"
+								type="button"
+								onClick={() => handleDelete(index)}
+								children={
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+										<path
+											d="M2.2 2.9h11.6v11.7a.9.9 0 01-.9.9H3.1a.9.9 0 01-.9-.9V2.9h0zM15.5 2.9H.5M5 2.9V1.4a.9.9 0 01.9-.9h4.2a.9.9 0 01.9.9v1.5M5.5 4.8v7.5M8 4.8v7.5M10.5 4.8v7.5"
+											fill="none"
+											stroke="#b0bbd1"
+											stroke-linecap="round"
+											stroke-miterlimit="10"
+										></path>
+									</svg>
+								}
 							/>
 						</div>
-						<div className="flex-auto">
-							<label className="text-xs">Link/Text/Etc.</label>
-							<Input
-								placeholder="Input 1"
-								value={input.value1}
-								onChange={(e) => handleChange(index, e.target.value, 1)}
-								// style={{ marginBottom: "10px", border: "1px solid red" }}
-							/>
-						</div>
-						<Button
-							className="flex-none py-3 px-1 mt-4 z-50"
-							type="button"
-							onClick={() => handleDelete(index)}
-							children={
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-									<path
-										d="M2.2 2.9h11.6v11.7a.9.9 0 01-.9.9H3.1a.9.9 0 01-.9-.9V2.9h0zM15.5 2.9H.5M5 2.9V1.4a.9.9 0 01.9-.9h4.2a.9.9 0 01.9.9v1.5M5.5 4.8v7.5M8 4.8v7.5M10.5 4.8v7.5"
-										fill="none"
-										stroke="#b0bbd1"
-										stroke-linecap="round"
-										stroke-miterlimit="10"
-									></path>
-								</svg>
-							}
-						/>
-					</div>
-				</Col>
-			))}
+					</Col>
+				))}
 		</>
 	);
 };

@@ -1,7 +1,7 @@
 import debounce from "lodash/debounce";
 import { useCallback, useEffect, useState } from "react";
 
-const useWindowSize = () => {
+export const useWindowSize = () => {
 	const [width, setWidth] = useState(0);
 
 	const windowListener = useCallback(
@@ -24,5 +24,3 @@ const useWindowSize = () => {
 
 	return width;
 };
-
-export default useWindowSize;

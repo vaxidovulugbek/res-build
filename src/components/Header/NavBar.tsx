@@ -1,7 +1,8 @@
 import React from "react";
-import { Button } from "ui/Button/Button";
+import { Button } from "ui";
 import "./Header.scss";
 import { Menu, MenuButton, MenuList, MenuItem, Text } from "@chakra-ui/react";
+import RoutesPath from "helpers/RoutesPath";
 // import { CiMenuFries } from "react-icons/ci";
 
 const Navbar: React.FC = () => {
@@ -10,14 +11,14 @@ const Navbar: React.FC = () => {
 			<nav className="navbar lg:me-20 md:me-10 sm:me-4">
 				<ul className="lg:flex sm:hidden nav-links items-center">
 					<li className="navbar__items">
-						<a className="navbar__link" href="#">
-							Resume Templates
-						</a>
+						<Button
+							className="navbar__link"
+							link={RoutesPath.resume}
+							text="Resume Templates"
+						/>
 					</li>
 					<li className="navbar__items">
-						<a className="navbar__link" href="#">
-							Contact
-						</a>
+						<Button className="navbar__link" link={RoutesPath.resume} text="Pricing" />
 					</li>
 				</ul>
 				<Menu>
@@ -30,10 +31,10 @@ const Navbar: React.FC = () => {
 					</MenuButton>
 					<MenuList minWidth="100px">
 						<MenuItem className="capitalize">
-							<a href="#">Resume Templates</a>
+							<Button link={RoutesPath.resume} text="Resume Templates" />
 						</MenuItem>
 						<MenuItem className="capitalize">
-							<a href="#">Contact</a>
+							<Button link={RoutesPath.resume} text="Pricing" />
 						</MenuItem>
 					</MenuList>
 				</Menu>
