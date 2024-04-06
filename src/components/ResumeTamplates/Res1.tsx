@@ -1,13 +1,23 @@
 import { useSelectorRedux } from "hooks";
-import { isBoolean, isString } from "lodash";
+import { isArray, isBoolean, isString } from "lodash";
 import React, { useEffect } from "react";
 import cn from "classnames";
 // import { ImMobile, ImLocation } from "react-icons/im";
 // import { BsEnvelope, BsGlobe } from "react-icons/bs";
 
 export const Res1: React.FC = () => {
-	const { resumeName, resumeLastName, resumeEmail, resumePhone, resumeAdress, resumeJobTitle } =
-		useSelectorRedux();
+	const {
+		resumeName,
+		resumeLastName,
+		resumeEmail,
+		resumePhone,
+		resumeAdress,
+		resumeJobTitle,
+		resumeSocialLinks,
+	} = useSelectorRedux();
+	useEffect(() => {
+		console.log(resumeSocialLinks);
+	}, [resumeSocialLinks]);
 	return (
 		<>
 			<div className="main max-w-[700px] mx-auto pt-12 pb-6">
@@ -44,11 +54,16 @@ export const Res1: React.FC = () => {
 								{/* <i className="fa-regular fa-envelope fa-xl w-6 text-center" /> */}
 								{resumeEmail ? resumeEmail : "example@gmail.com"}
 							</p>
-							<p className="flex items-center">
-								{/* <BsGlobe className="me-2" /> */}
-								{/* <i className="fa-solid fa-globe fa-xl w-6 text-center" /> */}
-								www.reallygreatsite.com
-							</p>
+							{/* <BsGlobe className="me-2" /> */}
+							{/* <i className="fa-solid fa-globe fa-xl w-6 text-center" /> */}
+							{isArray(resumeSocialLinks) &&
+								resumeSocialLinks.map((item, index) => (
+									<p key={index} className="flex items-center">
+										{item?.value1
+											? `${item?.value1}: ${item?.value2}`
+											: item?.value2}
+									</p>
+								))}
 							<p className={cn("flex items-center", { hidden: !resumeAdress })}>
 								{/* <ImLocation className="me-2" /> */}
 								{/* <i className="fa-solid fa-location-dot fa-xl w-6 text-center" /> */}

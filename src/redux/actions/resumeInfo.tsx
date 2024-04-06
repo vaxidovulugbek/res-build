@@ -5,6 +5,7 @@ import {
 	SET_RESUME_PHONE,
 	SET_RESUME_JOBTITLE,
 	SET_RESUME_ADRESS,
+	SET_RESUME_SOCIALLINKS,
 } from "../ActionTypes";
 
 const setResumeName = (name: string | null) => ({
@@ -37,6 +38,11 @@ const setResumeAdress = (adress: string | null) => ({
 	payload: adress,
 });
 
+const setResumeSocialLinks = (socialLinks: any | null) => ({
+	type: SET_RESUME_SOCIALLINKS,
+	payload: socialLinks,
+});
+
 export const ResInfo = {
 	setResumeName,
 	setResumeLastName,
@@ -44,4 +50,5 @@ export const ResInfo = {
 	setResumeJobTitle,
 	setResumePhone,
 	setResumeAdress,
+	setResumeSocialLinks,
 };

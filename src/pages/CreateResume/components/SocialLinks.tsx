@@ -4,6 +4,8 @@ import { Field, Form, Formik } from "formik";
 import { Col, Input } from "antd";
 import Fields from "components/Fields";
 import { useWindowSize } from "hooks";
+import { ResInfo } from "../../../redux/actions";
+import { useDispatch } from "react-redux";
 // SOCIAL LINKSNI  FIELD QILIB YOZIB KOR, COMPONENTSGA FUNCSION YARATIB RETURN QILIB KOR, FUNCTIONS DEGAN BO'LIM OCH
 const SocialLinks: React.FC = () => {
 	const width = useWindowSize();
@@ -27,6 +29,11 @@ const SocialLinks: React.FC = () => {
 		const newInputs = inputs.filter((_, i) => i !== index);
 		setInputs(newInputs);
 	};
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(ResInfo?.setResumeSocialLinks(inputs));
+	}, [inputs]);
 
 	return (
 		<>
@@ -79,8 +86,8 @@ const SocialLinks: React.FC = () => {
 								<label className="text-xs">Link/Text/Etc.</label>
 								<Input
 									placeholder="Input 1"
-									value={input.value1}
-									onChange={(e) => handleChange(index, e.target.value, 1)}
+									value={input.value2}
+									onChange={(e) => handleChange(index, e.target.value, 2)}
 								/>
 							</div>
 							<Button

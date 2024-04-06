@@ -7,6 +7,15 @@ export const useSelectorRedux = () => {
 	const resumePhone = useSelector((state: any) => state.resumePhone);
 	const resumeAdress = useSelector((state: any) => state.resumeAdress);
 	const resumeJobTitle = useSelector((state: any) => state.resumeJobTitle);
+	const resumeSocialLinks = useSelector((state: any) => state.resumeSocialLinks);
 
-	return { resumeName, resumeLastName, resumeEmail, resumePhone, resumeAdress, resumeJobTitle };
+	return {
+		resumeName,
+		resumeLastName,
+		resumeEmail,
+		resumePhone,
+		resumeAdress,
+		resumeJobTitle,
+		resumeSocialLinks,
+	};
 };

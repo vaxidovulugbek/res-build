@@ -7,6 +7,7 @@ import {
 	SET_RESUME_ADRESS,
 	SET_RESUME_JOBTITLE,
 	SET_RESUME_PHONE,
+	SET_RESUME_SOCIALLINKS,
 } from "./ActionTypes";
 
 interface MyStore {
@@ -17,6 +18,7 @@ interface MyStore {
 	resumePhone: any;
 	resumeAdress: any;
 	resumeJobTitle: any;
+	resumeSocialLinks: any;
 	// ... boshqa xususiyatlar ...
 }
 
@@ -28,6 +30,7 @@ const initialState: MyStore = {
 	resumePhone: null,
 	resumeAdress: null,
 	resumeJobTitle: null,
+	resumeSocialLinks: null,
 	// ... boshqa barcha boshlang'ich xususiyatlar ...
 };
 
@@ -67,6 +70,11 @@ const reducer = (state = initialState, action: any) => {
 			return {
 				...state,
 				resumePhone: action.payload,
+			};
+		case SET_RESUME_SOCIALLINKS:
+			return {
+				...state,
+				resumeSocialLinks: action.payload,
 			};
 		// ... boshqa case'lar ...
 		default:
