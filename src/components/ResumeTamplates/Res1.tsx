@@ -14,10 +14,14 @@ export const Res1: React.FC = () => {
 		resumeAdress,
 		resumeJobTitle,
 		resumeSocialLinks,
+		resumeCompanyName,
+		resumePosition,
+		resumeStartDate,
+		resumeEndDate,
 	} = useSelectorRedux();
-	useEffect(() => {
-		console.log(resumeSocialLinks);
-	}, [resumeSocialLinks]);
+	// useEffect(() => {
+	// 	console.log(resumeSocialLinks);
+	// }, [resumeSocialLinks]);
 	return (
 		<>
 			<div className="main max-w-[700px] mx-auto pt-12 pb-6">
@@ -138,10 +142,12 @@ export const Res1: React.FC = () => {
 						<h3 className="uppercase tracking-[0.25em] text-base font-semibold pb-3">
 							work experience
 						</h3>
-						<p className="font-semibold text-sm">Your Instruction Name</p>
+						<p className="font-semibold text-sm capitalize">{resumePosition}</p>
 						<p className="flex justify-between py-3">
-							<span className="text-xs">Company name</span>
-							<span className="text-xs">2020-2022</span>
+							<span className="text-xs capitalize">{resumeCompanyName}</span>
+							<span className="text-xs">
+								{resumeStartDate} <span> </span> {resumeEndDate}
+							</span>
 						</p>
 						<ul className="list-disc text-xs pl-4 tracking-tighter">
 							<li>

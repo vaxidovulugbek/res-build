@@ -9,6 +9,7 @@ import * as Yup from "yup";
 import { useWindowSize } from "hooks";
 import TextEditor from "./TextEditor";
 import useStore from "../../../zustand/store";
+import { Title, Text } from "ui";
 import cn from "classnames";
 
 export default function FormFields2({ handlePrevSlide }: { handlePrevSlide: any }) {
@@ -17,7 +18,6 @@ export default function FormFields2({ handlePrevSlide }: { handlePrevSlide: any 
 	const width = useWindowSize();
 
 	const dispatch = useDispatch();
-	const resumeName = useSelector((state: any) => state.resumeName);
 
 	const validationSchema = Yup.object({
 		name: Yup.string().required("Ism majburiy"),
@@ -37,14 +37,19 @@ export default function FormFields2({ handlePrevSlide }: { handlePrevSlide: any 
 	// Formni yuborish amaliyoti
 	const onSubmit = (values: any) => {
 		// console.log("Form yuborildi:", values.name);
-		dispatch(ResInfo?.setResumeName(values.name));
+		// dispatch(ResInfo?.setResumeName(values.name));
 	};
-	// useEffect(() => {
-	// 	console.log(resumeName);
-	// }, [name, dispatch]);
 
 	return (
-		<>
+		<div className="editor__form-content">
+			<div className="min-[320px]:mb-3 xl:mb-5">
+				<Title
+					className="editor__title title-color"
+					as="h1"
+					text="Professional Experience"
+				/>
+				<Text className="text-gray" as="p" text="Tell us about your most recent job." />
+			</div>
 			<Formik
 				initialValues={initialValues}
 				validationSchema={validationSchema}
@@ -55,56 +60,39 @@ export default function FormFields2({ handlePrevSlide }: { handlePrevSlide: any 
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
 								type="text"
-								id="name"
-								name="name"
+								id="experiencePosition"
+								name="experiencePosition"
 								className="w-full"
-								placeholder="component input ssss"
-								label="Ism:"
+								placeholder="Position Title"
+								label="Position Title"
 								component={Fields.InputField}
-								// onChange={setName}
 							/>
 						</Col>
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
 								type="text"
-								id="Last_Name"
-								name="Last_Name"
-								label="Last Name"
-								placeholder="Last Name"
+								id="experienceCompany"
+								name="experienceCompany"
+								label="Company Name"
+								placeholder="Company Name"
 								component={Fields.InputField}
 							/>
 						</Col>
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
-								name="Job_Title"
-								label="Job Title"
-								placeholder="Job Title"
+								name="experienceStartDate"
+								type="date"
+								label="Start Date"
+								placeholder="Start Date"
 								component={Fields.InputField}
 							/>
 						</Col>
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
-								name="Phone"
-								label="Phone"
-								placeholder="Phone"
-								component={Fields.InputField}
-							/>
-						</Col>
-						<Col span={width < 480 ? 24 : 12}>
-							<Field
-								id="Email_Address"
-								name="Email_Address"
-								label="Email Address"
-								placeholder="Email Address"
-								type="email"
-								component={Fields.InputField}
-							/>
-						</Col>
-						<Col span={width < 480 ? 24 : 12}>
-							<Field
-								name="Address"
-								label="Address"
-								placeholder="Address"
+								name="experienceEndDate"
+								type="date"
+								label="End Date"
+								placeholder="End Date"
 								component={Fields.InputField}
 							/>
 						</Col>
@@ -112,16 +100,6 @@ export default function FormFields2({ handlePrevSlide }: { handlePrevSlide: any 
 							<TextEditor />
 						</Col>
 						<Col span={24} className="modal-footer">
-							{/* <Button
-							style={{ background: "orange", borderColor: "orange" }}
-							loading={false}
-							htmlType="submit"
-							type="primary"
-							formAction="submit"
-							formTarget="category"
-						>
-							Создать
-						</Button> */}
 							<Button
 								className={cn(
 									"ms-3 editor__btn-shadow flex items-center shadow-xl p-3 w-10 h-10 rounded-full",
@@ -137,6 +115,6 @@ export default function FormFields2({ handlePrevSlide }: { handlePrevSlide: any 
 					</Row>
 				</Form>
 			</Formik>
-		</>
+		</div>
 	);
 }

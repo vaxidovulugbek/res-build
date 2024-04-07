@@ -67,8 +67,8 @@ const FormUI: React.FC = () => {
 	};
 
 	const data = [
-		<FormFields handleNextSlide={handleNextSlide} />,
 		<FormFields2 handlePrevSlide={handlePrevSlide} />,
+		<FormFields handleNextSlide={handleNextSlide} />,
 	];
 
 	return (
@@ -103,18 +103,6 @@ const FormUI: React.FC = () => {
 							</div> */}
 						</div>
 						<div className="xl:mt-5 md:mt-3 sm:mt-2 min-[320px]:mt-2 editor__form">
-							<div className="min-[320px]:mb-3 xl:mb-5">
-								<Title
-									className="editor__title title-color"
-									as="h1"
-									text="Personal Details"
-								/>
-								<Text
-									className="text-gray"
-									as="p"
-									text="Get started with the basics: your name and contact information."
-								/>
-							</div>
 							<Slider {...settings} ref={sliderRef}>
 								{isArray(data) &&
 									data.map((component, index) => {

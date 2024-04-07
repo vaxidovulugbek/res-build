@@ -8,6 +8,10 @@ import {
 	SET_RESUME_JOBTITLE,
 	SET_RESUME_PHONE,
 	SET_RESUME_SOCIALLINKS,
+	SET_RESUME_COMPANYNAME,
+	SET_RESUME_POSITION,
+	SET_RESUME_STARTDATE,
+	SET_RESUME_ENDDATE,
 } from "./ActionTypes";
 
 interface MyStore {
@@ -19,6 +23,11 @@ interface MyStore {
 	resumeAdress: any;
 	resumeJobTitle: any;
 	resumeSocialLinks: any;
+
+	resumeCompanyName: any;
+	resumePosition: any;
+	resumeStartDate: any;
+	resumeEndDate: any;
 	// ... boshqa xususiyatlar ...
 }
 
@@ -31,6 +40,10 @@ const initialState: MyStore = {
 	resumeAdress: null,
 	resumeJobTitle: null,
 	resumeSocialLinks: null,
+	resumeCompanyName: null,
+	resumePosition: null,
+	resumeStartDate: null,
+	resumeEndDate: null,
 	// ... boshqa barcha boshlang'ich xususiyatlar ...
 };
 
@@ -75,6 +88,26 @@ const reducer = (state = initialState, action: any) => {
 			return {
 				...state,
 				resumeSocialLinks: action.payload,
+			};
+		case SET_RESUME_COMPANYNAME:
+			return {
+				...state,
+				resumeCompanyName: action.payload,
+			};
+		case SET_RESUME_POSITION:
+			return {
+				...state,
+				resumePosition: action.payload,
+			};
+		case SET_RESUME_STARTDATE:
+			return {
+				...state,
+				resumeStartDate: action.payload,
+			};
+		case SET_RESUME_ENDDATE:
+			return {
+				...state,
+				resumeEndDate: action.payload,
 			};
 		// ... boshqa case'lar ...
 		default:

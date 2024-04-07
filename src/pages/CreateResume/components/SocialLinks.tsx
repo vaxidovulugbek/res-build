@@ -63,8 +63,8 @@ const SocialLinks: React.FC = () => {
 							<path
 								d="M1 7.82h14.093M8.047.773v14.093"
 								stroke="#2A64AD"
-								stroke-miterlimit="10"
-								stroke-linecap="round"
+								strokeMiterlimit="10"
+								strokeLinecap="round"
 							></path>
 						</svg>
 					}
@@ -100,8 +100,8 @@ const SocialLinks: React.FC = () => {
 											d="M2.2 2.9h11.6v11.7a.9.9 0 01-.9.9H3.1a.9.9 0 01-.9-.9V2.9h0zM15.5 2.9H.5M5 2.9V1.4a.9.9 0 01.9-.9h4.2a.9.9 0 01.9.9v1.5M5.5 4.8v7.5M8 4.8v7.5M10.5 4.8v7.5"
 											fill="none"
 											stroke="#b0bbd1"
-											stroke-linecap="round"
-											stroke-miterlimit="10"
+											strokeLinecap="round"
+											strokeMiterlimit="10"
 										></path>
 									</svg>
 								}

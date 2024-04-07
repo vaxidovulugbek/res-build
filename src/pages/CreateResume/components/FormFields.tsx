@@ -10,6 +10,7 @@ import { useWindowSize } from "hooks";
 import TextEditor from "./TextEditor";
 import useStore from "../../../zustand/store";
 import SocialLinks from "./SocialLinks";
+import { Title, Text } from "ui";
 
 export default function FormFields({ handleNextSlide }: { handleNextSlide: any }) {
 	const { hasError, changeStatusSlider } = useStore();
@@ -38,21 +39,24 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 	// Formni yuborish amaliyoti
 	const onSubmit = (values: any) => {
 		// console.log("Form yuborildi:", values.name);
-		dispatch(ResInfo?.setResumeName(values.name));
+		// dispatch(ResInfo?.setResumeName(values.name));
 	};
 
 	const re = /^[^@]+@[^@]+$/;
 
 	// const re =
 	// 	/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	// useEffect(() => {
-	// 	console.log([resumeName, resumeLastName, resumeEmail]);
-	// 	// console.log(re.test("jkj@gmail.com"));
-	// 	console.log([resumeName, resumeLastName, resumeEmail].every((item) => item !== ""));
-	// }, [resumeName, resumeLastName, resumeEmail]);
 
 	return (
-		<>
+		<div className="editor__form-content">
+			<div className="min-[320px]:mb-3 xl:mb-5">
+				<Title className="editor__title title-color" as="h1" text="Personal Details" />
+				<Text
+					className="text-gray"
+					as="p"
+					text="Get started with the basics: your name and contact information."
+				/>
+			</div>
 			<Formik
 				initialValues={initialValues}
 				validationSchema={validationSchema}
@@ -146,6 +150,6 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 					</Row>
 				</Form>
 			</Formik>
-		</>
+		</div>
 	);
 }
