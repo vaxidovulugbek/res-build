@@ -137,10 +137,11 @@ export default function InputField({
 		dispatch(ResInfo.setResumePosition(form.values.experiencePosition));
 		dispatch(ResInfo.setResumeStartDate(form.values.experienceStartDate));
 		dispatch(ResInfo.setResumeEndDate(form.values.experienceEndDate));
+		// dispatch(ResInfo.setResumeAboutExpirience(form.values.expirienceEditor));
 
 		// Xato haqida o'girishni saqlash
 		setHasError(hasError);
-		console.log(form.values);
+		// console.log(form.values);
 	}, [form.values, form.errors, field.name, dispatch, setHasError, hasError]);
 
 	return (

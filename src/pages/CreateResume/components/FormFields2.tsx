@@ -96,8 +96,8 @@ export default function FormFields2({ handlePrevSlide }: { handlePrevSlide: any 
 								component={Fields.InputField}
 							/>
 						</Col>
-						<Col span={24} className="pb-16">
-							<TextEditor />
+						<Col span={24}>
+							<Field name="expirienceEditor" component={TextEditor} />
 						</Col>
 						<Col span={24} className="modal-footer">
 							<Button

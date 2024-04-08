@@ -2,6 +2,7 @@ import { useSelectorRedux } from "hooks";
 import { isArray, isBoolean, isString } from "lodash";
 import React, { useEffect } from "react";
 import cn from "classnames";
+import parse from "html-react-parser";
 // import { ImMobile, ImLocation } from "react-icons/im";
 // import { BsEnvelope, BsGlobe } from "react-icons/bs";
 
@@ -18,10 +19,13 @@ export const Res1: React.FC = () => {
 		resumePosition,
 		resumeStartDate,
 		resumeEndDate,
+		resumeAboutExpirience,
 	} = useSelectorRedux();
 	// useEffect(() => {
-	// 	console.log(resumeSocialLinks);
-	// }, [resumeSocialLinks]);
+	// 	// console.log(parse(resumeAboutExpirience), resumePosition);
+	// 	console.log("resumeAboutExpirience:", resumeAboutExpirience);
+	// }, [resumeAboutExpirience, resumePosition]);
+
 	return (
 		<>
 			<div className="main max-w-[700px] mx-auto pt-12 pb-6">
@@ -149,7 +153,11 @@ export const Res1: React.FC = () => {
 								{resumeStartDate} <span> </span> {resumeEndDate}
 							</span>
 						</p>
-						<ul className="list-disc text-xs pl-4 tracking-tighter">
+						<div className="text-xs">
+							{resumeAboutExpirience ? parse(resumeAboutExpirience) : null}
+						</div>
+						{/* <div dangerouslySetInnerHTML={{ __html: resumeAboutExpirience }} */}
+						{/* <ul className="list-disc text-xs pl-4 tracking-tighter">
 							<li>
 								Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
 								aut.
@@ -169,7 +177,7 @@ export const Res1: React.FC = () => {
 							<li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
 							<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
 							<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-						</ul>
+						</ul> */}
 						<p className="font-semibold text-sm pt-5">Your Instruction Name</p>
 						<p className="flex justify-between py-3">
 							<span className="text-xs">Company name</span>
