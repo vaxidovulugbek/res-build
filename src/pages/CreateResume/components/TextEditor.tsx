@@ -197,9 +197,11 @@ import draftToHtml from "draftjs-to-html";
 interface TextEditorProps {
 	form: any;
 	field: any;
+	label?: string;
+	placeholder?: string;
 }
 
-const TextEditor: React.FC<TextEditorProps> = ({ form, field }) => {
+const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder }) => {
 	const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
 	const dispatch = useDispatch();
 
@@ -215,7 +217,8 @@ const TextEditor: React.FC<TextEditorProps> = ({ form, field }) => {
 	};
 
 	return (
-		<div className="editor__form-texteditor relative">
+		<div className="editor__form-texteditor relative mt-2">
+			<label className="capitalize">{label}</label>
 			<Editor
 				editorState={editorState}
 				toolbarClassName="toolbarClassName"
@@ -225,7 +228,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ form, field }) => {
 			/>
 			{!editorState.getCurrentContent().hasText() && (
 				<div className="absolute bottom-4 px-3" style={{ color: "#aaa" }}>
-					Your placeholder text here...
+					{placeholder}
 				</div>
 			)}
 		</div>

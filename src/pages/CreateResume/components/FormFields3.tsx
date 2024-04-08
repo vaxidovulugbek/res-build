@@ -1,18 +1,15 @@
-import { Button, Col, Flex, Row } from "antd";
+import { Button, Col, Row } from "antd";
+import cn from "classnames";
 import Fields from "components/Fields";
 import { Field, Form, Formik } from "formik";
-import { get } from "lodash";
-import { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ResInfo } from "../../../redux/actions";
-import * as Yup from "yup";
 import { useWindowSize } from "hooks";
-import TextEditor from "./TextEditor";
+import { useDispatch } from "react-redux";
+import { Text, Title } from "ui";
+import * as Yup from "yup";
 import useStore from "../../../zustand/store";
-import { Title, Text } from "ui";
-import cn from "classnames";
+import TextEditor from "./TextEditor";
 
-export default function FormFields2({ handlePrevSlide }: { handlePrevSlide: any }) {
+export default function FormFields3({ handlePrevSlide }: { handlePrevSlide: any }) {
 	const { changeStatusSlider } = useStore();
 
 	const width = useWindowSize();
@@ -102,8 +99,6 @@ export default function FormFields2({ handlePrevSlide }: { handlePrevSlide: any 
 								component={TextEditor}
 							/>
 						</Col>
-						<Field name="chips" component={Fields.TagInputAntd} label="Chips" />
-
 						<Col span={24} className="modal-footer">
 							<Button
 								className={cn(
