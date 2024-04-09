@@ -12,6 +12,7 @@ import { Button, Text, Title } from "ui";
 import useStore from "../../../zustand/store";
 import FormFields from "./FormFields";
 import FormFields2 from "./FormFields2";
+import FormFields3 from "./FormFields3";
 import ModalResumes from "./ModalResumes";
 import "./styles.scss";
 import TextEditor from "./TextEditor";
@@ -67,8 +68,9 @@ const FormUI: React.FC = () => {
 	};
 
 	const data = [
-		<FormFields2 handlePrevSlide={handlePrevSlide} />,
 		<FormFields handleNextSlide={handleNextSlide} />,
+		<FormFields2 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
+		<FormFields3 handlePrevSlide={handlePrevSlide} />,
 	];
 
 	return (
@@ -83,24 +85,6 @@ const FormUI: React.FC = () => {
 								text="Templates"
 								onClick={() => setModal({ open: "resumeTamplates" })}
 							/>
-							{/* <div className="flex items-center">
-								<Button
-									className={cn(
-										"ms-3 editor__btn-shadow flex items-center shadow-xl p-3 w-10 h-10 rounded-full",
-										{
-											hidden: changeStatusSlider === true,
-										}
-									)}
-									onClick={handlePrevSlide}
-									children={"<GrLinkPrevious />"}
-								/>
-								<Button
-									className="ms-3 flex items-center h-10 text-white bg-cyan-700 px-4 py-1.5 rounded-3xl editor__btn-shadow max-[480px]:text-sm"
-									text="Next"
-									onClick={handleNextSlide}
-									children={'<GrLinkNext className="ms-2" />'}
-								/>
-							</div> */}
 						</div>
 						<div className="xl:mt-5 md:mt-3 sm:mt-2 min-[320px]:mt-2 editor__form">
 							<Slider {...settings} ref={sliderRef}>

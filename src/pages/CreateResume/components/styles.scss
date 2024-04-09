@@ -27,18 +27,27 @@
 
     &-texteditor {
       background: #ffffff;
-      border-width: 1px;
-      border-style: solid;
-      border-color: #d9d9d9;
-      border-radius: 6px;
-      transition: border 0.2s, box-shadow 0.2s, background 0.2s;
-      box-sizing: border-box;
-      color: rgba(0, 0, 0, 0.88);
-      font-size: 14px;
-      padding: 2px;
 
       .toolbarClassName {
         border: none !important;
+        font-size: 12px !important;
+        color: #000 !important;
+      }
+      .toolbarClassName :hover {
+        color: #000 !important;
+      }
+
+      &-content {
+        border-width: 1px;
+        border-style: solid;
+        border-color: #d9d9d9;
+        border-radius: 6px;
+        transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+        box-sizing: border-box;
+        color: rgba(0, 0, 0, 0.88);
+        font-size: 14px;
+        padding: 2px;
+        margin-top: 6px;
       }
     }
   }

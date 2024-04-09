@@ -38,11 +38,7 @@ export default function FormFields3({ handlePrevSlide }: { handlePrevSlide: any 
 	return (
 		<div className="editor__form-content">
 			<div className="min-[320px]:mb-3 xl:mb-5">
-				<Title
-					className="editor__title title-color"
-					as="h1"
-					text="Professional Experience"
-				/>
+				<Title className="editor__title title-color" as="h1" text="EDUCATION" />
 				<Text className="text-gray" as="p" text="Tell us about your most recent job." />
 			</div>
 			<Formik
@@ -55,27 +51,27 @@ export default function FormFields3({ handlePrevSlide }: { handlePrevSlide: any 
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
 								type="text"
-								id="experiencePosition"
-								name="experiencePosition"
+								id="degreeName"
+								name="degreeName"
 								className="w-full"
-								placeholder="Position Title"
-								label="Position Title"
+								placeholder="Your Degree Name"
+								label="Your Degree Name"
 								component={Fields.InputField}
 							/>
 						</Col>
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
 								type="text"
-								id="experienceCompany"
-								name="experienceCompany"
-								label="Company Name"
-								placeholder="Company Name"
+								id="instructionName"
+								name="instructionName"
+								label="Your Instruction Name"
+								placeholder="Your Instruction Name"
 								component={Fields.InputField}
 							/>
 						</Col>
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
-								name="experienceStartDate"
+								name="educationStartDate"
 								type="date"
 								label="Start Date"
 								placeholder="Start Date"
@@ -84,7 +80,7 @@ export default function FormFields3({ handlePrevSlide }: { handlePrevSlide: any 
 						</Col>
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
-								name="experienceEndDate"
+								name="educationEndDate"
 								type="date"
 								label="End Date"
 								placeholder="End Date"
@@ -93,8 +89,8 @@ export default function FormFields3({ handlePrevSlide }: { handlePrevSlide: any 
 						</Col>
 						<Col span={24}>
 							<Field
-								name="expirienceEditor"
-								label="Work Summary"
+								name="educationEditor"
+								label="Education history"
 								placeholder="Your placeholder text here..."
 								component={TextEditor}
 							/>

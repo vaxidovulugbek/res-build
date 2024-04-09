@@ -185,7 +185,7 @@
 // 	}
 // }
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { EditorState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import { useDispatch } from "react-redux";
@@ -193,6 +193,7 @@ import { ResInfo } from "../../../redux/actions";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
+import { useSelectorRedux } from "hooks";
 
 interface TextEditorProps {
 	form: any;
@@ -204,6 +205,7 @@ interface TextEditorProps {
 const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder }) => {
 	const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
 	const dispatch = useDispatch();
+	const { resumeAboutExpirience } = useSelectorRedux();
 
 	const onEditorStateChange = (editorState: EditorState) => {
 		setEditorState(editorState);
@@ -213,24 +215,38 @@ const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder
 				draftToHtml(convertToRaw(editorState.getCurrentContent()))
 			)
 		);
-		// console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+		// console.log(
+		// 	draftToHtml(convertToRaw(editorState.getCurrentContent())),
+		// 	resumeAboutExpirience,
+		// 	form.values.name
+		// );
 	};
+
+	useEffect(() => {
+		dispatch(
+			ResInfo.setResumeAboutExpirience(
+				draftToHtml(convertToRaw(editorState.getCurrentContent()))
+			)
+		);
+	}, [draftToHtml(convertToRaw(editorState.getCurrentContent()))]);
 
 	return (
 		<div className="editor__form-texteditor relative mt-2">
-			<label className="capitalize">{label}</label>
-			<Editor
-				editorState={editorState}
-				toolbarClassName="toolbarClassName"
-				wrapperClassName="wrapperClassName"
-				editorClassName="editorClassName px-3"
-				onEditorStateChange={onEditorStateChange}
-			/>
-			{!editorState.getCurrentContent().hasText() && (
-				<div className="absolute bottom-4 px-3" style={{ color: "#aaa" }}>
-					{placeholder}
-				</div>
-			)}
+			<label className="capitalize text-xs">{label}</label>
+			<div className="editor__form-texteditor-content">
+				<Editor
+					editorState={editorState}
+					toolbarClassName="toolbarClassName"
+					wrapperClassName="wrapperClassName"
+					editorClassName="editorClassName px-3"
+					onEditorStateChange={onEditorStateChange}
+				/>
+				{!editorState.getCurrentContent().hasText() && (
+					<div className="absolute bottom-4 px-3" style={{ color: "#aaa" }}>
+						{placeholder}
+					</div>
+				)}
+			</div>
 		</div>
 	);
 };

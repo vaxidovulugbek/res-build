@@ -13,6 +13,7 @@ import {
 	SET_RESUME_STARTDATE,
 	SET_RESUME_ENDDATE,
 	SET_RESUME_ABOUTEXPIRIENCE,
+	SET_RESUME_SKILLS,
 } from "./ActionTypes";
 
 interface MyStore {
@@ -24,6 +25,7 @@ interface MyStore {
 	resumeAdress: any;
 	resumeJobTitle: any;
 	resumeSocialLinks: any;
+	resumeSkills: any;
 
 	resumeCompanyName: any;
 	resumePosition: any;
@@ -47,6 +49,7 @@ const initialState: MyStore = {
 	resumeStartDate: null,
 	resumeEndDate: null,
 	resumeAboutExpirience: "",
+	resumeSkills: null,
 	// ... boshqa barcha boshlang'ich xususiyatlar ...
 };
 
@@ -91,6 +94,11 @@ const reducer = (state = initialState, action: any) => {
 			return {
 				...state,
 				resumeSocialLinks: action.payload,
+			};
+		case SET_RESUME_SKILLS:
+			return {
+				...state,
+				resumeSkills: action.payload,
 			};
 		case SET_RESUME_COMPANYNAME:
 			return {

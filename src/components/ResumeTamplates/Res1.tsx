@@ -20,11 +20,12 @@ export const Res1: React.FC = () => {
 		resumeStartDate,
 		resumeEndDate,
 		resumeAboutExpirience,
+		resumeSkills,
 	} = useSelectorRedux();
 	// useEffect(() => {
 	// 	// console.log(parse(resumeAboutExpirience), resumePosition);
-	// 	console.log("resumeAboutExpirience:", resumeAboutExpirience);
-	// }, [resumeAboutExpirience, resumePosition]);
+	// 	console.log("resumeSkills:", resumeSkills);
+	// }, [resumeSkills]);
 
 	return (
 		<>
@@ -83,10 +84,10 @@ export const Res1: React.FC = () => {
 							skills
 						</h3>
 						<div className="flex flex-col gap-3">
-							<p>Skill name here</p>
-							<p>Your skill</p>
-							<p>Special skills</p>
-							<p>List your skills</p>
+							{isArray(resumeSkills) &&
+								resumeSkills.map((el, index) => {
+									return <p key={index}>{el}</p>;
+								})}
 						</div>
 						<div className="border-dashed border-[1px] border-gray-400 rounded-full my-6" />
 						<h3 className="uppercase text-gray-600 tracking-[0.25em] text-base font-semibold pb-3">

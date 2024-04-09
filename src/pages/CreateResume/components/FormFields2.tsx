@@ -12,7 +12,13 @@ import useStore from "../../../zustand/store";
 import { Title, Text } from "ui";
 import cn from "classnames";
 
-export default function FormFields2({ handlePrevSlide }: { handlePrevSlide: any }) {
+export default function FormFields2({
+	handlePrevSlide,
+	handleNextSlide,
+}: {
+	handlePrevSlide: any;
+	handleNextSlide: any;
+}) {
 	const { changeStatusSlider } = useStore();
 
 	const width = useWindowSize();
@@ -102,7 +108,6 @@ export default function FormFields2({ handlePrevSlide }: { handlePrevSlide: any 
 								component={TextEditor}
 							/>
 						</Col>
-						<Field name="chips" component={Fields.TagInputAntd} label="Chips" />
 
 						<Col span={24} className="modal-footer">
 							<Button
@@ -115,6 +120,7 @@ export default function FormFields2({ handlePrevSlide }: { handlePrevSlide: any 
 								onClick={handlePrevSlide}
 								children={"<GrLinkPrevious />"}
 							/>
+							<button onClick={handleNextSlide}>next</button>
 							<button type="submit">ok</button>
 						</Col>
 					</Row>

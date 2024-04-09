@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import type { InputRef } from "antd";
 import { Flex, Input, Tag, theme, Tooltip } from "antd";
+import { useDispatch } from "react-redux";
+import { ResInfo } from "../../redux/actions";
 
 const tagInputStyle: React.CSSProperties = {
 	width: 64,
@@ -12,11 +14,15 @@ const tagInputStyle: React.CSSProperties = {
 
 interface Chips {
 	chips: any;
+	description: string;
+	className: string;
+	form: any;
+	field: any;
 }
 
-const TagInputAntd: React.FC<Chips> = ({ chips }) => {
+const TagInputAntd: React.FC<Chips> = ({ chips, description, className, form, field }) => {
 	const { token } = theme.useToken();
-	const [tags, setTags] = useState<string[]>(["Unremovable", "Tag 2", "Tag 3"]);
+	const [tags, setTags] = useState<string[]>([]);
 	const [inputVisible, setInputVisible] = useState(false);
 	const [inputValue, setInputValue] = useState("");
 	const [editInputIndex, setEditInputIndex] = useState(-1);
@@ -36,7 +42,6 @@ const TagInputAntd: React.FC<Chips> = ({ chips }) => {
 
 	const handleClose = (removedTag: string) => {
 		const newTags = tags.filter((tag) => tag !== removedTag);
-		console.log(newTags);
 		setTags(newTags);
 	};
 
@@ -74,8 +79,13 @@ const TagInputAntd: React.FC<Chips> = ({ chips }) => {
 		borderStyle: "dashed",
 	};
 
+	const dispatch = useDispatch();
+	useEffect(() => {
+		form.setFieldValue(field.name, tags);
+		dispatch(ResInfo.setResumeSkills(form.values.chips));
+	}, [tags, form.values]);
 	return (
-		<Flex gap="4px 0" wrap="wrap">
+		<Flex className={className} gap="4px 0" wrap="wrap">
 			{tags.map<React.ReactNode>((tag, index) => {
 				if (editInputIndex === index) {
 					return (
@@ -133,7 +143,7 @@ const TagInputAntd: React.FC<Chips> = ({ chips }) => {
 				/>
 			) : (
 				<Tag style={tagPlusStyle} icon={<PlusOutlined />} onClick={showInput}>
-					New Tag
+					{description}
 				</Tag>
 			)}
 		</Flex>
