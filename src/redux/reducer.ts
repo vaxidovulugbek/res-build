@@ -14,6 +14,11 @@ import {
 	SET_RESUME_ENDDATE,
 	SET_RESUME_ABOUTEXPIRIENCE,
 	SET_RESUME_SKILLS,
+	SET_RESUME_EDUCATIONNAME,
+	SET_RESUME_EDUCATIONPOSITION,
+	SET_RESUME_EDUCATION_STARTDATE,
+	SET_RESUME_EDUCATION_ENDDATE,
+	SET_RESUME_ABOUTEDUCATION,
 } from "./ActionTypes";
 
 interface MyStore {
@@ -32,6 +37,12 @@ interface MyStore {
 	resumeStartDate: any;
 	resumeEndDate: any;
 	resumeAboutExpirience: any;
+
+	resumeEducationName: any;
+	resumeEducationPosition: any;
+	resumeEducationStartDate: any;
+	resumeEducationEndDate: any;
+	resumeAboutEducation: any;
 	// ... boshqa xususiyatlar ...
 }
 
@@ -44,12 +55,19 @@ const initialState: MyStore = {
 	resumeAdress: null,
 	resumeJobTitle: null,
 	resumeSocialLinks: null,
+
 	resumeCompanyName: null,
 	resumePosition: null,
 	resumeStartDate: null,
 	resumeEndDate: null,
 	resumeAboutExpirience: "",
 	resumeSkills: null,
+
+	resumeEducationName: null,
+	resumeEducationPosition: null,
+	resumeEducationStartDate: null,
+	resumeEducationEndDate: null,
+	resumeAboutEducation: "",
 	// ... boshqa barcha boshlang'ich xususiyatlar ...
 };
 
@@ -125,7 +143,32 @@ const reducer = (state = initialState, action: any) => {
 				...state,
 				resumeAboutExpirience: action.payload,
 			};
-		// ... boshqa case'lar ...
+		// education part
+		case SET_RESUME_EDUCATIONNAME:
+			return {
+				...state,
+				resumeEducationName: action.payload,
+			};
+		case SET_RESUME_EDUCATIONPOSITION:
+			return {
+				...state,
+				resumeEducationPosition: action.payload,
+			};
+		case SET_RESUME_EDUCATION_STARTDATE:
+			return {
+				...state,
+				resumeEducationStartDate: action.payload,
+			};
+		case SET_RESUME_EDUCATION_ENDDATE:
+			return {
+				...state,
+				resumeEducationEndDate: action.payload,
+			};
+		case SET_RESUME_ABOUTEDUCATION:
+			return {
+				...state,
+				resumeAboutEducation: action.payload,
+			};
 		default:
 			return state;
 	}

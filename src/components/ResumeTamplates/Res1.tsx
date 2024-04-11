@@ -21,6 +21,11 @@ export const Res1: React.FC = () => {
 		resumeEndDate,
 		resumeAboutExpirience,
 		resumeSkills,
+		resumeEducationName,
+		resumeEducationPosition,
+		resumeEducationStartDate,
+		resumeEducationEndDate,
+		resumeAboutEducation,
 	} = useSelectorRedux();
 	// useEffect(() => {
 	// 	// console.log(parse(resumeAboutExpirience), resumePosition);
@@ -94,10 +99,12 @@ export const Res1: React.FC = () => {
 							education
 						</h3>
 						<div className="flex flex-col gap-3 pb-10">
-							<p className="font-semibold">Your Degree Name</p>
-							<p className="font-semibold text-sm">Your Instruction Name</p>
-							<p>2016-2018</p>
-							<p>Lorem ipsum dolor sit amet adipisicing elit.</p>
+							<p className="font-semibold">Your Degree Name: {resumeEducationName}</p>
+							<p className="font-semibold text-sm">{resumeEducationPosition}</p>
+							<p>
+								{resumeEducationStartDate}-{resumeEducationEndDate}
+							</p>
+							<p>{resumeAboutEducation ? parse(resumeAboutEducation) : null}</p>
 						</div>
 						<div className="flex flex-col gap-3">
 							<p className="font-semibold">Your Degree Name</p>

@@ -133,11 +133,18 @@ export default function InputField({
 		dispatch(ResInfo.setResumePhone(form.values.Phone));
 		dispatch(ResInfo.setResumeAdress(form.values.Address));
 
+		// expireince part
 		dispatch(ResInfo.setResumeCompanyName(form.values.experienceCompany));
 		dispatch(ResInfo.setResumePosition(form.values.experiencePosition));
 		dispatch(ResInfo.setResumeStartDate(form.values.experienceStartDate));
 		dispatch(ResInfo.setResumeEndDate(form.values.experienceEndDate));
 		// dispatch(ResInfo.setResumeAboutExpirience(form.values.expirienceEditor));
+
+		// education part
+		dispatch(ResInfo.setResumeEducationName(form.values.degreeName));
+		dispatch(ResInfo.setResumeEducationPosition(form.values.instructionName));
+		dispatch(ResInfo.setResumeEducationStartDate(form.values.educationStartDate));
+		dispatch(ResInfo.setResumeEducationEndDate(form.values.educationEndDate));
 
 		// Xato haqida o'girishni saqlash
 		setHasError(hasError);

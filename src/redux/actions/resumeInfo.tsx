@@ -71,6 +71,8 @@ export const ResInfo = {
 		createResumeAction(ActionTypes.SET_RESUME_ADRESS, address),
 	setResumeSocialLinks: (socialLinks: any | null) =>
 		createResumeAction(ActionTypes.SET_RESUME_SOCIALLINKS, socialLinks),
+	setResumeSkills: (skills: any | null) =>
+		createResumeAction(ActionTypes.SET_RESUME_SKILLS, skills),
 	// Expirience change part
 	setResumeCompanyName: (companyName: any | null) =>
 		createResumeAction(ActionTypes.SET_RESUME_COMPANYNAME, companyName),
@@ -82,6 +84,15 @@ export const ResInfo = {
 		createResumeAction(ActionTypes.SET_RESUME_ENDDATE, endDate),
 	setResumeAboutExpirience: (aboutExpirience: any | null) =>
 		createResumeAction(ActionTypes.SET_RESUME_ABOUTEXPIRIENCE, aboutExpirience),
-	setResumeSkills: (skills: any | null) =>
-		createResumeAction(ActionTypes.SET_RESUME_SKILLS, skills),
+	// Education change part
+	setResumeEducationName: (educationName: any | null) =>
+		createResumeAction(ActionTypes.SET_RESUME_EDUCATIONNAME, educationName),
+	setResumeEducationPosition: (educationPosition: any | null) =>
+		createResumeAction(ActionTypes.SET_RESUME_EDUCATIONPOSITION, educationPosition),
+	setResumeEducationStartDate: (educationStartDate: any | null) =>
+		createResumeAction(ActionTypes.SET_RESUME_EDUCATION_STARTDATE, educationStartDate),
+	setResumeEducationEndDate: (educationEndDate: any | null) =>
+		createResumeAction(ActionTypes.SET_RESUME_EDUCATION_ENDDATE, educationEndDate),
+	setResumeAboutEducation: (aboutEducation: any | null) =>
+		createResumeAction(ActionTypes.SET_RESUME_ABOUTEDUCATION, aboutEducation),
 };

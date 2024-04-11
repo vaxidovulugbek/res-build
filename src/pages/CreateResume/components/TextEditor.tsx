@@ -185,15 +185,106 @@
 // 	}
 // }
 
+// import React, { useEffect, useState } from "react";
+// import { EditorState, convertToRaw } from "draft-js";
+// import { Editor } from "react-draft-wysiwyg";
+// import { useDispatch } from "react-redux";
+// import { ResInfo } from "../../../redux/actions";
+
+// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+// import draftToHtml from "draftjs-to-html";
+// import { useSelectorRedux } from "hooks";
+
+// interface TextEditorProps {
+// 	form: any;
+// 	field: any;
+// 	label?: string;
+// 	placeholder?: string;
+// }
+
+// const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder }) => {
+// 	const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
+// 	const [editorStateEducation, setEditorStateEducation] = useState(() =>
+// 		EditorState.createEmpty()
+// 	);
+// 	const dispatch = useDispatch();
+// 	const { resumeAboutExpirience } = useSelectorRedux();
+
+// 	const onEditorStateChange = (editorState: EditorState) => {
+// 		setEditorState(editorState);
+// 		form.setFieldValue(field.name, draftToHtml(convertToRaw(editorState.getCurrentContent())));
+// 		// dispatch(
+// 		// 	ResInfo.setResumeAboutExpirience(
+// 		// 		draftToHtml(convertToRaw(editorState.getCurrentContent()))
+// 		// 	)
+// 		// );
+// 		// console.log(
+// 		// 	draftToHtml(convertToRaw(editorState.getCurrentContent())),
+// 		// 	resumeAboutExpirience,
+// 		// 	form.values
+// 		// );
+// 	};
+// 	const onEditorStateChangeEducation = (editorState: EditorState) => {
+// 		setEditorStateEducation(editorState);
+// 		form.setFieldValue(field.name, draftToHtml(convertToRaw(editorState.getCurrentContent())));
+// 	};
+
+// 	useEffect(() => {
+// 		dispatch(ResInfo.setResumeAboutExpirience(form.values.expirienceEditor));
+// 		console.log(
+// 			field.name,
+// 			// draftToHtml(convertToRaw(editorState.getCurrentContent())),
+// 			// resumeAboutExpirience,
+// 			form.values
+// 		);
+// 	}, [
+// 		draftToHtml(convertToRaw(editorState.getCurrentContent())),
+// 		form.values,
+// 		form.errors,
+// 		field.name,
+// 		dispatch,
+// 	]);
+
+// 	return (
+// 		<div className="editor__form-texteditor relative mt-2">
+// 			<label className="capitalize text-xs">{label}</label>
+// 			<div className="editor__form-texteditor-content">
+// 				<Editor
+// 					editorState={
+// 						field.name && field.name === "expirienceEditor"
+// 							? editorState
+// 							: editorStateEducation
+// 					}
+// 					toolbarClassName="toolbarClassName"
+// 					wrapperClassName="wrapperClassName"
+// 					editorClassName="editorClassName px-3"
+// 					onEditorStateChange={
+// 						field.name && field.name === "expirienceEditor"
+// 							? onEditorStateChange
+// 							: onEditorStateChangeEducation
+// 					}
+// 					// onChange={field.onChange}
+// 				/>
+// 				{!editorState.getCurrentContent().hasText() && (
+// 					<div className="absolute bottom-4 px-3" style={{ color: "#aaa" }}>
+// 						{placeholder}
+// 					</div>
+// 				)}
+// 			</div>
+// 		</div>
+// 	);
+// };
+
+// export default TextEditor;
+
 import React, { useEffect, useState } from "react";
 import { EditorState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
-import { useDispatch } from "react-redux";
 import { ResInfo } from "../../../redux/actions";
+import draftToHtml from "draftjs-to-html";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import draftToHtml from "draftjs-to-html";
-import { useSelectorRedux } from "hooks";
+import { useDispatch } from "react-redux";
 
 interface TextEditorProps {
 	form: any;
@@ -203,45 +294,52 @@ interface TextEditorProps {
 }
 
 const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder }) => {
-	const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
+	// Har bir field.name uchun alohida editorStates boshqarish
 	const dispatch = useDispatch();
-	const { resumeAboutExpirience } = useSelectorRedux();
+	const [editorStates, setEditorStates] = useState<{ [key: string]: EditorState }>({});
 
-	const onEditorStateChange = (editorState: EditorState) => {
-		setEditorState(editorState);
-		form.setFieldValue(field.name, draftToHtml(convertToRaw(editorState.getCurrentContent())));
-		dispatch(
-			ResInfo.setResumeAboutExpirience(
-				draftToHtml(convertToRaw(editorState.getCurrentContent()))
-			)
-		);
-		// console.log(
-		// 	draftToHtml(convertToRaw(editorState.getCurrentContent())),
-		// 	resumeAboutExpirience,
-		// 	form.values.name
-		// );
+	const onEditorStateChange = (editorState: EditorState, fieldName: string) => {
+		const newEditorStates = { ...editorStates, [fieldName]: editorState };
+		setEditorStates(newEditorStates);
+		const htmlContent = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+		form.setFieldValue(fieldName, htmlContent);
 	};
 
+	// useEffect(() => {
+	// 	if (!editorStates[field.name]) {
+	// 		setEditorStates((prev) => ({ ...prev, [field.name]: EditorState.createEmpty() }));
+	// 	}
+	// 	dispatch(ResInfo.setResumeAboutExpirience(form.values.expirienceEditor));
+	// }, [field.name, editorStates]);
+
 	useEffect(() => {
-		dispatch(
-			ResInfo.setResumeAboutExpirience(
-				draftToHtml(convertToRaw(editorState.getCurrentContent()))
-			)
-		);
-	}, [draftToHtml(convertToRaw(editorState.getCurrentContent()))]);
+		if (field.name === "expirienceEditor") {
+			dispatch(ResInfo.setResumeAboutExpirience(form.values.expirienceEditor));
+		}
+		console.log(form.values);
+	}, [form.values.expirienceEditor, field.name, dispatch]);
+
+	useEffect(() => {
+		if (field.name === "educationEditor") {
+			dispatch(ResInfo.setResumeAboutEducation(form.values.educationEditor));
+		}
+		console.log(form.values);
+	}, [form.values.educationEditor, field.name, dispatch]);
 
 	return (
 		<div className="editor__form-texteditor relative mt-2">
 			<label className="capitalize text-xs">{label}</label>
 			<div className="editor__form-texteditor-content">
 				<Editor
-					editorState={editorState}
+					editorState={editorStates[field.name] || EditorState.createEmpty()}
 					toolbarClassName="toolbarClassName"
 					wrapperClassName="wrapperClassName"
 					editorClassName="editorClassName px-3"
-					onEditorStateChange={onEditorStateChange}
+					onEditorStateChange={(editorState) =>
+						onEditorStateChange(editorState, field.name)
+					}
 				/>
-				{!editorState.getCurrentContent().hasText() && (
+				{!editorStates[field.name]?.getCurrentContent().hasText() && (
 					<div className="absolute bottom-4 px-3" style={{ color: "#aaa" }}>
 						{placeholder}
 					</div>
