@@ -1,14 +1,9 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Input } from "antd";
 import Fields from "components/Fields";
 import { Text, Button } from "ui";
-
-interface LoginPageProps {
-	onClose: () => void;
-	onNext: () => void;
-}
+import { LoginPageProps } from "types/interface";
 
 // Yup bilan tasdiqlash sxemasini aniqlang
 const validationSchema = Yup.object({

@@ -3,13 +3,7 @@ import res1 from "assets/imgs/resume_templates/res1.png";
 import { Button } from "ui/Button/Button";
 import RoutesPath from "helpers/RoutesPath";
 import cn from "classnames";
-
-interface Card {
-	id: number;
-	title: string;
-	category: string;
-	img: any;
-}
+import { Card } from "types/interface";
 
 const FilteredCards: React.FC = () => {
 	const initialCards: Card[] = [

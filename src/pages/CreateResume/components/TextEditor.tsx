@@ -282,16 +282,10 @@ import { EditorState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import { ResInfo } from "../../../redux/actions";
 import draftToHtml from "draftjs-to-html";
+import { TextEditorProps } from "types/interface";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch } from "react-redux";
-
-interface TextEditorProps {
-	form: any;
-	field: any;
-	label?: string;
-	placeholder?: string;
-}
 
 const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder }) => {
 	// Har bir field.name uchun alohida editorStates boshqarish
@@ -304,13 +298,6 @@ const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder
 		const htmlContent = draftToHtml(convertToRaw(editorState.getCurrentContent()));
 		form.setFieldValue(fieldName, htmlContent);
 	};
-
-	// useEffect(() => {
-	// 	if (!editorStates[field.name]) {
-	// 		setEditorStates((prev) => ({ ...prev, [field.name]: EditorState.createEmpty() }));
-	// 	}
-	// 	dispatch(ResInfo.setResumeAboutExpirience(form.values.expirienceEditor));
-	// }, [field.name, editorStates]);
 
 	useEffect(() => {
 		if (field.name === "expirienceEditor") {

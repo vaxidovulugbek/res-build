@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Button, Text } from "ui";
+import { AccordionProps } from "types/interface";
 import "./Faq.scss";
-interface AccordionProps {
-	title: string;
-	answer: string;
-}
+
+// interface AccordionProps {
+// 	title: string;
+// 	answer: string;
+// }
 
 const Accordion: React.FC<AccordionProps> = ({ title, answer }) => {
 	const [accordionOpen, setAccordionOpen] = useState(false);
@@ -58,7 +60,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, answer }) => {
 					accordionOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
 				}`}
 			>
-				<div className={`overflow-hidden text-base max-[660px]:text-sm`}>{answer}</div>
+				<div className={"overflow-hidden text-base max-[660px]:text-sm"}>{answer}</div>
 			</div>
 		</div>
 	);
