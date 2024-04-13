@@ -1,4 +1,4 @@
-import { Header } from "components";
+import { Footer, Header } from "components";
 import React from "react";
 import { FormUI } from "./components";
 
@@ -9,6 +9,7 @@ const CreateResume: React.FC = () => {
 			<main className="py-6">
 				<FormUI />
 			</main>
+			<Footer />
 		</>
 	);
 };

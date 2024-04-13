@@ -6,11 +6,18 @@ import Fields from "components/Fields";
 import { useWindowSize } from "hooks";
 import { ResInfo } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
+
+interface InputValues {
+	value1: string;
+	value2: string;
+}
+
 // SOCIAL LINKSNI  FIELD QILIB YOZIB KOR, COMPONENTSGA FUNCSION YARATIB RETURN QILIB KOR, FUNCTIONS DEGAN BO'LIM OCH
 const SocialLinks: React.FC = () => {
 	const width = useWindowSize();
 
-	const [inputs, setInputs] = useState([{ value1: "", value2: "" }]);
+	// const [inputs, setInputs] = useState([]);
+	const [inputs, setInputs] = useState<InputValues[]>([]);
 	const handleAddInput = () => setInputs([...inputs, { value1: "", value2: "" }]);
 
 	const handleChange = (index: number, value: string, inputNumber: number) => {

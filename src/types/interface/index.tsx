@@ -11,6 +11,14 @@ export interface LoginPageProps {
 }
 //
 
+export interface Chips {
+	chips: any;
+	description: string;
+	className: string;
+	form: any;
+	field: any;
+}
+
 export interface AccordionProps {
 	title: string;
 	answer: string;

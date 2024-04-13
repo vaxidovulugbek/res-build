@@ -6,11 +6,13 @@ import { Loading } from "./components";
 const Home = lazy(() => import("pages/Home/Home"));
 const Resume = lazy(() => import("pages/Resume/Resume"));
 const CreateResume = lazy(() => import("pages/CreateResume/CreateResume"));
+const ErrorPage = lazy(() => import("pages/Error/index"));
 
 const routes = [
 	{ path: RoutesPath?.home, element: <Home /> },
 	{ path: RoutesPath?.resume, element: <Resume /> },
 	{ path: RoutesPath?.createResume, element: <CreateResume /> },
+	{ path: RoutesPath?.error, element: <ErrorPage /> },
 ];
 
 const AllRoutes: React.FC = () => {

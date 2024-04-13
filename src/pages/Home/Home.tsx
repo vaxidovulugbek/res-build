@@ -1,4 +1,4 @@
-import { PopularProducts, Faq, Header, Hero, HowItWorks, Making_Resume } from "components";
+import { PopularProducts, Faq, Header, Hero, HowItWorks, Making_Resume, Footer } from "components";
 import React from "react";
 
 const Home: React.FC = () => {
@@ -12,6 +12,7 @@ const Home: React.FC = () => {
 				<Making_Resume />
 				<Faq />
 			</main>
+			<Footer />
 		</>
 	);
 };

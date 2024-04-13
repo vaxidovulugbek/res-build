@@ -4,21 +4,14 @@ import type { InputRef } from "antd";
 import { Flex, Input, Tag, theme, Tooltip } from "antd";
 import { useDispatch } from "react-redux";
 import { ResInfo } from "../../redux/actions";
+import { Chips } from "types/interface";
 
 const tagInputStyle: React.CSSProperties = {
-	width: 64,
-	height: 22,
+	width: 84,
+	height: 26,
 	marginInlineEnd: 8,
 	verticalAlign: "top",
 };
-
-interface Chips {
-	chips: any;
-	description: string;
-	className: string;
-	form: any;
-	field: any;
-}
 
 const TagInputAntd: React.FC<Chips> = ({ chips, description, className, form, field }) => {
 	const { token } = theme.useToken();
@@ -74,9 +67,11 @@ const TagInputAntd: React.FC<Chips> = ({ chips, description, className, form, fi
 	};
 
 	const tagPlusStyle: React.CSSProperties = {
-		height: 22,
+		height: 26,
 		background: token.colorBgContainer,
 		borderStyle: "dashed",
+		display: "flex",
+		alignItems: "center",
 	};
 
 	const dispatch = useDispatch();
