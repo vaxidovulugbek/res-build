@@ -1,8 +1,10 @@
 import { useSelectorRedux } from "hooks";
 import { isArray, isBoolean, isString } from "lodash";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import cn from "classnames";
 import parse from "html-react-parser";
+import useStore from "../../zustand/store";
+import { useDispatch } from "react-redux";
 // import { ImMobile, ImLocation } from "react-icons/im";
 // import { BsEnvelope, BsGlobe } from "react-icons/bs";
 
@@ -15,8 +17,8 @@ export const Res1: React.FC = () => {
 		resumeAdress,
 		resumeJobTitle,
 		resumeSocialLinks,
-		resumeCompanyName,
 		resumePosition,
+		resumeCompanyName,
 		resumeStartDate,
 		resumeEndDate,
 		resumeAboutExpirience,
@@ -27,10 +29,71 @@ export const Res1: React.FC = () => {
 		resumeEducationEndDate,
 		resumeAboutEducation,
 	} = useSelectorRedux();
-	// useEffect(() => {
-	// 	// console.log(parse(resumeAboutExpirience), resumePosition);
-	// 	console.log("resumeSkills:", resumeSkills);
-	// }, [resumeSkills]);
+	const dispatch = useDispatch();
+
+	const { countExpirence, countEducation, idExpirence, setIdExpirence } = useStore();
+
+	const experience: {
+		id?: number | string;
+		position: string;
+		companyName: string;
+		startDate: string;
+		endDate: string;
+		experienceAbout: string;
+	}[] = [];
+	let maxId = -1;
+	if (isArray(countExpirence)) {
+		maxId = countExpirence.reduce((max, item) => (item.id > max ? item.id : max), -1);
+	}
+	for (let i = 0; i < countExpirence.length; i++) {
+		const experienceId = countExpirence[i]?.id; // countExpirence elementining id sini olish
+		// console.log(experienceId);
+		// const positionIndex = resumePosition.findIndex((item: any) => item.id === experienceId); // resumePosition massivida id boyicha elementni qidirish
+		// const position = positionIndex !== -1 ? resumePosition[positionIndex] : null; // positionIndex ni ishlatib resumePosition dan ma'lumotni olish
+		experience.push({
+			id: experienceId,
+			position: resumePosition[countExpirence[i]?.id],
+			// position: resumePosition[i],
+			companyName: resumeCompanyName[i],
+			startDate: resumeStartDate[i],
+			endDate: resumeEndDate[i],
+			experienceAbout: resumeAboutExpirience[i],
+		});
+	}
+
+	// const education = resumeEducationName?.map((position: string, index: any) => ({
+	// 	position,
+	// 	instructionName: resumeEducationPosition[index],
+	// 	educationStartDate: resumeEducationStartDate[index],
+	// 	educationEndDate: resumeEducationEndDate[index],
+	// 	educationAbout: resumeAboutEducation[index],
+	// }));
+
+	const [filteredExperience, setFilteredExperience] = useState<
+		{
+			id?: number | string;
+			position: string;
+			companyName: string;
+			startDate: string;
+			endDate: string;
+			experienceAbout: string;
+		}[]
+	>([]);
+
+	useEffect(() => {
+		if (idExpirence !== undefined) {
+			const filtered = experience?.filter((el) => el.id !== idExpirence);
+			setFilteredExperience(filtered);
+			setIdExpirence(null);
+			// console.log("ok", experience, resumePosition, countExpirence);
+			console.log("ok", experience);
+			console.log("ok2", resumePosition);
+			console.log("ok3", countExpirence);
+		}
+	}, [idExpirence, dispatch, resumePosition]);
+	useEffect(() => {
+		// console.log(filteredExperience, idExpirence);
+	}, [filteredExperience]);
 
 	return (
 		<>
@@ -58,18 +121,16 @@ export const Res1: React.FC = () => {
 							contact
 						</h3>
 						<div className="flex flex-col gap-3">
-							<p className={cn("flex items-center", { hidden: !resumePhone })}>
+							{/* <p className={cn("flex items-center", { hidden: !resumePhone })}> */}
+							<p className={cn("flex items-center")}>
 								{/* <ImMobile className="me-2" /> */}
-								{/* <i className="fa-solid fa-mobile-screen fa-xl w-6 text-center" /> */}
-								{resumePhone}
+								{resumePhone ? resumePhone : "(90) 123 45 67"}
 							</p>
 							<p className="flex items-center">
 								{/* <BsEnvelope className="me-2" /> */}
-								{/* <i className="fa-regular fa-envelope fa-xl w-6 text-center" /> */}
 								{resumeEmail ? resumeEmail : "example@gmail.com"}
 							</p>
 							{/* <BsGlobe className="me-2" /> */}
-							{/* <i className="fa-solid fa-globe fa-xl w-6 text-center" /> */}
 							{isArray(resumeSocialLinks) &&
 								resumeSocialLinks.map((item, index) => (
 									<p key={index} className="flex items-center">
@@ -78,10 +139,9 @@ export const Res1: React.FC = () => {
 											: item?.value2}
 									</p>
 								))}
-							<p className={cn("flex items-center", { hidden: !resumeAdress })}>
+							<p className={cn("flex items-center")}>
 								{/* <ImLocation className="me-2" /> */}
-								{/* <i className="fa-solid fa-location-dot fa-xl w-6 text-center" /> */}
-								{resumeAdress}
+								{resumeAdress ? resumeAdress : "43w 13 street Tashkent"}
 							</p>
 						</div>
 						<div className="border-dashed border-[1px] border-gray-400 rounded-full my-6" />
@@ -89,10 +149,13 @@ export const Res1: React.FC = () => {
 							skills
 						</h3>
 						<div className="flex flex-col gap-3">
-							{isArray(resumeSkills) &&
-								resumeSkills.map((el, index) => {
-									return <p key={index}>{el}</p>;
-								})}
+							{isArray(resumeSkills)
+								? resumeSkills.map((el, index) => {
+										return <p key={index}>{el}</p>;
+									})
+								: ["react", "angular", ".net"].map((el, index) => {
+										return <p key={index}>{el}</p>;
+									})}
 						</div>
 						<div className="border-dashed border-[1px] border-gray-400 rounded-full my-6" />
 						<h3 className="uppercase text-gray-600 tracking-[0.25em] text-base font-semibold pb-3">
@@ -104,7 +167,7 @@ export const Res1: React.FC = () => {
 							<p>
 								{resumeEducationStartDate}-{resumeEducationEndDate}
 							</p>
-							<p>{resumeAboutEducation ? parse(resumeAboutEducation) : null}</p>
+							{/* <p>{resumeAboutEducation ? parse(resumeAboutEducation) : null}</p> */}
 						</div>
 						<div className="flex flex-col gap-3">
 							<p className="font-semibold">Your Degree Name</p>
@@ -154,39 +217,50 @@ export const Res1: React.FC = () => {
 						<h3 className="uppercase tracking-[0.25em] text-base font-semibold pb-3">
 							work experience
 						</h3>
-						<p className="font-semibold text-sm capitalize">{resumePosition}</p>
-						<p className="flex justify-between py-3">
-							<span className="text-xs capitalize">{resumeCompanyName}</span>
-							<span className="text-xs">
-								{resumeStartDate} <span> </span> {resumeEndDate}
-							</span>
+						{isArray(filteredExperience) &&
+							filteredExperience.map((el, idx) => {
+								return (
+									<div key={idx} className="mb-4">
+										<p className="font-semibold text-sm capitalize">
+											{el?.position ? el?.position : "Your Instruction Name"}
+										</p>
+										<p className="flex justify-between py-3">
+											<span className="text-xs capitalize">
+												{el?.companyName ? el?.companyName : "Company name"}
+											</span>
+											<span className="text-xs">
+												{el?.startDate ? el?.startDate : "2020"}{" "}
+												<span> </span> {el?.endDate ? el?.endDate : "2023"}
+											</span>
+										</p>
+										<div className="text-xs">
+											{el?.experienceAbout
+												? parse(el?.experienceAbout)
+												: "Lorem ipsum dolor sit amet consectetur, adipisicing elit."}
+										</div>
+									</div>
+								);
+							})}
+						{/*
+						<p className="font-semibold text-sm capitalize">
+							{resumePosition ? resumePosition : "Your Instruction Name"}
 						</p>
-						<div className="text-xs">
-							{resumeAboutExpirience ? parse(resumeAboutExpirience) : null}
-						</div>
-						{/* <div dangerouslySetInnerHTML={{ __html: resumeAboutExpirience }} */}
-						{/* <ul className="list-disc text-xs pl-4 tracking-tighter">
-							<li>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-								aut.
-							</li>
-							<li>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
-							<li>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-								aut.
-							</li>
-							<li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-							<li>Lorem ipsum dolor sit amet.</li>
-							<li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
-							<li>
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic,
-								officiis?
-							</li>
-							<li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-						</ul> */}
-						<p className="font-semibold text-sm pt-5">Your Instruction Name</p>
+						<p className="flex justify-between py-3">
+							<span className="text-xs capitalize">
+								{resumeCompanyName ? resumeCompanyName : "Company name"}
+							</span>
+							<span className="text-xs">
+								{resumeStartDate ? resumeStartDate : "2020"} <span> </span>{" "}
+								{resumeEndDate ? resumeEndDate : "2023"}
+							</span>
+						</p> */}
+						{/* <div className="text-xs">
+							{resumeAboutExpirience
+								? parse(resumeAboutExpirience)
+								: "Lorem ipsum dolor sit amet consectetur, adipisicing elit."}
+						</div> */}
+
+						{/* <p className="font-semibold text-sm pt-5">Your Instruction Name</p>
 						<p className="flex justify-between py-3">
 							<span className="text-xs">Company name</span>
 							<span className="text-xs">2020-2022</span>
@@ -207,7 +281,7 @@ export const Res1: React.FC = () => {
 							<li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
 							<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
 							<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-						</ul>
+						</ul> */}
 					</div>
 				</div>
 				<div className="border-solid border-[1px] border-gray-400 rounded-full mx-10 mb-5" />

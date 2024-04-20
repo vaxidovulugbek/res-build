@@ -99,6 +99,7 @@ const TagInputAntd: React.FC<Chips> = ({ chips, description, className, form, fi
 				const isLongTag = tag.length > 20;
 				const tagElem = (
 					<Tag
+						className="flex items-center"
 						key={tag}
 						closable={index !== 0}
 						style={{ userSelect: "none" }}
@@ -118,7 +119,7 @@ const TagInputAntd: React.FC<Chips> = ({ chips, description, className, form, fi
 					</Tag>
 				);
 				return isLongTag ? (
-					<Tooltip title={tag} key={tag}>
+					<Tooltip className="flex items-center" title={tag} key={tag}>
 						{tagElem}
 					</Tooltip>
 				) : (

@@ -53,3 +53,13 @@ export interface Card {
 	category: string;
 	img: any;
 }
+
+export interface componentExpirence {
+	id: any;
+	value: any;
+}
+
+export interface componentEducation {
+	id: any;
+	value: any;
+}
