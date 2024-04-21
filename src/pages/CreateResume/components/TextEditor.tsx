@@ -8,9 +8,10 @@ import { TextEditorProps } from "types/interface";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch } from "react-redux";
 import useStore from "../../../zustand/store";
+import { isArray } from "lodash";
 
 const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder }) => {
-	const { countExpirence } = useStore();
+	const { countExpirence, countEducation } = useStore();
 	const dispatch = useDispatch();
 	const [editorStates, setEditorStates] = useState<{ [key: string]: EditorState }>({});
 
@@ -23,29 +24,43 @@ const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder
 
 	const experienceAbout: any[] = [];
 	const educationAbout: any[] = [];
-
+	let maxId = -1;
+	if (isArray(countExpirence)) {
+		maxId = countExpirence.reduce((max, item) => (item.id > max ? item.id : max), -1);
+	}
+	let maxIdEducation = -1;
+	if (isArray(countEducation)) {
+		maxIdEducation = countEducation.reduce((max, item) => (item.id > max ? item.id : max), -1);
+	}
 	useEffect(() => {
-		for (let i = 0; i < countExpirence.length; i++) {
-			experienceAbout.push(form.values[`expirienceEditor_${i}`]);
-			educationAbout.push(form.values[`educationEditor_${i}`]);
+		for (let i = 0; i < maxId + 1; i++) {
+			const Index = countExpirence.findIndex((item: any) => item.id === i);
+			// experienceAbout.push(form.values[`expirienceEditor_${i}`]);
+			// educationAbout.push(form.values[`educationEditor_${i}`]);
+			if (Index !== -1) {
+				experienceAbout.push(form.values[`expirienceEditor_${countExpirence[Index]?.id}`]);
+			} else {
+				experienceAbout.push(undefined);
+			}
+
 			if (field.name === `expirienceEditor_${i}`) {
 				dispatch(ResInfo.setResumeAboutExpirience([...experienceAbout]));
 			}
+		}
+		for (let i = 0; i < maxIdEducation + 1; i++) {
+			const IndexEducation = countEducation?.findIndex((item: any) => item.id === i);
+			if (IndexEducation !== -1) {
+				educationAbout.push(
+					form.values[`educationEditor_${countEducation[IndexEducation]?.id}`]
+				);
+			} else {
+				educationAbout.push(undefined);
+			}
 			if (field.name === `educationEditor_${i}`) {
-				// console.log(educationAbout);
 				dispatch(ResInfo.setResumeAboutEducation([...educationAbout]));
 			}
 		}
-		// console.log(form.values);
-		// console.log(experienceAbout);
 	}, [form.values, field.name, dispatch]);
-
-	// useEffect(() => {
-	// 	if (field.name === "educationEditor") {
-	// 		dispatch(ResInfo.setResumeAboutEducation(form.values.educationEditor));
-	// 	}
-	// 	// console.log(form.values);
-	// }, [form.values.educationEditor, field.name, dispatch]);
 
 	return (
 		<div className="editor__form-texteditor relative mt-2">

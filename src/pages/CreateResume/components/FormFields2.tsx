@@ -169,7 +169,6 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 	};
 
 	const handleDeleteExperience = (id: number) => {
-		// console.log(id);
 		setIdExpirence(id);
 		setExperienceForms(experienceForms.filter((item) => item?.id !== id));
 		// setCountExpirence(experienceForms.filter((item) => item?.id !== id));
@@ -191,7 +190,6 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 		if (isArray(experienceForms)) {
 			setCountExpirence(experienceForms);
 		}
-		console.log(experienceForms);
 	}, [experienceForms, dispatch, experienceForms?.length]);
 	return (
 		<div className="editor__form-content">

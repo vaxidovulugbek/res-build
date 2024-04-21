@@ -31,7 +31,14 @@ export const Res1: React.FC = () => {
 	} = useSelectorRedux();
 	const dispatch = useDispatch();
 
-	const { countExpirence, countEducation, idExpirence, setIdExpirence } = useStore();
+	const {
+		countExpirence,
+		countEducation,
+		idExpirence,
+		setIdExpirence,
+		setIdEducation,
+		idEducation,
+	} = useStore();
 
 	const experience: {
 		id?: number | string;
@@ -41,33 +48,43 @@ export const Res1: React.FC = () => {
 		endDate: string;
 		experienceAbout: string;
 	}[] = [];
+	const education: {
+		id?: number | string;
+		position: string;
+		instructionName: string;
+		educationStartDate: string;
+		educationEndDate: string;
+		educationAbout: string;
+	}[] = [];
 	let maxId = -1;
+	let maxIdEducation = -1;
 	if (isArray(countExpirence)) {
 		maxId = countExpirence.reduce((max, item) => (item.id > max ? item.id : max), -1);
 	}
+	if (isArray(countEducation)) {
+		maxIdEducation = countEducation.reduce((max, item) => (item.id > max ? item.id : max), -1);
+	}
 	for (let i = 0; i < countExpirence.length; i++) {
-		const experienceId = countExpirence[i]?.id; // countExpirence elementining id sini olish
-		// console.log(experienceId);
-		// const positionIndex = resumePosition.findIndex((item: any) => item.id === experienceId); // resumePosition massivida id boyicha elementni qidirish
-		// const position = positionIndex !== -1 ? resumePosition[positionIndex] : null; // positionIndex ni ishlatib resumePosition dan ma'lumotni olish
 		experience.push({
-			id: experienceId,
+			id: countExpirence[i]?.id,
 			position: resumePosition[countExpirence[i]?.id],
 			// position: resumePosition[i],
-			companyName: resumeCompanyName[i],
-			startDate: resumeStartDate[i],
-			endDate: resumeEndDate[i],
-			experienceAbout: resumeAboutExpirience[i],
+			companyName: resumeCompanyName[countExpirence[i]?.id],
+			startDate: resumeStartDate[countExpirence[i]?.id],
+			endDate: resumeEndDate[countExpirence[i]?.id],
+			experienceAbout: resumeAboutExpirience[countExpirence[i]?.id],
 		});
 	}
-
-	// const education = resumeEducationName?.map((position: string, index: any) => ({
-	// 	position,
-	// 	instructionName: resumeEducationPosition[index],
-	// 	educationStartDate: resumeEducationStartDate[index],
-	// 	educationEndDate: resumeEducationEndDate[index],
-	// 	educationAbout: resumeAboutEducation[index],
-	// }));
+	for (let i = 0; i < countEducation.length; i++) {
+		education.push({
+			id: countEducation[i]?.id,
+			position: resumeEducationName[countEducation[i]?.id],
+			instructionName: resumeEducationPosition[countEducation[i]?.id],
+			educationStartDate: resumeEducationStartDate[countEducation[i]?.id],
+			educationEndDate: resumeEducationEndDate[countEducation[i]?.id],
+			educationAbout: resumeAboutEducation[countEducation[i]?.id],
+		});
+	}
 
 	const [filteredExperience, setFilteredExperience] = useState<
 		{
@@ -79,21 +96,32 @@ export const Res1: React.FC = () => {
 			experienceAbout: string;
 		}[]
 	>([]);
+	const [filteredEducation, setFilteredEducation] = useState<
+		{
+			id?: number | string;
+			position: string;
+			instructionName: string;
+			educationStartDate: string;
+			educationEndDate: string;
+			educationAbout: string;
+		}[]
+	>([]);
 
 	useEffect(() => {
 		if (idExpirence !== undefined) {
 			const filtered = experience?.filter((el) => el.id !== idExpirence);
 			setFilteredExperience(filtered);
 			setIdExpirence(null);
-			// console.log("ok", experience, resumePosition, countExpirence);
-			console.log("ok", experience);
-			console.log("ok2", resumePosition);
-			console.log("ok3", countExpirence);
 		}
 	}, [idExpirence, dispatch, resumePosition]);
 	useEffect(() => {
-		// console.log(filteredExperience, idExpirence);
-	}, [filteredExperience]);
+		if (idEducation !== undefined) {
+			const filtered = education?.filter((el) => el.id !== idEducation);
+			setFilteredEducation(filtered);
+			setIdEducation(null);
+		}
+		console.log(filteredEducation, countEducation);
+	}, [idEducation, dispatch, resumeEducationPosition]);
 
 	return (
 		<>
@@ -161,20 +189,34 @@ export const Res1: React.FC = () => {
 						<h3 className="uppercase text-gray-600 tracking-[0.25em] text-base font-semibold pb-3">
 							education
 						</h3>
-						<div className="flex flex-col gap-3 pb-10">
-							<p className="font-semibold">Your Degree Name: {resumeEducationName}</p>
-							<p className="font-semibold text-sm">{resumeEducationPosition}</p>
-							<p>
-								{resumeEducationStartDate}-{resumeEducationEndDate}
-							</p>
-							{/* <p>{resumeAboutEducation ? parse(resumeAboutEducation) : null}</p> */}
-						</div>
-						<div className="flex flex-col gap-3">
+						{isArray(filteredEducation) &&
+							filteredEducation.map((item, index) => {
+								return (
+									<div className="flex flex-col gap-3 pb-10" key={index}>
+										<p className="font-semibold">
+											Your Degree Name: {item?.position}
+										</p>
+										<p className="font-semibold text-sm">
+											{item?.instructionName}
+										</p>
+										<p>
+											{item?.educationStartDate}-{item?.educationEndDate}
+										</p>
+										<p>
+											{item?.educationAbout
+												? parse(item?.educationAbout)
+												: "Lorem ipsum dolor sit amet consectetur, adipisicing elit."}
+										</p>
+									</div>
+								);
+							})}
+
+						{/* <div className="flex flex-col gap-3">
 							<p className="font-semibold">Your Degree Name</p>
 							<p className="font-semibold text-sm">Your Instruction Name</p>
 							<p>2016-2018</p>
 							<p>Lorem ipsum dolor sit amet adipisicing elit.</p>
-						</div>
+						</div> */}
 						<div className="border-dashed border-[1px] border-gray-400 rounded-full my-6" />
 						<h3 className="uppercase text-gray-600 tracking-[0.25em] text-base font-semibold pb-3">
 							languages

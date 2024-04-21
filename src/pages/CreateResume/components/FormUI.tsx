@@ -68,8 +68,8 @@ const FormUI: React.FC = () => {
 	};
 
 	const data = [
-		<FormFields2 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
 		<FormFields3 handlePrevSlide={handlePrevSlide} />,
+		<FormFields2 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
 		<FormFields handleNextSlide={handleNextSlide} />,
 	];
 

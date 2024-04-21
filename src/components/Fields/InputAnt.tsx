@@ -175,50 +175,71 @@ export default function InputField({
 		if (isArray(countExpirence)) {
 			maxId = countExpirence.reduce((max, item) => (item.id > max ? item.id : max), -1);
 		}
+		let maxIdEducation = -1;
+		if (isArray(countEducation)) {
+			maxIdEducation = countEducation.reduce(
+				(max, item) => (item.id > max ? item.id : max),
+				-1
+			);
+		}
 		// console.log("maxid:", maxId);
 
 		for (let i = 0; i < maxId + 1; i++) {
-			// console.log(countExpirence[i]);
-			const position = form.values[`experiencePosition_${countExpirence[i]?.id}`];
 			const positionIndex = countExpirence.findIndex((item: any) => item.id === i);
 			if (positionIndex !== -1) {
 				const position =
 					form.values[`experiencePosition_${countExpirence[positionIndex]?.id}`];
 				experiencePositions.push(position);
+				experienceCompanyName.push(
+					form.values[`experienceCompany_${countExpirence[positionIndex]?.id}`]
+				);
+				experienceStart.push(
+					form.values[`experienceStartDate_${countExpirence[positionIndex]?.id}`]
+				);
+				experienceEnd.push(
+					form.values[`experienceEndDate_${countExpirence[positionIndex]?.id}`]
+				);
 			} else {
 				experiencePositions.push(undefined);
+				experienceCompanyName.push(undefined);
+				experienceStart.push(undefined);
+				experienceEnd.push(undefined);
 			}
 			// experiencePositions.push(form.values[`experiencePosition_${countExpirence[i]?.id}`]); // 2chi id undifined bolib qoladiku 3chi elementni ochirganda
-			experienceCompanyName.push(form.values[`experienceCompany_${countExpirence[i]?.id}`]);
-			experienceStart.push(form.values[`experienceStartDate_${countExpirence[i]?.id}`]);
-			experienceEnd.push(form.values[`experienceEndDate_${countExpirence[i]?.id}`]);
+			// experienceCompanyName.push(form.values[`experienceCompany_${countExpirence[i]?.id}`]);
+			// experienceStart.push(form.values[`experienceStartDate_${countExpirence[i]?.id}`]);
+			// experienceEnd.push(form.values[`experienceEndDate_${countExpirence[i]?.id}`]);
 		}
-		// const updatedPositions = [];
-		// for (let i = 0; i <= maxId; i++) {
-		// 	const position = form.values[`experiencePosition_${countExpirence[i]?.id}`];
-		// if (position !== undefined) {
-		// 	updatedPositions.push(position);
-		// } else {
-		// 	updatedPositions.push(undefined);
-		// }
-		// }
-		// dispatch(ResInfo.setResumePosition([...updatedPositions]));
+		for (let i = 0; i < maxIdEducation + 1; i++) {
+			const Index = countEducation?.findIndex((item: any) => item.id === i);
+			if (Index !== -1) {
+				educationDegreeName.push(form.values[`degreeName_${countEducation[Index]?.id}`]);
+				educationName.push(form.values[`instructionName_${countEducation[Index]?.id}`]);
+				educationStart.push(form.values[`educationStartDate_${countEducation[Index]?.id}`]);
+				educationEnd.push(form.values[`educationEndDate_${countEducation[Index]?.id}`]);
+			} else {
+				educationDegreeName.push(undefined);
+				educationName.push(undefined);
+				educationStart.push(undefined);
+				educationEnd.push(undefined);
+			}
+		}
 		dispatch(ResInfo.setResumePosition([...experiencePositions]));
 		dispatch(ResInfo.setResumeCompanyName([...experienceCompanyName]));
 		dispatch(ResInfo.setResumeStartDate([...experienceStart]));
 		dispatch(ResInfo.setResumeEndDate([...experienceEnd]));
 		// education part
 		// for (let i = 0; i < countEducation; i++) {
-		// 	educationDegreeName.push(form.values[`degreeName_${i}`]);
-		// 	educationName.push(form.values[`instructionName_${i}`]);
-		// 	educationStart.push(form.values[`educationStartDate_${i}`]);
-		// 	educationEnd.push(form.values[`educationEndDate_${i}`]);
+		// educationDegreeName.push(form.values[`degreeName_${i}`]);
+		// educationName.push(form.values[`instructionName_${i}`]);
+		// educationStart.push(form.values[`educationStartDate_${i}`]);
+		// educationEnd.push(form.values[`educationEndDate_${i}`]);
 		// }
-		// dispatch(ResInfo.setResumeEducationName([...educationDegreeName]));
-		// dispatch(ResInfo.setResumeEducationPosition([...educationName]));
-		// dispatch(ResInfo.setResumeEducationStartDate([...educationStart]));
-		// dispatch(ResInfo.setResumeEducationEndDate([...educationEnd]));
-		console.log(form.values, experiencePositions, countExpirence);
+		dispatch(ResInfo.setResumeEducationName([...educationDegreeName]));
+		dispatch(ResInfo.setResumeEducationPosition([...educationName]));
+		dispatch(ResInfo.setResumeEducationStartDate([...educationStart]));
+		dispatch(ResInfo.setResumeEducationEndDate([...educationEnd]));
+		console.log(form.values, educationDegreeName, countEducation);
 	}, [form.values, dispatch, setHasError, hasError]);
 
 	// [

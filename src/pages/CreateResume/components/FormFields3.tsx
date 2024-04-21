@@ -13,35 +13,40 @@ import useStore from "../../../zustand/store";
 import TextEditor from "./TextEditor";
 
 export default function FormFields3({ handlePrevSlide }: { handlePrevSlide: any }) {
-	const [educationForms, setEducationForms] = useState<componentEducation[]>([
-		{ id: 0, value: "" },
-	]);
-	const { changeStatusSlider, setCountEducation } = useStore();
+	const { changeStatusSlider, setCountEducation, setIdEducation } = useStore();
 	const width = useWindowSize();
 	const dispatch = useDispatch();
 	const initialValues = {};
 
-	const newId = educationForms && educationForms?.length;
+	const [educationForms, setEducationForms] = useState<componentEducation[]>([
+		{ id: 0, value: "" },
+	]);
+
 	const handleAddEducation = () => {
+		const maxId = educationForms.reduce(
+			(max: any, item: any) => (item.id > max ? item.id : max),
+			-1
+		);
+		const newId = maxId + 1;
 		setEducationForms([...educationForms, { id: newId, value: "" }]);
 	};
 
 	const handleDeleteEducation = (id: number) => {
+		setIdEducation(id);
 		setEducationForms(educationForms.filter((form) => form.id !== id));
-	};
-
-	// Formni yuborish amaliyoti
-	const onSubmit = (values: any) => {
-		// console.log("Form yuborildi:", values.name);
-		// dispatch(ResInfo?.setResumeName(values.name));
 	};
 
 	useEffect(() => {
 		if (isArray(educationForms)) {
-			setCountEducation(educationForms.length);
+			setCountEducation(educationForms);
 		}
-	}, [educationForms, dispatch]);
+		console.log(educationForms);
+	}, [educationForms, dispatch, educationForms.length]);
 
+	// Formni yuborish amaliyoti
+	const onSubmit = (values: any) => {
+		// console.log("Form yuborildi:", values.name);
+	};
 	return (
 		<div className="editor__form-content">
 			<div className="min-[320px]:mb-3 xl:mb-5">
