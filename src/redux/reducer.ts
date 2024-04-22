@@ -8,6 +8,7 @@ import {
 	SET_RESUME_JOBTITLE,
 	SET_RESUME_PHONE,
 	SET_RESUME_SOCIALLINKS,
+	SET_RESUME_ABOUT,
 	SET_RESUME_COMPANYNAME,
 	SET_RESUME_POSITION,
 	SET_RESUME_STARTDATE,
@@ -31,6 +32,7 @@ interface MyStore {
 	resumeJobTitle: any;
 	resumeSocialLinks: any;
 	resumeSkills: any;
+	resumeAbout: any;
 
 	resumeCompanyName: any;
 	resumePosition: any;
@@ -55,6 +57,7 @@ const initialState: MyStore = {
 	resumeAdress: null,
 	resumeJobTitle: null,
 	resumeSocialLinks: null,
+	resumeAbout: null,
 
 	resumeCompanyName: null,
 	resumePosition: null,
@@ -118,6 +121,12 @@ const reducer = (state = initialState, action: any) => {
 				...state,
 				resumeSkills: action.payload,
 			};
+		case SET_RESUME_ABOUT:
+			return {
+				...state,
+				resumeAbout: action.payload,
+			};
+		// experience part
 		case SET_RESUME_COMPANYNAME:
 			return {
 				...state,

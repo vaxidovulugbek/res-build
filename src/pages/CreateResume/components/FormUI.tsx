@@ -13,6 +13,7 @@ import useStore from "../../../zustand/store";
 import FormFields from "./FormFields";
 import FormFields2 from "./FormFields2";
 import FormFields3 from "./FormFields3";
+import FormFields4 from "./FormFields4";
 import ModalResumes from "./ModalResumes";
 import "./styles.scss";
 import TextEditor from "./TextEditor";
@@ -68,9 +69,10 @@ const FormUI: React.FC = () => {
 	};
 
 	const data = [
-		<FormFields3 handlePrevSlide={handlePrevSlide} />,
-		<FormFields2 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
 		<FormFields handleNextSlide={handleNextSlide} />,
+		<FormFields2 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
+		<FormFields3 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
+		<FormFields4 handlePrevSlide={handlePrevSlide} />,
 	];
 
 	return (

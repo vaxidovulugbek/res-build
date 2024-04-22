@@ -17,6 +17,7 @@ export const Res1: React.FC = () => {
 		resumeAdress,
 		resumeJobTitle,
 		resumeSocialLinks,
+		resumeAbout,
 		resumePosition,
 		resumeCompanyName,
 		resumeStartDate,
@@ -120,7 +121,7 @@ export const Res1: React.FC = () => {
 			setFilteredEducation(filtered);
 			setIdEducation(null);
 		}
-		console.log(filteredEducation, countEducation);
+		// console.log(filteredEducation, countEducation);
 	}, [idEducation, dispatch, resumeEducationPosition]);
 
 	return (
@@ -249,11 +250,13 @@ export const Res1: React.FC = () => {
 							profile
 						</h3>
 						<p className="profile-info text-xs font-medium tracking-tighter">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quo
+							{resumeAbout
+								? resumeAbout
+								: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quo
 							esse, deserunt tenetur et adipisci recusandae totam asperiores!
 							Molestias corporis fugit iusto neque, itaque molestiae magni. Aliquid,
 							praesentium animi doloremque repellat earum excepturi consequuntur
-							necessitatibus quo at natus, molestias.
+							necessitatibus quo at natus, molestias.`}
 						</p>
 						<div className="border-dashed border-[1px] border-gray-400 rounded-full my-6" />
 						<h3 className="uppercase tracking-[0.25em] text-base font-semibold pb-3">

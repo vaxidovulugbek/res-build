@@ -63,3 +63,8 @@ export interface componentEducation {
 	id: any;
 	value: any;
 }
+
+export interface saveRedux {
+	id: any;
+	value: any;
+}

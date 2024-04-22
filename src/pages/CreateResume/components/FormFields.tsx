@@ -129,6 +129,15 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 							/>
 						</Col>
 						<SocialLinks />
+						<Col span={24}>
+							<Field
+								className="my-2 min-h-24"
+								name="about"
+								placeholder="about"
+								component={Fields.TextAreaAntd}
+								label="about"
+							/>
+						</Col>
 						<Col span={24} className="modal-footer flex items-center">
 							<Button
 								className="flex items-center h-10 text-white hover:bg-cyan-700 bg-cyan-700 px-4 py-1.5 rounded-3xl editor__btn-hover editor__btn-shadow max-[480px]:text-sm"

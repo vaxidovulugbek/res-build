@@ -12,7 +12,7 @@ import * as Yup from "yup";
 import useStore from "../../../zustand/store";
 import TextEditor from "./TextEditor";
 
-export default function FormFields3({ handlePrevSlide }: { handlePrevSlide: any }) {
+export default function FormFields3({ handlePrevSlide, handleNextSlide }: any) {
 	const { changeStatusSlider, setCountEducation, setIdEducation } = useStore();
 	const width = useWindowSize();
 	const dispatch = useDispatch();
@@ -129,7 +129,7 @@ export default function FormFields3({ handlePrevSlide }: { handlePrevSlide: any 
 						})}
 					<Button onClick={handleAddEducation}>Add more experience</Button>
 					<Button onClick={handlePrevSlide}>Previous</Button>
-					{/* <Button onClick={handleNextSlide}>Next</Button> */}
+					<Button onClick={handleNextSlide}>Next</Button>
 				</Form>
 			</Formik>
 		</div>

@@ -141,19 +141,6 @@ export default function InputField({
 		dispatch(ResInfo.setResumePhone(form.values.Phone));
 		dispatch(ResInfo.setResumeAdress(form.values.Address));
 
-		// expireince part
-		// dispatch(ResInfo.setResumeCompanyName(form.values.experienceCompany));
-		// dispatch(ResInfo.setResumePosition([`${form.values[`experiencePosition_${0}`]}`]));
-		// dispatch(ResInfo.setResumeStartDate(form.values.experienceStartDate));
-		// dispatch(ResInfo.setResumeEndDate(form.values.experienceEndDate));
-		// dispatch(ResInfo.setResumeAboutExpirience(form.values.expirienceEditor));
-
-		// // education part
-		// dispatch(ResInfo.setResumeEducationName(form.values.degreeName));
-		// dispatch(ResInfo.setResumeEducationPosition(form.values.instructionName));
-		// dispatch(ResInfo.setResumeEducationStartDate(form.values.educationStartDate));
-		// dispatch(ResInfo.setResumeEducationEndDate(form.values.educationEndDate));
-
 		// Xato haqida o'girishni saqlash
 		setHasError(hasError);
 		const experiencePositions = [];
@@ -164,12 +151,6 @@ export default function InputField({
 		const educationName = [];
 		const educationStart = [];
 		const educationEnd = [];
-		// for (let i = 0; i < countExpirence.length; i++) {
-		// 	experiencePositions.push(form.values[`experiencePosition_${i}`]); //muommo mana shu yerda bu indexni olayapdi idni emas
-		// 	experienceCompanyName.push(form.values[`experienceCompany_${i}`]);
-		// 	experienceStart.push(form.values[`experienceStartDate_${i}`]);
-		// 	experienceEnd.push(form.values[`experienceEndDate_${i}`]);
-		// }
 
 		let maxId = -1;
 		if (isArray(countExpirence)) {
@@ -182,7 +163,6 @@ export default function InputField({
 				-1
 			);
 		}
-		// console.log("maxid:", maxId);
 
 		for (let i = 0; i < maxId + 1; i++) {
 			const positionIndex = countExpirence.findIndex((item: any) => item.id === i);
@@ -205,10 +185,6 @@ export default function InputField({
 				experienceStart.push(undefined);
 				experienceEnd.push(undefined);
 			}
-			// experiencePositions.push(form.values[`experiencePosition_${countExpirence[i]?.id}`]); // 2chi id undifined bolib qoladiku 3chi elementni ochirganda
-			// experienceCompanyName.push(form.values[`experienceCompany_${countExpirence[i]?.id}`]);
-			// experienceStart.push(form.values[`experienceStartDate_${countExpirence[i]?.id}`]);
-			// experienceEnd.push(form.values[`experienceEndDate_${countExpirence[i]?.id}`]);
 		}
 		for (let i = 0; i < maxIdEducation + 1; i++) {
 			const Index = countEducation?.findIndex((item: any) => item.id === i);
@@ -229,17 +205,11 @@ export default function InputField({
 		dispatch(ResInfo.setResumeStartDate([...experienceStart]));
 		dispatch(ResInfo.setResumeEndDate([...experienceEnd]));
 		// education part
-		// for (let i = 0; i < countEducation; i++) {
-		// educationDegreeName.push(form.values[`degreeName_${i}`]);
-		// educationName.push(form.values[`instructionName_${i}`]);
-		// educationStart.push(form.values[`educationStartDate_${i}`]);
-		// educationEnd.push(form.values[`educationEndDate_${i}`]);
-		// }
 		dispatch(ResInfo.setResumeEducationName([...educationDegreeName]));
 		dispatch(ResInfo.setResumeEducationPosition([...educationName]));
 		dispatch(ResInfo.setResumeEducationStartDate([...educationStart]));
 		dispatch(ResInfo.setResumeEducationEndDate([...educationEnd]));
-		console.log(form.values, educationDegreeName, countEducation);
+		// console.log(form.values, educationDegreeName, countEducation);
 	}, [form.values, dispatch, setHasError, hasError]);
 
 	// [
@@ -255,7 +225,7 @@ export default function InputField({
 
 	return (
 		<div className={cn("flex flex-col", { error: hasError, "w-full": !hasError })}>
-			{label && <label className="text-xs">{label}</label>}
+			{label && <label className="text-xs capitalize">{label}</label>}
 			{type === "date" ? (
 				<DatePicker
 					style={hasError && { border: "1px solid #ff4d4f" }}

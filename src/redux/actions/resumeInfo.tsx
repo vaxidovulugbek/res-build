@@ -95,4 +95,5 @@ export const ResInfo = {
 		createResumeAction(ActionTypes.SET_RESUME_EDUCATION_ENDDATE, educationEndDate),
 	setResumeAboutEducation: (aboutEducation: any | null) =>
 		createResumeAction(ActionTypes.SET_RESUME_ABOUTEDUCATION, aboutEducation),
+	setResumeAbout: (about: any | null) => createResumeAction(ActionTypes.SET_RESUME_ABOUT, about),
 };

@@ -9,6 +9,7 @@ export const useSelectorRedux = () => {
 	const resumeJobTitle = useSelector((state: any) => state.resumeJobTitle);
 	const resumeSocialLinks = useSelector((state: any) => state.resumeSocialLinks);
 	const resumeSkills = useSelector((state: any) => state.resumeSkills);
+	const resumeAbout = useSelector((state: any) => state.resumeAbout);
 	const resumeCompanyName = useSelector((state: any) => state.resumeCompanyName);
 	const resumePosition = useSelector((state: any) => state.resumePosition);
 	const resumeStartDate = useSelector((state: any) => state.resumeStartDate);
@@ -28,6 +29,7 @@ export const useSelectorRedux = () => {
 		resumeAdress,
 		resumeJobTitle,
 		resumeSocialLinks,
+		resumeAbout,
 		resumeCompanyName,
 		resumePosition,
 		resumeStartDate,
