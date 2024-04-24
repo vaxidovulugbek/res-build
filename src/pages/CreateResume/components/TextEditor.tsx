@@ -60,6 +60,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder
 				dispatch(ResInfo.setResumeAboutEducation([...educationAbout]));
 			}
 		}
+		dispatch(ResInfo.setResumeInterests(form.values.interests));
 	}, [form.values, field.name, dispatch]);
 
 	return (

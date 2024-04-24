@@ -29,6 +29,7 @@ export const Res1: React.FC = () => {
 		resumeEducationStartDate,
 		resumeEducationEndDate,
 		resumeAboutEducation,
+		resumeInterests,
 	} = useSelectorRedux();
 	const dispatch = useDispatch();
 
@@ -122,7 +123,8 @@ export const Res1: React.FC = () => {
 			setIdEducation(null);
 		}
 		// console.log(filteredEducation, countEducation);
-	}, [idEducation, dispatch, resumeEducationPosition]);
+		console.log(resumeInterests);
+	}, [idEducation, dispatch, resumeEducationPosition, resumeInterests]);
 
 	return (
 		<>

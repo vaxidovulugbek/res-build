@@ -96,4 +96,9 @@ export const ResInfo = {
 	setResumeAboutEducation: (aboutEducation: any | null) =>
 		createResumeAction(ActionTypes.SET_RESUME_ABOUTEDUCATION, aboutEducation),
 	setResumeAbout: (about: any | null) => createResumeAction(ActionTypes.SET_RESUME_ABOUT, about),
+	// Add Additional Section
+	setResumeLanguages: (languages: any | null) =>
+		createResumeAction(ActionTypes.SET_RESUME_LANGUAGES, languages),
+	setResumeInterests: (interests: any | null) =>
+		createResumeAction(ActionTypes.SET_RESUME_INTERESTS, interests),
 };

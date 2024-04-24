@@ -20,6 +20,7 @@ export const useSelectorRedux = () => {
 	const resumeEducationStartDate = useSelector((state: any) => state.resumeEducationStartDate);
 	const resumeEducationEndDate = useSelector((state: any) => state.resumeEducationEndDate);
 	const resumeAboutEducation = useSelector((state: any) => state.resumeAboutEducation);
+	const resumeInterests = useSelector((state: any) => state.resumeInterests);
 
 	return {
 		resumeName,
@@ -41,5 +42,6 @@ export const useSelectorRedux = () => {
 		resumeEducationStartDate,
 		resumeEducationEndDate,
 		resumeAboutEducation,
+		resumeInterests,
 	};
 };

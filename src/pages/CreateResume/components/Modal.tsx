@@ -1,15 +1,7 @@
 import { CloseOutlined } from "@ant-design/icons";
 import { Drawer } from "antd";
 import { ModalProps } from "types/interface";
-// interface ModalProps {
-// 	isOpen: boolean;
-// 	onClose: () => void;
-// 	width?: number;
-// 	title?: string;
-// 	children?: React.ReactNode;
-// 	className?: string;
-// 	placement?: any;
-// }
+
 export default function DrawerModal(props: ModalProps) {
 	const {
 		isOpen,

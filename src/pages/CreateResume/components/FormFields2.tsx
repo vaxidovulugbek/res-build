@@ -174,18 +174,6 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 		// setCountExpirence(experienceForms.filter((item) => item?.id !== id));
 	};
 
-	// const handleDeleteExperience = (id: number) => {
-	// 	setIdExpirence(id);
-	// 	setExperienceForms(experienceForms.filter((item) => item?.id !== id));
-	// 	const updatedExperienceForms = experienceForms.map((item, index) => {
-	// 		if (item.id > id) {
-	// 			return { ...item, id: item.id - 1 };
-	// 		}
-	// 		return item;
-	// 	});
-	// 	setExperienceForms(updatedExperienceForms);
-	// };
-
 	useEffect(() => {
 		if (isArray(experienceForms)) {
 			setCountExpirence(experienceForms);

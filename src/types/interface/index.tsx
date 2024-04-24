@@ -41,8 +41,8 @@ export interface ModalResumesProps {
 }
 
 export interface TextEditorProps {
-	form: any;
-	field: any;
+	form?: any;
+	field?: any;
 	label?: string;
 	placeholder?: string;
 }
@@ -52,6 +52,12 @@ export interface Card {
 	title: string;
 	category: string;
 	img: any;
+}
+
+export interface CardProps {
+	id: string;
+	title: string;
+	text: string;
 }
 
 export interface componentExpirence {

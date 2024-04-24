@@ -20,6 +20,8 @@ import {
 	SET_RESUME_EDUCATION_STARTDATE,
 	SET_RESUME_EDUCATION_ENDDATE,
 	SET_RESUME_ABOUTEDUCATION,
+	SET_RESUME_INTERESTS,
+	SET_RESUME_LANGUAGES,
 } from "./ActionTypes";
 
 interface MyStore {
@@ -45,6 +47,9 @@ interface MyStore {
 	resumeEducationStartDate: any;
 	resumeEducationEndDate: any;
 	resumeAboutEducation: any;
+
+	resumeLanguages: any;
+	resumeInterests: any;
 	// ... boshqa xususiyatlar ...
 }
 
@@ -71,6 +76,9 @@ const initialState: MyStore = {
 	resumeEducationStartDate: null,
 	resumeEducationEndDate: null,
 	resumeAboutEducation: "",
+
+	resumeLanguages: null,
+	resumeInterests: null,
 	// ... boshqa barcha boshlang'ich xususiyatlar ...
 };
 
@@ -177,6 +185,16 @@ const reducer = (state = initialState, action: any) => {
 			return {
 				...state,
 				resumeAboutEducation: action.payload,
+			};
+		case SET_RESUME_INTERESTS:
+			return {
+				...state,
+				resumeInterests: action.payload,
+			};
+		case SET_RESUME_LANGUAGES:
+			return {
+				...state,
+				resumeLanguages: action.payload,
 			};
 		default:
 			return state;

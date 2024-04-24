@@ -52,6 +52,11 @@
     }
   }
 
+  &__additional-list li {
+    flex-basis: calc(100% / 4);
+    margin: 10px 0;
+  }
+
   &__btn-shadow {
     box-shadow: 0px 0px 15px rgba(0,0,0,.15);
   }

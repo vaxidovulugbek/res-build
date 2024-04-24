@@ -6,12 +6,6 @@ import DrawerModal from "./Modal";
 import { ModalResumesProps } from "types/interface";
 // import Button from "./Button"; // Button komponentini import qilamiz
 
-// interface ModalResumesProps {
-// 	modal: { open: string };
-// 	setModal: React.Dispatch<React.SetStateAction<any>>;
-// 	placement?: any;
-// }
-
 const ModalResumes: React.FC<ModalResumesProps> = ({ modal, setModal, placement }) => {
 	const { open } = modal;
 	const dispatch = useDispatch();
