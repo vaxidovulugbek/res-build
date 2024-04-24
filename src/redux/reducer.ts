@@ -22,6 +22,11 @@ import {
 	SET_RESUME_ABOUTEDUCATION,
 	SET_RESUME_INTERESTS,
 	SET_RESUME_LANGUAGES,
+	SET_RESUME_VOLUNTEERING_ACTIVITYNAME,
+	SET_RESUME_VOLUNTEERING_ADDRESS,
+	SET_RESUME_VOLUNTEERING_STARTDATE,
+	SET_RESUME_VOLUNTEERING_ENDDATE,
+	SET_RESUME_VOLUNTEERING_ABOUT,
 } from "./ActionTypes";
 
 interface MyStore {
@@ -50,6 +55,11 @@ interface MyStore {
 
 	resumeLanguages: any;
 	resumeInterests: any;
+	resumeVolunteeringActivityName: any;
+	resumeVolunteeringAddress: any;
+	resumeVolunteeringStartDate: any;
+	resumeVolunteeringEndDate: any;
+	resumeVolunteeringAbout: any;
 	// ... boshqa xususiyatlar ...
 }
 
@@ -79,6 +89,11 @@ const initialState: MyStore = {
 
 	resumeLanguages: null,
 	resumeInterests: null,
+	resumeVolunteeringActivityName: null,
+	resumeVolunteeringAddress: null,
+	resumeVolunteeringStartDate: null,
+	resumeVolunteeringEndDate: null,
+	resumeVolunteeringAbout: null,
 	// ... boshqa barcha boshlang'ich xususiyatlar ...
 };
 
@@ -195,6 +210,31 @@ const reducer = (state = initialState, action: any) => {
 			return {
 				...state,
 				resumeLanguages: action.payload,
+			};
+		case SET_RESUME_VOLUNTEERING_ACTIVITYNAME:
+			return {
+				...state,
+				resumeVolunteeringActivityName: action.payload,
+			};
+		case SET_RESUME_VOLUNTEERING_ADDRESS:
+			return {
+				...state,
+				resumeVolunteeringAddress: action.payload,
+			};
+		case SET_RESUME_VOLUNTEERING_STARTDATE:
+			return {
+				...state,
+				resumeVolunteeringStartDate: action.payload,
+			};
+		case SET_RESUME_VOLUNTEERING_ENDDATE:
+			return {
+				...state,
+				resumeVolunteeringEndDate: action.payload,
+			};
+		case SET_RESUME_VOLUNTEERING_ABOUT:
+			return {
+				...state,
+				resumeVolunteeringAbout: action.payload,
 			};
 		default:
 			return state;

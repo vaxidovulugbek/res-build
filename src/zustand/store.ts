@@ -9,6 +9,8 @@ interface MyStore {
 	countEducation: number | string | any;
 	idExpirence: number | string | any;
 	idEducation: number | string | any;
+	dataInterests: any;
+	dataVolunteering: any;
 	setHasError: (questionLength: number) => void;
 	setResumeTamplate: (questionLength: number) => void;
 	setDarkTheme: (questionLength: boolean) => void;
@@ -17,6 +19,8 @@ interface MyStore {
 	setCountEducation: (questionLength: number | any) => void;
 	setIdExpirence: (questionLength: any) => void;
 	setIdEducation: (questionLength: any) => void;
+	setDataInterests: (questionLength: any) => void;
+	setDataVolunteering: (questionLength: any) => void;
 }
 
 const useStore = create<MyStore>((set) => ({
@@ -28,6 +32,8 @@ const useStore = create<MyStore>((set) => ({
 	countEducation: 0,
 	idExpirence: null,
 	idEducation: null,
+	dataInterests: [],
+	dataVolunteering: [],
 	setHasError: (hasError) => set({ hasError }),
 	setResumeTamplate: (resumeTamplate) => set({ resumeTamplate }),
 	setDarkTheme: (darkTheme) => set({ darkTheme }),
@@ -36,6 +42,8 @@ const useStore = create<MyStore>((set) => ({
 	setCountEducation: (countEducation) => set({ countEducation }),
 	setIdExpirence: (idExpirence) => set({ idExpirence }),
 	setIdEducation: (idEducation) => set({ idEducation }),
+	setDataInterests: (dataInterests) => set({ dataInterests }),
+	setDataVolunteering: (dataVolunteering) => set({ dataVolunteering }),
 }));
 
 export default useStore;

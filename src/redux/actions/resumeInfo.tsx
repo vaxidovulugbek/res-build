@@ -101,4 +101,17 @@ export const ResInfo = {
 		createResumeAction(ActionTypes.SET_RESUME_LANGUAGES, languages),
 	setResumeInterests: (interests: any | null) =>
 		createResumeAction(ActionTypes.SET_RESUME_INTERESTS, interests),
+	setResumeVolunteeringActivityName: (volunteeringActivityName: any | null) =>
+		createResumeAction(
+			ActionTypes.SET_RESUME_VOLUNTEERING_ACTIVITYNAME,
+			volunteeringActivityName
+		),
+	setResumeVolunteeringAddress: (volunteeringAddress: any | null) =>
+		createResumeAction(ActionTypes.SET_RESUME_VOLUNTEERING_ADDRESS, volunteeringAddress),
+	setResumeVolunteeringStartDate: (volunteeringStartDate: any | null) =>
+		createResumeAction(ActionTypes.SET_RESUME_VOLUNTEERING_STARTDATE, volunteeringStartDate),
+	setResumeVolunteeringEndDate: (volunteeringEndDate: any | null) =>
+		createResumeAction(ActionTypes.SET_RESUME_VOLUNTEERING_ENDDATE, volunteeringEndDate),
+	setResumeVolunteeringAbout: (volunteeringAbout: any | null) =>
+		createResumeAction(ActionTypes.SET_RESUME_VOLUNTEERING_ABOUT, volunteeringAbout),
 };

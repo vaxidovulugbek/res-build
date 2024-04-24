@@ -21,6 +21,16 @@ export const useSelectorRedux = () => {
 	const resumeEducationEndDate = useSelector((state: any) => state.resumeEducationEndDate);
 	const resumeAboutEducation = useSelector((state: any) => state.resumeAboutEducation);
 	const resumeInterests = useSelector((state: any) => state.resumeInterests);
+	const resumeLanguages = useSelector((state: any) => state.resumeLanguages);
+	const resumeVolunteeringActivityName = useSelector(
+		(state: any) => state.resumeVolunteeringActivityName
+	);
+	const resumeVolunteeringAddress = useSelector((state: any) => state.resumeVolunteeringAddress);
+	const resumeVolunteeringStartDate = useSelector(
+		(state: any) => state.resumeVolunteeringStartDate
+	);
+	const resumeVolunteeringEndDate = useSelector((state: any) => state.resumeVolunteeringEndDate);
+	const resumeVolunteeringAbout = useSelector((state: any) => state.resumeVolunteeringAbout);
 
 	return {
 		resumeName,
@@ -43,5 +53,11 @@ export const useSelectorRedux = () => {
 		resumeEducationEndDate,
 		resumeAboutEducation,
 		resumeInterests,
+		resumeLanguages,
+		resumeVolunteeringActivityName,
+		resumeVolunteeringAddress,
+		resumeVolunteeringStartDate,
+		resumeVolunteeringEndDate,
+		resumeVolunteeringAbout,
 	};
 };

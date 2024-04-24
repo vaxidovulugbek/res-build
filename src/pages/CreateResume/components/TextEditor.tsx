@@ -61,10 +61,11 @@ const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder
 			}
 		}
 		dispatch(ResInfo.setResumeInterests(form.values.interests));
+		dispatch(ResInfo.setResumeVolunteeringAbout(form.values.volunteering));
 	}, [form.values, field.name, dispatch]);
 
 	return (
-		<div className="editor__form-texteditor relative mt-2">
+		<div className="editor__form-texteditor relative">
 			<label className="capitalize text-xs">{label}</label>
 			<div className="editor__form-texteditor-content">
 				<Editor

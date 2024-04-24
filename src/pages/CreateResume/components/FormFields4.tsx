@@ -1,19 +1,22 @@
-import { Button, Col, Row } from "antd";
+import { Col, Row } from "antd";
 import Fields from "components/Fields";
 import { Field, Form, Formik } from "formik";
 import { useWindowSize } from "hooks";
 import { isArray } from "lodash";
 import React, { useState } from "react";
-import { Title } from "ui";
+import { Title, Button } from "ui";
+import useStore from "../../../zustand/store";
+import Languages from "./Languages";
 import "./styles.scss";
 import TextEditor from "./TextEditor";
 
 export default function FormFields4({ handlePrevSlide }: any) {
 	const initialValues = {};
 	const width = useWindowSize();
-	const [dataInterests, setDataInterests] = useState<any[]>([]);
+	const { setDataVolunteering, dataVolunteering, setDataInterests, dataInterests } = useStore();
+	// const [dataInterests, setDataInterests] = useState<any[]>([]);
 	const [dataLanguages, setDataLanguages] = useState<any[]>([]);
-	const [dataVolunteering, setDataVolunteering] = useState<any[]>([]);
+	// const [dataVolunteering, setDataVolunteering] = useState<any[]>([]);
 	const addAdditional = ({ index }: any) => {
 		console.log(index);
 
@@ -89,7 +92,10 @@ export default function FormFields4({ handlePrevSlide }: any) {
 						{isArray(dataInterests) &&
 							dataInterests.map((form) => {
 								return (
-									<div key={form?.id}>
+									<div
+										key={form?.id}
+										className="rounded-md p-3 border-solid border-1 mb-8"
+									>
 										<Row gutter={[16, 16]}>
 											<Col span={24}>
 												<Field
@@ -114,8 +120,11 @@ export default function FormFields4({ handlePrevSlide }: any) {
 						{isArray(dataLanguages) &&
 							dataLanguages.map((_, idx) => {
 								return (
-									<div key={idx}>
-										<Col span={24}>
+									<div
+										key={idx}
+										className="rounded-md p-3 border-solid border-1 mb-8"
+									>
+										{/* <Col span={24}>
 											<Field
 												className="my-2"
 												name="languages"
@@ -123,7 +132,8 @@ export default function FormFields4({ handlePrevSlide }: any) {
 												component={Fields.TagInputAntd}
 												label="Languages"
 											/>
-										</Col>
+										</Col> */}
+										<Languages />
 										<Col span={24} className="modal-footer">
 											<Button onClick={() => handleDeleteLanguages()}>
 												Delete
@@ -135,7 +145,10 @@ export default function FormFields4({ handlePrevSlide }: any) {
 						{isArray(dataVolunteering) &&
 							dataVolunteering.map((form) => {
 								return (
-									<div key={form?.id}>
+									<div
+										key={form?.id}
+										className="rounded-md p-3 border-solid border-1"
+									>
 										<Row gutter={[16, 16]}>
 											<Col span={24}>
 												<Field

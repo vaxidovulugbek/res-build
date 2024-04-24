@@ -141,6 +141,11 @@ export default function InputField({
 		dispatch(ResInfo.setResumePhone(form.values.Phone));
 		dispatch(ResInfo.setResumeAdress(form.values.Address));
 
+		dispatch(ResInfo.setResumeVolunteeringActivityName(form.values.volunteering_ActivityName));
+		dispatch(ResInfo.setResumeVolunteeringAddress(form.values.volunteering_Address));
+		dispatch(ResInfo.setResumeVolunteeringStartDate(form.values.volunteering_startDate));
+		dispatch(ResInfo.setResumeVolunteeringEndDate(form.values.volunteering_endDate));
+
 		// Xato haqida o'girishni saqlash
 		setHasError(hasError);
 		const experiencePositions = [];
