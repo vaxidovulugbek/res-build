@@ -9,9 +9,11 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch } from "react-redux";
 import useStore from "../../../zustand/store";
 import { isArray } from "lodash";
+import { useWindowSize } from "hooks";
 
 const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder }) => {
 	const { countExpirence, countEducation } = useStore();
+	const width = useWindowSize();
 	const dispatch = useDispatch();
 	const [editorStates, setEditorStates] = useState<{ [key: string]: EditorState }>({});
 
@@ -64,6 +66,10 @@ const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder
 		dispatch(ResInfo.setResumeVolunteeringAbout(form.values.volunteering));
 	}, [form.values, field.name, dispatch]);
 
+	useEffect(() => {
+		console.log(width);
+	}, [width]);
+
 	return (
 		<div className="editor__form-texteditor relative">
 			<label className="capitalize text-xs">{label}</label>
@@ -73,6 +79,44 @@ const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder
 					toolbarClassName="toolbarClassName"
 					wrapperClassName="wrapperClassName"
 					editorClassName="editorClassName px-3"
+					toolbar={
+						width < 480
+							? {
+									options: ["inline", "fontSize", "fontFamily"], // fontSize qismi qo'shilgan
+									inline: {
+										options: ["bold", "italic", "underline", "strikethrough"],
+										inDropdown: false,
+										className: undefined,
+										component: undefined,
+										dropdownClassName: undefined,
+									},
+									fontSize: {
+										// fontSize bo'limi
+										icon: <i className="fas fa-text-height" />, // sizning kerakli ikon
+										className: undefined,
+										component: undefined,
+										dropdownClassName: undefined,
+										options: [8, 9, 10, 11, 12, 14, 16, 18], // font o'lcham variantlari
+										title: "Font Size", // toolbar da chiqariladigan sarlavha
+									},
+									fontFamily: {
+										// fontFamily bo'limi
+										options: [
+											"Arial",
+											"Georgia",
+											"Impact",
+											"Tahoma",
+											"Times New Roman",
+											"Verdana",
+										],
+										className: undefined,
+										component: undefined,
+										dropdownClassName: undefined,
+										title: "Font Family", // toolbar da chiqariladigan sarlavha
+									},
+								}
+							: undefined
+					}
 					onEditorStateChange={(editorState) =>
 						onEditorStateChange(editorState, field.name)
 					}

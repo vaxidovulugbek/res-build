@@ -68,19 +68,10 @@ export const Res1: React.FC = () => {
 		educationEndDate: string;
 		educationAbout: string;
 	}[] = [];
-	let maxId = -1;
-	let maxIdEducation = -1;
-	if (isArray(countExpirence)) {
-		maxId = countExpirence.reduce((max, item) => (item.id > max ? item.id : max), -1);
-	}
-	if (isArray(countEducation)) {
-		maxIdEducation = countEducation.reduce((max, item) => (item.id > max ? item.id : max), -1);
-	}
 	for (let i = 0; i < countExpirence.length; i++) {
 		experience.push({
 			id: countExpirence[i]?.id,
 			position: resumePosition[countExpirence[i]?.id],
-			// position: resumePosition[i],
 			companyName: resumeCompanyName[countExpirence[i]?.id],
 			startDate: resumeStartDate[countExpirence[i]?.id],
 			endDate: resumeEndDate[countExpirence[i]?.id],
@@ -132,9 +123,7 @@ export const Res1: React.FC = () => {
 			setFilteredEducation(filtered);
 			setIdEducation(null);
 		}
-		// console.log(filteredEducation, countEducation);
-		console.log(resumeInterests, resumeVolunteeringActivityName);
-	}, [idEducation, dispatch, resumeEducationPosition, resumeInterests]);
+	}, [idEducation, dispatch, resumeEducationPosition]);
 
 	return (
 		<>
@@ -190,8 +179,8 @@ export const Res1: React.FC = () => {
 							skills
 						</h3>
 						<div className="flex flex-col gap-3">
-							{isArray(resumeSkills)
-								? resumeSkills.map((el, index) => {
+							{resumeSkills?.length > 1
+								? resumeSkills?.map((el: any, index: number) => {
 										return <p key={index}>{el}</p>;
 									})
 								: ["react", "angular", ".net"].map((el, index) => {
@@ -206,14 +195,22 @@ export const Res1: React.FC = () => {
 							filteredEducation.map((item, index) => {
 								return (
 									<div className="flex flex-col gap-3 pb-10" key={index}>
-										<p className="font-semibold">
+										<p className="font-semibold capitalize">
 											Your Degree Name: {item?.position}
 										</p>
-										<p className="font-semibold text-sm">
-											{item?.instructionName}
+										<p className="font-semibold text-sm capitalize">
+											{item?.instructionName
+												? item?.instructionName
+												: "industry, profession"}
 										</p>
 										<p>
-											{item?.educationStartDate}-{item?.educationEndDate}
+											{item?.educationStartDate
+												? item?.educationStartDate
+												: "2020"}
+											-
+											{item?.educationEndDate
+												? item?.educationEndDate
+												: "2024"}
 										</p>
 										<p>
 											{item?.educationAbout
@@ -235,34 +232,21 @@ export const Res1: React.FC = () => {
 							languages
 						</h3>
 						<div className="flex flex-col gap-3">
-							{isArray(resumeLanguages) &&
+							{isArray(resumeLanguages) ? (
 								resumeLanguages.map((item, index) => (
 									<p key={index} className="flex items-center">
 										{item?.value1
 											? `${item?.value1}: ${item?.value2}`
 											: item?.value2}
 									</p>
-								))}
-							{/* <div className="flex items-center h-3">
-								<span className="w-14">English</span>
-								<div className="border-solid w-40 h-1.5 border-[1px] bg-gray-700 border-gray-700 rounded-full" />
-							</div>
-							<div className="flex items-center h-3">
-								<span className="w-14">German</span>
-								<div className="border-solid w-28 h-1.5 border-[1px] bg-gray-700 border-gray-700 rounded-full" />
-							</div>
-							<div className="flex items-center h-3">
-								<span className="w-14">Spanish</span>
-								<div className="border-solid w-36 h-1.5 border-[1px] bg-gray-700 border-gray-700 rounded-full" />
-							</div>
-							<div className="flex items-center h-3">
-								<span className="w-14">Spanish</span>
-								<div className="border-solid w-36 h-1.5 border-[1px] bg-gray-700 border-gray-700 rounded-full" />
-							</div>
-							<div className="flex items-center h-3">
-								<span className="w-14">Spanish</span>
-								<div className="border-solid w-36 h-1.5 border-[1px] bg-gray-700 border-gray-700 rounded-full" />
-							</div> */}
+								))
+							) : (
+								<div className="flex flex-col gap-3">
+									<p className="flex items-center">English: Beginner</p>
+									<p className="flex items-center">Uzbek: Native</p>
+									<p className="flex items-center">Russian: B1</p>
+								</div>
+							)}
 						</div>
 					</div>
 					<div className="w-[60%] py-3 pl-5 px-10 text-gray-600">
@@ -309,7 +293,7 @@ export const Res1: React.FC = () => {
 											<div className="text-xs">
 												{el?.experienceAbout
 													? parse(el?.experienceAbout)
-													: "Lorem ipsum dolor sit amet consectetur, adipisicing elit."}
+													: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."}
 											</div>
 										</div>
 									);
@@ -323,6 +307,32 @@ export const Res1: React.FC = () => {
 								<p className="text-xs">
 									{resumeInterests ? parse(resumeInterests) : null}
 								</p>
+							</div>
+						)}
+						{dataVolunteering.length > 0 && (
+							<div>
+								<h3 className="uppercase tracking-[0.25em] text-base font-semibold">
+									Volunteering
+								</h3>
+								<div className="mb-4">
+									<p className="font-semibold text-sm capitalize">
+										{resumeVolunteeringActivityName}
+									</p>
+									<p className="flex justify-between py-3">
+										<span className="text-xs capitalize">
+											{resumeVolunteeringAddress}
+										</span>
+										<span className="text-xs">
+											{resumeVolunteeringStartDate} <span> </span>{" "}
+											{resumeVolunteeringEndDate}
+										</span>
+									</p>
+									<div className="text-xs">
+										{resumeVolunteeringAbout
+											? parse(resumeVolunteeringAbout)
+											: null}
+									</div>
+								</div>
 							</div>
 						)}
 					</div>

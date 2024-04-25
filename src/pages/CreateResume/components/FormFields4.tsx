@@ -143,12 +143,9 @@ export default function FormFields4({ handlePrevSlide }: any) {
 								);
 							})}
 						{isArray(dataVolunteering) &&
-							dataVolunteering.map((form) => {
+							dataVolunteering.map((_, idx) => {
 								return (
-									<div
-										key={form?.id}
-										className="rounded-md p-3 border-solid border-1"
-									>
+									<div key={idx} className="rounded-md p-3 border-solid border-1">
 										<Row gutter={[16, 16]}>
 											<Col span={24}>
 												<Field

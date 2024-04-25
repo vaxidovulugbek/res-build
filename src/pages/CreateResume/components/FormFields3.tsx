@@ -40,7 +40,6 @@ export default function FormFields3({ handlePrevSlide, handleNextSlide }: any) {
 		if (isArray(educationForms)) {
 			setCountEducation(educationForms);
 		}
-		console.log(educationForms);
 	}, [educationForms, dispatch, educationForms.length]);
 
 	// Formni yuborish amaliyoti

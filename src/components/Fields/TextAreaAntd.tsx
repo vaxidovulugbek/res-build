@@ -44,7 +44,6 @@ export default function TextAreaAntd({
 	useEffect(() => {
 		dispatch(ResInfo.setResumeAbout(form.values.about));
 		// dispatch(ResInfo.setResumePosition([...experiencePositions]));
-		console.log(form.values);
 	}, [form.values, dispatch, setHasError, hasError]);
 
 	return (

@@ -48,8 +48,8 @@ const Languages: React.FC = () => {
 			{inputs &&
 				inputs.map((input, index) => (
 					<Col span={24} key={index}>
-						<div className="w-full flex items-center gap-5">
-							<div className="flex-auto">
+						<div className="w-full flex items-center gap-5 max-[660px]:gap-3 max-[660px]:flex-col max-[660px]:items-start">
+							<div className="flex-auto max-[660px]:w-full">
 								<label className="text-xs">Language</label>
 								<Input
 									placeholder="Language"
@@ -57,7 +57,7 @@ const Languages: React.FC = () => {
 									onChange={(e) => handleChange(index, e.target.value, 1)}
 								/>
 							</div>
-							<div className="flex-auto">
+							<div className="flex-auto max-[660px]:w-full">
 								<label className="text-xs">Level (optional)</label>
 								<Input
 									placeholder="B1, C1, A1, etc..."
@@ -66,7 +66,7 @@ const Languages: React.FC = () => {
 								/>
 							</div>
 							<Button
-								className="flex-none py-3 px-1 mt-4 z-50"
+								className="flex-none py-3 px-1 mt-4 z-50 max-[660px]:mt-0"
 								type="button"
 								onClick={() => handleDelete(index)}
 								children={
