@@ -1,6 +1,11 @@
-import { useSelectorRedux } from "hooks";
-import React from "react";
+import { useExperienceEducation, useSelectorRedux } from "hooks";
+import { isArray } from "lodash";
+import React, { useEffect, useState } from "react";
+import useStore from "../../zustand/store";
+import cn from "classnames";
+import parse from "html-react-parser";
 import "./style.scss";
+import { useDispatch } from "react-redux";
 
 export const Res4: React.FC = () => {
 	const {
@@ -13,16 +18,8 @@ export const Res4: React.FC = () => {
 		resumeSocialLinks,
 		resumeAbout,
 		resumePosition,
-		resumeCompanyName,
-		resumeStartDate,
-		resumeEndDate,
-		resumeAboutExpirience,
 		resumeSkills,
-		resumeEducationName,
 		resumeEducationPosition,
-		resumeEducationStartDate,
-		resumeEducationEndDate,
-		resumeAboutEducation,
 		resumeInterests,
 		resumeLanguages,
 		resumeVolunteeringActivityName,
@@ -31,6 +28,56 @@ export const Res4: React.FC = () => {
 		resumeVolunteeringEndDate,
 		resumeVolunteeringAbout,
 	} = useSelectorRedux();
+
+	const {
+		idExpirence,
+		dataVolunteering,
+		dataInterests,
+		idEducation,
+		setIdExpirence,
+		setIdEducation,
+	} = useStore();
+
+	const dispatch = useDispatch();
+	const { getExperienceData, getEducationData } = useExperienceEducation();
+	const experience = getExperienceData();
+	const education = getEducationData();
+
+	const [filteredExperience, setFilteredExperience] = useState<
+		{
+			id?: number | string;
+			position: string;
+			companyName: string;
+			startDate: string;
+			endDate: string;
+			experienceAbout: string;
+		}[]
+	>([]);
+	const [filteredEducation, setFilteredEducation] = useState<
+		{
+			id?: number | string;
+			position: string;
+			instructionName: string;
+			educationStartDate: string;
+			educationEndDate: string;
+			educationAbout: string;
+		}[]
+	>([]);
+
+	useEffect(() => {
+		if (idExpirence !== undefined) {
+			const filtered = experience?.filter((el) => el.id !== idExpirence);
+			setFilteredExperience(filtered);
+			setIdExpirence(null);
+		}
+	}, [idExpirence, dispatch, resumePosition]);
+	useEffect(() => {
+		if (idEducation !== undefined) {
+			const filtered = education?.filter((el) => el.id !== idEducation);
+			setFilteredEducation(filtered);
+			setIdEducation(null);
+		}
+	}, [idEducation, dispatch, resumeEducationPosition]);
 	return (
 		<>
 			{" "}
@@ -56,10 +103,20 @@ export const Res4: React.FC = () => {
 							{resumePhone ? resumePhone : "(90) 123-4567"} <span> | </span>
 							{resumeEmail ? resumeEmail : "email@youremail.com"}
 						</p>
+						<p className="text-white text-sm flex flex-wrap text-right justify-end w-full">
+							{isArray(resumeSocialLinks) &&
+								resumeSocialLinks.map((item, index) => (
+									<p key={index} className="flex items-center ms-3 text-right">
+										{item?.value1
+											? `${item?.value1}: ${item?.value2}`
+											: item?.value2}
+									</p>
+								))}
+						</p>
 					</div>
 				</div>
 				<div>
-					<h2 className="text-[16px] font-bold mb-2">Professional Summary</h2>
+					<h2 className="text-[16px] font-bold mb-2 capitalize">Professional Summary</h2>
 					<p className="text-gray-700 font-bold text-[14px]">
 						{resumeAbout
 							? resumeAbout
@@ -71,63 +128,133 @@ export const Res4: React.FC = () => {
 						Worked with OSHA`}
 					</p>
 				</div>
-				<div className="max-w-700 mx-auto">
-					<div>
-						<div className="pt-6">
-							<div className="mb-4">
-								<div className="bg-white mx-auto " style={{ maxWidth: "700px" }}>
-									<div>
-										<div className="flex items-center">
-											<h2 className="text-xl text-amber-500 font-bold pr-3">
-												Professional Experience
-											</h2>
-											<div className="flex-1 h-1 bg-amber-500"></div>
-										</div>
-										<div className="flex justify-between items-center mt-2">
-											<div>
-												<h3 className="text-[16px] font-bold text-gray-800">
-													Jim s Widget Factory, Plano, TX
-												</h3>
-												<h3 className="text-[14px] text-gray-800 font-bold">
-													Human Resources Manager
-												</h3>
-											</div>
-											<span className="text-[14px] text-gray-600">
-												January 2016 - Present
-											</span>
-										</div>
-									</div>
-								</div>
-								<ul className="list-disc list-inside text-[13px] text-gray-700 mt-1">
-									<li className="custom-bullet">
-										Implement effective company policies to ensure that all
-										practices comply with labor and employment regulations
-									</li>
-									<li className="custom-bullet">
-										Increased employee retention rates by managing workplace
-										satisfaction to an over 90% success rate by creating and
-										maintaining a positive work environment
-									</li>
-									<li className="custom-bullet">
-										Develop targeted outreach practices to increase minority
-										recruitment and ensure compliance with affirmative action
-										policies
-									</li>
-									<li className="custom-bullet">
-										Monitor scheduled in and out times as well as employee
-										breaks to ensure that proper employment laws are met
-									</li>
-								</ul>
-							</div>
-						</div>
+				<div className="max-w-700 mx-auto mt-6">
+					<div className="flex items-center">
+						<h2 className="text-xl text-amber-500 font-bold pr-3 capitalize">
+							Professional Experience
+						</h2>
+						<div className="flex-1 h-1 bg-amber-500"></div>
 					</div>
+					{isArray(filteredExperience) &&
+						filteredExperience.map((el, idx) => {
+							return (
+								<div className="mb-4">
+									<div
+										className="bg-white mx-auto flex justify-between items-center mt-2"
+										style={{ maxWidth: "700px" }}
+									>
+										<div>
+											<h3 className="text-[16px] font-bold text-gray-800 capitalize">
+												{el?.position
+													? el?.position
+													: "Your Instruction Name"}
+											</h3>
+											<h3 className="text-[14px] text-gray-800 font-bold capitalize">
+												{el?.companyName ? el?.companyName : "Company name"}
+											</h3>
+										</div>
+										<span className="text-[14px] text-gray-600">
+											{el?.startDate ? el?.startDate : "January 2016"}{" "}
+											<span> </span> {el?.endDate ? el?.endDate : "2023"}
+										</span>
+									</div>
+									<div className="text-xs text-gray-700 mt-1">
+										{el?.experienceAbout
+											? parse(el?.experienceAbout)
+											: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."}
+									</div>
+									{/* <ul className="list-disc list-inside text-[13px] text-gray-700 mt-1">
+										<li className="custom-bullet">
+											Implement effective company policies to ensure that all
+											practices comply with labor and employment regulations
+										</li>
+										<li className="custom-bullet">
+											Increased employee retention rates by managing workplace
+											satisfaction to an over 90% success rate by creating and
+											maintaining a positive work environment
+										</li>
+										<li className="custom-bullet">
+											Develop targeted outreach practices to increase minority
+											recruitment and ensure compliance with affirmative
+											action policies
+										</li>
+										<li className="custom-bullet">
+											Monitor scheduled in and out times as well as employee
+											breaks to ensure that proper employment laws are met
+										</li>
+									</ul> */}
+								</div>
+								// <div key={idx} className="mb-4">
+								// 	<p className="font-semibold text-sm capitalize">
+								// 		{el?.position ? el?.position : "Your Instruction Name"}
+								// 	</p>
+								// 	<p className="flex justify-between py-3">
+								// 		<span className="text-xs capitalize">
+								// 			{el?.companyName ? el?.companyName : "Company name"}
+								// 		</span>
+								// 		<span className="text-xs">
+								// 			{el?.startDate ? el?.startDate : "2020"} <span> </span>{" "}
+								// 			{el?.endDate ? el?.endDate : "2023"}
+								// 		</span>
+								// 	</p>
+								// <div className="text-xs">
+								// 	{el?.experienceAbout
+								// 		? parse(el?.experienceAbout)
+								// 		: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."}
+								// </div>
+								// </div>
+							);
+						})}
 				</div>
 				<div className="mt-6">
 					<div className="flex items-center">
-						<h2 className="text-xl text-amber-500 font-bold pr-3">Education</h2>
+						<h2 className="text-xl text-amber-500 font-bold pr-3 capitalize">
+							Education
+						</h2>
 						<div className="flex-1 h-1 bg-amber-500"></div>
 					</div>
-					<h3 className="text-gray-700 text-[14px] mt-2">
+					{isArray(filteredEducation) &&
+						filteredEducation.map((item, index) => {
+							return (
+								<div
+									className={cn("flex flex-col gap-3", {
+										"pt-10": index > 0,
+									})}
+									key={index}
+								>
+									<div className="text-gray-700 text-[14px] mt-2">
+										<div className="flex justify-between">
+											<h3 className="text-[16px] font-bold text-gray-800">
+												{item?.position
+													? item?.position
+													: "Masters in Human Resources"}{" "}
+											</h3>
+											<div className="flex items-center">
+												{item?.educationStartDate
+													? item?.educationStartDate
+													: "September 2007"}{" "}
+												-{" "}
+												{item?.educationEndDate
+													? item?.educationEndDate
+													: "May 2011"}
+											</div>
+										</div>
+										<span className="text-[16px] font-bold text-gray-800">
+											{item?.instructionName
+												? item?.instructionName
+												: "The University of Texas, Dallas"}
+										</span>
+									</div>
+									<p className="text-gray-700 text-[13px]">
+										{item?.educationAbout
+											? parse(item?.educationAbout)
+											: "Lorem ipsum dolor sit amet consectetur, adipisicing elit."}
+									</p>
+								</div>
+							);
+						})}
+
+					{/* <h3 className="text-gray-700 text-[14px] mt-2">
 						Masters in Human Resources September 2007 - May 2011
 						<span className="block text-sm font-normal">
 							The University of Texas, Dallas
@@ -136,11 +263,13 @@ export const Res4: React.FC = () => {
 					</h3>
 					<ul className="list-disc list-inside text-gray-700 text-[13px]">
 						<li className="custom-bullet">Academic Awardee of AY 2007-2008</li>
-					</ul>
+					</ul> */}
 				</div>
 				<div className="mt-6">
 					<div className="flex items-center">
-						<h2 className="text-xl text-amber-500 font-bold pr-3">Key Skills</h2>
+						<h2 className="text-xl text-amber-500 font-bold pr-3 capitalize">
+							Key Skills
+						</h2>
 						<div className="flex-1 h-1 bg-amber-500"></div>
 					</div>
 					<ul className="list-disc list-inside text-gray-700 text-[13px] mt-2">
@@ -164,14 +293,77 @@ export const Res4: React.FC = () => {
 										</li>
 									);
 								})}
-						{/* <li className="custom-bullet">Detail oriented</li>
-						<li className="custom-bullet">Well-versed in Texas employment law</li>
-						<li className="custom-bullet">
-							Excellent written and oral communication skills
-						</li>
-						<li className="custom-bullet">Develops positive workplace relationships</li> */}
 					</ul>
 				</div>
+				<div className="mt-6">
+					<div className="flex items-center">
+						<h2 className="text-xl text-amber-500 font-bold pr-3 capitalize">
+							Languages
+						</h2>
+						<div className="flex-1 h-1 bg-amber-500"></div>
+					</div>
+					<ul className="list-disc list-inside text-gray-700 text-[13px] mt-2">
+						{resumeLanguages?.length > 0
+							? resumeLanguages?.map((el: any, index: number) => {
+									return (
+										<li className="custom-bullet" key={index}>
+											{el?.value1
+												? `${el?.value1}: ${el?.value2}`
+												: el?.value2}
+										</li>
+									);
+								})
+							: ["English: Beginner", "Uzbek: Native", "Russian: B1"].map(
+									(el, index) => {
+										return (
+											<li className="custom-bullet" key={index}>
+												{el}
+											</li>
+										);
+									}
+								)}
+					</ul>
+				</div>
+				{dataVolunteering.length > 0 && (
+					<div className="mt-6">
+						<div className="flex items-center">
+							<h2 className="text-xl text-amber-500 font-bold pr-3 capitalize">
+								Volunteering
+							</h2>
+							<div className="flex-1 h-1 bg-amber-500"></div>
+						</div>
+						<div className="mb-4 mt-2">
+							<p className="font-semibold text-sm capitalize">
+								{resumeVolunteeringActivityName}
+							</p>
+							<p className="flex justify-between py-3">
+								<span className="text-xs capitalize">
+									{resumeVolunteeringAddress}
+								</span>
+								<span className="text-xs">
+									{resumeVolunteeringStartDate} <span> </span>{" "}
+									{resumeVolunteeringEndDate}
+								</span>
+							</p>
+							<div className="text-xs">
+								{resumeVolunteeringAbout ? parse(resumeVolunteeringAbout) : null}
+							</div>
+						</div>
+					</div>
+				)}
+				{dataInterests.length > 0 && (
+					<div className="mt-6">
+						<div className="flex items-center">
+							<h2 className="text-xl text-amber-500 font-bold pr-3 capitalize">
+								interests
+							</h2>
+							<div className="flex-1 h-1 bg-amber-500"></div>
+						</div>
+						<p className="text-xs mt-2">
+							{resumeInterests ? parse(resumeInterests) : null}
+						</p>
+					</div>
+				)}
 			</div>
 		</>
 	);
