@@ -1,6 +1,7 @@
 import { DrawerProps } from "antd";
 import cn from "classnames";
 import { Res1, Res2, Res3, Res4, Res5, Res6 } from "components/ResumeTamplates";
+import { useSelectorRedux } from "hooks";
 import { isArray } from "lodash";
 import React, { useRef, useState } from "react";
 // import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
@@ -21,7 +22,7 @@ import TextEditor from "./TextEditor";
 const FormUI: React.FC = () => {
 	const [modal, setModal] = useState({ open: "" });
 	const [placement, setPlacement] = useState<DrawerProps["placement"]>("left");
-	const resumeTemplate = useSelector((state: any) => state.resumeTemplate);
+	const { resumeTemplate } = useSelectorRedux();
 
 	const resumeComponents: { [key: number]: JSX.Element } = {
 		1: <Res1 />,
@@ -69,10 +70,10 @@ const FormUI: React.FC = () => {
 	};
 
 	const data = [
+		<FormFields handleNextSlide={handleNextSlide} />,
 		<FormFields3 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
 		<FormFields4 handlePrevSlide={handlePrevSlide} />,
 		<FormFields2 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
-		<FormFields handleNextSlide={handleNextSlide} />,
 	];
 
 	return (

@@ -66,10 +66,6 @@ const TextEditor: React.FC<TextEditorProps> = ({ form, field, label, placeholder
 		dispatch(ResInfo.setResumeVolunteeringAbout(form.values.volunteering));
 	}, [form.values, field.name, dispatch]);
 
-	useEffect(() => {
-		console.log(width);
-	}, [width]);
-
 	return (
 		<div className="editor__form-texteditor relative">
 			<label className="capitalize text-xs">{label}</label>

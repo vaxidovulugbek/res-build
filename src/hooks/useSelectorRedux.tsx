@@ -1,6 +1,7 @@
 // useResume.ts
 import { useSelector } from "react-redux";
 export const useSelectorRedux = () => {
+	const resumeTemplate = useSelector((state: any) => state.resumeTemplate);
 	const resumeName = useSelector((state: any) => state.resumeName);
 	const resumeLastName = useSelector((state: any) => state.resumeLastName);
 	const resumeEmail = useSelector((state: any) => state.resumeEmail);
@@ -33,6 +34,7 @@ export const useSelectorRedux = () => {
 	const resumeVolunteeringAbout = useSelector((state: any) => state.resumeVolunteeringAbout);
 
 	return {
+		resumeTemplate,
 		resumeName,
 		resumeLastName,
 		resumeEmail,

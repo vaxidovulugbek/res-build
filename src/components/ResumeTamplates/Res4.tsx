@@ -1,7 +1,36 @@
+import { useSelectorRedux } from "hooks";
 import React from "react";
 import "./style.scss";
 
 export const Res4: React.FC = () => {
+	const {
+		resumeName,
+		resumeLastName,
+		resumeEmail,
+		resumePhone,
+		resumeAdress,
+		resumeJobTitle,
+		resumeSocialLinks,
+		resumeAbout,
+		resumePosition,
+		resumeCompanyName,
+		resumeStartDate,
+		resumeEndDate,
+		resumeAboutExpirience,
+		resumeSkills,
+		resumeEducationName,
+		resumeEducationPosition,
+		resumeEducationStartDate,
+		resumeEducationEndDate,
+		resumeAboutEducation,
+		resumeInterests,
+		resumeLanguages,
+		resumeVolunteeringActivityName,
+		resumeVolunteeringAddress,
+		resumeVolunteeringStartDate,
+		resumeVolunteeringEndDate,
+		resumeVolunteeringAbout,
+	} = useSelectorRedux();
 	return (
 		<>
 			{" "}
@@ -11,23 +40,35 @@ export const Res4: React.FC = () => {
 					style={{ maxWidth: "700px", borderRadius: "50px 0 0 50px" }}
 				>
 					<div>
-						<h1 className="text-2xl font-bold text-white">Chris Candidate</h1>
-						<p className="text-white">Human Resource Manager</p>
+						<h1 className="text-2xl font-bold text-white capitalize">
+							{resumeName ? resumeName : "Chris"}{" "}
+							{resumeLastName ? resumeLastName : "Candidate"}
+						</h1>
+						<p className="text-white capitalize">
+							{resumeJobTitle ? resumeJobTitle : "Human Resource Manager"}
+						</p>
 					</div>
 					<div className="text-right">
-						<p className="text-white text-sm">4759 Sunnydale Lane, Plano, TX 75071</p>
-						<p className="text-white text-sm">(469) 385-2948 | email@youremail.com</p>
+						<p className="text-white text-sm capitalize">
+							{resumeAdress ? resumeAdress : "4759 Sunnydale Lane"}
+						</p>
+						<p className="text-white text-sm">
+							{resumePhone ? resumePhone : "(90) 123-4567"} <span> | </span>
+							{resumeEmail ? resumeEmail : "email@youremail.com"}
+						</p>
 					</div>
 				</div>
 				<div>
 					<h2 className="text-[16px] font-bold mb-2">Professional Summary</h2>
 					<p className="text-gray-700 font-bold text-[14px]">
-						Human resources generalist with 8 years of experience in HR, including
+						{resumeAbout
+							? resumeAbout
+							: `Human resources generalist with 8 years of experience in HR, including
 						hiring and terminating, disciplining employees and helping department
 						managers improve employee performance. Worked with labor unions to negotiate
 						compensation packages for workers. Organized new hire training to ensure
 						that all satety regulations are followe do workplace safety standards.
-						Worked with OSHA
+						Worked with OSHA`}
 					</p>
 				</div>
 				<div className="max-w-700 mx-auto">
@@ -103,12 +144,32 @@ export const Res4: React.FC = () => {
 						<div className="flex-1 h-1 bg-amber-500"></div>
 					</div>
 					<ul className="list-disc list-inside text-gray-700 text-[13px] mt-2">
-						<li className="custom-bullet">Detail oriented</li>
+						{resumeSkills?.length > 0
+							? resumeSkills?.map((el: any, index: number) => {
+									return (
+										<li className="custom-bullet" key={index}>
+											{el}
+										</li>
+									);
+								})
+							: [
+									"Detail oriented",
+									"Well-versed in Texas employment law",
+									"Excellent written and oral communication skills",
+									"Develops positive workplace relationships",
+								].map((el, index) => {
+									return (
+										<li className="custom-bullet" key={index}>
+											{el}
+										</li>
+									);
+								})}
+						{/* <li className="custom-bullet">Detail oriented</li>
 						<li className="custom-bullet">Well-versed in Texas employment law</li>
 						<li className="custom-bullet">
 							Excellent written and oral communication skills
 						</li>
-						<li className="custom-bullet">Develops positive workplace relationships</li>
+						<li className="custom-bullet">Develops positive workplace relationships</li> */}
 					</ul>
 				</div>
 			</div>

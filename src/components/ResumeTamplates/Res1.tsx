@@ -1,4 +1,4 @@
-import { useSelectorRedux } from "hooks";
+import { useExperienceEducation, useSelectorRedux } from "hooks";
 import { isArray, isBoolean, isString } from "lodash";
 import React, { useEffect, useState } from "react";
 import cn from "classnames";
@@ -38,7 +38,9 @@ export const Res1: React.FC = () => {
 		resumeVolunteeringAbout,
 	} = useSelectorRedux();
 	const dispatch = useDispatch();
-	// const { setDataVolunteering, dataVolunteering, setDataInterests, dataInterests } = useStore();
+	const { getExperienceData, getEducationData } = useExperienceEducation();
+	const experience = getExperienceData();
+	const education = getEducationData();
 	const {
 		countExpirence,
 		countEducation,
@@ -52,42 +54,42 @@ export const Res1: React.FC = () => {
 		setDataInterests,
 	} = useStore();
 
-	const experience: {
-		id?: number | string;
-		position: string;
-		companyName: string;
-		startDate: string;
-		endDate: string;
-		experienceAbout: string;
-	}[] = [];
-	const education: {
-		id?: number | string;
-		position: string;
-		instructionName: string;
-		educationStartDate: string;
-		educationEndDate: string;
-		educationAbout: string;
-	}[] = [];
-	for (let i = 0; i < countExpirence.length; i++) {
-		experience.push({
-			id: countExpirence[i]?.id,
-			position: resumePosition[countExpirence[i]?.id],
-			companyName: resumeCompanyName[countExpirence[i]?.id],
-			startDate: resumeStartDate[countExpirence[i]?.id],
-			endDate: resumeEndDate[countExpirence[i]?.id],
-			experienceAbout: resumeAboutExpirience[countExpirence[i]?.id],
-		});
-	}
-	for (let i = 0; i < countEducation.length; i++) {
-		education.push({
-			id: countEducation[i]?.id,
-			position: resumeEducationName[countEducation[i]?.id],
-			instructionName: resumeEducationPosition[countEducation[i]?.id],
-			educationStartDate: resumeEducationStartDate[countEducation[i]?.id],
-			educationEndDate: resumeEducationEndDate[countEducation[i]?.id],
-			educationAbout: resumeAboutEducation[countEducation[i]?.id],
-		});
-	}
+	// const experience: {
+	// 	id?: number | string;
+	// 	position: string;
+	// 	companyName: string;
+	// 	startDate: string;
+	// 	endDate: string;
+	// 	experienceAbout: string;
+	// }[] = [];
+	// const education: {
+	// 	id?: number | string;
+	// 	position: string;
+	// 	instructionName: string;
+	// 	educationStartDate: string;
+	// 	educationEndDate: string;
+	// 	educationAbout: string;
+	// }[] = [];
+	// for (let i = 0; i < countExpirence.length; i++) {
+	// 	experience.push({
+	// 		id: countExpirence[i]?.id,
+	// 		position: resumePosition[countExpirence[i]?.id],
+	// 		companyName: resumeCompanyName[countExpirence[i]?.id],
+	// 		startDate: resumeStartDate[countExpirence[i]?.id],
+	// 		endDate: resumeEndDate[countExpirence[i]?.id],
+	// 		experienceAbout: resumeAboutExpirience[countExpirence[i]?.id],
+	// 	});
+	// }
+	// for (let i = 0; i < countEducation.length; i++) {
+	// 	education.push({
+	// 		id: countEducation[i]?.id,
+	// 		position: resumeEducationName[countEducation[i]?.id],
+	// 		instructionName: resumeEducationPosition[countEducation[i]?.id],
+	// 		educationStartDate: resumeEducationStartDate[countEducation[i]?.id],
+	// 		educationEndDate: resumeEducationEndDate[countEducation[i]?.id],
+	// 		educationAbout: resumeAboutEducation[countEducation[i]?.id],
+	// 	});
+	// }
 
 	const [filteredExperience, setFilteredExperience] = useState<
 		{
@@ -179,7 +181,7 @@ export const Res1: React.FC = () => {
 							skills
 						</h3>
 						<div className="flex flex-col gap-3">
-							{resumeSkills?.length > 1
+							{resumeSkills?.length > 0
 								? resumeSkills?.map((el: any, index: number) => {
 										return <p key={index}>{el}</p>;
 									})
@@ -194,7 +196,12 @@ export const Res1: React.FC = () => {
 						{isArray(filteredEducation) &&
 							filteredEducation.map((item, index) => {
 								return (
-									<div className="flex flex-col gap-3 pb-10" key={index}>
+									<div
+										className={cn("flex flex-col gap-3", {
+											"pt-10": index > 0,
+										})}
+										key={index}
+									>
 										<p className="font-semibold capitalize">
 											Your Degree Name: {item?.position}
 										</p>
