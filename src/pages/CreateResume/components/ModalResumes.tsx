@@ -36,6 +36,7 @@ const ModalResumes: React.FC<ModalResumesProps> = ({ modal, setModal, placement 
 					</Button>
 				))}
 			</div>
+			<Button link="/download-resume">downloadResume</Button>
 		</DrawerModal>
 	);
 };

@@ -7,11 +7,13 @@ const Home = lazy(() => import("pages/Home/Home"));
 const Resume = lazy(() => import("pages/Resume/Resume"));
 const CreateResume = lazy(() => import("pages/CreateResume/CreateResume"));
 const ErrorPage = lazy(() => import("pages/Error/index"));
+const DownloadResume = lazy(() => import("pages/DownloadResume/DownloadResume"));
 
 const routes = [
 	{ path: RoutesPath?.home, element: <Home /> },
 	{ path: RoutesPath?.resume, element: <Resume /> },
 	{ path: RoutesPath?.createResume, element: <CreateResume /> },
+	{ path: RoutesPath?.downloadResume, element: <DownloadResume /> },
 	{ path: RoutesPath?.error, element: <ErrorPage /> },
 ];
 

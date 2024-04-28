@@ -1,10 +1,9 @@
 import { useExperienceEducation, useSelectorRedux } from "hooks";
+import parse from "html-react-parser";
 import { isArray } from "lodash";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import useStore from "../../zustand/store";
-import cn from "classnames";
-import parse from "html-react-parser";
 // import { FaPhoneAlt, FaEnvelope, FaLinkedin } from "react-icons/fa";
 // import { FaLocationDot } from "react-icons/fa6";
 
@@ -214,10 +213,6 @@ export const Res5: React.FC = () => {
 										{item?.position
 											? item?.position
 											: "Masters in Human Resources"}
-										,{" "}
-										{item?.instructionName
-											? item?.instructionName
-											: "The University of Texas, Dallas"}
 									</h3>
 									<p className="capitalize text-xs mb-2">
 										{item?.instructionName

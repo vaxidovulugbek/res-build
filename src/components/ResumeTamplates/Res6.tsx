@@ -1,21 +1,99 @@
-import React from "react";
+import { useExperienceEducation, useSelectorRedux } from "hooks";
+import { isArray } from "lodash";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import useStore from "../../zustand/store";
+import cn from "classnames";
+import parse from "html-react-parser";
 // import { FaPhoneAlt, FaEnvelope, FaLinkedinIn } from "react-icons/fa";
 // import { ImLocation } from "react-icons/im";
 
 export const Res6: React.FC = () => {
+	const {
+		resumeName,
+		resumeLastName,
+		resumeEmail,
+		resumePhone,
+		resumeAdress,
+		resumeJobTitle,
+		resumeSocialLinks,
+		resumeAbout,
+		resumePosition,
+		resumeSkills,
+		resumeEducationPosition,
+		resumeInterests,
+		resumeLanguages,
+		resumeVolunteeringActivityName,
+		resumeVolunteeringAddress,
+		resumeVolunteeringStartDate,
+		resumeVolunteeringEndDate,
+		resumeVolunteeringAbout,
+	} = useSelectorRedux();
+
+	const {
+		idExpirence,
+		dataVolunteering,
+		dataInterests,
+		idEducation,
+		setIdExpirence,
+		setIdEducation,
+	} = useStore();
+
+	const dispatch = useDispatch();
+	const { getExperienceData, getEducationData } = useExperienceEducation();
+	const experience = getExperienceData();
+	const education = getEducationData();
+
+	const [filteredExperience, setFilteredExperience] = useState<
+		{
+			id?: number | string;
+			position: string;
+			companyName: string;
+			startDate: string;
+			endDate: string;
+			experienceAbout: string;
+		}[]
+	>([]);
+	const [filteredEducation, setFilteredEducation] = useState<
+		{
+			id?: number | string;
+			position: string;
+			instructionName: string;
+			educationStartDate: string;
+			educationEndDate: string;
+			educationAbout: string;
+		}[]
+	>([]);
+
+	useEffect(() => {
+		if (idExpirence !== undefined) {
+			const filtered = experience?.filter((el) => el.id !== idExpirence);
+			setFilteredExperience(filtered);
+			setIdExpirence(null);
+		}
+	}, [idExpirence, dispatch, resumePosition]);
+	useEffect(() => {
+		if (idEducation !== undefined) {
+			const filtered = education?.filter((el) => el.id !== idEducation);
+			setFilteredEducation(filtered);
+			setIdEducation(null);
+		}
+	}, [idEducation, dispatch, resumeEducationPosition]);
 	return (
 		<div
-			className="border-y-[18px] border-slate-400"
+			className="border-y-[18px] border-slate-400 flex flex-col"
 			style={{ maxWidth: "700px", minHeight: "800px" }}
 		>
 			<div className="w-full pt-10 pb-2">
-				<h2 className="text-center text-[38px] tracking-[9px] font-serif">EMMA WATSON</h2>
-				<p className="text-center text-[12px] font-medium tracking-[2px] font-mono">
-					YOUR PROFESSIONAL TITLE
+				<h2 className="text-center text-[38px] tracking-[9px] font-serif uppercase">
+					{resumeName ? resumeName : "EMMA"} {resumeLastName ? resumeLastName : "WATSON"}
+				</h2>
+				<p className="text-center uppercase text-[12px] font-medium tracking-[2px] font-mono">
+					{resumeJobTitle ? resumeJobTitle : "Digital marketing specialist"}
 				</p>
 			</div>
-			<div className="bg-white shadow-xl flex content-center">
-				<div className="p-9">
+			<div className="w-full bg-white shadow-xl flex content-center h-full grow">
+				<div className="w-[33%] ps-9 pe-4 py-9">
 					<div className="mb-6">
 						<p className="font-semibold uppercase tracking-widest text-[14px] mb-4">
 							Contact
@@ -23,19 +101,26 @@ export const Res6: React.FC = () => {
 						<ul className="grid gap-3 text-[11px] font-medium">
 							<li className="flex gap-3 items-center">
 								{/* <FaPhoneAlt /> */}
-								<span>123-3940-399</span>
+								<span>{resumePhone ? resumePhone : "(90) 053 11 02"}</span>
 							</li>
 							<li className="flex gap-3 items-center">
 								{/* <FaEnvelope /> */}
-								<span>youremail@gmail.com</span>
+								<span>{resumeEmail ? resumeEmail : "yourEmail@mail.com"}</span>
 							</li>
-							<li className="flex gap-3 items-center">
+							<li className="flex gap-3 items-center capitalize">
 								{/* <ImLocation /> */}
-								<span>City,State</span>
+								<span>{resumeAdress ? resumeAdress : "your address"}</span>
 							</li>
 							<li className="flex gap-3 items-center">
 								{/* <FaLinkedinIn /> */}
-								<span>Linkedin.com/username</span>
+								{isArray(resumeSocialLinks) &&
+									resumeSocialLinks.map((item, index) => (
+										<span key={index} className="flex items-center">
+											{item?.value1
+												? `${item?.value1}: ${item?.value2}`
+												: item?.value2}
+										</span>
+									))}
 							</li>
 						</ul>
 					</div>
@@ -44,18 +129,39 @@ export const Res6: React.FC = () => {
 						<p className="font-bold tracking-widest text-[14px] mb-4 uppercase">
 							EDUCATION
 						</p>
-						<ul className="text-[11px] font-medium">
-							<li>YOUR DEGREE NAME/MAJOR</li>
-							<li>Education</li>
-							<li>University Name</li>
-							<li>2012-2014</li>
-						</ul>
-						<ul className="text-[11px] font-medium mt-3">
-							<li>YOUR DEGREE NAME/MAJOR</li>
-							<li>Education</li>
-							<li>University Name</li>
-							<li>2012-2014</li>
-						</ul>
+						{isArray(filteredEducation) &&
+							filteredEducation.map((item, index) => {
+								return (
+									<div className="text-[11px] font-medium">
+										<p className="mb-1">
+											{item?.position
+												? item?.position
+												: "Masters in Human Resources"}{" "}
+										</p>
+										<p className="mb-1">
+											{" "}
+											{item?.instructionName
+												? item?.instructionName
+												: "The University of Texas, Dallas"}
+										</p>
+										<p className="mb-1">
+											{item?.educationStartDate
+												? item?.educationStartDate
+												: "September 2007"}{" "}
+											-{" "}
+											{item?.educationEndDate
+												? item?.educationEndDate
+												: "May 2011"}
+										</p>
+										<p>
+											{item?.educationAbout
+												? parse(item?.educationAbout)
+												: `manage degital sales, and streming accaunts to improve
+											brand positioning and growth`}
+										</p>
+									</div>
+								);
+							})}
 					</div>
 
 					<div>
@@ -63,91 +169,112 @@ export const Res6: React.FC = () => {
 							SKILLs
 						</p>
 						<ul className="list-disc text-[11px] font-medium ml-[14px] gap-2">
-							<li className="mb-2">Relevant Skill</li>
-							<li className="mb-2">Relevant Skill</li>
-							<li className="mb-2">Relevant Skill</li>
-							<li className="mb-2">Relevant Skill</li>
-							<li className="mb-2">Relevant Skill</li>
-							<li className="mb-2">Relevant Skill</li>
+							{resumeSkills?.length > 0
+								? resumeSkills?.map((el: any, index: number) => {
+										return (
+											<li className="mb-2 capitalize" key={index}>
+												{el}
+											</li>
+										);
+									})
+								: [
+										"adobe photoshop",
+										"adobe illustrator",
+										"figma",
+										"digital marketing",
+										"corel draw",
+									].map((el, index) => {
+										return (
+											<li className="mb-2 capitalize" key={index}>
+												{el}
+											</li>
+										);
+									})}
 						</ul>
 					</div>
 				</div>
-				<div className="ps-6 pe-9 py-9">
-					<h2 className="font-semibold tracking-widest text-[14px]">PROFILE</h2>
+				<div className="w-[67%] ps-6 pe-9 py-9">
+					<h2 className="font-semibold tracking-widest text-[14px] uppercase">PROFILE</h2>
 					<p className="mt-4 mb-4 text-[11px] font-medium">
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque incidunt
-						delectus aliquid explicabo! Ad temporibus nisi culpa ipsa eos quod impedit
-						beatae quae. Voluptatem eius voluptatibus rem maxime hic id at voluptate,
-						corrupti esse ipsum odit doloribus dolores eaque ducimus.
+						{resumeAbout
+							? resumeAbout
+							: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque incidunt
+							delectus aliquid explicabo! Ad temporibus nisi culpa ipsa eos quod impedit
+							beatae quae. Voluptatem eius voluptatibus rem maxime hic id at voluptate,
+							corrupti esse ipsum odit doloribus dolores eaque ducimus.`}
 					</p>
-					<p className="text-[11px] font-medium">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-						voluptates ducimus est doloremque accusamus fuga esse tempora suscipit sunt
-						vero?
-					</p>
-					<p className="mt-8 mb-4 font-semibold tracking-widest text-[14px]">
+					<p className="mt-8 mb-4 font-semibold tracking-widest text-[14px] uppercase">
 						PROFESSIONAL EXPERIENCE
 					</p>
-					<div className="mb-5">
-						<h3 className="text-[11px] font-medium uppercase">
-							WRITE YOUR JOB TITLE HERE
-						</h3>
-						<p className="mb-2 text-[11px] font-medium capitalize">
-							Company Name | City,State | Beginning Date-End Date
-						</p>
-						<p className="text-[11px] font-medium mb-1">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias illo
-							iusto maxime molestias?
-						</p>
-						<ul className="text-[11px] font-medium">
-							<li className="list-disc translate-x-6">
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem
-								adipisci quibusdam eum corrupti dolores natus.
-							</li>
-							<li className="list-disc translate-x-6">
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, enim.
-							</li>
-							<li className="list-disc translate-x-6">
-								Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum!
-							</li>
-							<li className="list-disc translate-x-6">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit.
-							</li>
-							<li className="list-disc translate-x-6">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum!
-							</li>
-						</ul>
-					</div>
-					<div className="mb-5">
-						<h3 className="text-[11px] font-medium uppercase">
-							WRITE YOUR JOB TITLE HERE
-						</h3>
-						<p className="mb-2 text-[11px] font-medium capitalize">
-							Company Name | City,State | Beginning Date-End Date
-						</p>
-						<p className="text-[11px] font-medium mb-1">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias illo
-							iusto maxime molestias?
-						</p>
-						<ul className="text-[11px] font-medium">
-							<li className="list-disc translate-x-6">
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem
-								adipisci quibusdam eum corrupti dolores natus.
-							</li>
-							<li className="list-disc translate-x-6">
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, enim.
-							</li>
-							<li className="list-disc translate-x-6">
-								Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum!
-							</li>
-							<li className="list-disc translate-x-6">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit.
-							</li>
-							<li className="list-disc translate-x-6">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum!
-							</li>
-						</ul>
-					</div>
+					{isArray(filteredExperience) &&
+						filteredExperience.map((el, idx) => {
+							return (
+								<div className="mb-5">
+									<h3 className="text-[11px] font-medium uppercase">
+										{el?.position ? el?.position : "WRITE YOUR JOB TITLE HERE"}
+									</h3>
+									<p className="mb-2 text-[11px] font-medium capitalize">
+										{el?.companyName ? el?.companyName : "Company name"} |{" "}
+										{el?.startDate ? el?.startDate : "January 2016"}{" "}
+										<span> - </span> {el?.endDate ? el?.endDate : "2023"}
+									</p>
+									<ul className="text-[11px] font-medium">
+										<li className="list-disc translate-x-6">
+											{el?.experienceAbout
+												? parse(el?.experienceAbout)
+												: `manage degital sales, and streming accaunts to improve
+											brand positioning and growth`}
+										</li>
+									</ul>
+								</div>
+							);
+						})}
+
+					{dataVolunteering.length > 0 && (
+						<div className="mt-2">
+							<p className="mt-8 mb-4 font-semibold tracking-widest text-[14px] uppercase">
+								Volunteering
+							</p>
+							<div className="mb-5">
+								<h3 className="text-[11px] font-medium uppercase">
+									{resumeVolunteeringActivityName
+										? resumeVolunteeringActivityName
+										: "WRITE YOUR Volunteering Activity Name HERE"}
+								</h3>
+								<p className="mb-2 text-[11px] font-medium capitalize">
+									{resumeVolunteeringAddress
+										? resumeVolunteeringAddress
+										: "Volunteering Address"}{" "}
+									|{" "}
+									{resumeVolunteeringStartDate
+										? resumeVolunteeringStartDate
+										: "January 2016"}{" "}
+									<span> - </span>{" "}
+									{resumeVolunteeringEndDate ? resumeVolunteeringEndDate : "2023"}
+								</p>
+								<ul className="text-[11px] font-medium">
+									<li className="list-disc translate-x-6">
+										{resumeVolunteeringAbout
+											? parse(resumeVolunteeringAbout)
+											: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque incidunt delectus aliquid explicabo! Ad temporibus nisi culpa ipsa eos quod impedit beatae quae."}
+									</li>
+								</ul>
+							</div>
+						</div>
+					)}
+
+					{dataInterests.length > 0 && (
+						<div className="mt-2">
+							<p className="mt-8 mb-4 font-semibold tracking-widest text-[14px] uppercase">
+								interests
+							</p>
+							<ul className="text-[11px] font-medium">
+								<li className="list-disc translate-x-6">
+									{resumeInterests ? parse(resumeInterests) : null}
+								</li>
+							</ul>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>
