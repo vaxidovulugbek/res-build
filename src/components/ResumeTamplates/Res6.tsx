@@ -125,7 +125,7 @@ export const Res6: React.FC = () => {
 						</ul>
 					</div>
 
-					<div className="mb-6">
+					{/* <div className="mb-6">
 						<p className="font-bold tracking-widest text-[14px] mb-4 uppercase">
 							EDUCATION
 						</p>
@@ -162,9 +162,9 @@ export const Res6: React.FC = () => {
 									</div>
 								);
 							})}
-					</div>
+					</div> */}
 
-					<div>
+					<div className="mb-6">
 						<p className="font-bold uppercase mb-4 tracking-widest text-[14px] uppercase">
 							SKILLs
 						</p>
@@ -192,6 +192,32 @@ export const Res6: React.FC = () => {
 									})}
 						</ul>
 					</div>
+					<div>
+						<p className="font-bold uppercase mb-4 tracking-widest text-[14px] uppercase">
+							languages
+						</p>
+						<ul className="list-disc text-[11px] font-medium ml-[14px] gap-2">
+							{resumeLanguages?.length > 0
+								? resumeLanguages?.map((el: any, index: number) => {
+										return (
+											<li className="mb-2 capitalize" key={index}>
+												{el?.value1
+													? `${el?.value1}: ${el?.value2}`
+													: el?.value2}
+											</li>
+										);
+									})
+								: ["English: Beginner", "Uzbek: Native", "Russian: B1"].map(
+										(el, index) => {
+											return (
+												<li className="mb-2 capitalize" key={index}>
+													{el}
+												</li>
+											);
+										}
+									)}
+						</ul>
+					</div>
 				</div>
 				<div className="w-[67%] ps-6 pe-9 py-9">
 					<h2 className="font-semibold tracking-widest text-[14px] uppercase">PROFILE</h2>
@@ -203,32 +229,75 @@ export const Res6: React.FC = () => {
 							beatae quae. Voluptatem eius voluptatibus rem maxime hic id at voluptate,
 							corrupti esse ipsum odit doloribus dolores eaque ducimus.`}
 					</p>
-					<p className="mt-8 mb-4 font-semibold tracking-widest text-[14px] uppercase">
-						PROFESSIONAL EXPERIENCE
-					</p>
-					{isArray(filteredExperience) &&
-						filteredExperience.map((el, idx) => {
-							return (
-								<div className="mb-5">
-									<h3 className="text-[11px] font-medium uppercase">
-										{el?.position ? el?.position : "WRITE YOUR JOB TITLE HERE"}
-									</h3>
-									<p className="mb-2 text-[11px] font-medium capitalize">
-										{el?.companyName ? el?.companyName : "Company name"} |{" "}
-										{el?.startDate ? el?.startDate : "January 2016"}{" "}
-										<span> - </span> {el?.endDate ? el?.endDate : "2023"}
-									</p>
-									<ul className="text-[11px] font-medium">
-										<li className="list-disc translate-x-6">
-											{el?.experienceAbout
-												? parse(el?.experienceAbout)
-												: `manage degital sales, and streming accaunts to improve
+					<div>
+						<p className="mt-8 mb-4 font-semibold tracking-widest text-[14px] uppercase">
+							PROFESSIONAL EXPERIENCE
+						</p>
+						{isArray(filteredExperience) &&
+							filteredExperience.map((el, idx) => {
+								return (
+									<div className="mb-5" key={idx}>
+										<h3 className="text-[11px] font-medium uppercase">
+											{el?.position
+												? el?.position
+												: "WRITE YOUR JOB TITLE HERE"}
+										</h3>
+										<p className="mb-2 text-[11px] font-medium capitalize">
+											{el?.companyName ? el?.companyName : "Company name"} |{" "}
+											{el?.startDate ? el?.startDate : "January 2016"}{" "}
+											<span> - </span> {el?.endDate ? el?.endDate : "2023"}
+										</p>
+										<ul className="text-[11px] font-medium">
+											<li className="list-disc translate-x-6">
+												{el?.experienceAbout
+													? parse(el?.experienceAbout)
+													: `manage degital sales, and streming accaunts to improve
 											brand positioning and growth`}
-										</li>
-									</ul>
-								</div>
-							);
-						})}
+											</li>
+										</ul>
+									</div>
+								);
+							})}
+					</div>
+
+					<div className="mb-8">
+						<p className="mt-8 mb-4 font-semibold tracking-widest text-[14px] uppercase">
+							education
+						</p>
+						{isArray(filteredEducation) &&
+							filteredEducation.map((item, idx) => {
+								return (
+									<div className="mb-5" key={idx}>
+										<h3 className="text-[11px] font-medium uppercase">
+											{item?.position
+												? item?.position
+												: "Masters in Human Resources"}{" "}
+										</h3>
+										<p className="mb-2 text-[11px] font-medium capitalize">
+											{item?.instructionName
+												? item?.instructionName
+												: "The University of Texas, Dallas"}
+											{item?.educationStartDate
+												? item?.educationStartDate
+												: "September 2007"}{" "}
+											<span> - </span>{" "}
+											{item?.educationEndDate
+												? item?.educationEndDate
+												: "May 2011"}
+											<span> - </span>
+										</p>
+										<ul className="text-[11px] font-medium">
+											<li className="list-disc translate-x-6">
+												{item?.educationAbout
+													? parse(item?.educationAbout)
+													: `manage degital sales, and streming accaunts to improve
+											brand positioning and growth`}
+											</li>
+										</ul>
+									</div>
+								);
+							})}
+					</div>
 
 					{dataVolunteering.length > 0 && (
 						<div className="mt-2">

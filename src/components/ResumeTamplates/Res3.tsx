@@ -1,9 +1,319 @@
-import React from "react";
+import { useExperienceEducation, useSelectorRedux } from "hooks";
+import { isArray } from "lodash";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import useStore from "../../zustand/store";
+import parse from "html-react-parser";
 
 export const Res3: React.FC = () => {
+	const {
+		resumeName,
+		resumeLastName,
+		resumeEmail,
+		resumePhone,
+		resumeAdress,
+		resumeJobTitle,
+		resumeSocialLinks,
+		resumeAbout,
+		resumePosition,
+		resumeSkills,
+		resumeEducationPosition,
+		resumeInterests,
+		resumeLanguages,
+		resumeVolunteeringActivityName,
+		resumeVolunteeringAddress,
+		resumeVolunteeringStartDate,
+		resumeVolunteeringEndDate,
+		resumeVolunteeringAbout,
+	} = useSelectorRedux();
+
+	const {
+		idExpirence,
+		dataVolunteering,
+		dataInterests,
+		idEducation,
+		setIdExpirence,
+		setIdEducation,
+	} = useStore();
+
+	const dispatch = useDispatch();
+	const { getExperienceData, getEducationData } = useExperienceEducation();
+	const experience = getExperienceData();
+	const education = getEducationData();
+
+	const [filteredExperience, setFilteredExperience] = useState<
+		{
+			id?: number | string;
+			position: string;
+			companyName: string;
+			startDate: string;
+			endDate: string;
+			experienceAbout: string;
+		}[]
+	>([]);
+	const [filteredEducation, setFilteredEducation] = useState<
+		{
+			id?: number | string;
+			position: string;
+			instructionName: string;
+			educationStartDate: string;
+			educationEndDate: string;
+			educationAbout: string;
+		}[]
+	>([]);
+
+	useEffect(() => {
+		if (idExpirence !== undefined) {
+			const filtered = experience?.filter((el) => el.id !== idExpirence);
+			setFilteredExperience(filtered);
+			setIdExpirence(null);
+		}
+	}, [idExpirence, dispatch, resumePosition]);
+	useEffect(() => {
+		if (idEducation !== undefined) {
+			const filtered = education?.filter((el) => el.id !== idEducation);
+			setFilteredEducation(filtered);
+			setIdEducation(null);
+		}
+	}, [idEducation, dispatch, resumeEducationPosition]);
 	return (
 		<>
-			<div className="p-10">
+			<div
+				className="p-10"
+				style={{
+					maxWidth: "700px",
+					minHeight: "800px",
+					boxShadow: "0px 0px 7.41692px rgba(0,0,0,.15)",
+				}}
+			>
+				<h2 className="uppercase text-[32px] tracking-[8px] font-medium">
+					{resumeName ? resumeName : "jennifer"}{" "}
+					{resumeLastName ? resumeLastName : "carter"}
+				</h2>
+				<p className="text-base uppercase tracking-widest text-gray-500">
+					{resumeJobTitle ? resumeJobTitle : "managing director"}
+				</p>
+				<ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-500 my-2">
+					<li className="text-[12px]">{resumePhone ? resumePhone : "(90) 123-45-67"}</li>
+					<li className="text-[12px]">
+						{resumeEmail ? resumeEmail : "example@email.com"}
+					</li>
+					<li className="text-[12px]">
+						{resumeAdress ? resumeAdress : "43w 13 street Tashkent"}
+					</li>
+					{isArray(resumeSocialLinks) &&
+						resumeSocialLinks.map((item, index) => (
+							<li className="text-[12px]">
+								<span key={index} className="flex items-center">
+									{item?.value1
+										? `${item?.value1}: ${item?.value2}`
+										: item?.value2}
+								</span>
+							</li>
+						))}
+				</ul>
+				<div className="w-full border-solid inline-block border-t-1 mt-2 border-gray-400">
+					<p className="text-base my-2 uppercase tracking-widest font-semibold">
+						profile
+					</p>
+					<p className="w-full text-[12px] text-gray-500 tracking-wide">
+						{resumeAbout
+							? resumeAbout
+							: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, officiis.
+						Saepe, amet? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+						molestiae quia sapiente itaque numquam nisi fuga voluptas et?`}
+					</p>
+				</div>
+				<div className="w-full border-solid inline-block border-t-1 mt-6 border-gray-400">
+					<p className="text-base my-2 uppercase tracking-widest font-semibold">
+						experience
+					</p>
+					{isArray(filteredExperience) &&
+						filteredExperience.map((el, idx) => {
+							return (
+								<div key={idx}>
+									<p className="text-[14px] my-2 capitalize tracking-widest">
+										{el?.position ? el?.position : "job position"}
+									</p>
+									<div className="flex items-center justify-between">
+										<span className="text-[14px] text-gray-500 capitalize">
+											{el?.companyName ? el?.companyName : "Company name"}
+										</span>
+										<span className="text-[12px] text-gray-500">
+											{el?.startDate ? el?.startDate : "January 2016"}{" "}
+											<span> - </span> {el?.endDate ? el?.endDate : "2023"}
+										</span>
+									</div>
+									<p className="text-[12px] text-gray-500 mt-2">
+										{el?.experienceAbout
+											? parse(el?.experienceAbout)
+											: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+											Quis id a harum numquam ab praesentium aut iste nam. Lorem
+											ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet
+											consectetur adipisicing elit. Esse dolorem numquam hic
+											dolor, optio aspernatur quos omnis doloremque delectus.`}
+									</p>
+								</div>
+							);
+						})}
+				</div>
+				<div className="w-full border-solid inline-block border-t-1 mt-6 border-gray-400">
+					<p className="text-[base] my-2 uppercase tracking-widest font-semibold">
+						education
+					</p>
+					{isArray(filteredEducation) &&
+						filteredEducation.map((item, idx) => {
+							return (
+								<div key={idx}>
+									<p className="text-[14px] my-2 capitalize tracking-widest">
+										{item?.position ? item?.position : "your degree"}{" "}
+									</p>
+									<div className="flex items-center justify-between">
+										<span className="text-[14px] text-gray-500 capitalize">
+											{item?.instructionName
+												? item?.instructionName
+												: "name of university"}
+										</span>
+										<span className="text-[12px] text-gray-500">
+											{item?.educationStartDate
+												? item?.educationStartDate
+												: "September 2007"}{" "}
+											<span> - </span>{" "}
+											{item?.educationEndDate
+												? item?.educationEndDate
+												: "May 2011"}
+										</span>
+									</div>
+									<p className="text-[12px] text-gray-500 mt-2">
+										{item?.educationAbout
+											? parse(item?.educationAbout)
+											: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+											Quis id a harum numquam ab praesentium aut iste nam. Lorem
+											ipsum dolor sit amet consectetur.`}
+									</p>
+								</div>
+							);
+						})}
+				</div>
+				{dataVolunteering.length > 0 && (
+					<div className="w-full border-solid inline-block border-t-1 mt-6 border-gray-400">
+						<p className="text-[base] my-2 uppercase tracking-widest font-semibold">
+							Volunteering
+						</p>
+						<div>
+							<p className="text-[14px] my-2 capitalize tracking-widest">
+								{resumeVolunteeringActivityName
+									? resumeVolunteeringActivityName
+									: "WRITE YOUR Volunteering Activity Name HERE"}
+							</p>
+							<div className="flex items-center justify-between">
+								<span className="text-[14px] text-gray-500 capitalize">
+									{resumeVolunteeringAddress
+										? resumeVolunteeringAddress
+										: "Volunteering Address"}
+								</span>
+								<span className="text-[12px] text-gray-500">
+									{resumeVolunteeringStartDate
+										? resumeVolunteeringStartDate
+										: "January 2016"}{" "}
+									<span> - </span>{" "}
+									{resumeVolunteeringEndDate ? resumeVolunteeringEndDate : "2023"}
+								</span>
+							</div>
+							<p className="text-[12px] text-gray-500 mt-2">
+								{resumeVolunteeringAbout
+									? parse(resumeVolunteeringAbout)
+									: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+											Quis id a harum numquam ab praesentium aut iste nam. Lorem
+											ipsum dolor sit amet consectetur.`}
+							</p>
+						</div>
+					</div>
+				)}
+				<div className="w-full border-solid inline-block border-t-1 mt-6 border-gray-400">
+					<div className="flex justify-between">
+						<div className="w-1/2 pe-1">
+							<p className="text-[base] my-2 uppercase tracking-widest font-semibold">
+								languages
+							</p>
+							<ul>
+								{resumeLanguages?.length > 0
+									? resumeLanguages?.map((el: any, index: number) => {
+											return (
+												<li
+													className="text-[12px] text-gray-500 mt-1 capitalize"
+													key={index}
+												>
+													{el?.value1
+														? `${el?.value1}: ${el?.value2}`
+														: el?.value2}
+												</li>
+											);
+										})
+									: ["English: Beginner", "Uzbek: Native", "Russian: B1"].map(
+											(el, index) => {
+												return (
+													<li
+														className="text-[12px] text-gray-500 mt-1 capitalize"
+														key={index}
+													>
+														{el}
+													</li>
+												);
+											}
+										)}
+							</ul>
+						</div>
+						<div className="w-1/2 ps-1">
+							<p className="text-[base] my-2 uppercase tracking-widest font-semibold">
+								skills
+							</p>
+							<ul className="flex flex-wrap ">
+								{resumeSkills?.length > 0
+									? resumeSkills?.map((el: any, index: number) => {
+											return (
+												<li
+													className="text-[12px] text-gray-500 mt-2 me-4 capitalize"
+													key={index}
+												>
+													{el}
+												</li>
+											);
+										})
+									: [
+											"Communication",
+											"Leadership",
+											"Decision-making",
+											"Strategy",
+											"Management",
+										].map((el, index) => {
+											return (
+												<li
+													className="text-[12px] text-gray-500 mt-2 me-4 capitalize"
+													key={index}
+												>
+													{el}
+												</li>
+											);
+										})}
+							</ul>
+						</div>
+					</div>
+				</div>
+				{dataInterests.length > 0 && (
+					<div className="w-1/2 ps-1 mt-6">
+						<p className="text-[base] my-2 uppercase tracking-widest font-semibold">
+							interests
+						</p>
+						<ul className="flex flex-wrap ">
+							<li className="text-[12px] text-gray-500 mt-2 me-4">
+								{resumeInterests ? parse(resumeInterests) : null}
+							</li>
+						</ul>
+					</div>
+				)}
+			</div>
+			{/* <div className="p-10">
 				<div className="h-2 bg-black mt-[10px] mb-[30px]" />
 				<h1 className="text-center text-[38px] font-semibold text-gray-700">
 					Ibrohimov Shohobiddin
@@ -194,7 +504,7 @@ export const Res3: React.FC = () => {
 					</div>
 				</div>
 				<div className="h-2 bg-black mb-[10px]" />
-			</div>
+			</div> */}
 		</>
 	);
 };

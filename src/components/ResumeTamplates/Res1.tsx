@@ -129,7 +129,10 @@ export const Res1: React.FC = () => {
 
 	return (
 		<>
-			<div className="main max-w-[700px] mx-auto pt-12 pb-6">
+			<div
+				className="main max-w-[700px] mx-auto pt-12 pb-6"
+				style={{ boxShadow: "0px 0px 7.41692px rgba(0,0,0,.15)" }}
+			>
 				<h1 className="text-center uppercase tracking-[0.23em] text-[34px] text-gray-600 font-medium">
 					{isString(resumeName)
 						? resumeName.length < 1

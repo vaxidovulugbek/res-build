@@ -81,7 +81,7 @@ export const Res4: React.FC = () => {
 	return (
 		<>
 			{" "}
-			<div className="bg-white mx-auto p-8" style={{ maxWidth: "700px" }}>
+			<div className="bg-white mx-auto p-8" style={{ maxWidth: "700px", minHeight: "800px" }}>
 				<div
 					className="bg-amber-500 mx-auto py-4 px-10 flex justify-between items-center mb-6"
 					style={{ maxWidth: "700px", borderRadius: "50px 0 0 50px" }}
@@ -253,17 +253,6 @@ export const Res4: React.FC = () => {
 								</div>
 							);
 						})}
-
-					{/* <h3 className="text-gray-700 text-[14px] mt-2">
-						Masters in Human Resources September 2007 - May 2011
-						<span className="block text-sm font-normal">
-							The University of Texas, Dallas
-						</span>
-						<span className="block text-sm font-normal"></span>
-					</h3>
-					<ul className="list-disc list-inside text-gray-700 text-[13px]">
-						<li className="custom-bullet">Academic Awardee of AY 2007-2008</li>
-					</ul> */}
 				</div>
 				<div className="mt-6">
 					<div className="flex items-center">
