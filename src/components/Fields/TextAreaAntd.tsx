@@ -29,13 +29,6 @@ export default function TextAreaAntd({
 	const hasError = form.touched[field.name] && form.errors[field.name];
 	const dispatch = useDispatch();
 	const { setHasError, countExpirence, countEducation, idExpirence } = useStore();
-	const {
-		resumeCompanyName,
-		resumePosition,
-		resumeStartDate,
-		resumeEndDate,
-		resumeAboutExpirience,
-	} = useSelectorRedux();
 
 	const changeAboutHendler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		console.log(e.target.value);
@@ -49,17 +42,6 @@ export default function TextAreaAntd({
 	return (
 		<div className={cn("flex flex-col", { error: hasError, "w-full": !hasError })}>
 			{label && <label className="text-xs capitalize">{label}</label>}
-			{/* <Input
-				style={hasError && { border: "1px solid #ff4d4f" }}
-				type={type}
-				// defaultValue={get(form.values, field.name)}
-				placeholder={placeholder}
-				id={field.name}
-				onBlur={field.onBlur}
-				onChange={field.onChange}
-				value={get(form.values.name, field.name)}
-				{...props}
-			/> */}
 			<TextArea
 				className={className}
 				placeholder={placeholder}

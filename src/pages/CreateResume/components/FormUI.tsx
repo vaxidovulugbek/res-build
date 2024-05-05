@@ -17,7 +17,6 @@ import FormFields3 from "./FormFields3";
 import FormFields4 from "./FormFields4";
 import ModalResumes from "./ModalResumes";
 import "./styles.scss";
-import TextEditor from "./TextEditor";
 
 const FormUI: React.FC = () => {
 	const [modal, setModal] = useState({ open: "" });
@@ -41,8 +40,6 @@ const FormUI: React.FC = () => {
 	}
 
 	const sliderRef = useRef<CustomSlider>(null);
-
-	const changeStatusSlider = useStore((state) => state.changeStatusSlider);
 	const setChangeStatusSlider = useStore((state) => state.setChangeStatusSlider);
 
 	const handleNextSlide = () => {
@@ -71,9 +68,9 @@ const FormUI: React.FC = () => {
 
 	const data = [
 		<FormFields handleNextSlide={handleNextSlide} />,
-		<FormFields4 handlePrevSlide={handlePrevSlide} />,
-		<FormFields3 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
 		<FormFields2 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
+		<FormFields3 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
+		<FormFields4 handlePrevSlide={handlePrevSlide} />,
 	];
 
 	return (

@@ -1,4 +1,4 @@
-import DrawerModal from "./Modal";
+import DrawerModal from "../../../ui/Modal/Modal";
 import FormUI from "./FormUI";
 import ModalResumes from "./ModalResumes";
 import FormFields from "./FormFields";

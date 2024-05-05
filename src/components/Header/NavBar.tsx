@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "ui";
-import "./Header.scss";
+import "./styles.scss";
 import { Menu, MenuButton, MenuList, MenuItem, Text } from "@chakra-ui/react";
 import RoutesPath from "helpers/RoutesPath";
 // import { CiMenuFries } from "react-icons/ci";
@@ -39,10 +39,6 @@ const Navbar: React.FC = () => {
 					</MenuList>
 				</Menu>
 			</nav>
-			<Button
-				className="header__only-mobile"
-				children={'<CiMenuFries className="text-3xl" />'}
-			/>
 		</>
 	);
 };

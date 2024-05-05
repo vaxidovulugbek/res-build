@@ -1,30 +1,5 @@
 // import React from "react";
 // import html2pdf from "html2pdf.js";
-
-// class MyComponent extends React.Component {
-// 	convertToPdf = () => {
-// 		const element = document.getElementById("myElementId"); // element to convert to PDF
-// 		if (element) {
-// 			html2pdf(element);
-// 		}
-// 	};
-
-// 	render() {
-// 		return (
-// 			<div>
-// 				<div className="sss" style={{ backgroundColor: "yellow" }} id="myElementId">
-// 					<p style={{ color: "red" }}>Hello, World!</p>
-// 				</div>
-// 				<button onClick={this.convertToPdf}>Convert to PDF</button>
-// 			</div>
-// 		);
-// 	}
-// }
-
-// export default MyComponent;
-
-// import React from "react";
-// import html2pdf from "html2pdf.js";
 // import { Res5 } from "./ResumeTamplates";
 // import { useSelectorRedux } from "hooks";
 // import { connect } from "react-redux";
@@ -161,84 +136,40 @@
 // });
 
 // export default connect(mapStateToProps)(MyComponent);
-// import React from "react";
-// import {
-// 	PDFViewer,
-// 	PDFDownloadLink,
-// 	Document,
-// 	Page,
-// 	Text,
-// 	View,
-// 	StyleSheet,
-// } from "@react-pdf/renderer";
-// import { Res1, Res2, Res3, Res4, Res5, Res6 } from "./ResumeTamplates";
-// // PDF uchun komponentlar
-// const MyDocument = () => (
-// 	<Document>
-// 		<Page size="A4">
-// 			<View style={styles.section}>
-// 				<p
-// 					style={{
-// 						boxShadow: "0px 0px 7.41692px rgba(0,0,0,.15)",
-// 					}}
-// 				>
-// 					Assalomu alaykum, bu PDF muqaddasligi testi.
-// 				</p>
-// 				<Text>ihihi</Text>
-// 			</View>
-// 		</Page>
-// 	</Document>
-// );
-
-// // PDF stili
-// const styles = StyleSheet.create({
-// 	section: {
-// 		margin: 10,
-// 		padding: 10,
-// 		flexGrow: 1,
-// 	},
-// });
-
-// // React komponent
-// const MyComponent = () => (
-// 	<div>
-// 		<h1>React to PDF Example</h1>
-// 		<PDFViewer width="1000" height="600">
-// 			<MyDocument />
-// 		</PDFViewer>
-// 		<PDFDownloadLink document={<MyDocument />} fileName="test.pdf">
-// 			{({ blob, url, loading, error }) => (loading ? "Loading document..." : "Download now!")}
-// 		</PDFDownloadLink>
-// 	</div>
-// );
-
-// export default MyComponent;
+import { useSelectorRedux } from "hooks";
 import React, { useRef } from "react";
 import ReactToPrint from "react-to-print";
 import { Res1, Res2, Res3, Res4, Res5, Res6 } from "./ResumeTamplates";
 
 const MyComponent: React.FC = () => {
 	const contentRef = useRef<HTMLDivElement>(null);
+	const { resumeTemplate } = useSelectorRedux();
 
+	const resumeComponents: { [key: number]: JSX.Element } = {
+		1: <Res1 />,
+		2: <Res2 />,
+		3: <Res3 />,
+		4: <Res4 />,
+		5: <Res5 />,
+		6: <Res6 />,
+	};
+
+	const componentToRender = resumeComponents[resumeTemplate] || <Res1 />;
 	return (
-		<div>
+		<div className="flex">
 			<div ref={contentRef}>
 				<div
 					className="p-4 shadow-4xl"
 					style={{
 						maxWidth: "700px",
-						minHeight: "800px",
 						boxShadow: "0px 0px 7.41692px rgba(0,0,0,.15)",
 					}}
 				>
-					<Res1 />
+					{componentToRender}
 				</div>
-				{/* HTML kodni bu div ichiga yozing */}
-				{/* <h1 className="text-orange-800 p-4 shadow-2xl">Hello, World!</h1>
-				<p>This is a sample HTML content.</p> */}
 			</div>
 			<ReactToPrint
-				trigger={() => <button>Download PDF</button>}
+				trigger={() => <button className="flex ms-6">Download PDF</button>}
 				content={() => contentRef.current}
 			/>
 		</div>

@@ -3,12 +3,13 @@ import { Button } from "ui/Button/Button";
 import { Logo } from "ui/Logo/Logo";
 // import { IoSunny, IoMoon } from "react-icons/io5";
 // import { GoLock } from "react-icons/go";
-import "./Header.scss";
+import "./styles.scss";
 import Navbar from "./NavBar";
 import useStore from "../../zustand/store";
 import RoutesPath from "helpers/RoutesPath";
 import SigninPage from "components/RegisterPage/SigninPage";
 import LoginPage from "components/RegisterPage/LoginPage";
+import AnimatedModal from "./Modal";
 
 import {
 	Modal,
@@ -85,6 +86,11 @@ const Header: React.FC = () => {
 								/>
 							</div>
 							<Language />
+							{/* <Button
+								className="header__only-mobile"
+								children={'<CiMenuFries className="text-3xl" />'}
+							/> */}
+							<AnimatedModal />
 							{/* <div className="flex item-center ms-4">
 								{darkTheme ? (
 									<button onClick={() => setDarkTheme(!darkTheme)}>

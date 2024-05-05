@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "ui";
 import { ResTamplate } from "../../../redux/actions";
-import DrawerModal from "./Modal";
+import { DrawerModal } from "ui";
 import { ModalResumesProps } from "types/interface";
 // import Button from "./Button"; // Button komponentini import qilamiz
 

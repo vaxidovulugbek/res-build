@@ -22,11 +22,9 @@ export default function FormFields4({ handlePrevSlide }: any) {
 
 		if (index === 0) {
 			if (dataInterests.length < 1) {
-				// console.log(data, data.length);
 				setDataInterests([...dataInterests, 1]);
 			} else {
 				alert("Element qo'shilgan!");
-				// console.log(data, 111);
 			}
 		}
 		if (index === 1) {
@@ -57,9 +55,7 @@ export default function FormFields4({ handlePrevSlide }: any) {
 	const onSubmit = (values: any) => {
 		// console.log("Form yuborildi:", values.name);
 	};
-	// useEffect(() => {
-	// 	console.log(data);
-	// }, [data]);
+
 	return (
 		<div className="editor__form-content">
 			<div className="min-[320px]:mb-3 xl:mb-5">

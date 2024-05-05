@@ -107,17 +107,6 @@ export default function FormFields3({ handlePrevSlide, handleNextSlide }: any) {
 											/>
 										</Col>
 										<Col span={24} className="modal-footer">
-											{/* <Button
-												className={cn(
-													"ms-3 editor__btn-shadow flex items-center shadow-xl p-3 w-10 h-10 rounded-full",
-													{
-														hidden: changeStatusSlider === true,
-													}
-												)}
-												onClick={handlePrevSlide}
-												children={"<GrLinkPrevious />"}
-											/>
-											<button type="submit">ok</button> */}
 											<Button onClick={() => handleDeleteEducation(form.id)}>
 												Delete
 											</Button>
@@ -134,3 +123,15 @@ export default function FormFields3({ handlePrevSlide, handleNextSlide }: any) {
 		</div>
 	);
 }
+
+// {/* <Button
+// 	className={cn(
+// 		"ms-3 editor__btn-shadow flex items-center shadow-xl p-3 w-10 h-10 rounded-full",
+// 		{
+// 			hidden: changeStatusSlider === true,
+// 		}
+// 	)}
+// 	onClick={handlePrevSlide}
+// 	children={"<GrLinkPrevious />"}
+// />
+// <button type="submit">ok</button> */}

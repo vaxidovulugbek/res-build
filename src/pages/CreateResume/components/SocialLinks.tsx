@@ -80,8 +80,8 @@ const SocialLinks: React.FC = () => {
 			{inputs &&
 				inputs.map((input, index) => (
 					<Col span={24} key={index}>
-						<div className="w-full flex items-center gap-5">
-							<div className="flex-auto">
+						<div className="w-full flex items-center gap-5 max-[480px]:gap-2 max-[480px]:flex-col max-[489px]:items-baseline">
+							<div className="flex-auto max-[489px]:w-full">
 								<label className="text-xs">Description (optional)</label>
 								<Input
 									placeholder="Input 1"
@@ -89,7 +89,7 @@ const SocialLinks: React.FC = () => {
 									onChange={(e) => handleChange(index, e.target.value, 1)}
 								/>
 							</div>
-							<div className="flex-auto">
+							<div className="flex-auto max-[489px]:w-full">
 								<label className="text-xs">Link/Text/Etc.</label>
 								<Input
 									placeholder="Input 1"
@@ -98,7 +98,7 @@ const SocialLinks: React.FC = () => {
 								/>
 							</div>
 							<Button
-								className="flex-none py-3 px-1 mt-4 z-50"
+								className="flex-none py-3 px-1 mt-4 z-50 max-[489px]:mt-0"
 								type="button"
 								onClick={() => handleDelete(index)}
 								children={
