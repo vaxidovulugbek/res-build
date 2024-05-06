@@ -7,8 +7,8 @@ const Home: React.FC = () => {
 			<Header />
 			<main>
 				<Hero />
-				<PopularProducts />
 				<HowItWorks />
+				<PopularProducts />
 				<Making_Resume />
 				<Faq />
 			</main>
