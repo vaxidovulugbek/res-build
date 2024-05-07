@@ -6,6 +6,7 @@ import Fields from "components/Fields";
 import { useWindowSize } from "hooks";
 import { ResInfo } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 interface InputValues {
 	value1: string;
@@ -19,6 +20,7 @@ const Languages: React.FC = () => {
 	// const [inputs, setInputs] = useState([]);
 	const [inputs, setInputs] = useState<InputValues[]>([{ value1: "", value2: "" }]);
 	const handleAddInput = () => setInputs([...inputs, { value1: "", value2: "" }]);
+	const { t } = useTranslation();
 
 	const handleChange = (index: number, value: string, inputNumber: number) => {
 		const newInputs = inputs.map((input, i) => {
@@ -50,15 +52,15 @@ const Languages: React.FC = () => {
 					<Col span={24} key={index}>
 						<div className="w-full flex items-center gap-5 max-[660px]:gap-3 max-[660px]:flex-col max-[660px]:items-start">
 							<div className="flex-auto max-[660px]:w-full">
-								<label className="text-xs">Language</label>
+								<label className="text-xs">{t("Language")}</label>
 								<Input
-									placeholder="Language"
+									placeholder={t("Language")}
 									value={input.value1}
 									onChange={(e) => handleChange(index, e.target.value, 1)}
 								/>
 							</div>
 							<div className="flex-auto max-[660px]:w-full">
-								<label className="text-xs">Level (optional)</label>
+								<label className="text-xs">{t("Level (optional)")}</label>
 								<Input
 									placeholder="B1, C1, A1, etc..."
 									value={input.value2}
@@ -88,7 +90,7 @@ const Languages: React.FC = () => {
 				<Button
 					onClick={handleAddInput}
 					className="flex items-center flex-row-reverse justify-end capitalize w-full my-3"
-					text="add more languages"
+					text={t("add more languages")}
 					type="button"
 					children={
 						<svg

@@ -4,6 +4,7 @@ import { Field, Form, Formik } from "formik";
 import { useWindowSize } from "hooks";
 import { isArray } from "lodash";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { componentExpirence } from "types/interface";
 import { Text, Title } from "ui";
@@ -13,6 +14,7 @@ import TextEditor from "./TextEditor";
 export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 	const width = useWindowSize();
 	const dispatch = useDispatch();
+	const { t } = useTranslation();
 	const initialValues = {};
 	const { setCountExpirence, setIdExpirence } = useStore();
 
@@ -50,11 +52,15 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 		<div className="editor__form-content">
 			<div className="min-[320px]:mb-3 xl:mb-5">
 				<Title
-					className="editor__title title-color"
+					className="editor__title title-color capitalize"
 					as="h1"
-					text="Professional Experience"
+					text={t("Professional Experience")}
 				/>
-				<Text className="text-gray" as="p" text="Tell us about your most recent job." />
+				<Text
+					className="text-gray"
+					as="p"
+					text={t("Tell us about your most recent job.")}
+				/>
 			</div>
 			<Formik initialValues={initialValues} onSubmit={onSubmit}>
 				<Form>
@@ -68,8 +74,8 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 											id={`experiencePosition_${form.id}`}
 											name={`experiencePosition_${form.id}`}
 											className="w-full"
-											placeholder="Position Title"
-											label="Position Title"
+											placeholder={t("position_title")}
+											label={t("position_title")}
 											component={Fields.InputField}
 										/>
 									</Col>
@@ -78,8 +84,8 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 											type="text"
 											id={`experienceCompany_${form.id}`}
 											name={`experienceCompany_${form.id}`}
-											label="Company Name"
-											placeholder="Company Name"
+											label={t("company_name")}
+											placeholder={t("company_name")}
 											component={Fields.InputField}
 										/>
 									</Col>
@@ -87,8 +93,8 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 										<Field
 											name={`experienceStartDate_${form.id}`}
 											type="date"
-											label="Start Date"
-											placeholder="Start Date"
+											label={t("start_date")}
+											placeholder={t("start_date")}
 											component={Fields.InputField}
 										/>
 									</Col>
@@ -96,16 +102,16 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 										<Field
 											name={`experienceEndDate_${form.id}`}
 											type="date"
-											label="End Date"
-											placeholder="End Date"
+											label={t("end_date")}
+											placeholder={t("end_date")}
 											component={Fields.InputField}
 										/>
 									</Col>
 									<Col span={24}>
 										<Field
 											name={`expirienceEditor_${form.id}`}
-											label="Work Summary"
-											placeholder="Your placeholder text here..."
+											label={t("summary")}
+											placeholder={t("summary")}
 											component={TextEditor}
 										/>
 									</Col>

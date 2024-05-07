@@ -6,7 +6,9 @@ import "slick-carousel/slick/slick-theme.css";
 import { Text, Title } from "ui";
 import { useWindowSize } from "hooks";
 import { isArray } from "lodash";
+import { useTranslation } from "react-i18next";
 const PopularProducts: React.FC = () => {
+	const { t } = useTranslation();
 	const cards = [
 		{
 			img: "https://marketplace.canva.com/EAFC-9sdKHg/2/0/1131w/canva-black-and-white-minimalist-simple-design-freelancer-resume-wIpoHMlKB6I.jpg",
@@ -52,13 +54,13 @@ const PopularProducts: React.FC = () => {
 					className="uppercase text-center flex justify-center mb-1 text-gray"
 					as="span"
 					size="sm"
-					text="BUILD YOUR RESUME"
+					text={t("BUILD YOUR RESUME")}
 				/>
 				<Title
 					className="text-weight_medium text-center title-color font-header section__title mb-4"
 					weight="semi-bold"
 					as="h2"
-					text="Popular products"
+					text={t("Popular products")}
 				/>
 				<Text
 					className="max-[640px]:hidden uppercase text-balance text-center flex justify-center mb-6 text-gray"

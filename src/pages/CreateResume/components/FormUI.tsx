@@ -4,6 +4,7 @@ import { Res1, Res2, Res3, Res4, Res5, Res6 } from "components/ResumeTamplates";
 import { useSelectorRedux } from "hooks";
 import { isArray } from "lodash";
 import React, { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 // import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { useSelector } from "react-redux";
 import Slider, { Settings } from "react-slick";
@@ -22,6 +23,7 @@ const FormUI: React.FC = () => {
 	const [modal, setModal] = useState({ open: "" });
 	const [placement, setPlacement] = useState<DrawerProps["placement"]>("left");
 	const { resumeTemplate } = useSelectorRedux();
+	const { t } = useTranslation();
 
 	const resumeComponents: { [key: number]: JSX.Element } = {
 		1: <Res1 />,
@@ -67,10 +69,10 @@ const FormUI: React.FC = () => {
 	};
 
 	const data = [
+		<FormFields4 handlePrevSlide={handlePrevSlide} />,
 		<FormFields handleNextSlide={handleNextSlide} />,
 		<FormFields2 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
 		<FormFields3 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
-		<FormFields4 handlePrevSlide={handlePrevSlide} />,
 	];
 
 	return (
@@ -82,7 +84,7 @@ const FormUI: React.FC = () => {
 						<div className="flex justify-between">
 							<Button
 								className="radius_half h-10 max-[480px]:text-sm text-cyan-700 border-solid border-1 border-cyan-700 hover:bg-cyan-700 delay-100 hover:text-white px-4 py-1.5 rounded-3xl editor__btn-shadow"
-								text="Templates"
+								text={t("Resume_Templates")}
 								onClick={() => setModal({ open: "resumeTamplates" })}
 							/>
 						</div>

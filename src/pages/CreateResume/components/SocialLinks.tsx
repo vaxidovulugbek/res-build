@@ -6,6 +6,7 @@ import Fields from "components/Fields";
 import { useWindowSize } from "hooks";
 import { ResInfo } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 interface InputValues {
 	value1: string;
@@ -15,6 +16,7 @@ interface InputValues {
 // SOCIAL LINKSNI  FIELD QILIB YOZIB KOR, COMPONENTSGA FUNCSION YARATIB RETURN QILIB KOR, FUNCTIONS DEGAN BO'LIM OCH
 const SocialLinks: React.FC = () => {
 	const width = useWindowSize();
+	const { t } = useTranslation();
 
 	// const [inputs, setInputs] = useState([]);
 	const [inputs, setInputs] = useState<InputValues[]>([]);
@@ -44,20 +46,11 @@ const SocialLinks: React.FC = () => {
 
 	return (
 		<>
-			{/* <Field
-				type="text"
-				id="name"
-				name="name"
-				className="w-full"
-				placeholder="component input ssss"
-				label="Ism:"
-				component={Fields.InputField}
-			/> */}
 			<Col span={24}>
 				<Button
 					onClick={handleAddInput}
 					className="flex items-center flex-row-reverse justify-end capitalize"
-					text="add Social Links"
+					text={t("add Social Links")}
 					type="button"
 					children={
 						<svg

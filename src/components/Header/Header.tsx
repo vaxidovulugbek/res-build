@@ -21,9 +21,11 @@ import {
 	useDisclosure,
 } from "@chakra-ui/react";
 import Language from "./Language";
+import { useTranslation } from "react-i18next";
 
 const Header: React.FC = () => {
 	const { darkTheme, setDarkTheme } = useStore();
+	const { t } = useTranslation();
 	const {
 		isOpen: isFirstModalOpen,
 		onOpen: openFirstModal,
@@ -80,8 +82,8 @@ const Header: React.FC = () => {
 									/>
 								</div>
 								<Button
-									className="ms-5 text-white bg-primary px-6 py-3 rounded-3xl shadow-xl"
-									text="Get started"
+									className="ms-5 text-white bg-primary px-6 py-3 rounded-3xl shadow-xl capitalize"
+									text={t("Get_started")}
 									link={RoutesPath?.resume}
 								/>
 							</div>
@@ -111,7 +113,7 @@ const Header: React.FC = () => {
 				{/* {overlay} */}
 				<ModalOverlay />
 				<ModalContent>
-					<ModalHeader fontSize="3xl">Вход в аккаунт</ModalHeader>
+					<ModalHeader fontSize="3xl">{t("Login_in_accaunt")}</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
 						<LoginPage onClose={handleSecondModalClose} onNext={handleFirstModalNext} />
@@ -122,7 +124,7 @@ const Header: React.FC = () => {
 			<Modal onClose={closeSecondModal} isOpen={isSecondModalOpen} isCentered>
 				<ModalOverlay />
 				<ModalContent>
-					<ModalHeader fontSize="3xl">Регистрация</ModalHeader>
+					<ModalHeader fontSize="3xl">{t("Registration")}</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
 						<SigninPage onClose={closeFirstModal} onNext={handleSecondModalNext} />

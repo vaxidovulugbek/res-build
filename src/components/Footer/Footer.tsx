@@ -2,15 +2,17 @@ import React from "react";
 import { Title, Text } from "ui";
 import FooterList from "./FooterList";
 import "./Footer.scss";
+import { useTranslation } from "react-i18next";
 // import { FaFacebookF, FaTelegramPlane, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const Footer: React.FC = () => {
+	const { t } = useTranslation();
 	return (
 		<footer className="footer mt-auto">
 			<div className="container">
 				<div className="flex justify-between flex-wrap">
 					<FooterList
-						title="Products"
+						title={t("products")}
 						className="lg:w-1/4 sx:w-1/4 2xl:w-1/4 md:w-1/4 sm:w-1/4 max-[480px]:w-1/2 items-center mt-12 inline-block"
 						fields={[
 							{
@@ -18,7 +20,7 @@ const Footer: React.FC = () => {
 								url: "/",
 							},
 							{
-								name: "Pricing",
+								name: `${t("Pricing")}`,
 								url: "/",
 							},
 							{
@@ -40,7 +42,7 @@ const Footer: React.FC = () => {
 								url: "/",
 							},
 							{
-								name: "Pricing",
+								name: `${t("Pricing")}`,
 								url: "/",
 							},
 							{
@@ -62,7 +64,7 @@ const Footer: React.FC = () => {
 								url: "/",
 							},
 							{
-								name: "Pricing",
+								name: `${t("Pricing")}`,
 								url: "/",
 							},
 							{

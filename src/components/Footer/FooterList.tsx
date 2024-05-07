@@ -2,17 +2,7 @@ import { isArray } from "lodash";
 import React from "react";
 import { Title, Button } from "ui";
 import cn from "classnames";
-
-interface Field {
-	name: string;
-	url?: string;
-}
-
-interface FooterListProps {
-	title: string;
-	fields: Field[];
-	className?: string;
-}
+import { FooterListProps } from "types/interface";
 
 const FooterList: React.FC<FooterListProps> = ({ fields, title, className = "" }) => {
 	return (

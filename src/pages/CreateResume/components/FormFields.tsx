@@ -11,10 +11,11 @@ import TextEditor from "./TextEditor";
 import useStore from "../../../zustand/store";
 import SocialLinks from "./SocialLinks";
 import { Title, Text } from "ui";
+import { useTranslation } from "react-i18next";
 
 export default function FormFields({ handleNextSlide }: { handleNextSlide: any }) {
-	const { hasError, changeStatusSlider } = useStore();
 	const width = useWindowSize();
+	const { t } = useTranslation();
 
 	const dispatch = useDispatch();
 	const resumeName = useSelector((state: any) => state.resumeName);
@@ -50,11 +51,15 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 	return (
 		<div className="editor__form-content">
 			<div className="min-[320px]:mb-3 xl:mb-5">
-				<Title className="editor__title title-color" as="h1" text="Personal Details" />
+				<Title
+					className="editor__title title-color capitalize"
+					as="h1"
+					text={t("Personal Details")}
+				/>
 				<Text
 					className="text-gray"
 					as="p"
-					text="Get started with the basics: your name and contact information."
+					text={t("Get started with the basics: your name and contact information.")}
 				/>
 			</div>
 			<Formik
@@ -69,73 +74,78 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 								type="text"
 								id="name"
 								name="name"
-								className="w-full"
-								placeholder="component input ssss"
-								label="Ism:"
+								className="w-full capitalize"
+								placeholder={t("name")}
+								label={t("name")}
 								component={Fields.InputField}
 							/>
 						</Col>
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
+								className="capitalize"
 								type="text"
 								id="Last_Name"
 								name="Last_Name"
-								label="Last Name"
-								placeholder="Last Name"
+								label={t("lastname")}
+								placeholder={t("lastname")}
 								component={Fields.InputField}
 							/>
 						</Col>
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
+								className="capitalize"
 								name="Job_Title"
-								label="Job Title"
-								placeholder="Job Title"
+								label={t("job_title")}
+								placeholder={t("job_title")}
 								component={Fields.InputField}
 							/>
 						</Col>
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
+								className="capitalize"
 								name="Phone"
-								label="Phone"
-								placeholder="Phone"
+								label={t("phone")}
+								placeholder={t("phone")}
 								component={Fields.InputField}
 							/>
 						</Col>
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
+								className="capitalize"
 								id="Email_Address"
 								name="Email_Address"
-								label="Email Address"
-								placeholder="Email Address"
+								label={t("email_adress")}
+								placeholder={t("email_adress")}
 								type="email"
 								component={Fields.InputField}
 							/>
 						</Col>
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
+								className="capitalize"
 								name="Address"
-								label="Address"
-								placeholder="Address"
+								label={t("adress")}
+								placeholder={t("adress")}
 								component={Fields.InputField}
 							/>
 						</Col>
 						<Col span={24}>
 							<Field
-								className="my-2"
+								className="my-2 capitalize"
 								name="chips"
-								description="add skills"
+								description={t("add skills")}
 								component={Fields.TagInputAntd}
-								label="Chips"
+								label={t("add skills")}
 							/>
 						</Col>
 						<SocialLinks />
 						<Col span={24}>
 							<Field
-								className="my-2 min-h-24"
+								className="my-2 min-h-24 capitalize"
 								name="about"
-								placeholder="about"
+								placeholder={t("resume_about")}
 								component={Fields.TextAreaAntd}
-								label="about"
+								label={t("resume_about")}
 							/>
 						</Col>
 						<Col span={24} className="modal-footer flex items-center">

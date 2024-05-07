@@ -74,3 +74,14 @@ export interface saveRedux {
 	id: any;
 	value: any;
 }
+
+export interface Field {
+	name: string;
+	url?: string;
+}
+
+export interface FooterListProps {
+	title: string;
+	fields: Field[];
+	className?: string;
+}

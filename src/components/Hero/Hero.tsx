@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
 					className="lg:px-10 md:px-6 absolute z-[99] w-10/12 h-full ms-1/2 translate-x-[-50%] flex flex-col justify-center items-center"
 				>
 					<Title
-						className="hero__title mb-3 lg:text-5xl leading-normal md:text-3xl text-center font-header text-white"
+						className="hero__title mb-3 lg:text-6xl leading-normal md:text-3xl text-center font-header text-white"
 						as="h1"
 						text={t("hero_title")}
 						// text="Online CV Builder With Creative Templates."
@@ -54,12 +54,12 @@ const Hero: React.FC = () => {
 						weight="regular"
 						size="lg"
 						as="p"
-						text="Enter your personal details, choose a template, upload your resume and impress employers."
+						text={t("hero_text")}
 					/>
 					<Button
 						link="/resume"
 						className="hero__builder-btn text-white bg-primary inline-block px-6 py-3 rounded-3xl shadow-[0px_0px_7.41692px_rgba(0,0,0,.15)] text-white"
-						text="Build your free resume"
+						text={t("Build your free resume")}
 					/>
 				</div>
 				{init && (

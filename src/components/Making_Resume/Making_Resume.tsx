@@ -3,15 +3,17 @@ import React from "react";
 import { Title, Text, Button } from "../../ui";
 import ResumesAnimation from "./ResumesAnimation";
 import "./Making_Resume.scss";
+import { useTranslation } from "react-i18next";
 
 const Making_Resume: React.FC = () => {
+	const { t } = useTranslation();
 	return (
 		<section className="section">
 			<div className="container mt-16">
 				<div
-					data-aos="fade-up"
-					data-aos-anchor-placement="center-center"
-					data-aos-duration={500}
+					// data-aos="fade-up"
+					// data-aos-anchor-placement="center-center"
+					// data-aos-duration={500}
 					className="mres h-[400px] flex rounded-[40px] max-[1020px]:rounded-[26px] max-[660px]:rounded-[14px] shadow-white"
 				>
 					<div>
@@ -64,21 +66,23 @@ const Making_Resume: React.FC = () => {
 					<div className="mres__info flex flex-col justify-between p-12 max-[660px]:p-8">
 						<div>
 							<Title
-								className="mres__info-title mb-5 w-4/5 max-[480px]:w-full font-semibold"
+								className="mres__info-title mb-5 w-full max-[480px]:w-full font-semibold"
 								as="h2"
-								text="Ready to start making your resume?"
+								text={t("Ready to start making your resume?")}
 							/>
 							<Text
-								className="mres__info-text w-11/12 max-[1020px]:mb-3"
+								className="mres__info-text w-full max-[1020px]:mb-3"
 								as="p"
 								size="lg"
-								text="Dont let your resume hold you back from getting the job you want. Our builder software helps you create a resume that highlights your qualifications and lands you more interviews"
+								text={t(
+									"Dont let your resume hold you back from getting the job you want. Our builder software helps you create a resume that highlights your qualifications and lands you more interviews"
+								)}
 							/>
 						</div>
 						<Button
-							className="hover:underline decoration-1"
+							className="hover:underline decoration-1 mt-2"
 							link={RoutesPath.resume}
-							text="Try Our Builder"
+							text={t("Try Our Builder")}
 						/>
 					</div>
 					<div className="mres__resumes flex overflow-hidden">

@@ -4,6 +4,7 @@ import { Field, Form, Formik } from "formik";
 import { useWindowSize } from "hooks";
 import { isArray } from "lodash";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Title, Button } from "ui";
 import useStore from "../../../zustand/store";
 import Languages from "./Languages";
@@ -16,6 +17,7 @@ export default function FormFields4({ handlePrevSlide }: any) {
 	const { setDataVolunteering, dataVolunteering, setDataInterests, dataInterests } = useStore();
 	// const [dataInterests, setDataInterests] = useState<any[]>([]);
 	const [dataLanguages, setDataLanguages] = useState<any[]>([]);
+	const { t } = useTranslation();
 	// const [dataVolunteering, setDataVolunteering] = useState<any[]>([]);
 	const addAdditional = ({ index }: any) => {
 		console.log(index);
@@ -60,17 +62,17 @@ export default function FormFields4({ handlePrevSlide }: any) {
 		<div className="editor__form-content">
 			<div className="min-[320px]:mb-3 xl:mb-5">
 				<Title
-					className="editor__title title-color"
+					className="editor__title title-color capitalize"
 					as="h1"
-					text="Add Additional Section"
+					text={t("Add Additional Section")}
 				/>
 			</div>
 			<ul className="editor__additional-list flex flex-wrap">
 				{[
-					"Interests",
-					"Languages",
+					`${t("Interests")}`,
+					`${t("Languages")}`,
 					// "Certifications",
-					"Volunteering",
+					`${t("Volunteering")}`,
 					// "Accomplishments",
 				].map((item, index) => {
 					return (
@@ -98,9 +100,9 @@ export default function FormFields4({ handlePrevSlide }: any) {
 													type="text"
 													id={"interests"}
 													name={"interests"}
-													className="w-full"
-													placeholder="interests"
-													label="interests"
+													className="w-full capitalize"
+													placeholder={t("Interests")}
+													label={t("Interests")}
 													component={TextEditor}
 												/>
 											</Col>
@@ -148,8 +150,8 @@ export default function FormFields4({ handlePrevSlide }: any) {
 													type="text"
 													id={"volunteering_ActivityName"}
 													name={"volunteering_ActivityName"}
-													label="Activity Name"
-													placeholder="Activity Name"
+													label={t("Activity Name")}
+													placeholder={t("Activity Name")}
 													component={Fields.InputField}
 												/>
 											</Col>
@@ -158,8 +160,8 @@ export default function FormFields4({ handlePrevSlide }: any) {
 													type="text"
 													id={"volunteering_Address"}
 													name={"volunteering_Address"}
-													label="Volunteering Address"
-													placeholder="Volunteering Address"
+													label={t("Volunteering Address")}
+													placeholder={t("Volunteering Address")}
 													component={Fields.InputField}
 												/>
 											</Col>
@@ -167,8 +169,8 @@ export default function FormFields4({ handlePrevSlide }: any) {
 												<Field
 													name={"volunteering_startDate"}
 													type="date"
-													label="Start Date"
-													placeholder="Start Date"
+													label={t("start_date")}
+													placeholder={t("start_date")}
 													component={Fields.InputField}
 												/>
 											</Col>
@@ -176,8 +178,8 @@ export default function FormFields4({ handlePrevSlide }: any) {
 												<Field
 													name={"volunteering_endDate"}
 													type="date"
-													label="End Date"
-													placeholder="End Date"
+													label={t("end_date")}
+													placeholder={t("end_date")}
 													component={Fields.InputField}
 												/>
 											</Col>
@@ -187,8 +189,8 @@ export default function FormFields4({ handlePrevSlide }: any) {
 													id={"volunteering"}
 													name={"volunteering"}
 													className="w-full"
-													placeholder="volunteering"
-													label="volunteering"
+													placeholder={t("summary")}
+													label={t("summary")}
 													component={TextEditor}
 												/>
 											</Col>
