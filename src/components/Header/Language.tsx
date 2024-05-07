@@ -11,6 +11,7 @@ const Language = () => {
 
 	const handleSelect = (option: string) => {
 		setSelectedOption(option);
+		console.log("language tanlandi:", option);
 	};
 
 	const { t } = useTranslation();
@@ -37,6 +38,7 @@ const Language = () => {
 			</MenuButton>
 			<MenuList minWidth="100px">
 				<MenuItem
+					key="uz"
 					className={cn("capitalize bg-inherit", {
 						"header__lang-bg": selectedOption === "uz",
 					})}
@@ -45,6 +47,7 @@ const Language = () => {
 					{t("uz")}
 				</MenuItem>
 				<MenuItem
+					key="ru"
 					className={cn("capitalize bg-inherit", {
 						"header__lang-bg": selectedOption === "ru",
 					})}

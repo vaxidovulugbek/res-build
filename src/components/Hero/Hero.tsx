@@ -39,15 +39,18 @@ const Hero: React.FC = () => {
 				className="particles-wrapper h-[630px]"
 				style={{ position: "relative", overflow: "hidden" }}
 			>
-				<div className="lg:px-10 md:px-6 absolute z-[99] w-full h-full flex flex-col justify-center items-center">
+				<div
+					style={{ marginLeft: "50%" }}
+					className="lg:px-10 md:px-6 absolute z-[99] w-10/12 h-full ms-1/2 translate-x-[-50%] flex flex-col justify-center items-center"
+				>
 					<Title
-						className="hero__title mb-3 lg:text-5xl leading-normal md:text-3xl max-w-xl font-header text-white"
+						className="hero__title mb-3 lg:text-5xl leading-normal md:text-3xl text-center font-header text-white"
 						as="h1"
 						text={t("hero_title")}
 						// text="Online CV Builder With Creative Templates."
 					/>
 					<Text
-						className="hero__text max-w-xl text-lg leading-8 text-gray-500 mb-3 text-white"
+						className="hero__text text-center text-lg leading-8 text-gray-500 mb-3 text-white"
 						weight="regular"
 						size="lg"
 						as="p"
@@ -55,7 +58,7 @@ const Hero: React.FC = () => {
 					/>
 					<Button
 						link="/resume"
-						className="hero__builder-btn text-white bg-primary inline-block px-6 py-3 rounded-3xl shadow-xl text-white"
+						className="hero__builder-btn text-white bg-primary inline-block px-6 py-3 rounded-3xl shadow-[0px_0px_7.41692px_rgba(0,0,0,.15)] text-white"
 						text="Build your free resume"
 					/>
 				</div>
@@ -80,11 +83,11 @@ const Hero: React.FC = () => {
 							interactivity: {
 								events: {
 									onClick: {
-										enable: true,
+										enable: false,
 										mode: "push",
 									},
 									onHover: {
-										enable: true,
+										enable: false,
 										mode: "repulse",
 									},
 									// resize: true,

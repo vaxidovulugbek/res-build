@@ -14,11 +14,20 @@ const AnimatedModal: React.FC = () => {
 
 	return (
 		<>
-			<Space>
-				<Button type="primary" onClick={showDrawer}>
-					Open
-				</Button>
-			</Space>
+			{/* <Button
+				className="header__only-mobile"
+				children={'<CiMenuFries className="text-3xl" />'}
+			/> */}
+			<Button
+				className="header__only-mobile"
+				children={
+					<Space>
+						<Button type="primary" onClick={showDrawer}>
+							Open
+						</Button>
+					</Space>
+				}
+			/>
 			<div className="margin-top-100px">
 				<Drawer
 					title="Basic Drawer"
