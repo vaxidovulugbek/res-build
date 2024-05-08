@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
 					className="lg:px-10 md:px-6 absolute z-[99] w-10/12 h-full ms-1/2 translate-x-[-50%] flex flex-col justify-center items-center"
 				>
 					<Title
-						className="hero__title mb-3 lg:text-6xl leading-normal md:text-3xl text-center font-header text-white"
+						className="hero__title mb-3 lg:text-6xl leading-normal md:text-3xl text-center font-header text-white tracking-wider"
 						as="h1"
 						text={t("hero_title")}
 						// text="Online CV Builder With Creative Templates."

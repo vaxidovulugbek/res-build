@@ -7,24 +7,31 @@ import { useTranslation } from "react-i18next";
 import i18n from "servises/i18n";
 
 const Language = () => {
-	const [selectedOption, setSelectedOption] = useState("uz");
+	const [selectedOption, setSelectedOption] = useState(() => {
+		const storedLang = sessionStorage.getItem("lang");
+		return storedLang ? storedLang : "uz";
+	});
 
 	const handleSelect = (option: string) => {
 		setSelectedOption(option);
 		console.log("language tanlandi:", option);
+		i18n.changeLanguage(option);
+		sessionStorage.setItem("lang", option);
 	};
 
 	const { t } = useTranslation();
-	useEffect(() => {
-		switch (selectedOption) {
-			case "ru":
-				i18n.changeLanguage(selectedOption);
-				break;
-			case "uz":
-				i18n.changeLanguage(selectedOption);
-				break;
-		}
-	}, [selectedOption]);
+	// const lang = sessionStorage.getItem("lang");
+	// useEffect(() => {
+	// 	switch (lang) {
+	// 		case "ru":
+	// 			i18n.changeLanguage(lang);
+	// 			break;
+	// 		case "uz":
+	// 			i18n.changeLanguage(lang);
+	// 			break;
+	// 	}
+	// 	sessionStorage.setItem("lang", selectedOption);
+	// }, [selectedOption]);
 
 	return (
 		<Menu>
