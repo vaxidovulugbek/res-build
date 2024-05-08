@@ -10,6 +10,7 @@ import RoutesPath from "helpers/RoutesPath";
 import SigninPage from "components/RegisterPage/SigninPage";
 import LoginPage from "components/RegisterPage/LoginPage";
 import AnimatedModal from "./Modal";
+import resumelogo from "assets/imgs/icons/resume-high-resolution-logo-transparent (1).png";
 
 import {
 	Modal,
@@ -64,7 +65,7 @@ const Header: React.FC = () => {
 						<Logo
 							className="ld h-12 w-26"
 							size="sm"
-							src="https://upload.wikimedia.org/wikipedia/commons/1/13/LOGO_OF_LOGO.svg"
+							src={resumelogo}
 							alt="logo"
 							href="/"
 							link="/"
