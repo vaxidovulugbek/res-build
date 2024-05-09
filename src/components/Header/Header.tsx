@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button } from "ui/Button/Button";
 import { Logo } from "ui/Logo/Logo";
 // import { IoSunny, IoMoon } from "react-icons/io5";
-// import { GoLock } from "react-icons/go";
 import "./styles.scss";
 import Navbar from "./NavBar";
 import useStore from "../../zustand/store";
@@ -11,6 +10,7 @@ import SigninPage from "components/RegisterPage/SigninPage";
 import LoginPage from "components/RegisterPage/LoginPage";
 import AnimatedModal from "./Modal";
 import resumelogo from "assets/imgs/icons/resume-high-resolution-logo-transparent (1).png";
+import user from "assets/imgs/icons/user.png";
 
 import {
 	Modal,
@@ -78,7 +78,9 @@ const Header: React.FC = () => {
 										className="text-gray flex items-center flex-row-reverse ms-2"
 										text="Login"
 										// children={<GoLock className="me-2" />}
-										children={"<GoLock />"}
+										children={
+											<img className="w-5 me-1" src={user} alt="user" />
+										}
 										onClick={openFirstModal}
 									/>
 								</div>

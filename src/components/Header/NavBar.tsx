@@ -4,7 +4,6 @@ import "./styles.scss";
 import { Menu, MenuButton, MenuList, MenuItem, Text } from "@chakra-ui/react";
 import RoutesPath from "helpers/RoutesPath";
 import { useTranslation } from "react-i18next";
-// import { CiMenuFries } from "react-icons/ci";
 
 const Navbar: React.FC = () => {
 	const { t } = useTranslation();

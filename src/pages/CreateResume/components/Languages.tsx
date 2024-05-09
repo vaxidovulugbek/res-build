@@ -42,7 +42,6 @@ const Languages: React.FC = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(ResInfo?.setResumeLanguages(inputs));
-		// dispatch(ResInfo?.setResumeSocialLinks(inputs));
 	}, [inputs]);
 
 	return (

@@ -4,8 +4,10 @@ import { isArray } from "lodash";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import useStore from "../../zustand/store";
-// import { FaPhoneAlt, FaEnvelope, FaLinkedin } from "react-icons/fa";
-// import { FaLocationDot } from "react-icons/fa6";
+import globe from "assets/imgs/icons/globe.svg";
+import letter from "assets/imgs/icons/letter.svg";
+import phone from "assets/imgs/icons/phone.svg";
+import location from "assets/imgs/icons/location.svg";
 
 export const Res5: React.FC = () => {
 	const {
@@ -92,28 +94,33 @@ export const Res5: React.FC = () => {
 						contact
 					</p>
 					<div className="flex items-center text-xs mt-4 font-medium">
-						{/* <FaPhoneAlt className="me-3" /> */}
+						<img className="me-2 w-3" src={phone} alt="phone icon" />
 						{resumePhone ? resumePhone : "(90) 053 11 02"}
 					</div>
 					<div className="flex items-center text-xs mt-4 font-medium">
-						{/* <FaLocationDot className="me-3" /> */}
+						<img className="me-2 w-3" src={location} alt="location icon" />
 						{resumeAdress ? resumeAdress : "43w 13 street Tashkent"}
 					</div>
 					<div className="flex items-center text-xs mt-4 font-medium">
-						{/* <FaEnvelope className="me-3" /> */}
+						<img className="me-2 w-3" src={letter} alt="envelope icon" />
 						{resumeEmail ? resumeEmail : "lauren.chen@mail.com"}
 					</div>
 					<div className="flex items-center text-xs mt-4 font-medium">
-						{/* <FaLinkedin className="me-3" /> */}
-						{/* linkedin.com/lauren.chen */}
-						{isArray(resumeSocialLinks) &&
+						{isArray(resumeSocialLinks) && resumeSocialLinks.length > 1 ? (
 							resumeSocialLinks.map((item, index) => (
 								<p key={index} className="flex items-center">
+									<img className="me-2 w-3" src={globe} alt="globe icon" />
 									{item?.value1
 										? `${item?.value1}: ${item?.value2}`
 										: item?.value2}
 								</p>
-							))}
+							))
+						) : (
+							<p className="flex items-center">
+								<img className="me-2 w-3" src={globe} alt="globe icon" />
+								https://www.linkedin.com/
+							</p>
+						)}
 					</div>
 				</div>
 				<div className="mt-5">

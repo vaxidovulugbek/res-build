@@ -5,9 +5,10 @@ import cn from "classnames";
 import parse from "html-react-parser";
 import useStore from "../../zustand/store";
 import { useDispatch } from "react-redux";
-// import { ImMobile, ImLocation } from "react-icons/im";
-// import { BsEnvelope, BsGlobe } from "react-icons/bs";
-
+import globe from "assets/imgs/icons/globe.svg";
+import letter from "assets/imgs/icons/letter.svg";
+import phone from "assets/imgs/icons/phone.svg";
+import location from "assets/imgs/icons/location.svg";
 export const Res1: React.FC = () => {
 	const {
 		resumeName,
@@ -158,24 +159,31 @@ export const Res1: React.FC = () => {
 						<div className="flex flex-col gap-3">
 							{/* <p className={cn("flex items-center", { hidden: !resumePhone })}> */}
 							<p className={cn("flex items-center")}>
-								{/* <ImMobile className="me-2" /> */}
+								<img className="me-2 w-3" src={phone} alt="phone icon" />
 								{resumePhone ? resumePhone : "(90) 123 45 67"}
 							</p>
 							<p className="flex items-center">
-								{/* <BsEnvelope className="me-2" /> */}
+								<img className="me-2 w-3" src={letter} alt="envelope icon" />
 								{resumeEmail ? resumeEmail : "example@gmail.com"}
 							</p>
-							{/* <BsGlobe className="me-2" /> */}
-							{isArray(resumeSocialLinks) &&
+
+							{isArray(resumeSocialLinks) && resumeSocialLinks.length > 1 ? (
 								resumeSocialLinks.map((item, index) => (
 									<p key={index} className="flex items-center">
+										<img className="me-2 w-3" src={globe} alt="globe icon" />
 										{item?.value1
 											? `${item?.value1}: ${item?.value2}`
 											: item?.value2}
 									</p>
-								))}
+								))
+							) : (
+								<p className="flex items-center">
+									<img className="me-2 w-3" src={globe} alt="globe icon" />
+									https://www.linkedin.com/
+								</p>
+							)}
 							<p className={cn("flex items-center")}>
-								{/* <ImLocation className="me-2" /> */}
+								<img className="me-2 w-3" src={location} alt="location icon" />
 								{resumeAdress ? resumeAdress : "43w 13 street Tashkent"}
 							</p>
 						</div>

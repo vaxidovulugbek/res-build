@@ -5,8 +5,10 @@ import { useDispatch } from "react-redux";
 import useStore from "../../zustand/store";
 import cn from "classnames";
 import parse from "html-react-parser";
-// import { FaPhoneAlt, FaEnvelope, FaLinkedinIn } from "react-icons/fa";
-// import { ImLocation } from "react-icons/im";
+import globe from "assets/imgs/icons/globe.svg";
+import letter from "assets/imgs/icons/letter.svg";
+import phone from "assets/imgs/icons/phone.svg";
+import location from "assets/imgs/icons/location.svg";
 
 export const Res2: React.FC = () => {
 	const {
@@ -97,27 +99,37 @@ export const Res2: React.FC = () => {
 						</p>
 						<ul className="grid gap-3 text-[11px] font-medium">
 							<li className="flex gap-3 items-center">
-								{/* <FaPhoneAlt /> */}
+								<img className="me-2 w-3" src={phone} alt="phone icon" />
 								<span>{resumePhone ? resumePhone : "(90) 053 11 02"}</span>
 							</li>
 							<li className="flex gap-3 items-center">
-								{/* <FaEnvelope /> */}
+								<img className="me-2 w-3" src={letter} alt="envelope icon" />
 								<span>{resumeEmail ? resumeEmail : "yourEmail@mail.com"}</span>
 							</li>
-							<li className="flex gap-3 items-center">
-								{/* <ImLocation /> */}
+							<li className="flex gap-3 items-center capitalize">
+								<img className="me-2 w-3" src={location} alt="location icon" />
 								<span>{resumeAdress ? resumeAdress : "your address"}</span>
 							</li>
 							<li className="flex gap-3 items-center">
-								{/* <FaLinkedinIn /> */}
-								{isArray(resumeSocialLinks) &&
+								{isArray(resumeSocialLinks) && resumeSocialLinks.length > 1 ? (
 									resumeSocialLinks.map((item, index) => (
-										<span key={index} className="flex items-center">
+										<p key={index} className="flex items-center">
+											<img
+												className="me-2 w-3"
+												src={globe}
+												alt="globe icon"
+											/>
 											{item?.value1
 												? `${item?.value1}: ${item?.value2}`
 												: item?.value2}
-										</span>
-									))}
+										</p>
+									))
+								) : (
+									<p className="flex items-center">
+										<img className="me-2 w-3" src={globe} alt="globe icon" />
+										https://www.linkedin.com/
+									</p>
+								)}
 							</li>
 						</ul>
 					</div>

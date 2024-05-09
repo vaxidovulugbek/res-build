@@ -11,7 +11,9 @@ import TextEditor from "./TextEditor";
 import useStore from "../../../zustand/store";
 import SocialLinks from "./SocialLinks";
 import { Title, Text } from "ui";
+// import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { useTranslation } from "react-i18next";
+import next from "assets/imgs/icons/next.svg";
 
 export default function FormFields({ handleNextSlide }: { handleNextSlide: any }) {
 	const width = useWindowSize();
@@ -164,7 +166,8 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 										: null
 								}
 							>
-								Создать
+								<p className="mb-1">next step</p>{" "}
+								<img className="ms-2 w-6" src={next} alt="next icon" />
 							</Button>
 						</Col>
 					</Row>

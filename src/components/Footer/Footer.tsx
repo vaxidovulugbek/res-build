@@ -3,7 +3,10 @@ import { Title, Text } from "ui";
 import FooterList from "./FooterList";
 import "./Footer.scss";
 import { useTranslation } from "react-i18next";
-// import { FaFacebookF, FaTelegramPlane, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import facebook from "assets/imgs/icons/facebook.svg";
+import telegram from "assets/imgs/icons/telegram.svg";
+import instagram from "assets/imgs/icons/instagram.svg";
+import linkedin from "assets/imgs/icons/linkedin.svg";
 
 const Footer: React.FC = () => {
 	const { t } = useTranslation();
@@ -92,6 +95,7 @@ const Footer: React.FC = () => {
 									target="_blank"
 								>
 									{/* <FaFacebookF className="text-gray" /> */}
+									<img className="w-4" src={facebook} alt="facebook icon" />
 								</a>
 							</li>
 							<li>
@@ -100,7 +104,7 @@ const Footer: React.FC = () => {
 									href="#"
 									target="_blank"
 								>
-									{/* <FaTelegramPlane className="text-gray" /> */}
+									<img className="w-4" src={telegram} alt="telegram icon" />
 								</a>
 							</li>
 							<li>
@@ -109,7 +113,7 @@ const Footer: React.FC = () => {
 									href="#"
 									target="_blank"
 								>
-									{/* <FaInstagram className="text-gray" /> */}
+									<img className="w-4" src={instagram} alt="instagram icon" />
 								</a>
 							</li>
 							<li>
@@ -118,7 +122,7 @@ const Footer: React.FC = () => {
 									href="#"
 									target="_blank"
 								>
-									{/* <FaLinkedinIn className="text-gray" /> */}
+									<img className="w-4" src={linkedin} alt="linkedin icon" />
 								</a>
 							</li>
 						</ul>

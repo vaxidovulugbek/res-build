@@ -4,6 +4,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import useStore from "../../zustand/store";
 import parse from "html-react-parser";
+import globe from "assets/imgs/icons/globe.svg";
+import letter from "assets/imgs/icons/letter.svg";
+import phone from "assets/imgs/icons/phone.svg";
+import location from "assets/imgs/icons/location.svg";
 
 export const Res3: React.FC = () => {
 	const {
@@ -94,14 +98,48 @@ export const Res3: React.FC = () => {
 					{resumeJobTitle ? resumeJobTitle : "managing director"}
 				</p>
 				<ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-500 my-2">
-					<li className="text-[12px]">{resumePhone ? resumePhone : "(90) 123-45-67"}</li>
 					<li className="text-[12px]">
-						{resumeEmail ? resumeEmail : "example@email.com"}
+						{resumePhone ? (
+							<p className="flex items-center">
+								<img className="me-2 w-3" src={phone} alt="phone icon" />{" "}
+								{resumePhone}
+							</p>
+						) : (
+							<p className="flex items-center">
+								<img className="me-2 w-3" src={phone} alt="phone icon" /> (90)
+								123-45-67
+							</p>
+						)}
 					</li>
 					<li className="text-[12px]">
-						{resumeAdress ? resumeAdress : "43w 13 street Tashkent"}
+						{resumeEmail ? (
+							<p className="flex items-center">
+								{" "}
+								<img className="me-2 w-3" src={letter} alt="envelope icon" />
+								{resumeEmail}
+							</p>
+						) : (
+							<p className="flex items-center">
+								<img className="me-2 w-3" src={letter} alt="envelope icon" />{" "}
+								example@email.com
+							</p>
+						)}
 					</li>
-					{isArray(resumeSocialLinks) &&
+					<li className="text-[12px]">
+						{resumeAdress ? (
+							<p>
+								{" "}
+								<img className="me-2 w-3" src={location} alt="location icon" />
+								{resumeAdress}
+							</p>
+						) : (
+							<p className="flex items-center">
+								<img className="me-2 w-3" src={location} alt="location icon" /> 43w
+								13 street Tashkent
+							</p>
+						)}
+					</li>
+					{/* {isArray(resumeSocialLinks) &&
 						resumeSocialLinks.map((item, index) => (
 							<li className="text-[12px]">
 								<span key={index} className="flex items-center">
@@ -110,7 +148,20 @@ export const Res3: React.FC = () => {
 										: item?.value2}
 								</span>
 							</li>
-						))}
+						))} */}
+					{isArray(resumeSocialLinks) && resumeSocialLinks.length > 1 ? (
+						resumeSocialLinks.map((item, index) => (
+							<li key={index} className="flex items-center text-[12px]">
+								<img className="me-2 w-3" src={globe} alt="globe icon" />
+								{item?.value1 ? `${item?.value1}: ${item?.value2}` : item?.value2}
+							</li>
+						))
+					) : (
+						<li className="flex items-center text-[12px]">
+							<img className="me-2 w-3" src={globe} alt="globe icon" />
+							https://www.linkedin.com/
+						</li>
+					)}
 				</ul>
 				<div className="w-full border-solid inline-block border-t-1 mt-2 border-gray-400">
 					<p className="text-base my-2 uppercase tracking-widest font-semibold">
