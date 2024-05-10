@@ -59,6 +59,8 @@ const FormUI: React.FC = () => {
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		draggable: false,
+		prevArrow: <></>,
+		nextArrow: <></>,
 		afterChange: (currentSlide) => {
 			if (currentSlide === 0) {
 				setChangeStatusSlider(true);
@@ -70,9 +72,9 @@ const FormUI: React.FC = () => {
 
 	const data = [
 		<FormFields handleNextSlide={handleNextSlide} />,
-		<FormFields4 handlePrevSlide={handlePrevSlide} />,
 		<FormFields2 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
 		<FormFields3 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
+		<FormFields4 handlePrevSlide={handlePrevSlide} />,
 	];
 
 	return (
