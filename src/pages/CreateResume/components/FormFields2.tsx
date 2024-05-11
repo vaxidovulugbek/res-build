@@ -10,6 +10,9 @@ import { componentExpirence } from "types/interface";
 import { Text, Title } from "ui";
 import useStore from "../../../zustand/store";
 import TextEditor from "./TextEditor";
+import plus from "assets/imgs/icons/plus.svg";
+import next from "assets/imgs/icons/next.svg";
+import prev from "assets/imgs/icons/prev.svg";
 
 export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 	const width = useWindowSize();
@@ -66,7 +69,7 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 				<Form>
 					{experienceForms &&
 						experienceForms.map((form) => (
-							<div key={form.id}>
+							<div key={form.id} className="p-3 border border-[#d9d9d9] rounded-md">
 								<Row gutter={[16, 16]}>
 									<Col span={width < 480 ? 24 : 12}>
 										<Field
@@ -117,15 +120,50 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 									</Col>
 									<Col span={24} className="modal-footer">
 										<Button onClick={() => handleDeleteExperience(form.id)}>
-											Delete
+											{/* Delete */}
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="16"
+												height="16"
+											>
+												<path
+													d="M2.2 2.9h11.6v11.7a.9.9 0 01-.9.9H3.1a.9.9 0 01-.9-.9V2.9h0zM15.5 2.9H.5M5 2.9V1.4a.9.9 0 01.9-.9h4.2a.9.9 0 01.9.9v1.5M5.5 4.8v7.5M8 4.8v7.5M10.5 4.8v7.5"
+													fill="none"
+													stroke="#b0bbd1"
+													strokeLinecap="round"
+													strokeMiterlimit="10"
+												></path>
+											</svg>
 										</Button>
 									</Col>
 								</Row>
 							</div>
 						))}
-					<Button onClick={handleAddExperience}>Add more experience</Button>
-					<Button onClick={handlePrevSlide}>Previous</Button>
-					<Button onClick={handleNextSlide}>Next</Button>
+					<Button className="flex items-center my-4" onClick={handleAddExperience}>
+						<img className="w-4 me-2" src={plus} alt="plus icon" />{" "}
+						<span className="mb-[0.5px]">Add more experience</span>
+					</Button>
+					<div className="flex items-center gap-3">
+						<Button
+							style={{ boxShadow: "0px 0px 15px rgba(0,0,0,.15)" }}
+							className="flex items-center rounded-full h-[40px] w-[40px] p-2"
+							onClick={handlePrevSlide}
+						>
+							<img className="w-6" src={prev} alt="prev icon " />
+						</Button>
+						<Button
+							className="flex items-center h-10 text-white hover:bg-cyan-700 bg-cyan-700 px-4 py-1.5 rounded-3xl editor__btn-hover editor__btn-shadow max-[480px]:text-sm"
+							loading={false}
+							htmlType="submit"
+							type="primary"
+							formAction="submit"
+							formTarget="category"
+							onClick={handleNextSlide}
+						>
+							<p className="mb-1">next step</p>{" "}
+							<img className="ms-2 w-6" src={next} alt="next icon" />
+						</Button>
+					</div>
 				</Form>
 			</Formik>
 		</div>

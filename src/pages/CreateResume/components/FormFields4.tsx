@@ -10,6 +10,7 @@ import useStore from "../../../zustand/store";
 import Languages from "./Languages";
 import "./styles.scss";
 import TextEditor from "./TextEditor";
+import prev from "assets/imgs/icons/prev.svg";
 
 export default function FormFields4({ handlePrevSlide }: any) {
 	const initialValues = {};
@@ -108,7 +109,19 @@ export default function FormFields4({ handlePrevSlide }: any) {
 											</Col>
 											<Col span={24} className="modal-footer">
 												<Button onClick={() => handleDeleteInterest()}>
-													Delete
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="16"
+														height="16"
+													>
+														<path
+															d="M2.2 2.9h11.6v11.7a.9.9 0 01-.9.9H3.1a.9.9 0 01-.9-.9V2.9h0zM15.5 2.9H.5M5 2.9V1.4a.9.9 0 01.9-.9h4.2a.9.9 0 01.9.9v1.5M5.5 4.8v7.5M8 4.8v7.5M10.5 4.8v7.5"
+															fill="none"
+															stroke="#b0bbd1"
+															strokeLinecap="round"
+															strokeMiterlimit="10"
+														></path>
+													</svg>
 												</Button>
 											</Col>
 										</Row>
@@ -134,7 +147,19 @@ export default function FormFields4({ handlePrevSlide }: any) {
 										<Languages />
 										<Col span={24} className="modal-footer">
 											<Button onClick={() => handleDeleteLanguages()}>
-												Delete
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="16"
+													height="16"
+												>
+													<path
+														d="M2.2 2.9h11.6v11.7a.9.9 0 01-.9.9H3.1a.9.9 0 01-.9-.9V2.9h0zM15.5 2.9H.5M5 2.9V1.4a.9.9 0 01.9-.9h4.2a.9.9 0 01.9.9v1.5M5.5 4.8v7.5M8 4.8v7.5M10.5 4.8v7.5"
+														fill="none"
+														stroke="#b0bbd1"
+														strokeLinecap="round"
+														strokeMiterlimit="10"
+													></path>
+												</svg>
 											</Button>
 										</Col>
 									</div>
@@ -143,7 +168,10 @@ export default function FormFields4({ handlePrevSlide }: any) {
 						{isArray(dataVolunteering) &&
 							dataVolunteering.map((_, idx) => {
 								return (
-									<div key={idx} className="rounded-md p-3 border-solid border-1">
+									<div
+										key={idx}
+										className="rounded-md p-3 border-solid border-1 mb-8"
+									>
 										<Row gutter={[16, 16]}>
 											<Col span={24}>
 												<Field
@@ -196,7 +224,19 @@ export default function FormFields4({ handlePrevSlide }: any) {
 											</Col>
 											<Col span={24} className="modal-footer">
 												<Button onClick={() => handleDeleteVolunteering()}>
-													Delete
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="16"
+														height="16"
+													>
+														<path
+															d="M2.2 2.9h11.6v11.7a.9.9 0 01-.9.9H3.1a.9.9 0 01-.9-.9V2.9h0zM15.5 2.9H.5M5 2.9V1.4a.9.9 0 01.9-.9h4.2a.9.9 0 01.9.9v1.5M5.5 4.8v7.5M8 4.8v7.5M10.5 4.8v7.5"
+															fill="none"
+															stroke="#b0bbd1"
+															strokeLinecap="round"
+															strokeMiterlimit="10"
+														></path>
+													</svg>
 												</Button>
 											</Col>
 										</Row>
@@ -206,7 +246,13 @@ export default function FormFields4({ handlePrevSlide }: any) {
 					</Form>
 				</Formik>
 			</div>
-			<Button onClick={handlePrevSlide}>prev</Button>
+			<Button
+				style={{ boxShadow: "0px 0px 15px rgba(0,0,0,.15)" }}
+				className="flex items-center rounded-full h-[40px] py-2 px-3"
+				onClick={handlePrevSlide}
+			>
+				<img className="w-6 me-1" src={prev} alt="prev icon " /> <span>ortga</span>
+			</Button>
 		</div>
 	);
 }

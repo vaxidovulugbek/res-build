@@ -100,7 +100,7 @@ const FormUI: React.FC = () => {
 						</div>
 					</div>
 					<div
-						className="lg:w-1/2 md:w-9/12 sm:w-full"
+						className="max-[1020px]:w-[700px] max-[760px]:hidden"
 						style={{ boxShadow: "0px 0px 7.41692px rgba(0,0,0,.15)" }}
 					>
 						<div>{componentToRender}</div>

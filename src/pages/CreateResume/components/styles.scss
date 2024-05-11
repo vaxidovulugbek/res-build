@@ -71,6 +71,20 @@
   @media screen and (max-width:480px) {
     &__form {
       padding: 10px 15px;
+      &-content {
+        padding: 0;
+        box-shadow: unset;
+      }
+    }
+    &__additional-list li {
+      flex-basis: calc(100% / 3);
+      margin: 10px 0;
+    }
+  }
+  @media screen and (max-width:430px) {
+    &__additional-list li {
+      flex-basis: calc(100% / 2);
+      margin: 0 0 8px 0;
     }
   }
 }
