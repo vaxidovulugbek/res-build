@@ -29,13 +29,14 @@ export interface AccordionProps {
 }
 
 export interface ModalProps {
-	isOpen: boolean;
+	isOpen?: boolean;
 	onClose: () => void;
 	width?: number;
 	title?: string;
 	children?: React.ReactNode;
 	className?: string;
 	placement?: any;
+	closable?: boolean;
 }
 
 export interface ModalResumesProps {

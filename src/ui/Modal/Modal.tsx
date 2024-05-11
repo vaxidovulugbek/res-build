@@ -7,6 +7,7 @@ export default function DrawerModal(props: ModalProps) {
 		isOpen,
 		onClose,
 		width = 100,
+		closable,
 		title = "",
 		children,
 		className = "",
@@ -20,6 +21,7 @@ export default function DrawerModal(props: ModalProps) {
 			open={isOpen}
 			onClose={onClose}
 			title={title}
+			closable={closable}
 			closeIcon={<CloseOutlined />}
 		>
 			{children}
