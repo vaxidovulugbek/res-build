@@ -28,7 +28,7 @@ const HowItWorks: React.FC = () => {
 			<div className="container">
 				<Title
 					weight="medium"
-					className="text-center title-color font-header section__title sm:mb-8 max-[660px]:mb-6 max-[480px]:mt-10 w-full inline-block"
+					className="text-center title-color font-header section__title sm:mb-8 max-[660px]:mb-6 max-[480px]:mt-0 w-full inline-block"
 					as="h2"
 					text={t("How_it_works")}
 				/>

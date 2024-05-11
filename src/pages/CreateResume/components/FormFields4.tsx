@@ -74,7 +74,6 @@ export default function FormFields4({ handlePrevSlide }: any) {
 					`${t("Languages")}`,
 					// "Certifications",
 					`${t("Volunteering")}`,
-					// "Accomplishments",
 				].map((item, index) => {
 					return (
 						<li key={index}>

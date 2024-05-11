@@ -37,7 +37,7 @@ const Language = () => {
 		<Menu>
 			<MenuButton as={Text} cursor="pointer">
 				<Button
-					className="flex items-center flex-row-reverse ms-5 capitalize header__only-desktop"
+					className="flex items-center flex-row-reverse ms-5 capitalize max-[480px]:m-0"
 					text={selectedOption}
 					size="lg"
 					children={<img className="me-1" src={lng} alt="" />}
@@ -60,7 +60,7 @@ const Language = () => {
 					})}
 					onClick={() => handleSelect("ru")}
 				>
-					ru
+					{t("ru")}
 				</MenuItem>
 			</MenuList>
 		</Menu>

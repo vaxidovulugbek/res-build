@@ -4,10 +4,14 @@ import { ReactNode } from "react";
 export interface SigninPageProps {
 	onClose: () => void;
 	onNext: () => void;
+	closeSecondModal: () => void;
+	isSecondModalOpen: any;
 }
 export interface LoginPageProps {
 	onClose: () => void;
 	onNext: () => void;
+	closeFirstModal: () => void;
+	isFirstModalOpen: any;
 }
 //
 

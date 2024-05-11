@@ -1,5 +1,6 @@
 {
   "uz":"уз",
+  "ru":"ру",
   "hero_title":"Онлайн-конструктор резюме с креативными шаблонами.",
   "Resume_Templates":"Шаблоны резюме",
   "Pricing": "Цены",
@@ -61,5 +62,9 @@
   "Level (optional)":"Уровень (необязательно)",
   "add more languages":"добавить больше языков",
   "Activity Name":"Название действия",
-  "Volunteering Address":"Адрес волонтерства"
+  "Volunteering Address":"Адрес волонтерства",
+  "home": "Главная страница",
+  "download resume": "скачать резюме",
+  "create resume": "создать резюме",
+  "Bizni Ijtimoiy Tarmoqlarda Kuzatib Boring":"Следуйте за нами в социальных сетях"
 }

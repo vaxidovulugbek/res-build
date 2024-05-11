@@ -1,5 +1,6 @@
 {
   "uz":"uz",
+  "ru":"ru",
   "hero_title":"Kreativ shablonlarga ega online Resume yaratuvchi platforma.",
   "Resume_Templates":"Rezyume shablonlari",
   "Pricing": "Narxlar",
@@ -61,5 +62,9 @@
   "Level (optional)":"Daraja (ixtiyoriy)",
   "add more languages":"ko'proq tillarni qo'shing",
   "Activity Name":"Faoliyat nomi",
-  "Volunteering Address":"Volonterlik manzili"
+  "Volunteering Address":"Volonterlik manzili",
+  "home": "asosiy sahifa",
+  "download resume": "rezyumeni yuklab olish",
+  "create resume": "rezyume yaratish",
+  "Bizni Ijtimoiy Tarmoqlarda Kuzatib Boring":"Bizni Ijtimoiy Tarmoqlarda Kuzatib Boring"
 }

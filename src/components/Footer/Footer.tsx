@@ -14,34 +14,35 @@ const Footer: React.FC = () => {
 		<footer className="footer mt-auto">
 			<div className="container">
 				<div className="flex justify-between flex-wrap">
-					<FooterList
-						title={t("products")}
-						className="lg:w-1/4 sx:w-1/4 2xl:w-1/4 md:w-1/4 sm:w-1/4 max-[480px]:w-1/2 items-center mt-12 inline-block"
-						fields={[
-							{
-								name: "Features",
-								url: "/",
-							},
-							{
-								name: `${t("Pricing")}`,
-								url: "/",
-							},
-							{
-								name: "Reviews",
-								url: "/",
-							},
-							{
-								name: "Updates",
-								url: "/",
-							},
-						]}
-					/>
-					<FooterList
+					<div className="flex w-full lg:w-1/2 sx:w-1/2 2xl:w-1/2 md:w-full sm:w-full justify-between">
+						<FooterList
+							title={t("products")}
+							className="lg:w-1/2 sx:w-1/2 2xl:w-1/2 md:w-1/2 sm:w-1/2 max-[480px]:w-1/2 items-center mt-12 inline-block"
+							fields={[
+								{
+									name: "Features",
+									url: "/",
+								},
+								{
+									name: `${t("Pricing")}`,
+									url: "/",
+								},
+								{
+									name: "Reviews",
+									url: "/",
+								},
+								{
+									name: "Updates",
+									url: "/",
+								},
+							]}
+						/>
+						{/* <FooterList
 						title="Company"
 						className="w-1/4 max-[480px]:w-1/2 mt-12 items-center inline-block"
 						fields={[
 							{
-								name: "Features",
+								name: "build resume",
 								url: "/",
 							},
 							{
@@ -49,43 +50,40 @@ const Footer: React.FC = () => {
 								url: "/",
 							},
 							{
-								name: "Reviews",
+								name: "Resume Examples",
 								url: "/",
 							},
 							{
-								name: "Updates",
+								name: "Privacy Policy",
 								url: "/",
 							},
 						]}
-					/>
-					<FooterList
-						title="support"
-						className="w-1/4 mt-12 items-center inline-block max-[480px]:hidden"
-						fields={[
-							{
-								name: "Features",
-								url: "/",
-							},
-							{
-								name: `${t("Pricing")}`,
-								url: "/",
-							},
-							{
-								name: "Reviews",
-								url: "/",
-							},
-							{
-								name: "Updates",
-								url: "/",
-							},
-						]}
-					/>
+					/> */}
+						<FooterList
+							title="support"
+							className="w-1/2 mt-12 items-center inline-block"
+							fields={[
+								{
+									name: "Help & Support",
+									url: "/",
+								},
+								{
+									name: "Contact Us",
+									url: "/",
+								},
+								{
+									name: "Forgot Password",
+									url: "/",
+								},
+							]}
+						/>
+					</div>
 					<div className="mt-12 lg:w-1/4 sx:w-1/4 2xl:w-1/4 md:w-1/2 sm:w-1/2">
 						<Title
 							className="mb-6 capitalize"
 							weight="medium"
 							as="h4"
-							text="Bizni ijtimoiy tarmoqlarda kuzatib boring"
+							text={t("Bizni Ijtimoiy Tarmoqlarda Kuzatib Boring")}
 						/>
 						<ul className="flex items-center">
 							<li className="">

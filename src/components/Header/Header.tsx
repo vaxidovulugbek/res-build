@@ -12,15 +12,7 @@ import AnimatedModal from "./Modal";
 import resumelogo from "assets/imgs/icons/resume-high-resolution-logo-transparent (1).png";
 import user from "assets/imgs/icons/user.png";
 
-import {
-	Modal,
-	ModalBody,
-	ModalCloseButton,
-	ModalContent,
-	ModalHeader,
-	ModalOverlay,
-	useDisclosure,
-} from "@chakra-ui/react";
+import { ModalOverlay, useDisclosure } from "@chakra-ui/react";
 import Language from "./Language";
 import { useTranslation } from "react-i18next";
 
@@ -76,7 +68,7 @@ const Header: React.FC = () => {
 								<div>
 									<Button
 										className="text-gray flex items-center flex-row-reverse ms-2"
-										text="Login"
+										text={t("Login_in_accaunt")}
 										// children={<GoLock className="me-2" />}
 										children={
 											<img className="w-5 me-1" src={user} alt="user" />
@@ -90,12 +82,23 @@ const Header: React.FC = () => {
 									link={RoutesPath?.resume}
 								/>
 							</div>
-							<Language />
+							<div className="header__only-desktop">
+								<Language />
+							</div>
 							{/* <Button
 								className="header__only-mobile"
 								children={'<CiMenuFries className="text-3xl" />'}
 							/> */}
-							<AnimatedModal />
+							<AnimatedModal
+								isFirstModalOpen={isFirstModalOpen}
+								closeSecondModal={closeSecondModal}
+								isSecondModalOpen={isSecondModalOpen}
+								closeFirstModal={closeFirstModal}
+								handleSecondModalClose={handleSecondModalClose}
+								handleFirstModalNext={handleFirstModalNext}
+								handleSecondModalNext={handleSecondModalNext}
+								openFirstModal={openFirstModal}
+							/>
 							{/* <div className="flex item-center ms-4">
 								{darkTheme ? (
 									<button onClick={() => setDarkTheme(!darkTheme)}>
@@ -112,28 +115,18 @@ const Header: React.FC = () => {
 				</div>
 			</header>
 
-			<Modal onClose={closeFirstModal} isOpen={isFirstModalOpen} isCentered>
-				{/* {overlay} */}
-				<ModalOverlay />
-				<ModalContent>
-					<ModalHeader fontSize="3xl">{t("Login_in_accaunt")}</ModalHeader>
-					<ModalCloseButton />
-					<ModalBody>
-						<LoginPage onClose={handleSecondModalClose} onNext={handleFirstModalNext} />
-					</ModalBody>
-				</ModalContent>
-			</Modal>
-
-			<Modal onClose={closeSecondModal} isOpen={isSecondModalOpen} isCentered>
-				<ModalOverlay />
-				<ModalContent>
-					<ModalHeader fontSize="3xl">{t("Registration")}</ModalHeader>
-					<ModalCloseButton />
-					<ModalBody>
-						<SigninPage onClose={closeFirstModal} onNext={handleSecondModalNext} />
-					</ModalBody>
-				</ModalContent>
-			</Modal>
+			<LoginPage
+				closeFirstModal={closeFirstModal}
+				isFirstModalOpen={isFirstModalOpen}
+				onClose={handleSecondModalClose}
+				onNext={handleFirstModalNext}
+			/>
+			<SigninPage
+				closeSecondModal={closeSecondModal}
+				isSecondModalOpen={isSecondModalOpen}
+				onClose={closeFirstModal}
+				onNext={handleSecondModalNext}
+			/>
 		</>
 	);
 };
