@@ -166,7 +166,7 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 										: null
 								}
 							>
-								<p className="mb-1">next step</p>{" "}
+								<p>next step</p>{" "}
 								<img className="ms-2 w-6" src={next} alt="next icon" />
 							</Button>
 						</Col>

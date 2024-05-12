@@ -12,6 +12,7 @@ import Languages from "./Languages";
 import "./styles.scss";
 import TextEditor from "./TextEditor";
 import prev from "assets/imgs/icons/prev.svg";
+import RoutesPath from "helpers/RoutesPath";
 
 export default function FormFields4({ handlePrevSlide }: any) {
 	const initialValues = {};
@@ -246,7 +247,7 @@ export default function FormFields4({ handlePrevSlide }: any) {
 					</Form>
 				</Formik>
 			</div>
-			<div className="flex items-center">
+			<div className="flex items-center mt-4">
 				<Button
 					style={{ boxShadow: "0px 0px 15px rgba(0,0,0,.15)" }}
 					className="flex items-center rounded-full h-[40px] py-2 px-3"
@@ -257,6 +258,13 @@ export default function FormFields4({ handlePrevSlide }: any) {
 				<div className="max-[660px]:block sm:hidden">
 					<DownloadResumeComponent />
 				</div>
+				<Button
+					style={{ boxShadow: "0px 0px 15px rgba(0,0,0,.15)" }}
+					className="flex items-center rounded-full h-[40px] py-2 px-3 max-[660px]:hidden sm:block ms-4 underline"
+					link={RoutesPath.downloadResume}
+				>
+					download resume
+				</Button>
 			</div>
 		</div>
 	);

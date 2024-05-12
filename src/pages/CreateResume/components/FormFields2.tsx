@@ -160,8 +160,7 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 							formTarget="category"
 							onClick={handleNextSlide}
 						>
-							<p className="mb-1">next step</p>{" "}
-							<img className="ms-2 w-6" src={next} alt="next icon" />
+							<p>next step</p> <img className="ms-2 w-6" src={next} alt="next icon" />
 						</Button>
 					</div>
 				</Form>
