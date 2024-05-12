@@ -1,5 +1,6 @@
 import { Col, Row } from "antd";
 import Fields from "components/Fields";
+import DownloadResumeComponent from "components/DownloadResumeComponent";
 import { Field, Form, Formik } from "formik";
 import { useWindowSize } from "hooks";
 import { isArray } from "lodash";
@@ -245,13 +246,18 @@ export default function FormFields4({ handlePrevSlide }: any) {
 					</Form>
 				</Formik>
 			</div>
-			<Button
-				style={{ boxShadow: "0px 0px 15px rgba(0,0,0,.15)" }}
-				className="flex items-center rounded-full h-[40px] py-2 px-3"
-				onClick={handlePrevSlide}
-			>
-				<img className="w-6 me-1" src={prev} alt="prev icon " /> <span>ortga</span>
-			</Button>
+			<div className="flex items-center">
+				<Button
+					style={{ boxShadow: "0px 0px 15px rgba(0,0,0,.15)" }}
+					className="flex items-center rounded-full h-[40px] py-2 px-3"
+					onClick={handlePrevSlide}
+				>
+					<img className="w-6 me-1" src={prev} alt="prev icon " /> <span>ortga</span>
+				</Button>
+				<div className="max-[660px]:block sm:hidden">
+					<DownloadResumeComponent />
+				</div>
+			</div>
 		</div>
 	);
 }

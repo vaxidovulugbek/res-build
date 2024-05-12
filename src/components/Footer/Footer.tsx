@@ -60,21 +60,21 @@ const Footer: React.FC = () => {
 						]}
 					/> */}
 						<FooterList
-							title="support"
+							title={t("Support")}
 							className="w-1/2 mt-12 items-center inline-block"
 							fields={[
 								{
-									name: "Help & Support",
+									name: `${t("Help & Support")}`,
 									url: "/",
 								},
 								{
-									name: "Contact Us",
+									name: `${t("Contact Us")}`,
 									url: "/",
 								},
-								{
-									name: "Forgot Password",
-									url: "/",
-								},
+								// {
+								// 	name: `${t("Contact Us")}`,
+								// 	url: "/",
+								// },
 							]}
 						/>
 					</div>

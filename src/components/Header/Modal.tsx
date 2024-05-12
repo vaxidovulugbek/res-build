@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import RoutesPath from "helpers/RoutesPath";
 import Language from "./Language";
 import user from "assets/imgs/icons/user.png";
+import menu from "assets/imgs/icons/menu.svg";
 import LoginPage from "components/RegisterPage/LoginPage";
 import SigninPage from "components/RegisterPage/SigninPage";
 import { useTranslation } from "react-i18next";
@@ -42,16 +43,21 @@ const AnimatedModal: React.FC<registerProps> = ({
 
 	return (
 		<>
-			<Button
+			{/* <Button
 				className="header__only-mobile"
+				onClick={showDrawer}
 				children={
-					<Space>
-						<Button type="primary" onClick={showDrawer}>
-							Open
-						</Button>
-					</Space>
+					<img className="w-6" src={menu} alt="menu" />
+					// <Space>
+					// 	<Button type="primary" onClick={showDrawer}>
+					// 		Open
+					// 	</Button>
+					// </Space>
 				}
-			/>
+			/> */}
+			<button className="header__only-mobile" onClick={showDrawer}>
+				<img className="w-8" src={menu} alt="menu" />
+			</button>
 			<div className="margin-top-100px">
 				<DrawerModal
 					title="Resume Builder"
@@ -63,20 +69,20 @@ const AnimatedModal: React.FC<registerProps> = ({
 					children={
 						<div className="flex flex-col justify-between h-full">
 							<div className="flex flex-col">
-								<Link className="text-md mb-3 capitalize" to={RoutesPath.home}>
+								<Link className="text-md mb-4 capitalize" to={RoutesPath.home}>
 									{t("home")}
 								</Link>
-								<Link
-									className="text-md mb-3 capitalize"
+								{/* <Link
+									className="text-md mb-4 capitalize"
 									to={RoutesPath.downloadResume}
 								>
 									{t("download resume")}
-								</Link>
-								<Link className="text-md mb-3 capitalize" to={RoutesPath.resume}>
+								</Link> */}
+								<Link className="text-md mb-4 capitalize" to={RoutesPath.resume}>
 									{t("Resume_Templates")}
 								</Link>
 								<Link
-									className="text-md mb-3 capitalize"
+									className="text-md mb-4 capitalize"
 									to={RoutesPath.createResume}
 								>
 									{t("create resume")}
@@ -85,7 +91,7 @@ const AnimatedModal: React.FC<registerProps> = ({
 							<div className="flex flex-col">
 								<Language />
 								<Button
-									className="text-gray flex items-center justify-center mt-3 capitalize"
+									className="text-gray flex items-center justify-center mt-4 capitalize"
 									onClick={openFirstModal}
 								>
 									<img className="w-5 me-1" src={user} alt="user" />{" "}

@@ -139,11 +139,14 @@
 import { useSelectorRedux } from "hooks";
 import React, { useRef } from "react";
 import ReactToPrint from "react-to-print";
+import { useTranslation } from "react-i18next";
+import { Button } from "ui";
 import { Res1, Res2, Res3, Res4, Res5, Res6 } from "./ResumeTamplates";
 
-const MyComponent: React.FC = () => {
+const DownloadResumeComponent: React.FC = () => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const { resumeTemplate } = useSelectorRedux();
+	const { t } = useTranslation();
 
 	const resumeComponents: { [key: number]: JSX.Element } = {
 		1: <Res1 />,
@@ -157,23 +160,32 @@ const MyComponent: React.FC = () => {
 	const componentToRender = resumeComponents[resumeTemplate] || <Res1 />;
 	return (
 		<div className="flex">
-			<div ref={contentRef}>
-				<div
-					className="p-4 shadow-4xl"
-					style={{
-						maxWidth: "700px",
-						boxShadow: "0px 0px 7.41692px rgba(0,0,0,.15)",
-					}}
-				>
-					{componentToRender}
+			<div className="max-[660px]:hidden">
+				<div ref={contentRef}>
+					<div
+						className="p-4 shadow-4xl"
+						style={{
+							maxWidth: "700px",
+							boxShadow: "0px 0px 7.41692px rgba(0,0,0,.15)",
+						}}
+					>
+						{componentToRender}
+					</div>
 				</div>
 			</div>
 			<ReactToPrint
-				trigger={() => <button className="flex ms-6">Download PDF</button>}
+				trigger={() => (
+					<Button
+						style={{ boxShadow: "0px 0px 15px rgba(0,0,0,.15)" }}
+						className="flex items-center rounded-full h-[40px] py-2 px-3 ms-6"
+					>
+						{t("Download PDF")}
+					</Button>
+				)}
 				content={() => contentRef.current}
 			/>
 		</div>
 	);
 };
 
-export default MyComponent;
+export default DownloadResumeComponent;
