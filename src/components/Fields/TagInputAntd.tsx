@@ -55,7 +55,7 @@ const TagInputAntd: React.FC<Chips> = ({ chips, description, className, form, fi
 	useEffect(() => {
 		form.setFieldValue(field.name, tags);
 		dispatch(ResInfo.setResumeSkills(form.values.chips));
-		console.log(tags);
+		// console.log(tags);
 	}, [tags, form.values]);
 
 	const forMap = (tag: string) => (

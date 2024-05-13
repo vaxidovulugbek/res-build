@@ -3,7 +3,7 @@ import cn from "classnames";
 import { Res1, Res2, Res3, Res4, Res5, Res6 } from "components/ResumeTamplates";
 import { useSelectorRedux } from "hooks";
 import { isArray } from "lodash";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 // import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { useSelector } from "react-redux";
@@ -24,6 +24,7 @@ const FormUI: React.FC = () => {
 	const [placement, setPlacement] = useState<DrawerProps["placement"]>("left");
 	const { resumeTemplate } = useSelectorRedux();
 	const { t } = useTranslation();
+	const [sliderHeight, setSliderHeight] = useState<number>(0);
 
 	const resumeComponents: { [key: number]: JSX.Element } = {
 		1: <Res1 />,
@@ -71,11 +72,28 @@ const FormUI: React.FC = () => {
 	};
 
 	const data = [
+		<FormFields4 handlePrevSlide={handlePrevSlide} />,
 		<FormFields handleNextSlide={handleNextSlide} />,
 		<FormFields2 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
 		<FormFields3 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
-		<FormFields4 handlePrevSlide={handlePrevSlide} />,
 	];
+
+	useEffect(() => {
+		const trackElement = document.querySelector(".slick-track");
+		if (!trackElement) return;
+
+		const slides = trackElement.querySelectorAll(".slick-slide");
+		if (!slides.length) return;
+
+		let maxHeight = 0;
+		slides.forEach((slide: Element) => {
+			// Element deb o'zgaruvchini HTMLElement ga o'zgartirdik
+			const slideHeight = (slide as HTMLElement).clientHeight; // HTMLElement deb type casting qilish
+			maxHeight = Math.max(maxHeight, slideHeight);
+		});
+
+		setSliderHeight(maxHeight);
+	}, []);
 
 	return (
 		<section>
@@ -90,12 +108,33 @@ const FormUI: React.FC = () => {
 								onClick={() => setModal({ open: "resumeTamplates" })}
 							/>
 						</div>
-						<div className="xl:mt-5 md:mt-3 sm:mt-2 min-[320px]:mt-2 editor__form">
-							<Slider {...settings} ref={sliderRef}>
+						<div
+							className="xl:mt-5 md:mt-3 sm:mt-2 min-[320px]:mt-2 editor__form"
+							style={{ height: sliderHeight }}
+						>
+							{/* <Slider {...settings} ref={sliderRef}>
 								{isArray(data) &&
 									data.map((component, index) => {
-										return <div key={index}>{component}</div>;
+										return (
+											<div className="inininin" key={index}>
+												{component}
+											</div>
+										);
 									})}
+							</Slider> */}
+							<Slider {...settings} ref={sliderRef}>
+								<FormFields4 key={1} handlePrevSlide={handlePrevSlide} />
+								<FormFields key={2} handleNextSlide={handleNextSlide} />
+								<FormFields2
+									key={3}
+									handlePrevSlide={handlePrevSlide}
+									handleNextSlide={handleNextSlide}
+								/>
+								<FormFields3
+									key={4}
+									handlePrevSlide={handlePrevSlide}
+									handleNextSlide={handleNextSlide}
+								/>
 							</Slider>
 						</div>
 					</div>
