@@ -56,13 +56,14 @@ const LoginPage: React.FC<LoginPageProps> = ({
 								text=""
 								children={
 									<span>
-										Уважаемый пользователь, если вы не зарегистрированы, нажмите
-										кнопку{" "}
+										{t(
+											"Уважаемый пользователь, если вы не зарегистрированы, нажмите кнопку"
+										)}{" "}
 										<Button
 											className="underline decoration-1 text-blue-600"
 											onClick={onNext}
 											type="button"
-											text="регистрации!"
+											text={t("регистрации!")}
 										/>
 									</span>
 								}
@@ -81,8 +82,8 @@ const LoginPage: React.FC<LoginPageProps> = ({
 										id="name"
 										name="name"
 										className="w-full"
-										placeholder="component input ssss"
-										label="Ism:"
+										placeholder={t("name")}
+										label={t("name")}
 										component={Fields.InputField}
 										// component={({ field, form, meta }: any) => (
 										// 	// <Input
@@ -116,22 +117,22 @@ const LoginPage: React.FC<LoginPageProps> = ({
 										id="email"
 										name="email"
 										className="w-full"
-										placeholder="email"
-										label="Email:"
+										placeholder={t("email_adress")}
+										label={t("email_adress")}
 										component={Fields.InputField}
 									/>
 								</div>
 								<Button
 									variant="primary"
-									className="w-full p-3 rounded-lg bg-primary text-white shadow-xl"
+									className="w-full p-3 rounded-lg bg-primary text-white shadow-xl capitalize"
 									type="submit"
-									text="Войти"
+									text={t("Войти")}
 								/>
 								<Button
 									className="w-full my-5"
 									onClick={onNext}
 									type="button"
-									text="У вас еще нет аккаунта?"
+									text={t("У вас еще нет аккаунта?")}
 								/>
 							</Form>
 						</Formik>

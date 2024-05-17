@@ -59,13 +59,14 @@ const SigninPage: React.FC<SigninPageProps> = ({
 								text=""
 								children={
 									<span>
-										Уважаемый пользователь, если вы зарегистрированы, нажмите
-										кнопку{" "}
+										{t(
+											"Уважаемый пользователь, если вы зарегистрированы, нажмите кнопку"
+										)}{" "}
 										<Button
-											className="underline decoration-1 text-blue-600"
+											className="underline decoration-1 text-blue-600 capitalize"
 											onClick={onNext}
 											type="button"
-											text="Вход !"
+											text={t("Вход !")}
 										/>
 									</span>
 								}
@@ -83,8 +84,8 @@ const SigninPage: React.FC<SigninPageProps> = ({
 										id="name"
 										name="name"
 										className="w-full"
-										placeholder="component input ssss"
-										label="Ism:"
+										placeholder={t("name")}
+										label={t("name")}
 										component={Fields.InputField}
 									/>
 								</div>
@@ -94,8 +95,8 @@ const SigninPage: React.FC<SigninPageProps> = ({
 										id="email"
 										name="email"
 										className="w-full"
-										placeholder="email"
-										label="Email:"
+										placeholder={t("email_adress")}
+										label={t("email_adress")}
 										component={Fields.InputField}
 									/>
 								</div>
@@ -105,16 +106,16 @@ const SigninPage: React.FC<SigninPageProps> = ({
 										id="email_code"
 										name="email_code"
 										className="w-full"
-										placeholder="email code"
-										label="Email-code:"
+										placeholder={t("email_code")}
+										label={t("email_code")}
 										component={Fields.InputField}
 									/>
 								</div>
 								<Button
 									variant="primary"
-									className="w-full p-3 rounded-lg bg-primary text-white"
+									className="w-full p-3 rounded-lg bg-primary text-white capitalize"
 									type="submit"
-									text="Войти"
+									text={t("Войти")}
 								/>
 								<div className="flex items-center my-4 justify-center">
 									<a href="#" className="me-2">

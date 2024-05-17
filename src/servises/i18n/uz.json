@@ -39,6 +39,7 @@
   "job_title": "lavozim",
   "phone":"telefon raqam",
   "email_adress": "Email manzili",
+  "email_code": "Email kod",
   "adress": "uy manzili",
   "add skills": "ko'nikmalarni qo'shing",
   "resume_about":"qo'shimcha",
@@ -70,5 +71,11 @@
   "Help & Support": "Yordam va qoʻllab-quvvatlash",
   "Contact Us":"Biz bilan bog'lanish",
   "Support":"Qo'llab-quvvatlash",
-  "Download PDF":"PDF yuklab olish"
+  "Download PDF":"PDF yuklab olish",
+  "Уважаемый пользователь, если вы не зарегистрированы, нажмите кнопку": "Hurmatli foydalanuvchi, agar ro'yxatdan o'tmagan bo'lsangiz, ro'yxatdan o'tish tugmasini bosing",
+  "Уважаемый пользователь, если вы зарегистрированы, нажмите кнопку": "Hurmatli foydalanuvchi, agar siz ro'yxatdan o'tgan bo'lsangiz, iltimos kirish tugmasini bosing",
+  "регистрации!":"ro'yxatdan o'tish!",
+  "Войти":"kirish",
+  "Вход !":"kirish !",
+  "У вас еще нет аккаунта?":"Sizda hali akkaunt yo'qmi?"
 }
