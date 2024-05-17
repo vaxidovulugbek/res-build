@@ -8,6 +8,7 @@ import globe from "assets/imgs/icons/globe.svg";
 import letter from "assets/imgs/icons/letter.svg";
 import phone from "assets/imgs/icons/phone.svg";
 import location from "assets/imgs/icons/location.svg";
+import { useLocation } from "react-router-dom";
 
 export const Res3: React.FC = () => {
 	const {
@@ -44,6 +45,8 @@ export const Res3: React.FC = () => {
 	const { getExperienceData, getEducationData } = useExperienceEducation();
 	const experience = getExperienceData();
 	const education = getEducationData();
+	const path = useLocation();
+	const pathName = path.pathname.split("/").at(-1);
 
 	const [filteredExperience, setFilteredExperience] = useState<
 		{
@@ -86,6 +89,7 @@ export const Res3: React.FC = () => {
 				className="p-10"
 				style={{
 					maxWidth: "700px",
+					minWidth: "700px",
 					minHeight: "800px",
 					boxShadow: "0px 0px 7.41692px rgba(0,0,0,.15)",
 				}}
@@ -95,11 +99,22 @@ export const Res3: React.FC = () => {
 					{resumeLastName ? resumeLastName : "carter"}
 				</h2>
 				<p className="text-base uppercase tracking-widest text-gray-500">
-					{resumeJobTitle ? resumeJobTitle : "managing director"}
+					{pathName === "download-resume"
+						? resumeJobTitle
+						: resumeJobTitle
+							? resumeJobTitle
+							: "managing director"}
 				</p>
 				<ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-500 my-2">
 					<li className="text-[12px]">
-						{resumePhone ? (
+						{pathName === "download-resume" ? (
+							resumePhone ? (
+								<p className="flex items-center">
+									<img className="me-2 w-3" src={phone} alt="phone icon" />{" "}
+									{resumePhone}
+								</p>
+							) : null
+						) : resumePhone ? (
 							<p className="flex items-center">
 								<img className="me-2 w-3" src={phone} alt="phone icon" />{" "}
 								{resumePhone}
@@ -112,7 +127,14 @@ export const Res3: React.FC = () => {
 						)}
 					</li>
 					<li className="text-[12px]">
-						{resumeEmail ? (
+						{pathName === "download-resume" ? (
+							resumeEmail ? (
+								<p className="flex items-center">
+									<img className="me-2 w-3" src={letter} alt="envelope icon" />
+									{resumeEmail}
+								</p>
+							) : null
+						) : resumeEmail ? (
 							<p className="flex items-center">
 								{" "}
 								<img className="me-2 w-3" src={letter} alt="envelope icon" />
@@ -126,7 +148,15 @@ export const Res3: React.FC = () => {
 						)}
 					</li>
 					<li className="text-[12px]">
-						{resumeAdress ? (
+						{pathName === "download-resume" ? (
+							resumeAdress ? (
+								<p>
+									{" "}
+									<img className="me-2 w-3" src={location} alt="location icon" />
+									{resumeAdress}
+								</p>
+							) : null
+						) : resumeAdress ? (
 							<p>
 								{" "}
 								<img className="me-2 w-3" src={location} alt="location icon" />
@@ -139,17 +169,18 @@ export const Res3: React.FC = () => {
 							</p>
 						)}
 					</li>
-					{/* {isArray(resumeSocialLinks) &&
-						resumeSocialLinks.map((item, index) => (
-							<li className="text-[12px]">
-								<span key={index} className="flex items-center">
+					{pathName === "download-resume" ? (
+						resumeSocialLinks ? (
+							resumeSocialLinks?.map((item: any, index: number) => (
+								<li key={index} className="flex items-center text-[12px]">
+									<img className="me-2 w-3" src={globe} alt="globe icon" />
 									{item?.value1
 										? `${item?.value1}: ${item?.value2}`
 										: item?.value2}
-								</span>
-							</li>
-						))} */}
-					{isArray(resumeSocialLinks) && resumeSocialLinks.length > 1 ? (
+								</li>
+							))
+						) : null
+					) : isArray(resumeSocialLinks) && resumeSocialLinks.length > 1 ? (
 						resumeSocialLinks.map((item, index) => (
 							<li key={index} className="flex items-center text-[12px]">
 								<img className="me-2 w-3" src={globe} alt="globe icon" />
@@ -168,9 +199,11 @@ export const Res3: React.FC = () => {
 						profile
 					</p>
 					<p className="w-full text-[12px] text-gray-500 tracking-wide">
-						{resumeAbout
+						{pathName === "download-resume"
 							? resumeAbout
-							: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, officiis.
+							: resumeAbout
+								? resumeAbout
+								: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, officiis.
 						Saepe, amet? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
 						molestiae quia sapiente itaque numquam nisi fuga voluptas et?`}
 					</p>
@@ -179,72 +212,122 @@ export const Res3: React.FC = () => {
 					<p className="text-base my-2 uppercase tracking-widest font-semibold">
 						experience
 					</p>
-					{isArray(filteredExperience) &&
-						filteredExperience.map((el, idx) => {
-							return (
-								<div key={idx}>
-									<p className="text-[14px] my-2 capitalize tracking-widest">
-										{el?.position ? el?.position : "job position"}
-									</p>
-									<div className="flex items-center justify-between">
-										<span className="text-[14px] text-gray-500 capitalize">
-											{el?.companyName ? el?.companyName : "Company name"}
-										</span>
-										<span className="text-[12px] text-gray-500">
-											{el?.startDate ? el?.startDate : "January 2016"}{" "}
-											<span> - </span> {el?.endDate ? el?.endDate : "2023"}
-										</span>
+					{pathName === "download-resume"
+						? isArray(filteredExperience) &&
+							filteredExperience.map((el, idx) => {
+								return (
+									<div key={idx}>
+										<p className="text-[14px] my-2 capitalize tracking-widest">
+											{el?.position}
+										</p>
+										<div className="flex items-center justify-between">
+											<span className="text-[14px] text-gray-500 capitalize">
+												{el?.companyName}
+											</span>
+											<span className="text-[12px] text-gray-500">
+												{el?.startDate} <span> - </span> {el?.endDate}
+											</span>
+										</div>
+										<p className="text-[12px] text-gray-500 mt-2">
+											{el?.experienceAbout
+												? parse(el?.experienceAbout)
+												: null}
+										</p>
 									</div>
-									<p className="text-[12px] text-gray-500 mt-2">
-										{el?.experienceAbout
-											? parse(el?.experienceAbout)
-											: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+								);
+							})
+						: isArray(filteredExperience) &&
+							filteredExperience.map((el, idx) => {
+								return (
+									<div key={idx}>
+										<p className="text-[14px] my-2 capitalize tracking-widest">
+											{el?.position ? el?.position : "job position"}
+										</p>
+										<div className="flex items-center justify-between">
+											<span className="text-[14px] text-gray-500 capitalize">
+												{el?.companyName ? el?.companyName : "Company name"}
+											</span>
+											<span className="text-[12px] text-gray-500">
+												{el?.startDate ? el?.startDate : "January 2016"}{" "}
+												<span> - </span>{" "}
+												{el?.endDate ? el?.endDate : "2023"}
+											</span>
+										</div>
+										<p className="text-[12px] text-gray-500 mt-2">
+											{el?.experienceAbout
+												? parse(el?.experienceAbout)
+												: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
 											Quis id a harum numquam ab praesentium aut iste nam. Lorem
 											ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet
 											consectetur adipisicing elit. Esse dolorem numquam hic
 											dolor, optio aspernatur quos omnis doloremque delectus.`}
-									</p>
-								</div>
-							);
-						})}
+										</p>
+									</div>
+								);
+							})}
 				</div>
 				<div className="w-full border-solid inline-block border-t-1 mt-6 border-gray-400">
 					<p className="text-[base] my-2 uppercase tracking-widest font-semibold">
 						education
 					</p>
-					{isArray(filteredEducation) &&
-						filteredEducation.map((item, idx) => {
-							return (
-								<div key={idx}>
-									<p className="text-[14px] my-2 capitalize tracking-widest">
-										{item?.position ? item?.position : "your degree"}{" "}
-									</p>
-									<div className="flex items-center justify-between">
-										<span className="text-[14px] text-gray-500 capitalize">
-											{item?.instructionName
-												? item?.instructionName
-												: "name of university"}
-										</span>
-										<span className="text-[12px] text-gray-500">
-											{item?.educationStartDate
-												? item?.educationStartDate
-												: "September 2007"}{" "}
-											<span> - </span>{" "}
-											{item?.educationEndDate
-												? item?.educationEndDate
-												: "May 2011"}
-										</span>
+					{pathName === "download-resume"
+						? isArray(filteredEducation) &&
+							filteredEducation.map((item, idx) => {
+								return (
+									<div key={idx}>
+										<p className="text-[14px] my-2 capitalize tracking-widest">
+											{item?.position}{" "}
+										</p>
+										<div className="flex items-center justify-between">
+											<span className="text-[14px] text-gray-500 capitalize">
+												{item?.instructionName}
+											</span>
+											<span className="text-[12px] text-gray-500">
+												{item?.educationStartDate} <span> - </span>{" "}
+												{item?.educationEndDate}
+											</span>
+										</div>
+										<p className="text-[12px] text-gray-500 mt-2">
+											{item?.educationAbout
+												? parse(item?.educationAbout)
+												: null}
+										</p>
 									</div>
-									<p className="text-[12px] text-gray-500 mt-2">
-										{item?.educationAbout
-											? parse(item?.educationAbout)
-											: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+								);
+							})
+						: isArray(filteredEducation) &&
+							filteredEducation.map((item, idx) => {
+								return (
+									<div key={idx}>
+										<p className="text-[14px] my-2 capitalize tracking-widest">
+											{item?.position ? item?.position : "your degree"}{" "}
+										</p>
+										<div className="flex items-center justify-between">
+											<span className="text-[14px] text-gray-500 capitalize">
+												{item?.instructionName
+													? item?.instructionName
+													: "name of university"}
+											</span>
+											<span className="text-[12px] text-gray-500">
+												{item?.educationStartDate
+													? item?.educationStartDate
+													: "September 2007"}{" "}
+												<span> - </span>{" "}
+												{item?.educationEndDate
+													? item?.educationEndDate
+													: "May 2011"}
+											</span>
+										</div>
+										<p className="text-[12px] text-gray-500 mt-2">
+											{item?.educationAbout
+												? parse(item?.educationAbout)
+												: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
 											Quis id a harum numquam ab praesentium aut iste nam. Lorem
 											ipsum dolor sit amet consectetur.`}
-									</p>
-								</div>
-							);
-						})}
+										</p>
+									</div>
+								);
+							})}
 				</div>
 				{dataVolunteering.length > 0 && (
 					<div className="w-full border-solid inline-block border-t-1 mt-6 border-gray-400">
@@ -253,31 +336,45 @@ export const Res3: React.FC = () => {
 						</p>
 						<div>
 							<p className="text-[14px] my-2 capitalize tracking-widest">
-								{resumeVolunteeringActivityName
+								{pathName === "download-resume"
 									? resumeVolunteeringActivityName
-									: "WRITE YOUR Volunteering Activity Name HERE"}
+									: resumeVolunteeringActivityName
+										? resumeVolunteeringActivityName
+										: "WRITE YOUR Volunteering Activity Name HERE"}
 							</p>
 							<div className="flex items-center justify-between">
 								<span className="text-[14px] text-gray-500 capitalize">
-									{resumeVolunteeringAddress
+									{pathName === "download-resume"
 										? resumeVolunteeringAddress
-										: "Volunteering Address"}
+										: resumeVolunteeringAddress
+											? resumeVolunteeringAddress
+											: "Volunteering Address"}
 								</span>
 								<span className="text-[12px] text-gray-500">
-									{resumeVolunteeringStartDate
+									{pathName === "download-resume"
 										? resumeVolunteeringStartDate
-										: "January 2016"}{" "}
+										: resumeVolunteeringStartDate
+											? resumeVolunteeringStartDate
+											: "January 2016"}{" "}
 									<span> - </span>{" "}
 									{resumeVolunteeringEndDate ? resumeVolunteeringEndDate : "2023"}
 								</span>
 							</div>
-							<p className="text-[12px] text-gray-500 mt-2">
-								{resumeVolunteeringAbout
-									? parse(resumeVolunteeringAbout)
-									: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+							{pathName === "download-resume" ? (
+								<p className="text-[12px] text-gray-500 mt-2">
+									{resumeVolunteeringAbout
+										? parse(resumeVolunteeringAbout)
+										: null}
+								</p>
+							) : (
+								<p className="text-[12px] text-gray-500 mt-2">
+									{resumeVolunteeringAbout
+										? parse(resumeVolunteeringAbout)
+										: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
 											Quis id a harum numquam ab praesentium aut iste nam. Lorem
 											ipsum dolor sit amet consectetur.`}
-							</p>
+								</p>
+							)}
 						</div>
 					</div>
 				)}
@@ -287,40 +384,57 @@ export const Res3: React.FC = () => {
 							<p className="text-[base] my-2 uppercase tracking-widest font-semibold">
 								languages
 							</p>
-							<ul>
-								{resumeLanguages?.length > 0
-									? resumeLanguages?.map((el: any, index: number) => {
-											return (
-												<li
-													className="text-[12px] text-gray-500 mt-1 capitalize"
-													key={index}
-												>
-													{el?.value1
-														? `${el?.value1}: ${el?.value2}`
-														: el?.value2}
-												</li>
-											);
-										})
-									: ["English: Beginner", "Uzbek: Native", "Russian: B1"].map(
-											(el, index) => {
+							{pathName === "download-resume" ? (
+								<ul>
+									{resumeLanguages?.map((el: any, index: number) => {
+										return (
+											<li
+												className="text-[12px] text-gray-500 mt-1 capitalize"
+												key={index}
+											>
+												{el?.value1
+													? `${el?.value1}: ${el?.value2}`
+													: el?.value2}
+											</li>
+										);
+									})}
+								</ul>
+							) : (
+								<ul>
+									{resumeLanguages?.length > 0
+										? resumeLanguages?.map((el: any, index: number) => {
 												return (
 													<li
 														className="text-[12px] text-gray-500 mt-1 capitalize"
 														key={index}
 													>
-														{el}
+														{el?.value1
+															? `${el?.value1}: ${el?.value2}`
+															: el?.value2}
 													</li>
 												);
-											}
-										)}
-							</ul>
+											})
+										: ["English: Beginner", "Uzbek: Native", "Russian: B1"].map(
+												(el, index) => {
+													return (
+														<li
+															className="text-[12px] text-gray-500 mt-1 capitalize"
+															key={index}
+														>
+															{el}
+														</li>
+													);
+												}
+											)}
+								</ul>
+							)}
 						</div>
 						<div className="w-1/2 ps-1">
 							<p className="text-[base] my-2 uppercase tracking-widest font-semibold">
 								skills
 							</p>
 							<ul className="flex flex-wrap ">
-								{resumeSkills?.length > 0
+								{pathName === "download-resume"
 									? resumeSkills?.map((el: any, index: number) => {
 											return (
 												<li
@@ -331,22 +445,33 @@ export const Res3: React.FC = () => {
 												</li>
 											);
 										})
-									: [
-											"Communication",
-											"Leadership",
-											"Decision-making",
-											"Strategy",
-											"Management",
-										].map((el, index) => {
-											return (
-												<li
-													className="text-[12px] text-gray-500 mt-2 me-4 capitalize"
-													key={index}
-												>
-													{el}
-												</li>
-											);
-										})}
+									: resumeSkills?.length > 0
+										? resumeSkills?.map((el: any, index: number) => {
+												return (
+													<li
+														className="text-[12px] text-gray-500 mt-2 me-4 capitalize"
+														key={index}
+													>
+														{el}
+													</li>
+												);
+											})
+										: [
+												"Communication",
+												"Leadership",
+												"Decision-making",
+												"Strategy",
+												"Management",
+											].map((el, index) => {
+												return (
+													<li
+														className="text-[12px] text-gray-500 mt-2 me-4 capitalize"
+														key={index}
+													>
+														{el}
+													</li>
+												);
+											})}
 							</ul>
 						</div>
 					</div>

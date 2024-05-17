@@ -31,7 +31,6 @@ const ModalResumes: React.FC<ModalResumesProps> = ({ modal, setModal, placement 
 		>
 			<div className="flex flex-wrap">
 				{[1, 2, 3, 4, 5, 6].map((num) => (
-					// console.log(num);
 					<div className="w-full sm:w-1/2 p-2" key={num}>
 						<Button
 							onClick={() => handleButtonClick(num)}
@@ -44,7 +43,6 @@ const ModalResumes: React.FC<ModalResumesProps> = ({ modal, setModal, placement 
 					</div>
 				))}
 			</div>
-			{/* <Button link="/download-resume">downloadResume</Button> */}
 		</DrawerModal>
 	);
 };

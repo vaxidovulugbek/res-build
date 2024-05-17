@@ -165,7 +165,7 @@ const DownloadResumeComponent: React.FC = () => {
 					<div
 						className="p-4 shadow-4xl"
 						style={{
-							maxWidth: "700px",
+							maxWidth: "780px",
 							boxShadow: "0px 0px 7.41692px rgba(0,0,0,.15)",
 						}}
 					>

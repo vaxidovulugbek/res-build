@@ -14,6 +14,8 @@ import { Title, Text } from "ui";
 // import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { useTranslation } from "react-i18next";
 import next from "assets/imgs/icons/next.svg";
+import RoutesPath from "helpers/RoutesPath";
+import { Link } from "react-router-dom";
 
 export default function FormFields({ handleNextSlide }: { handleNextSlide: any }) {
 	const width = useWindowSize();
@@ -169,6 +171,8 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 								<p>next step</p>{" "}
 								<img className="ms-2 w-6" src={next} alt="next icon" />
 							</Button>
+
+							<Link to={RoutesPath.downloadResume}>download resume</Link>
 						</Col>
 					</Row>
 				</Form>

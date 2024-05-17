@@ -64,7 +64,7 @@ interface MyStore {
 }
 
 const initialState: MyStore = {
-	resumeTemplate: null, // Masalan, boshlang'ich template ID
+	resumeTemplate: 1, // Masalan, boshlang'ich template ID
 	resumeName: null,
 	resumeLastName: null,
 	resumeEmail: null,

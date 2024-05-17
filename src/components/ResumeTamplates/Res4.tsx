@@ -6,6 +6,7 @@ import cn from "classnames";
 import parse from "html-react-parser";
 import "./style.scss";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 export const Res4: React.FC = () => {
 	const {
@@ -42,6 +43,8 @@ export const Res4: React.FC = () => {
 	const { getExperienceData, getEducationData } = useExperienceEducation();
 	const experience = getExperienceData();
 	const education = getEducationData();
+	const path = useLocation();
+	const pathName = path.pathname.split("/").at(-1);
 
 	const [filteredExperience, setFilteredExperience] = useState<
 		{
@@ -80,11 +83,18 @@ export const Res4: React.FC = () => {
 	}, [idEducation, dispatch, resumeEducationPosition]);
 	return (
 		<>
-			{" "}
-			<div className="bg-white mx-auto p-8" style={{ maxWidth: "700px", minHeight: "800px" }}>
+			<div
+				className="bg-white mx-auto p-8"
+				style={{
+					minWidth: "700px",
+					maxWidth: "700px",
+					minHeight: "800px",
+					boxShadow: "0px 0px 7.41692px rgba(0,0,0,.15)",
+				}}
+			>
 				<div
-					className="bg-amber-500 mx-auto py-4 px-10 flex justify-between items-center mb-6"
-					style={{ maxWidth: "700px", borderRadius: "50px 0 0 50px" }}
+					className="bg-amber-500 mx-auto py-4 px-10 flex justify-between items-center mb-6 w-full"
+					style={{ borderRadius: "50px 0 0 50px" }}
 				>
 					<div>
 						<h1 className="text-2xl font-bold text-white capitalize">
@@ -92,17 +102,33 @@ export const Res4: React.FC = () => {
 							{resumeLastName ? resumeLastName : "Candidate"}
 						</h1>
 						<p className="text-white capitalize">
-							{resumeJobTitle ? resumeJobTitle : "Human Resource Manager"}
+							{pathName === "download-resume"
+								? resumeJobTitle
+								: resumeJobTitle
+									? resumeJobTitle
+									: "Human Resource Manager"}
 						</p>
 					</div>
 					<div className="text-right">
 						<p className="text-white text-sm capitalize">
-							{resumeAdress ? resumeAdress : "4759 Sunnydale Lane"}
+							{pathName === "download-resume"
+								? resumeAdress
+								: resumeAdress
+									? resumeAdress
+									: "4759 Sunnydale Lane"}
 						</p>
-						<p className="text-white text-sm">
-							{resumePhone ? resumePhone : "(90) 123-4567"} <span> | </span>
-							{resumeEmail ? resumeEmail : "email@youremail.com"}
-						</p>
+						{pathName === "download-resume" ? (
+							<p className="text-white text-sm">
+								{resumePhone} {resumePhone ? <span> | </span> : null}
+								{resumeEmail}
+							</p>
+						) : (
+							<p className="text-white text-sm">
+								{resumePhone ? resumePhone : "(90) 123-4567"} <span> | </span>
+								{resumeEmail ? resumeEmail : "email@youremail.com"}
+							</p>
+						)}
+
 						<p className="text-white text-sm flex flex-wrap text-right justify-end w-full">
 							{isArray(resumeSocialLinks) &&
 								resumeSocialLinks.map((item, index) => (
@@ -118,9 +144,11 @@ export const Res4: React.FC = () => {
 				<div>
 					<h2 className="text-[16px] font-bold mb-2 capitalize">Professional Summary</h2>
 					<p className="text-gray-700 font-bold text-[14px]">
-						{resumeAbout
+						{pathName === "download-resume"
 							? resumeAbout
-							: `Human resources generalist with 8 years of experience in HR, including
+							: resumeAbout
+								? resumeAbout
+								: `Human resources generalist with 8 years of experience in HR, including
 						hiring and terminating, disciplining employees and helping department
 						managers improve employee performance. Worked with labor unions to negotiate
 						compensation packages for workers. Organized new hire training to ensure
@@ -135,76 +163,68 @@ export const Res4: React.FC = () => {
 						</h2>
 						<div className="flex-1 h-1 bg-amber-500"></div>
 					</div>
-					{isArray(filteredExperience) &&
-						filteredExperience.map((el, idx) => {
-							return (
-								<div className="mb-4">
-									<div
-										className="bg-white mx-auto flex justify-between items-center mt-2"
-										style={{ maxWidth: "700px" }}
-									>
-										<div>
-											<h3 className="text-[16px] font-bold text-gray-800 capitalize">
-												{el?.position
-													? el?.position
-													: "Your Instruction Name"}
-											</h3>
-											<h3 className="text-[14px] text-gray-800 font-bold capitalize">
-												{el?.companyName ? el?.companyName : "Company name"}
-											</h3>
+					{pathName === "download-resume"
+						? isArray(filteredExperience) &&
+							filteredExperience.map((el, idx) => {
+								return (
+									<div className="mb-4">
+										<div
+											className="bg-white mx-auto flex justify-between items-center mt-2"
+											style={{ maxWidth: "700px" }}
+										>
+											<div>
+												<h3 className="text-[16px] font-bold text-gray-800 capitalize">
+													{el?.position}
+												</h3>
+												<h3 className="text-[14px] text-gray-800 font-bold capitalize">
+													{el?.companyName}
+												</h3>
+											</div>
+											<span className="text-[14px] text-gray-600">
+												{el?.startDate} <span> </span> {el?.endDate}
+											</span>
 										</div>
-										<span className="text-[14px] text-gray-600">
-											{el?.startDate ? el?.startDate : "January 2016"}{" "}
-											<span> </span> {el?.endDate ? el?.endDate : "2023"}
-										</span>
+										<div className="text-xs text-gray-700 mt-1">
+											{el?.experienceAbout
+												? parse(el?.experienceAbout)
+												: null}
+										</div>
 									</div>
-									<div className="text-xs text-gray-700 mt-1">
-										{el?.experienceAbout
-											? parse(el?.experienceAbout)
-											: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."}
+								);
+							})
+						: isArray(filteredExperience) &&
+							filteredExperience.map((el, idx) => {
+								return (
+									<div className="mb-4">
+										<div
+											className="bg-white mx-auto flex justify-between items-center mt-2"
+											style={{ maxWidth: "700px" }}
+										>
+											<div>
+												<h3 className="text-[16px] font-bold text-gray-800 capitalize">
+													{el?.position
+														? el?.position
+														: "Your Instruction Name"}
+												</h3>
+												<h3 className="text-[14px] text-gray-800 font-bold capitalize">
+													{el?.companyName
+														? el?.companyName
+														: "Company name"}
+												</h3>
+											</div>
+											<span className="text-[14px] text-gray-600">
+												{el?.startDate ? el?.startDate : "January 2016"}{" "}
+												<span> </span> {el?.endDate ? el?.endDate : "2023"}
+											</span>
+										</div>
+										<div className="text-xs text-gray-700 mt-1">
+											{el?.experienceAbout
+												? parse(el?.experienceAbout)
+												: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."}
+										</div>
 									</div>
-									{/* <ul className="list-disc list-inside text-[13px] text-gray-700 mt-1">
-										<li className="custom-bullet">
-											Implement effective company policies to ensure that all
-											practices comply with labor and employment regulations
-										</li>
-										<li className="custom-bullet">
-											Increased employee retention rates by managing workplace
-											satisfaction to an over 90% success rate by creating and
-											maintaining a positive work environment
-										</li>
-										<li className="custom-bullet">
-											Develop targeted outreach practices to increase minority
-											recruitment and ensure compliance with affirmative
-											action policies
-										</li>
-										<li className="custom-bullet">
-											Monitor scheduled in and out times as well as employee
-											breaks to ensure that proper employment laws are met
-										</li>
-									</ul> */}
-								</div>
-								// <div key={idx} className="mb-4">
-								// 	<p className="font-semibold text-sm capitalize">
-								// 		{el?.position ? el?.position : "Your Instruction Name"}
-								// 	</p>
-								// 	<p className="flex justify-between py-3">
-								// 		<span className="text-xs capitalize">
-								// 			{el?.companyName ? el?.companyName : "Company name"}
-								// 		</span>
-								// 		<span className="text-xs">
-								// 			{el?.startDate ? el?.startDate : "2020"} <span> </span>{" "}
-								// 			{el?.endDate ? el?.endDate : "2023"}
-								// 		</span>
-								// 	</p>
-								// <div className="text-xs">
-								// 	{el?.experienceAbout
-								// 		? parse(el?.experienceAbout)
-								// 		: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."}
-								// </div>
-								// </div>
-							);
-						})}
+								);
+							})}
 				</div>
 				<div className="mt-6">
 					<div className="flex items-center">
@@ -213,46 +233,78 @@ export const Res4: React.FC = () => {
 						</h2>
 						<div className="flex-1 h-1 bg-amber-500"></div>
 					</div>
-					{isArray(filteredEducation) &&
-						filteredEducation.map((item, index) => {
-							return (
-								<div
-									className={cn("flex flex-col gap-3", {
-										"pt-10": index > 0,
-									})}
-									key={index}
-								>
-									<div className="text-gray-700 text-[14px] mt-2">
-										<div className="flex justify-between">
-											<h3 className="text-[16px] font-bold text-gray-800">
-												{item?.position
-													? item?.position
-													: "Masters in Human Resources"}{" "}
-											</h3>
-											<div className="flex items-center">
-												{item?.educationStartDate
-													? item?.educationStartDate
-													: "September 2007"}{" "}
-												-{" "}
-												{item?.educationEndDate
-													? item?.educationEndDate
-													: "May 2011"}
+					{pathName === "download-resume"
+						? isArray(filteredEducation) &&
+							filteredEducation.map((item, index) => {
+								return (
+									<div
+										className={cn("flex flex-col gap-3", {
+											"pt-10": index > 0,
+										})}
+										key={index}
+									>
+										<div className="text-gray-700 text-[14px] mt-2">
+											<div className="flex justify-between">
+												<h3 className="text-[16px] font-bold text-gray-800">
+													{item?.position}{" "}
+												</h3>
+												<div className="flex items-center">
+													{item?.educationStartDate} -{" "}
+													{item?.educationEndDate}
+												</div>
 											</div>
+											<span className="text-[16px] font-bold text-gray-800">
+												{item?.instructionName}
+											</span>
 										</div>
-										<span className="text-[16px] font-bold text-gray-800">
-											{item?.instructionName
-												? item?.instructionName
-												: "The University of Texas, Dallas"}
-										</span>
+										<p className="text-gray-700 text-[13px]">
+											{item?.educationAbout
+												? parse(item?.educationAbout)
+												: null}
+										</p>
 									</div>
-									<p className="text-gray-700 text-[13px]">
-										{item?.educationAbout
-											? parse(item?.educationAbout)
-											: "Lorem ipsum dolor sit amet consectetur, adipisicing elit."}
-									</p>
-								</div>
-							);
-						})}
+								);
+							})
+						: isArray(filteredEducation) &&
+							filteredEducation.map((item, index) => {
+								return (
+									<div
+										className={cn("flex flex-col gap-3", {
+											"pt-10": index > 0,
+										})}
+										key={index}
+									>
+										<div className="text-gray-700 text-[14px] mt-2">
+											<div className="flex justify-between">
+												<h3 className="text-[16px] font-bold text-gray-800">
+													{item?.position
+														? item?.position
+														: "Masters in Human Resources"}{" "}
+												</h3>
+												<div className="flex items-center">
+													{item?.educationStartDate
+														? item?.educationStartDate
+														: "September 2007"}{" "}
+													-{" "}
+													{item?.educationEndDate
+														? item?.educationEndDate
+														: "May 2011"}
+												</div>
+											</div>
+											<span className="text-[16px] font-bold text-gray-800">
+												{item?.instructionName
+													? item?.instructionName
+													: "The University of Texas, Dallas"}
+											</span>
+										</div>
+										<p className="text-gray-700 text-[13px]">
+											{item?.educationAbout
+												? parse(item?.educationAbout)
+												: "Lorem ipsum dolor sit amet consectetur, adipisicing elit."}
+										</p>
+									</div>
+								);
+							})}
 				</div>
 				<div className="mt-6">
 					<div className="flex items-center">
@@ -262,7 +314,7 @@ export const Res4: React.FC = () => {
 						<div className="flex-1 h-1 bg-amber-500"></div>
 					</div>
 					<ul className="list-disc list-inside text-gray-700 text-[13px] mt-2">
-						{resumeSkills?.length > 0
+						{/* {resumeSkills?.length > 0
 							? resumeSkills?.map((el: any, index: number) => {
 									return (
 										<li className="custom-bullet" key={index}>
@@ -281,7 +333,35 @@ export const Res4: React.FC = () => {
 											{el}
 										</li>
 									);
-								})}
+								})} */}
+						{pathName === "download-resume"
+							? resumeSkills?.map((el: any, index: number) => {
+									return (
+										<li className="custom-bullet capitalize" key={index}>
+											{el}
+										</li>
+									);
+								})
+							: resumeSkills?.length > 0
+								? resumeSkills?.map((el: any, index: number) => {
+										return (
+											<li className="custom-bullet capitalize" key={index}>
+												{el}
+											</li>
+										);
+									})
+								: [
+										"Detail oriented",
+										"Well-versed in Texas employment law",
+										"Excellent written and oral communication skills",
+										"Develops positive workplace relationships",
+									].map((el, index) => {
+										return (
+											<li className="custom-bullet capitalize" key={index}>
+												{el}
+											</li>
+										);
+									})}
 					</ul>
 				</div>
 				<div className="mt-6">
@@ -292,7 +372,7 @@ export const Res4: React.FC = () => {
 						<div className="flex-1 h-1 bg-amber-500"></div>
 					</div>
 					<ul className="list-disc list-inside text-gray-700 text-[13px] mt-2">
-						{resumeLanguages?.length > 0
+						{/* {resumeLanguages?.length > 0
 							? resumeLanguages?.map((el: any, index: number) => {
 									return (
 										<li className="custom-bullet" key={index}>
@@ -310,7 +390,34 @@ export const Res4: React.FC = () => {
 											</li>
 										);
 									}
-								)}
+								)} */}
+						{pathName === "download-resume"
+							? isArray(resumeLanguages) &&
+								resumeLanguages.map((el, index) => (
+									<li className="custom-bullet capitalize" key={index}>
+										{el?.value1 ? `${el?.value1}: ${el?.value2}` : el?.value2}
+									</li>
+								))
+							: isArray(resumeLanguages)
+								? resumeLanguages.map((el, index) => (
+										<li className="custom-bullet capitalize" key={index}>
+											{el?.value1
+												? `${el?.value1}: ${el?.value2}`
+												: el?.value2}
+										</li>
+									))
+								: ["English: Beginner", "Uzbek: Native", "Russian: B1"].map(
+										(el, index) => {
+											return (
+												<li
+													className="custom-bullet capitalize"
+													key={index}
+												>
+													{el}
+												</li>
+											);
+										}
+									)}
 					</ul>
 				</div>
 				{dataVolunteering.length > 0 && (
