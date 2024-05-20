@@ -112,7 +112,7 @@ const FormUI: React.FC = () => {
 							className="xl:mt-5 md:mt-3 sm:mt-2 min-[320px]:mt-2 editor__form"
 							style={{ height: sliderHeight }}
 						>
-							{/* <Slider {...settings} ref={sliderRef}>
+							<Slider {...settings} ref={sliderRef}>
 								{isArray(data) &&
 									data.map((component, index) => {
 										return (
@@ -121,20 +121,6 @@ const FormUI: React.FC = () => {
 											</div>
 										);
 									})}
-							</Slider> */}
-							<Slider {...settings} ref={sliderRef}>
-								<FormFields key={2} handleNextSlide={handleNextSlide} />
-								<FormFields4 key={1} handlePrevSlide={handlePrevSlide} />
-								<FormFields2
-									key={3}
-									handlePrevSlide={handlePrevSlide}
-									handleNextSlide={handleNextSlide}
-								/>
-								<FormFields3
-									key={4}
-									handlePrevSlide={handlePrevSlide}
-									handleNextSlide={handleNextSlide}
-								/>
 							</Slider>
 						</div>
 					</div>

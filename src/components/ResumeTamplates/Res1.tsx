@@ -317,13 +317,6 @@ export const Res1: React.FC = () => {
 										</div>
 									);
 								})}
-
-						{/* <div className="flex flex-col gap-3">
-							<p className="font-semibold">Your Degree Name</p>
-							<p className="font-semibold text-sm">Your Instruction Name</p>
-							<p>2016-2018</p>
-							<p>Lorem ipsum dolor sit amet adipisicing elit.</p>
-						</div> */}
 						<div className="border-dashed border-[1px] border-gray-400 rounded-full my-6" />
 						<h3 className="uppercase text-gray-600 tracking-[0.25em] text-base font-semibold pb-3">
 							languages
@@ -432,7 +425,7 @@ export const Res1: React.FC = () => {
 									})}
 						</div>
 						{dataInterests.length > 0 && (
-							<div>
+							<div className="mb-4">
 								<h3 className="uppercase tracking-[0.25em] text-base font-semibold pb-3">
 									interests
 								</h3>
@@ -442,7 +435,7 @@ export const Res1: React.FC = () => {
 							</div>
 						)}
 						{dataVolunteering.length > 0 && (
-							<div>
+							<div className="mb-4">
 								<h3 className="uppercase tracking-[0.25em] text-base font-semibold">
 									Volunteering
 								</h3>

@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import res1 from "assets/imgs/resume_templates/res1.png";
+import res1 from "assets/imgs/resume_templates/res1.jpg";
+import res3 from "assets/imgs/resume_templates/res3.jpg";
+import res5 from "assets/imgs/resume_templates/res5.jpg";
+import res4 from "assets/imgs/resume_templates/res4.jpg";
+import res2 from "assets/imgs/resume_templates/res2.jpg";
+import res6 from "assets/imgs/resume_templates/res6.jpg";
 import { Button } from "ui/Button/Button";
 import RoutesPath from "helpers/RoutesPath";
 import cn from "classnames";
@@ -9,11 +14,11 @@ import { useTranslation } from "react-i18next";
 const FilteredCards: React.FC = () => {
 	const { t } = useTranslation();
 	const initialCards: Card[] = [
-		{ id: 1, title: "Card 1", category: `${t("All")}`, img: res1 },
-		{ id: 2, title: "Card 2", category: `${t("about")}`, img: res1 },
-		{ id: 3, title: "Card 3", category: `${t("Recommend")}`, img: res1 },
-		{ id: 4, title: "Card 3wefwe", category: `${t("Recommend")}`, img: res1 },
-		{ id: 5, title: "Card 3wkjenrkwejrnw", category: `${t("Recommend")}`, img: res1 },
+		{ id: 1, title: "Card 1", category: `${t("All")}`, img: res3 },
+		{ id: 2, title: "Card 2", category: `${t("about")}`, img: res5 },
+		{ id: 3, title: "Card 3", category: `${t("Recommend")}`, img: res4 },
+		{ id: 4, title: "Card 3wefwe", category: `${t("Recommend")}`, img: res2 },
+		{ id: 5, title: "Card 3wkjenrkwejrnw", category: `${t("Recommend")}`, img: res6 },
 		{ id: 6, title: "Card 4", category: `${t("about")}`, img: res1 },
 		// Boshqa cardlar...
 	];
