@@ -30,7 +30,7 @@ const ModalResumes: React.FC<ModalResumesProps> = ({ modal, setModal, placement 
 		<DrawerModal
 			isOpen={open === "resumeTamplates"}
 			onClose={() => setModal(false)}
-			title={"Создать баннер"}
+			title={""}
 			width={width > 500 ? 500 : width}
 			placement={placement}
 		>
