@@ -7,21 +7,32 @@ import res2 from "assets/imgs/resume_templates/res2.jpg";
 import res6 from "assets/imgs/resume_templates/res6.jpg";
 import { Button } from "ui/Button/Button";
 import RoutesPath from "helpers/RoutesPath";
+import { ResTamplate } from "../../../redux/actions";
 import cn from "classnames";
 import { Card } from "types/interface";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 
 const FilteredCards: React.FC = () => {
 	const { t } = useTranslation();
 	const initialCards: Card[] = [
-		{ id: 1, title: "Card 1", category: `${t("All")}`, img: res3 },
-		{ id: 2, title: "Card 2", category: `${t("about")}`, img: res5 },
-		{ id: 3, title: "Card 3", category: `${t("Recommend")}`, img: res4 },
-		{ id: 4, title: "Card 3wefwe", category: `${t("Recommend")}`, img: res2 },
-		{ id: 5, title: "Card 3wkjenrkwejrnw", category: `${t("Recommend")}`, img: res6 },
-		{ id: 6, title: "Card 4", category: `${t("about")}`, img: res1 },
+		{ id: 1, title: "Card 1", category: `${t("All")}`, img: res1 },
+		{ id: 2, title: "Card 2", category: `${t("about")}`, img: res2 },
+		{ id: 3, title: "Card 3", category: `${t("Recommend")}`, img: res3 },
+		{ id: 4, title: "Card 3wefwe", category: `${t("Recommend")}`, img: res4 },
+		{ id: 5, title: "Card 3wkjenrkwejrnw", category: `${t("Recommend")}`, img: res5 },
+		{ id: 6, title: "Card 4", category: `${t("about")}`, img: res6 },
 		// Boshqa cardlar...
 	];
+
+	const dispatch = useDispatch();
+
+	const handleButtonClick = (num: number) => {
+		dispatch(ResTamplate.setResumeTemplate(num));
+		console.log(num);
+
+		// setModal(false); // modalni yopish
+	};
 
 	const [cards] = useState<Card[]>(initialCards);
 	const [filter, setFilter] = useState<string>(`${t("All")}`);
@@ -47,7 +58,7 @@ const FilteredCards: React.FC = () => {
 				</div>
 
 				<div className="filterCards__cards-box justify-center">
-					{filteredCards.map((card) => (
+					{filteredCards?.map((card) => (
 						<div
 							key={card.id}
 							// className="filterCards__item h-[440px] lg:h-[470px] xl:h-[560px]"
@@ -55,6 +66,7 @@ const FilteredCards: React.FC = () => {
 								"filterCards__item 2xl:h-[560px] xl:h-[470px] lg:h-[440px]",
 								{ filterCards__scale: filter }
 							)}
+							onClick={() => handleButtonClick(card.id)}
 						>
 							<Button
 								id={card?.id ? card.id.toString() : undefined}

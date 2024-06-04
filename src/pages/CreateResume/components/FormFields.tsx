@@ -172,7 +172,7 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 								<img className="ms-2 w-6" src={next} alt="next icon" />
 							</Button>
 
-							<Link to={RoutesPath.downloadResume}>download resume</Link>
+							{/* <Link to={RoutesPath.downloadResume}>download resume</Link> */}
 						</Col>
 					</Row>
 				</Form>

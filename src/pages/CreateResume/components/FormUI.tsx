@@ -5,7 +5,6 @@ import { useSelectorRedux } from "hooks";
 import { isArray } from "lodash";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-// import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { useSelector } from "react-redux";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -78,22 +77,22 @@ const FormUI: React.FC = () => {
 		<FormFields3 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
 	];
 
-	useEffect(() => {
-		const trackElement = document.querySelector(".slick-track");
-		if (!trackElement) return;
+	// useEffect(() => {
+	// 	const trackElement = document.querySelector(".slick-track");
+	// 	if (!trackElement) return;
 
-		const slides = trackElement.querySelectorAll(".slick-slide");
-		if (!slides.length) return;
+	// 	const slides = trackElement.querySelectorAll(".slick-slide");
+	// 	if (!slides.length) return;
 
-		let maxHeight = 0;
-		slides.forEach((slide: Element) => {
-			// Element deb o'zgaruvchini HTMLElement ga o'zgartirdik
-			const slideHeight = (slide as HTMLElement).clientHeight; // HTMLElement deb type casting qilish
-			maxHeight = Math.max(maxHeight, slideHeight);
-		});
+	// 	let maxHeight = 0;
+	// 	slides.forEach((slide: Element) => {
+	// 		// Element deb o'zgaruvchini HTMLElement ga o'zgartirdik
+	// 		const slideHeight = (slide as HTMLElement).clientHeight; // HTMLElement deb type casting qilish
+	// 		maxHeight = Math.max(maxHeight, slideHeight);
+	// 	});
 
-		setSliderHeight(maxHeight);
-	}, []);
+	// 	setSliderHeight(maxHeight);
+	// }, []);
 
 	return (
 		<section>
@@ -110,16 +109,12 @@ const FormUI: React.FC = () => {
 						</div>
 						<div
 							className="xl:mt-5 md:mt-3 sm:mt-2 min-[320px]:mt-2 editor__form"
-							style={{ height: sliderHeight }}
+							// style={{ height: sliderHeight }}
 						>
 							<Slider {...settings} ref={sliderRef}>
 								{isArray(data) &&
 									data.map((component, index) => {
-										return (
-											<div className="inininin" key={index}>
-												{component}
-											</div>
-										);
+										return <div key={index}>{component}</div>;
 									})}
 							</Slider>
 						</div>
