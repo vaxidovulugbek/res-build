@@ -7,13 +7,14 @@ import "./Faq.scss";
 const Faq: React.FC = () => {
 	const { t } = useTranslation();
 	return (
-		<section className="section">
+		<section className="section faq">
 			<div className="container">
 				<Title
 					className="text-center section__title title-color font-header text-3xl md:text-5xl mb-8 max-[660px]:mb-6"
 					as="h2"
 					text={t("faq")}
 				/>
+				<p>testt</p>
 				<div className="rounded-lg">
 					<div
 						data-aos="fade-up"

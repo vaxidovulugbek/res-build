@@ -11,8 +11,8 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import cn from "classnames";
 import { useFetchData } from "hooks/useFetchData";
-import MyComponent from "components/DownloadResumeComponent";
 // import useFetchData from "hooks/useFetchData";
+
 AOS.init();
 
 function App() {
@@ -43,7 +43,6 @@ function App() {
 				"dark-theme": darkTheme,
 			})}
 		>
-			{/* <MyComponent /> */}
 			<AllRoutes />
 			<ScrollTop />
 		</div>

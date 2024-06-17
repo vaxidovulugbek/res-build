@@ -3,10 +3,14 @@ import { Title, Text } from "ui";
 import FooterList from "./FooterList";
 import "./Footer.scss";
 import { useTranslation } from "react-i18next";
-import facebook from "assets/imgs/icons/facebook.svg";
-import telegram from "assets/imgs/icons/telegram.svg";
-import instagram from "assets/imgs/icons/instagram.svg";
-import linkedin from "assets/imgs/icons/linkedin.svg";
+// import facebook from "assets/imgs/icons/facebook.svg";
+// import telegram from "assets/imgs/icons/telegram.svg";
+// import instagram from "assets/imgs/icons/instagram.svg";
+// import linkedin from "assets/imgs/icons/linkedin.svg";
+import { ReactComponent as Linkedin } from "assets/imgs/icons/linkedin.svg";
+import { ReactComponent as Instagram } from "assets/imgs/icons/instagram.svg";
+import { ReactComponent as Telegram } from "assets/imgs/icons/telegram.svg";
+import { ReactComponent as Facebook } from "assets/imgs/icons/facebook.svg";
 
 const Footer: React.FC = () => {
 	const { t } = useTranslation();
@@ -93,7 +97,8 @@ const Footer: React.FC = () => {
 									target="_blank"
 								>
 									{/* <FaFacebookF className="text-gray" /> */}
-									<img className="w-4" src={facebook} alt="facebook icon" />
+									{/* <img className="w-4" src={facebook} alt="facebook icon" /> */}
+									<Facebook className="w-4" />
 								</a>
 							</li>
 							<li>
@@ -102,7 +107,8 @@ const Footer: React.FC = () => {
 									href="#"
 									target="_blank"
 								>
-									<img className="w-4" src={telegram} alt="telegram icon" />
+									{/* <img className="w-4" src={telegram} alt="telegram icon" /> */}
+									<Telegram className="w-4" />
 								</a>
 							</li>
 							<li>
@@ -111,7 +117,8 @@ const Footer: React.FC = () => {
 									href="#"
 									target="_blank"
 								>
-									<img className="w-4" src={instagram} alt="instagram icon" />
+									{/* <img className="w-4" src={instagram} alt="instagram icon" /> */}
+									<Instagram className="w-4" />
 								</a>
 							</li>
 							<li>
@@ -120,7 +127,8 @@ const Footer: React.FC = () => {
 									href="#"
 									target="_blank"
 								>
-									<img className="w-4" src={linkedin} alt="linkedin icon" />
+									{/* <img className="w-4" src={linkedin} alt="linkedin icon" /> */}
+									<Linkedin className="w-4" />
 								</a>
 							</li>
 						</ul>
