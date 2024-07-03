@@ -51,7 +51,10 @@ function App({ children }: AppProps) {
 		// 	<ScrollTop />
 		// </div>
 		// <Layout />
-		<>{children}</>
+		<>
+			<ScrollTop />
+			{children}
+		</>
 		// <></>
 	);
 }
