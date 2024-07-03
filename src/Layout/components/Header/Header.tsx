@@ -4,7 +4,7 @@ import { Logo } from "ui/Logo/Logo";
 // import { IoSunny, IoMoon } from "react-icons/io5";
 import "./styles.scss";
 import Navbar from "./NavBar";
-import useStore from "../../zustand/store";
+import useStore from "../../../zustand/store";
 import RoutesPath from "helpers/RoutesPath";
 import SigninPage from "components/RegisterPage/SigninPage";
 import LoginPage from "components/RegisterPage/LoginPage";

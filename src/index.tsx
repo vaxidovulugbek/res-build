@@ -12,6 +12,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 // import { QueryClient, QueryClientProvider } from "react-query";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AllRoutes } from "Routes";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +23,8 @@ root.render(
 		<Provider store={store}>
 			<BrowserRouter>
 				<ChakraProvider>
-					<App />
+					{/* <App /> */}
+					<AllRoutes />
 				</ChakraProvider>
 			</BrowserRouter>
 		</Provider>

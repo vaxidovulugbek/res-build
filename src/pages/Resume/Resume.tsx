@@ -7,11 +7,11 @@ import "./components/styles.scss";
 const Resume: React.FC = () => {
 	return (
 		<>
-			<Header />
+			{/* <Header /> */}
 			<main>
 				<Filter />
 			</main>
-			<Footer />
+			{/* <Footer /> */}
 		</>
 	);
 };

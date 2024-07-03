@@ -8,13 +8,13 @@ const DownloadResume: React.FC = () => {
 	const { resumeTemplate } = useSelectorRedux();
 	return (
 		<>
-			<Header />
+			{/* <Header /> */}
 			<main className="container-box">
 				<section className="my-5 mx-auto min-w-[700px] max-w-fit flex">
 					<DownloadResumeComponent />
 				</section>
 			</main>
-			<Footer />
+			{/* <Footer /> */}
 		</>
 	);
 };

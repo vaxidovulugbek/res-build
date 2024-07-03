@@ -5,11 +5,11 @@ import FormUI from "./components/FormUI";
 const CreateResume: React.FC = () => {
 	return (
 		<>
-			<Header />
+			{/* <Header /> */}
 			<main className="py-6">
 				<FormUI />
 			</main>
-			<Footer />
+			{/* <Footer /> */}
 		</>
 	);
 };

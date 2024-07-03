@@ -1,0 +1,16 @@
+
+.footer {
+  // background: #6386ba;
+  // height: 400px;
+  padding-bottom: 30px;
+
+  @media screen and (max-width:480px) {
+    &__item-title {
+      font-size: 18px !important;
+    }
+
+    &__nav-items {
+      font-size: 14px;
+    }
+  }
+}

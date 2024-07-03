@@ -4,15 +4,15 @@ import React from "react";
 const Home: React.FC = () => {
 	return (
 		<>
-			<Header />
-			<main>
+			{/* <Header /> */}
+			<>
 				<Hero />
 				<HowItWorks />
 				<PopularProducts />
 				<Making_Resume />
 				<Faq />
-			</main>
-			<Footer />
+			</>
+			{/* <Footer /> */}
 		</>
 	);
 };
