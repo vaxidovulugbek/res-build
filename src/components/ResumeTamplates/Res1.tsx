@@ -38,9 +38,9 @@ export const Res1: React.FC = () => {
 	const education = getEducationData();
 	const path = useLocation();
 	const pathName = path.pathname.split("/").at(-1);
-	useEffect(() => {
-		console.log(pathName, RoutesPath.downloadResume);
-	}, [pathName]);
+	// useEffect(() => {
+	// 	console.log(pathName, RoutesPath.downloadResume);
+	// }, [pathName]);
 	const {
 		idExpirence,
 		dataVolunteering,

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "App.css";
 import useStore from "./zustand/store";
 import { ScrollTop } from "helpers/ScrollToTop";
@@ -22,6 +22,7 @@ interface AppProps {
 
 function App({ children }: AppProps) {
 	const { darkTheme } = useStore();
+	const a = useRef(null);
 	const query = useFetchData({
 		url: "your_api_endpoint",
 		dataKey: "your_data_key",
@@ -31,7 +32,7 @@ function App({ children }: AppProps) {
 	useEffect(() => {
 		notifications.success("Успех");
 		// console.log(query);
-		// console.log("ok");
+		// console.log("ok", a);
 
 		// const { data } = useFetchData();
 		// console.log(apiHelpers.getQueryKey("GET", "url", ["params"]));
@@ -55,7 +56,6 @@ function App({ children }: AppProps) {
 			<ScrollTop />
 			{children}
 		</>
-		// <></>
 	);
 }
 
