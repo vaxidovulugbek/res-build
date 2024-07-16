@@ -115,7 +115,6 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 						</Col>
 						<Col span={width < 480 ? 24 : 12}>
 							<Field
-								className="capitalize"
 								id="Email_Address"
 								name="Email_Address"
 								label={t("email_adress")}
@@ -165,10 +164,10 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 										(item) => item !== ""
 									) && re.test(resumeEmail)
 										? handleNextSlide
-										: null
+										: console.log([resumeName, resumeLastName, resumeEmail])
 								}
 							>
-								<p>next step</p>{" "}
+								<p className="lowercase">{t("next step")}</p>{" "}
 								<img className="ms-2 w-6" src={next} alt="next icon" />
 							</Button>
 

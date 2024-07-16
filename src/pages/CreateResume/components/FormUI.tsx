@@ -72,9 +72,9 @@ const FormUI: React.FC = () => {
 
 	const data = [
 		<FormFields handleNextSlide={handleNextSlide} />,
-		<FormFields4 handlePrevSlide={handlePrevSlide} />,
 		<FormFields2 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
 		<FormFields3 handlePrevSlide={handlePrevSlide} handleNextSlide={handleNextSlide} />,
+		<FormFields4 handlePrevSlide={handlePrevSlide} />,
 	];
 
 	// useEffect(() => {

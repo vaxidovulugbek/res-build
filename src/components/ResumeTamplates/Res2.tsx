@@ -48,6 +48,7 @@ export const Res2: React.FC = () => {
 	const education = getEducationData();
 	const path = useLocation();
 	const pathName = path.pathname.split("/").at(-1);
+	console.log([resumeName, resumeLastName, resumeEmail]);
 
 	const [filteredExperience, setFilteredExperience] = useState<
 		{
@@ -87,7 +88,7 @@ export const Res2: React.FC = () => {
 	return (
 		<div className="flex flex-col" style={{ maxWidth: "700px", minHeight: "800px" }}>
 			<div className="bg-slate-700 w-full py-10 flex flex-col">
-				<h2 className="text-center text-amber-200 text-[30px] tracking-[9px] font-serif">
+				<h2 className="text-center text-amber-200 text-[30px] tracking-[9px] font-serif uppercase">
 					{resumeName ? resumeName : "EMMA"} {resumeLastName ? resumeLastName : "WATSON"}
 				</h2>
 				<p className="text-center text-amber-200 text-[12px] font-medium tracking-[2px] font-mono">

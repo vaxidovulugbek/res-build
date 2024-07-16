@@ -263,7 +263,7 @@ export default function FormFields4({ handlePrevSlide }: any) {
 					className="flex items-center rounded-full h-[40px] py-2 px-3 max-[660px]:hidden sm:block ms-4 underline"
 					link={RoutesPath.downloadResume}
 				>
-					download resume
+					{t("download resume")}
 				</Button>
 			</div>
 		</div>

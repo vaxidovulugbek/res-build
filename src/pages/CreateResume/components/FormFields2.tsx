@@ -141,7 +141,7 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 						))}
 					<Button className="flex items-center my-4" onClick={handleAddExperience}>
 						<img className="w-4 me-2" src={plus} alt="plus icon" />{" "}
-						<span className="mb-[0.5px]">Add more experience</span>
+						<span className="mb-[0.5px]">{t("Add more experience")}</span>
 					</Button>
 					<div className="flex items-center gap-3">
 						<Button
@@ -160,7 +160,8 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 							formTarget="category"
 							onClick={handleNextSlide}
 						>
-							<p>next step</p> <img className="ms-2 w-6" src={next} alt="next icon" />
+							<p className="lowercase">{t("next step")}</p>{" "}
+							<img className="ms-2 w-6" src={next} alt="next icon" />
 						</Button>
 					</div>
 				</Form>
