@@ -1,12 +1,10 @@
-import React from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "ui/Button/Button";
 import { Text } from "ui/Text/Text";
 import { Title } from "ui/Title/Title";
 import "./Hero.scss";
-import { useCallback, useEffect, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import type { Container, Engine } from "@tsparticles/engine";
 // import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
 // import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
@@ -34,14 +32,14 @@ const Hero: React.FC = () => {
 	// 	console.log(container);
 	// };
 	return (
-		<section className="section">
+		<section className="section hero">
 			<div
 				className="particles-wrapper h-[630px]"
 				style={{ position: "relative", overflow: "hidden" }}
 			>
 				<div
 					style={{ marginLeft: "50%" }}
-					className="lg:px-10 md:px-6 absolute z-[99] w-10/12 h-full ms-1/2 translate-x-[-50%] flex flex-col justify-center items-center"
+					className="lg:px-10 md:px-6 absolute z-[99] w-full md:w-10/12 h-full ms-1/2 translate-x-[-50%] flex flex-col justify-center items-center"
 				>
 					<Title
 						className="hero__title mb-3 lg:text-6xl leading-normal md:text-3xl text-center font-header text-white tracking-wider"

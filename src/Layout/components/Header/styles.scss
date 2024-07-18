@@ -93,7 +93,7 @@
 
   .header {
       &__only-desktop {
-        display: none;
+        display: none !important;
       }
 
       &__only-mobile {
