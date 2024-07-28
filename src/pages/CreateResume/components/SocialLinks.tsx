@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Button } from "ui";
-import { Field, Form, Formik } from "formik";
 import { Col, Input } from "antd";
-import Fields from "components/Fields";
 import { useWindowSize } from "hooks";
-import { ResInfo } from "../../../redux/actions";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { Button } from "ui";
+import { ResInfo } from "../../../redux/actions";
 
 interface InputValues {
 	value1: string;
@@ -18,7 +16,6 @@ const SocialLinks: React.FC = () => {
 	const width = useWindowSize();
 	const { t } = useTranslation();
 
-	// const [inputs, setInputs] = useState([]);
 	const [inputs, setInputs] = useState<InputValues[]>([]);
 	const handleAddInput = () => setInputs([...inputs, { value1: "", value2: "" }]);
 
@@ -42,6 +39,7 @@ const SocialLinks: React.FC = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(ResInfo?.setResumeSocialLinks(inputs));
+		console.log(inputs);
 	}, [inputs]);
 
 	return (

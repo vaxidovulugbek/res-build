@@ -173,7 +173,7 @@ export const Res5: React.FC = () => {
 							</li>
 						) : (
 							<li className="flex gap-3 items-center">
-								{isArray(resumeSocialLinks) && resumeSocialLinks.length > 1 ? (
+								{isArray(resumeSocialLinks) ? (
 									resumeSocialLinks.map((item, index) => (
 										<p key={index} className="flex items-center">
 											<img

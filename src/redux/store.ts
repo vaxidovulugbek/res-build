@@ -3,8 +3,8 @@ import reducer from "./reducer";
 import rootReducers from "./rootReducer";
 
 const store = createStore(reducer);
-console.log(reducer);
-console.log(rootReducers);
+// console.log(reducer);
+// console.log(rootReducers);
 
 // const store = createStore(rootReducers);
 

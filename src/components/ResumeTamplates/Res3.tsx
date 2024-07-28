@@ -83,6 +83,7 @@ export const Res3: React.FC = () => {
 			setIdEducation(null);
 		}
 	}, [idEducation, dispatch, resumeEducationPosition]);
+
 	return (
 		<>
 			<div
@@ -170,17 +171,14 @@ export const Res3: React.FC = () => {
 						)}
 					</li>
 					{pathName === "download-resume" ? (
-						resumeSocialLinks ? (
-							resumeSocialLinks?.map((item: any, index: number) => (
-								<li key={index} className="flex items-center text-[12px]">
-									<img className="me-2 w-3" src={globe} alt="globe icon" />
-									{item?.value1
-										? `${item?.value1}: ${item?.value2}`
-										: item?.value2}
-								</li>
-							))
-						) : null
-					) : isArray(resumeSocialLinks) && resumeSocialLinks.length > 1 ? (
+						isArray(resumeSocialLinks) &&
+						resumeSocialLinks.map((item, index) => (
+							<li key={index} className="flex items-center text-[12px]">
+								<img className="me-2 w-3" src={globe} alt="globe icon" />
+								{item?.value1 ? `${item?.value1}: ${item?.value2}` : item?.value2}
+							</li>
+						))
+					) : isArray(resumeSocialLinks) ? (
 						resumeSocialLinks.map((item, index) => (
 							<li key={index} className="flex items-center text-[12px]">
 								<img className="me-2 w-3" src={globe} alt="globe icon" />

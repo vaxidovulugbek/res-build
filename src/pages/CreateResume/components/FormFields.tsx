@@ -164,7 +164,8 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 										(item) => item !== ""
 									) && re.test(resumeEmail)
 										? handleNextSlide
-										: console.log([resumeName, resumeLastName, resumeEmail])
+										: null
+									// : console.log([resumeName, resumeLastName, resumeEmail])
 								}
 							>
 								<p className="lowercase">{t("next step")}</p>{" "}

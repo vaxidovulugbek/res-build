@@ -202,7 +202,8 @@ export const Res1: React.FC = () => {
 										</p>
 									))
 								) : null
-							) : isArray(resumeSocialLinks) && resumeSocialLinks.length > 1 ? (
+							) : // ) : isArray(resumeSocialLinks) && resumeSocialLinks.length > 1 ? (
+							isArray(resumeSocialLinks) ? (
 								resumeSocialLinks.map((item, index) => (
 									<p key={index} className="flex items-center">
 										<img className="me-2 w-3" src={globe} alt="globe icon" />

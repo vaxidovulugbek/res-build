@@ -71,7 +71,7 @@ const initialState: MyStore = {
 	resumePhone: null,
 	resumeAdress: null,
 	resumeJobTitle: null,
-	resumeSocialLinks: null,
+	resumeSocialLinks: [],
 	resumeAbout: null,
 
 	resumeCompanyName: null,
