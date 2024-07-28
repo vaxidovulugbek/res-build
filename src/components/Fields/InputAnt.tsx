@@ -139,6 +139,7 @@ export default function InputField({
 					defaultValue={get(form.values, field.name)}
 					placeholder={placeholder}
 					onChange={onChanges}
+					format="DD.MM.YYYY"
 					{...props}
 				/>
 			) : (
