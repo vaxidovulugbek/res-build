@@ -72,7 +72,7 @@ export default function FormFields3({ handlePrevSlide, handleNextSlide }: any) {
 							return (
 								<div
 									key={form?.id}
-									className="p-3 border border-[#d9d9d9] rounded-md"
+									className="p-3 border border-[#d9d9d9] rounded-md mb-4"
 								>
 									<Row gutter={[16, 16]}>
 										<Col span={width < 480 ? 24 : 12}>
@@ -83,7 +83,7 @@ export default function FormFields3({ handlePrevSlide, handleNextSlide }: any) {
 												className="w-full"
 												placeholder={t("Your Degree Name")}
 												label={t("Your Degree Name")}
-												component={Fields.InputField}
+												component={Fields.InputFieldEducation}
 											/>
 										</Col>
 										<Col span={width < 480 ? 24 : 12}>
@@ -93,7 +93,7 @@ export default function FormFields3({ handlePrevSlide, handleNextSlide }: any) {
 												name={`instructionName_${form?.id}`}
 												label={t("name_education")}
 												placeholder={t("name_education")}
-												component={Fields.InputField}
+												component={Fields.InputFieldEducation}
 											/>
 										</Col>
 										<Col span={width < 480 ? 24 : 12}>
@@ -102,7 +102,7 @@ export default function FormFields3({ handlePrevSlide, handleNextSlide }: any) {
 												type="date"
 												label={t("start_date")}
 												placeholder={t("start_date")}
-												component={Fields.InputField}
+												component={Fields.InputFieldEducation}
 											/>
 										</Col>
 										<Col span={width < 480 ? 24 : 12}>
@@ -111,7 +111,7 @@ export default function FormFields3({ handlePrevSlide, handleNextSlide }: any) {
 												type="date"
 												label={t("end_date")}
 												placeholder={t("end_date")}
-												component={Fields.InputField}
+												component={Fields.InputFieldEducation}
 											/>
 										</Col>
 										<Col span={24}>

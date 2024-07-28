@@ -70,53 +70,55 @@ export default function InputField({
 			);
 		}
 
-		for (let i = 0; i < maxId + 1; i++) {
-			const positionIndex = countExpirence.findIndex((item: any) => item.id === i);
-			if (positionIndex !== -1) {
-				const position =
-					form.values[`experiencePosition_${countExpirence[positionIndex]?.id}`];
-				experiencePositions.push(position);
-				experienceCompanyName.push(
-					form.values[`experienceCompany_${countExpirence[positionIndex]?.id}`]
-				);
-				experienceStart.push(
-					form.values[`experienceStartDate_${countExpirence[positionIndex]?.id}`]
-				);
-				experienceEnd.push(
-					form.values[`experienceEndDate_${countExpirence[positionIndex]?.id}`]
-				);
-			} else {
-				experiencePositions.push(undefined);
-				experienceCompanyName.push(undefined);
-				experienceStart.push(undefined);
-				experienceEnd.push(undefined);
-			}
-		}
-		for (let i = 0; i < maxIdEducation + 1; i++) {
-			const Index = countEducation?.findIndex((item: any) => item.id === i);
-			if (Index !== -1) {
-				educationDegreeName.push(form.values[`degreeName_${countEducation[Index]?.id}`]);
-				educationName.push(form.values[`instructionName_${countEducation[Index]?.id}`]);
-				educationStart.push(form.values[`educationStartDate_${countEducation[Index]?.id}`]);
-				educationEnd.push(form.values[`educationEndDate_${countEducation[Index]?.id}`]);
-			} else {
-				educationDegreeName.push(undefined);
-				educationName.push(undefined);
-				educationStart.push(undefined);
-				educationEnd.push(undefined);
-			}
-		}
-		dispatch(ResInfo.setResumePosition([...experiencePositions]));
-		dispatch(ResInfo.setResumeCompanyName([...experienceCompanyName]));
-		dispatch(ResInfo.setResumeStartDate([...experienceStart]));
-		dispatch(ResInfo.setResumeEndDate([...experienceEnd]));
+		// for (let i = 0; i < maxId + 1; i++) {
+		// 	const positionIndex = countExpirence.findIndex((item: any) => item.id === i);
+		// 	if (positionIndex !== -1) {
+		// 		const position =
+		// 			form.values[`experiencePosition_${countExpirence[positionIndex]?.id}`];
+		// 		experiencePositions.push(position);
+		// 		experienceCompanyName.push(
+		// 			form.values[`experienceCompany_${countExpirence[positionIndex]?.id}`]
+		// 		);
+		// 		experienceStart.push(
+		// 			form.values[`experienceStartDate_${countExpirence[positionIndex]?.id}`]
+		// 		);
+		// 		experienceEnd.push(
+		// 			form.values[`experienceEndDate_${countExpirence[positionIndex]?.id}`]
+		// 		);
+		// 	} else {
+		// 		experiencePositions.push(undefined);
+		// 		experienceCompanyName.push(undefined);
+		// 		experienceStart.push(undefined);
+		// 		experienceEnd.push(undefined);
+		// 	}
+		// }
+		// for (let i = 0; i < maxIdEducation + 1; i++) {
+		// 	const Index = countEducation?.findIndex((item: any) => item.id === i);
+		// 	if (Index !== -1) {
+		// 		educationDegreeName.push(form.values[`degreeName_${countEducation[Index]?.id}`]);
+		// 		educationName.push(form.values[`instructionName_${countEducation[Index]?.id}`]);
+		// 		educationStart.push(form.values[`educationStartDate_${countEducation[Index]?.id}`]);
+		// 		educationEnd.push(form.values[`educationEndDate_${countEducation[Index]?.id}`]);
+		// 	} else {
+		// 		educationDegreeName.push(undefined);
+		// 		educationName.push(undefined);
+		// 		educationStart.push(undefined);
+		// 		educationEnd.push(undefined);
+		// 	}
+		// }
+		// dispatch(ResInfo.setResumePosition([...experiencePositions]));
+		// dispatch(ResInfo.setResumeCompanyName([...experienceCompanyName]));
+		// dispatch(ResInfo.setResumeStartDate([...experienceStart]));
+		// dispatch(ResInfo.setResumeEndDate([...experienceEnd]));
 		// education part
-		dispatch(ResInfo.setResumeEducationName([...educationDegreeName]));
-		dispatch(ResInfo.setResumeEducationPosition([...educationName]));
-		dispatch(ResInfo.setResumeEducationStartDate([...educationStart]));
-		dispatch(ResInfo.setResumeEducationEndDate([...educationEnd]));
+		// dispatch(ResInfo.setResumeEducationName([...educationDegreeName]));
+		// dispatch(ResInfo.setResumeEducationPosition([...educationName]));
+		// dispatch(ResInfo.setResumeEducationStartDate([...educationStart]));
+		// dispatch(ResInfo.setResumeEducationEndDate([...educationEnd]));
 		// console.log(form.values, educationDegreeName, countEducation);
-	}, [form.values, dispatch, setHasError, hasError]);
+		console.log("rerender input component", form.values);
+	}, [form.values, hasError]);
+	// }, [form.values, dispatch, setHasError, hasError]);
 
 	// [
 	// 	form.values,

@@ -39,7 +39,6 @@ const SocialLinks: React.FC = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(ResInfo?.setResumeSocialLinks(inputs));
-		console.log(inputs);
 	}, [inputs]);
 
 	return (

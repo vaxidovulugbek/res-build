@@ -112,13 +112,13 @@ export const Res3: React.FC = () => {
 							resumePhone ? (
 								<p className="flex items-center">
 									<img className="me-2 w-3" src={phone} alt="phone icon" />{" "}
-									{resumePhone}
+									<a href={`tel:${{ resumePhone }}`}>{resumePhone}</a>
 								</p>
 							) : null
 						) : resumePhone ? (
 							<p className="flex items-center">
 								<img className="me-2 w-3" src={phone} alt="phone icon" />{" "}
-								{resumePhone}
+								<a href={`tel:${{ resumePhone }}`}>{resumePhone}</a>
 							</p>
 						) : (
 							<p className="flex items-center">
@@ -151,14 +151,14 @@ export const Res3: React.FC = () => {
 					<li className="text-[12px]">
 						{pathName === "download-resume" ? (
 							resumeAdress ? (
-								<p className="flex items-center">
+								<p className="flex items-center capitalize">
 									{" "}
 									<img className="me-2 w-3" src={location} alt="location icon" />
 									{resumeAdress}
 								</p>
 							) : null
 						) : resumeAdress ? (
-							<p className="flex items-center">
+							<p className="flex items-center capitalize">
 								{" "}
 								<img className="me-2 w-3" src={location} alt="location icon" />
 								{resumeAdress}
@@ -214,8 +214,8 @@ export const Res3: React.FC = () => {
 						? isArray(filteredExperience) &&
 							filteredExperience.map((el, idx) => {
 								return (
-									<div key={idx}>
-										<p className="text-[14px] my-2 capitalize tracking-widest">
+									<div key={idx} className="[&:not(:last-child)]:mb-4">
+										<p className="text-[14px] mb-2 capitalize tracking-widest">
 											{el?.position}
 										</p>
 										<div className="flex items-center justify-between">
@@ -237,8 +237,8 @@ export const Res3: React.FC = () => {
 						: isArray(filteredExperience) &&
 							filteredExperience.map((el, idx) => {
 								return (
-									<div key={idx}>
-										<p className="text-[14px] my-2 capitalize tracking-widest">
+									<div key={idx} className="[&:not(:last-child)]:mb-4">
+										<p className="text-[14px] mb-2 capitalize tracking-widest">
 											{el?.position ? el?.position : "job position"}
 										</p>
 										<div className="flex items-center justify-between">
@@ -272,8 +272,8 @@ export const Res3: React.FC = () => {
 						? isArray(filteredEducation) &&
 							filteredEducation.map((item, idx) => {
 								return (
-									<div key={idx}>
-										<p className="text-[14px] my-2 capitalize tracking-widest">
+									<div key={idx} className="[&:not(:last-child)]:mb-4">
+										<p className="text-[14px] mb-2 capitalize tracking-widest">
 											{item?.position}{" "}
 										</p>
 										<div className="flex items-center justify-between">
@@ -296,8 +296,8 @@ export const Res3: React.FC = () => {
 						: isArray(filteredEducation) &&
 							filteredEducation.map((item, idx) => {
 								return (
-									<div key={idx}>
-										<p className="text-[14px] my-2 capitalize tracking-widest">
+									<div key={idx} className="[&:not(:last-child)]:mb-4">
+										<p className="text-[14px] mb-2 capitalize tracking-widest">
 											{item?.position ? item?.position : "your degree"}{" "}
 										</p>
 										<div className="flex items-center justify-between">

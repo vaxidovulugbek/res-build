@@ -51,6 +51,10 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 		// console.log("Form yuborildi:", values.name);
 	};
 
+	useEffect(() => {
+		console.log("rerender formfields 2");
+	}, []);
+
 	return (
 		<div className="editor__form-content">
 			<div className="min-[320px]:mb-3 xl:mb-5">
@@ -69,7 +73,10 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 				<Form>
 					{experienceForms &&
 						experienceForms.map((form) => (
-							<div key={form.id} className="p-3 border border-[#d9d9d9] rounded-md">
+							<div
+								key={form.id}
+								className="p-3 border border-[#d9d9d9] rounded-md mb-4"
+							>
 								<Row gutter={[16, 16]}>
 									<Col span={width < 480 ? 24 : 12}>
 										<Field
@@ -79,7 +86,7 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 											className="w-full"
 											placeholder={t("position_title")}
 											label={t("position_title")}
-											component={Fields.InputField}
+											component={Fields.InputFieldExperience}
 										/>
 									</Col>
 									<Col span={width < 480 ? 24 : 12}>
@@ -89,7 +96,7 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 											name={`experienceCompany_${form.id}`}
 											label={t("company_name")}
 											placeholder={t("company_name")}
-											component={Fields.InputField}
+											component={Fields.InputFieldExperience}
 										/>
 									</Col>
 									<Col span={width < 480 ? 24 : 12}>
@@ -98,7 +105,7 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 											type="date"
 											label={t("start_date")}
 											placeholder={t("start_date")}
-											component={Fields.InputField}
+											component={Fields.InputFieldExperience}
 										/>
 									</Col>
 									<Col span={width < 480 ? 24 : 12}>
@@ -107,7 +114,7 @@ export default function FormFields2({ handlePrevSlide, handleNextSlide }: any) {
 											type="date"
 											label={t("end_date")}
 											placeholder={t("end_date")}
-											component={Fields.InputField}
+											component={Fields.InputFieldExperience}
 										/>
 									</Col>
 									<Col span={24}>

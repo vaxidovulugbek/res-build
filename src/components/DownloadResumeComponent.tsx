@@ -163,11 +163,11 @@ const DownloadResumeComponent: React.FC = () => {
 			<div className="max-[660px]:hidden">
 				<div ref={contentRef}>
 					<div
-						className="p-4 shadow-4xl"
-						style={{
-							maxWidth: "780px",
-							boxShadow: "0px 0px 7.41692px rgba(0,0,0,.15)",
-						}}
+					// className="p-4 shadow-4xl"
+					// style={{
+					// 	maxWidth: "780px",
+					// 	boxShadow: "0px 0px 7.41692px rgba(0,0,0,.15)",
+					// }}
 					>
 						{componentToRender}
 					</div>

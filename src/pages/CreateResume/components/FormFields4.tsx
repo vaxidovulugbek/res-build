@@ -136,15 +136,6 @@ export default function FormFields4({ handlePrevSlide }: any) {
 										key={idx}
 										className="rounded-md p-3 border-solid border-1 mb-8"
 									>
-										{/* <Col span={24}>
-											<Field
-												className="my-2"
-												name="languages"
-												description="add languages"
-												component={Fields.TagInputAntd}
-												label="Languages"
-											/>
-										</Col> */}
 										<Languages />
 										<Col span={24} className="modal-footer">
 											<Button onClick={() => handleDeleteLanguages()}>
@@ -181,7 +172,7 @@ export default function FormFields4({ handlePrevSlide }: any) {
 													name={"volunteering_ActivityName"}
 													label={t("Activity Name")}
 													placeholder={t("Activity Name")}
-													component={Fields.InputField}
+													component={Fields.InputFieldVolunteering}
 												/>
 											</Col>
 											<Col span={24}>
@@ -191,7 +182,7 @@ export default function FormFields4({ handlePrevSlide }: any) {
 													name={"volunteering_Address"}
 													label={t("Volunteering Address")}
 													placeholder={t("Volunteering Address")}
-													component={Fields.InputField}
+													component={Fields.InputFieldVolunteering}
 												/>
 											</Col>
 											<Col span={width < 480 ? 24 : 12}>
@@ -200,7 +191,7 @@ export default function FormFields4({ handlePrevSlide }: any) {
 													type="date"
 													label={t("start_date")}
 													placeholder={t("start_date")}
-													component={Fields.InputField}
+													component={Fields.InputFieldVolunteering}
 												/>
 											</Col>
 											<Col span={width < 480 ? 24 : 12}>
@@ -209,7 +200,7 @@ export default function FormFields4({ handlePrevSlide }: any) {
 													type="date"
 													label={t("end_date")}
 													placeholder={t("end_date")}
-													component={Fields.InputField}
+													component={Fields.InputFieldVolunteering}
 												/>
 											</Col>
 											<Col span={24}>

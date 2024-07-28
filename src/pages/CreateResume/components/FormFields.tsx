@@ -1,27 +1,20 @@
-import { Button, Col, Flex, Row } from "antd";
+import { Button, Col, Row } from "antd";
 import Fields from "components/Fields";
 import { Field, Form, Formik } from "formik";
-import { get } from "lodash";
-import { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ResInfo } from "../../../redux/actions";
-import * as Yup from "yup";
 import { useWindowSize } from "hooks";
-import TextEditor from "./TextEditor";
-import useStore from "../../../zustand/store";
+import { useDispatch, useSelector } from "react-redux";
+import { Text, Title } from "ui";
+import * as Yup from "yup";
 import SocialLinks from "./SocialLinks";
-import { Title, Text } from "ui";
 // import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
-import { useTranslation } from "react-i18next";
 import next from "assets/imgs/icons/next.svg";
-import RoutesPath from "helpers/RoutesPath";
-import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 export default function FormFields({ handleNextSlide }: { handleNextSlide: any }) {
 	const width = useWindowSize();
 	const { t } = useTranslation();
 
-	const dispatch = useDispatch();
 	const resumeName = useSelector((state: any) => state.resumeName);
 	const resumeLastName = useSelector((state: any) => state.resumeLastName);
 	const resumeEmail = useSelector((state: any) => state.resumeEmail);
@@ -48,6 +41,10 @@ export default function FormFields({ handleNextSlide }: { handleNextSlide: any }
 	};
 
 	const re = /^[^@]+@[^@]+$/;
+
+	useEffect(() => {
+		console.log("rerender formfields 1");
+	}, []);
 
 	// const re =
 	// 	/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
