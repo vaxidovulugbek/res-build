@@ -151,14 +151,14 @@ export const Res3: React.FC = () => {
 					<li className="text-[12px]">
 						{pathName === "download-resume" ? (
 							resumeAdress ? (
-								<p>
+								<p className="flex items-center">
 									{" "}
 									<img className="me-2 w-3" src={location} alt="location icon" />
 									{resumeAdress}
 								</p>
 							) : null
 						) : resumeAdress ? (
-							<p>
+							<p className="flex items-center">
 								{" "}
 								<img className="me-2 w-3" src={location} alt="location icon" />
 								{resumeAdress}
