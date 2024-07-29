@@ -7,6 +7,7 @@ import res2 from "assets/imgs/resume_templates/res2.jpg";
 import res6 from "assets/imgs/resume_templates/res6.jpg";
 import { Button } from "ui/Button/Button";
 import RoutesPath from "helpers/RoutesPath";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ResTamplate } from "../../../redux/actions";
 import cn from "classnames";
 import { Card } from "types/interface";
@@ -72,7 +73,8 @@ const FilteredCards: React.FC = () => {
 								id={card?.id ? card.id.toString() : undefined}
 								link={RoutesPath.createResume}
 							>
-								<img src={card.img} alt="resume template" />
+								<LazyLoadImage alt="resume template" src={card.img} />
+								{/* <img src={card.img} alt="resume template" /> */}
 							</Button>
 						</div>
 					))}

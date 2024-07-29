@@ -207,9 +207,12 @@ export const Res3: React.FC = () => {
 					</p>
 				</div>
 				<div className="w-full border-solid inline-block border-t-1 mt-6 border-gray-400">
-					<p className="text-base my-2 uppercase tracking-widest font-semibold">
-						experience
-					</p>
+					<div className="flex items-center">
+						<p className="text-base my-2 uppercase tracking-widest font-semibold">
+							experience
+						</p>
+						{/* <p className="text-[14px] ms-4">2 years 1 month</p> */}
+					</div>
 					{pathName === "download-resume"
 						? isArray(filteredExperience) &&
 							filteredExperience.map((el, idx) => {
