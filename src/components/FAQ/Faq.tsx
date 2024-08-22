@@ -7,7 +7,7 @@ import "./Faq.scss";
 const Faq: React.FC = () => {
 	const { t } = useTranslation();
 	return (
-		<section className="section faq" id="faq">
+		<section className="faq py-10" id="faq">
 			<div className="container">
 				<Title
 					className="text-center section__title title-color font-header mb-8 max-[660px]:mb-6"

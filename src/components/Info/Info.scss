@@ -1,0 +1,35 @@
+.info {
+    &__subtitle {
+        font-size: 16px !important;
+    }
+
+    &__title {
+        font-size:  calc(1.2rem + .9vw) !important;
+    }
+
+    &__text {
+        font-size:  calc(0.66rem + .9vw) !important;
+    }
+
+    ul {
+        list-style-type: disc !important;
+        padding-left: 2rem;
+    }
+
+    li::marker {
+        unicode-bidi: isolate !important;
+        font-variant-numeric: tabular-nums !important;
+        text-transform: none !important;
+        text-indent: 0px !important;
+        text-align: start !important;
+        text-align-last: start !important;
+        width: 5px;
+        height: 5px;
+    }
+
+    @media screen and (min-width:660px) {
+        &__text {
+            font-size: 15px !important;
+        }
+    }
+}
