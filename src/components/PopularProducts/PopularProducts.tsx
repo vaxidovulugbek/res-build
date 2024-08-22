@@ -48,7 +48,7 @@ const PopularProducts: React.FC = () => {
 	};
 
 	return (
-		<section className="section">
+		<section className="section max-[480px]:pb-10">
 			<div className="container">
 				<Text
 					className="uppercase text-center flex justify-center mb-1 text-gray"

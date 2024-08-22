@@ -9,12 +9,12 @@ const Making_Resume: React.FC = () => {
 	const { t } = useTranslation();
 	return (
 		<section className="section">
-			<div className="container mt-16">
+			<div className="container">
 				<div
 					// data-aos="fade-up"
 					// data-aos-anchor-placement="center-center"
 					// data-aos-duration={500}
-					className="mres h-[400px] flex rounded-[40px] max-[1020px]:rounded-[26px] max-[660px]:rounded-[14px] shadow-white"
+					className="mres flex rounded-[40px] max-[1020px]:rounded-[26px] max-[660px]:rounded-[14px] shadow-white"
 				>
 					<div>
 						<svg

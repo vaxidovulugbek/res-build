@@ -1,18 +1,18 @@
-import { PopularProducts, Faq, Header, Hero, HowItWorks, Making_Resume, Footer } from "components";
+import { PopularProducts, Faq, Hero, HowItWorks, Making_Resume } from "components";
+import Info from "components/Info/Info";
 import React from "react";
 
 const Home: React.FC = () => {
 	return (
 		<>
-			{/* <Header /> */}
 			<main>
 				<Hero />
 				<HowItWorks />
 				<PopularProducts />
 				<Making_Resume />
+				<Info />
 				<Faq />
 			</main>
-			{/* <Footer /> */}
 		</>
 	);
 };
