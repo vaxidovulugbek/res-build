@@ -14,7 +14,7 @@ const Making_Resume: React.FC = () => {
 					// data-aos="fade-up"
 					// data-aos-anchor-placement="center-center"
 					// data-aos-duration={500}
-					className="mres flex rounded-[40px] max-[1020px]:rounded-[26px] max-[660px]:rounded-[14px] shadow-white"
+					className="mres h-[400px] max-[1280px]:h-[480px] max-[1020px]:h-auto flex rounded-[40px] max-[1020px]:rounded-[26px] max-[660px]:rounded-[14px] shadow-white"
 				>
 					<div>
 						<svg
