@@ -1,0 +1,34 @@
+// Sass миксины
+
+$xxl: 1400;
+$xl: 1200;
+$lg: 992;
+$md: 768;
+$sm: 576;
+
+$sizes: (1320:$xxl,
+    1140:$xl,
+    960:$lg,
+    720:$md,
+    540:$sm,
+    0:0
+);
+
+$baseValueLarge: 1440px;
+$baseValueSmall: 392px;
+
+@mixin res($property, $value) {
+    #{$property}: calc(($value / $baseValueLarge) * 100vw);
+}
+@mixin resa($property, $value) {
+    #{$property}: calc(($value / $baseValueSmall) * 100vw);
+}
+
+@mixin media($size) {
+    @media (max-width:#{$size}px) {
+        @content;
+    }
+}
+
+// @include res('font-size', 17px);  desctop uchun
+// @include resa('font-size', 17px);  mobile uchun
